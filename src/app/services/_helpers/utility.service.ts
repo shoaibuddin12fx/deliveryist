@@ -3,33 +3,20 @@ import Swal from 'sweetalert2';
 import { StorageService } from './storage.service';
 import 'materialize-css';
 import { AlertsService } from './alerts.service';
+import { GeolocationsService } from './geolocation.service';
+import { Capacitor } from '@capacitor/core';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UtilityService {
-  geolocations: any;
-
-  presentToast(msg) {
-    return this.alerts.presentToast(msg);
-  }
-
-  presentConfirm(
-    okText = 'OK',
-    cancelText = 'Cancel',
-    title = 'Are You Sure?',
-    message = ''
-  ): Promise<boolean> {
-    return this.alerts.presentConfirm(
-      (okText = okText),
-      (cancelText = cancelText),
-      (title = title),
-      (message = message)
-    );
-  }
   public loader = false;
   contacts: any;
-  constructor(public storage: StorageService, public alerts: AlertsService) {}
+  constructor(
+    public storage: StorageService,
+    public alerts: AlertsService,
+    public geolocationsService: GeolocationsService
+  ) {}
 
   getOnlyDigits(phoneNumber) {
     const numberString = phoneNumber.toString();
@@ -84,6 +71,25 @@ export class UtilityService {
         return f1 + ' ' + f2 + '-' + f3;
     }
   }
+
+  presentToast(msg) {
+    return this.alerts.presentToast(msg);
+  }
+
+  presentConfirm(
+    okText = 'OK',
+    cancelText = 'Cancel',
+    title = 'Are You Sure?',
+    message = ''
+  ): Promise<boolean> {
+    return this.alerts.presentConfirm(
+      (okText = okText),
+      (cancelText = cancelText),
+      (title = title),
+      (message = message)
+    );
+  }
+
   showLoader() {
     this.loader = true;
   }
@@ -131,10 +137,25 @@ export class UtilityService {
 
     //M.toast({ html: msg, classes: type == 'success' ? 'dlvr-success-toast' : 'dlvr-error-toast' })
   }
+
   getCurrentLocationCoordinates() {
-    return this.geolocations.getCurrentLocationCoordinates();
+    if (Capacitor.getPlatform() === 'web') {
+      return this.geolocationsService.getCurrentLocationWithAddressWeb();
+    } else {
+      return this.geolocationsService.getCurrentLocationCoordinates();
+    }
+  }
+
+  getCoordsForPlaceId(placeId, _default = true) {
+    return this.geolocationsService.getCoordsForPlaceId(
+      placeId,
+      (_default = true)
+    );
   }
   getCoordsForGeoAddress(address, _default = true) {
-    return this.geolocations.getCoordsForGeoAddress(address, (_default = true));
+    return this.geolocationsService.getCoordsForGeoAddress(
+      address,
+      (_default = true)
+    );
   }
 }

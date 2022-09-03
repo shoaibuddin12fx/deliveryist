@@ -18,16 +18,13 @@ declare let google;
 export class LoginPage extends BasePage implements OnInit {
   loginForm: FormGroup;
   loginSuccessful = false;
-  regionCode = localStorage.getItem('countryCode');
-  currLat: any;
-  currLng: any;
-  currentLocation: string;
   loading = false;
 
   constructor(injector: Injector) {
     super(injector);
     this.setupForm();
   }
+  ngOnInit(): void {}
 
   setupForm() {
     // create form
@@ -41,26 +38,9 @@ export class LoginPage extends BasePage implements OnInit {
       password: new FormControl('@1981king', Validators.required),
     });
   }
-
-  // async isLoggedIn() {
-  //   // Go ahead if user already signIn
-  //   if (localStorage.getItem('currentUser')) {
-  //     const flag = await this.authService.isAuthenticated();
-  //     if (flag) {
-  //       this.goToUserRoleSelection(
-  //         JSON.parse(localStorage.getItem('currentUser'))
-  //       );
-  //     }
-  //   }
-  // }
-
-  ngOnInit() {
-    SplashScreen.hide();
-  }
-
   // Go to signUp
   goToSignUp() {
-    this.route.navigate(['pages/signUp']);
+    this.navigateTo('pages/sign-up');
   }
 
   // After Login button clicked
@@ -89,43 +69,6 @@ export class LoginPage extends BasePage implements OnInit {
     }
   }
 
-  getCurrentLocation() {
-    this.geolocation.getCurrentLocationCoordinates().then((v) => {
-      const geocoder = new google.maps.Geocoder();
-      this.currLat = v['lat'];
-      this.currLng = v['lng'];
-      const latlng = { lat: this.currLat, lng: this.currLng };
-      const that = this;
-      geocoder.geocode({ location: latlng }, (results, status) => {
-        console.log(status);
-        if (results[0]) {
-          that.currentLocation =
-            results[results.length - 1].address_components[0].short_name;
-          localStorage.setItem('countryCode', that.currentLocation);
-          localStorage.setItem('location', JSON.stringify(latlng));
-          console.log(that.currentLocation);
-        } else {
-          console.log('No results found');
-        }
-      });
-    });
-  }
-  getCurrentPosition(): Promise<any> {
-    return new Promise((resolve, reject) => {
-      navigator.geolocation.getCurrentPosition(
-        (resp) => {
-          this.currLat = resp.coords.latitude;
-          this.currLng = resp.coords.longitude;
-          resolve({ lng: resp.coords.longitude, lat: resp.coords.latitude });
-          console.log(this.currLng);
-          console.log(this.currLat);
-        },
-        (err) => {
-          reject(err);
-        }
-      );
-    });
-  }
   signInWithFB() {
     // this.commonService.signInWithFB().then((res: any) => {
     //   if (res) {
@@ -139,37 +82,31 @@ export class LoginPage extends BasePage implements OnInit {
   }
 
   async signInWithGoogle() {
-    this.commonService
-      .signInWithGoogle()
-      .then((res: any) => {
-        // this.messagingService.requestPermission();
-        if (res) {
-          if (res.otp_verified) {
-            this.goToUserRoleSelection(res);
-          } else {
-            this.goToMobileVarification(res);
-          }
-        }
-      })
-      .catch((err) => {
-        console.log('in error login', err);
-        console.log(errorMessages.ERROR_SOCIAL_LOGIN, err);
-        if (err === 'No such user') {
-          this.route.navigate(['auth/signUp', { userEmail: err.email }]);
-        }
-      });
+    // this.commonService
+    //   .signInWithGoogle()
+    //   .then((res: any) => {
+    //     // this.messagingService.requestPermission();
+    //     if (res) {
+    //       if (res.otp_verified) {
+    //         this.goToUserRoleSelection(res);
+    //       } else {
+    //         this.goToMobileVarification(res);
+    //       }
+    //     }
+    //   })
+    //   .catch((err) => {
+    //     console.log('in error login', err);
+    //     console.log(errorMessages.ERROR_SOCIAL_LOGIN, err);
+    //     if (err === 'No such user') {
+    //       this.route.navigate(['auth/signUp', { userEmail: err.email }]);
+    //     }
+    //   });
   }
 
   goToUserRoleSelection(userData) {
     this.commonService.getUserProfileData().then(async (res) => {
       localStorage.setItem('currentUser', JSON.stringify(userData));
-      this.route.navigate(['pages/userRoleSelection']);
-    });
-  }
-
-  goToMobileVarification(userData) {
-    this.route.navigate(['auth/sign-up'], {
-      queryParams: { isSocialLoginInitiated: 'true' },
+      this.navigateTo(['pages/user-role-selection']);
     });
   }
 
@@ -195,6 +132,6 @@ export class LoginPage extends BasePage implements OnInit {
   }
 
   goToForgotPassword() {
-    this.route.navigate(['auth/forgetPassword']);
+    this.navigateTo(['auth/forgetPassword']);
   }
 }

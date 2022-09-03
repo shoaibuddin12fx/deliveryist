@@ -6,7 +6,6 @@ import { UserSelectionScreenComponent } from './user-selection-screen/user-selec
 import { ConsumerDashboardComponent } from './consumer/consumer-dashboard/consumer-dashboard.component';
 import { DriverDashboardComponent } from './driver/driver-dashboard/driver-dashboard.component';
 import { IntroductionScreensComponent } from './introduction-screens/introduction-screens.component';
-import { PostJobComponent } from './consumer/post-job/post-job.component';
 import { TrackDriverComponent } from './consumer/track-driver/track-driver.component';
 import { PaymentModeComponent } from './consumer/payment-mode/payment-mode.component';
 import { RatingsAndReviewsComponent } from './consumer/ratings-and-reviews/ratings-and-reviews.component';
@@ -68,8 +67,21 @@ const routes: Routes = [
         (m) => m.SignUpPageModule
       ),
   },
+  {
+    path: 'user-role-selection',
+    loadChildren: () =>
+      import(
+        './authentication/user-role-selection/user-role-selection.module'
+      ).then((m) => m.UserRoleSelectionPageModule),
+  },
+  {
+    path: 'post-job',
+    loadChildren: () =>
+      import('./consumer/post-job/post-job.module').then(
+        (m) => m.PostJobPageModule
+      ),
+  },
   { path: 'forgetPassword', component: ForgetPasswordComponent },
-  { path: 'postJob', component: PostJobComponent },
   { path: 'driverDashboard', component: DriverDashboardComponent },
   {
     path: 'userRoleSelection',
@@ -122,6 +134,10 @@ const routes: Routes = [
       import('./authentication/autocomplete/autocomplete.module').then(
         (m) => m.AutocompletePageModule
       ),
+  },
+  {
+    path: 'user-role-selection',
+    loadChildren: () => import('./user-role-selection/user-role-selection.module').then( m => m.UserRoleSelectionPageModule)
   },
 
   // {

@@ -43,7 +43,9 @@ import { OrderCardComponent } from './pages/consumer/consumer-dashboard/order-ca
   entryComponents: [],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(),
+    IonicModule.forRoot({
+      mode: 'ios',
+    }),
     AppRoutingModule,
     HttpClientModule,
     // NgxPubSubModule,

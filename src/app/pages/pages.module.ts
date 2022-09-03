@@ -9,7 +9,6 @@ import { DriverDashboardComponent } from './driver/driver-dashboard/driver-dashb
 import { IntroductionScreensComponent } from './introduction-screens/introduction-screens.component';
 import 'materialize-css';
 // import { MaterializeModule } from 'angular2-materialize';
-import { PostJobComponent } from './consumer/post-job/post-job.component';
 import { TrackDriverComponent } from './consumer/track-driver/track-driver.component';
 import { PaymentModeComponent } from './consumer/payment-mode/payment-mode.component';
 import { RatingsAndReviewsComponent } from './consumer/ratings-and-reviews/ratings-and-reviews.component';
@@ -56,7 +55,6 @@ import { MarketPlaceComponent } from './market-place/market-place.component';
     ConsumerDashboardComponent,
     DriverDashboardComponent,
     IntroductionScreensComponent,
-    PostJobComponent,
     TrackDriverComponent,
     PaymentModeComponent,
     RatingsAndReviewsComponent,

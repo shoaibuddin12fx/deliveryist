@@ -200,24 +200,17 @@ export class SignUpPage implements OnInit {
   //   console.log('data5', data);
   // }
 
-  async showAddressModal(addressType) {
+  async showAddressModal() {
     const res = await this.modals.present(AutocompletePage);
     console.log('Hi', { res });
-    this.signupForm.controls['street'].patchValue(res.data.description);
 
-    let data = res.data;
+    const data = res.data;
 
-    data.addressType = addressType ?? '';
-    if (data && data.add) {
-      if (addressType == 'pick') {
-        this.pick = data;
-      }
-
-      if (addressType == 'drop') {
-        this.drop = data;
-      }
-      this.events.publish('add_address', { pick: this.pick, drop: this.drop });
+    if (data.data == 'A') {
+      return;
     }
+
+    this.signupForm.controls['street'].patchValue(data.address);
   }
 
   onOtpChange(otp) {

@@ -1,0 +1,110 @@
+@import "../../../../theme/variables.scss";
+@import "../../../../assets/scss/custom-variables.scss";
+@import "../../../../assets/scss/dlvr-ui-kit.scss";
+@import "../../../../../node_modules/materialize-css/dist/css/materialize.css";
+.dlvr-uss-title {
+  font-weight: bold;
+  // font-size: calc(2vw + 16px);
+  // text-transform: uppercase;
+  // color: $primary-color;
+}
+.dlvr-uss-img-wrapper {
+  width: 100%;
+  // min-width: 260px;
+  max-width: 250px;
+  margin: 0 auto;
+}
+.dlvr-modal-btn-wrapper button {
+  display: block;
+  margin: 0 auto;
+  margin-top: 12px;
+  min-width: 290px;
+}
+.dlvr-modal .modal.bottom-sheet {
+  min-height: 150px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+.dlvr-center-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-47%, -62%);
+}
+
+.dlvr-connect-with.drive {
+  min-width: 80% !important;
+  max-width: 80%;
+  background-color: #fff;
+  border: none;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
+  padding-top: 2px;
+  padding-bottom: 2px;
+  height: 90px;
+  @media (max-width: 320px) {
+    .dlvr-uss-img-wrapper {
+      width: 100%;
+      // min-width: 180px;
+      max-width: 180px;
+    }
+  }
+}
+.dlvr-connect-with.drive img {
+  max-width: 52px;
+  border-radius: 0;
+  margin-left: 25px;
+}
+.dlvr-connect-with.drive.shop img,
+.dlvr-connect-with.drive.delivery img {
+  max-width: 48px;
+  margin-bottom: 4px;
+}
+.dlvr-connect-with.drive img.arrow {
+  max-width: 20px;
+  margin: 23px 0 0 0;
+}
+.dlvr-connect-with.drive span.small {
+  font-size: 12px;
+  display: block;
+  margin-top: 15px;
+  padding-left: 10px;
+  color: #3c3c3c;
+}
+.dlvr-connect-with.drive p {
+  font-size: 16px;
+  font-weight: 700;
+  padding-left: 10px;
+  color: #3c3c3c;
+}
+@media (max-height: 800px) {
+  .dlvr-uss-img-wrapper {
+    width: 100%;
+    // min-width: 200px;
+    max-width: 200px;
+  }
+}
+@media (max-width: 768px) {
+  .dlvr-center-content {
+    transform: translate(-47%, -62%);
+    width: 100%;
+  }
+}
+@media (max-width: 360px) {
+  .dlvr-uss-img-wrapper {
+    width: 100%;
+    // min-width: 220px;
+    max-width: 200px;
+  }
+}
+@media (max-width: 320px) {
+  .dlvr-uss-img-wrapper {
+    min-width: 180px;
+    max-width: 180px;
+  }
+}
+
+.set-loader-position {
+  position: relative;
+  top: 40%;
+  left: 40%;
+}
