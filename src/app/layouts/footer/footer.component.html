@@ -1,0 +1,50 @@
+<div class="dlvr-footer-wrapper">
+    <div class="row">
+        <div class="">
+            <!-- <div class="dlvr-footer-nav">
+                <ul class="center">
+                    <li>
+                        <a class="waves-effect waves-blue active" [class.active]="path == 'consumerDashboard' || path == 'driverDashboard'" (click)="goToDashboard()">
+                            <i class="material-icons-outlined">dashboard</i>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="waves-effect waves-blue" [class.active]=" 'consumerNotification' == path " (click)="goToNotification()">
+                            <i class="material-icons-outlined">notifications</i>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="waves-effect waves-blue" (click)="goTosettings()" [class.active]="path == 'settings'">
+                            <i class="material-icons-outlined">settings</i>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="waves-effect waves-blue" [class.active]="'local_mall' == path">
+                            <i class="material-icons-outlined">local_mall</i>
+                        </a>
+                    </li>
+                </ul>
+            </div> -->
+            <div class="dlvr-uikit-nav" [ngClass]="userRole == 'Consumer' ? 'dlvr-uikit-nav-blue' : 'dlvr-uikit-nav-green'">
+                <ul>
+                    <li [class.active]="path == 'consumerDashboard' || path == 'driverDashboard'" (click)="goToDashboard()">
+                        <i class="material-icons-outlined">dashboard</i>
+                        <p>Home</p>
+                    </li>
+                    <li [class.active]=" 'consumerNotification' == path || path == 'driverNotification' " (click)="goToNotification()">
+                        <i class="material-icons-outlined">notifications_active</i>
+                        <p>Notification</p>
+                    </li>
+                    <li [class.active]=" path == 'settings' || path == 'driverSetting' " (click)="goTosettings()" >
+                        <i class="material-icons-outlined">account_circle</i>
+                        <p>Profile</p>
+                    </li>
+                    <li [class.active]="'more_horiz' == path">
+                        <i class="material-icons-outlined">more_horiz</i>
+                        <p>More</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

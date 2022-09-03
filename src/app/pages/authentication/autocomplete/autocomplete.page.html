@@ -1,0 +1,48 @@
+<ion-header [ScrollY]="false">
+  <ion-toolbar class="search-header-green">
+    <ion-buttons slot="start">
+      <ion-button (click)="goToAddress()">
+        <ion-icon class="back-icon" name="chevron-back-circle"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="header-title"> Edit home</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="location-content no-scroll">
+
+  <div class="grey-box">
+    <ion-searchbar #searchbox (ionChange)="searchChange($event)" placeholder="Search previous locations"
+      (ionCancel)="onCancel($event)" class="search-box"></ion-searchbar>
+
+  </div>
+
+  <button class="current-loc">
+    <div class="content">
+      <ion-icon name="locate-outline" class="locate"></ion-icon>
+      <p>Current Location</p>
+    </div>
+  </button>
+
+  <ion-list>
+
+    <ion-item *ngFor="let address of lstPlaces; let i = index;" (click)="sendAddress(address)"
+      class="ion-text ion-no-padding ion-no-margin">
+      <ion-avatar>
+        <ion-icon name="location" class="location-icon"></ion-icon>
+      </ion-avatar>
+      <ion-label class="ion-text">
+        <p class="ion-text ">{{address.description}}</p>
+        <p class="secondary-text ion-text-wrap">{{address.structured_formatting.secondary_text}}</p>
+      </ion-label>
+      <!-- <ion-label class="ion-text">
+        <ion-icon name="location" class="location-icon"></ion-icon>{{address.description}}
+      </ion-label> -->
+    </ion-item>
+
+  </ion-list>
+
+
+</ion-content>

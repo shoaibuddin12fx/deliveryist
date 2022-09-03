@@ -1,0 +1,30 @@
+<div class="product-name">
+    <ion-icon size="large" style=" position: absolute; left: 4px; color:89bdc3; top:11px; bottom: 25px; line-height: 0;"
+        name="chevron-back-outline" (click)="goBack()"></ion-icon>
+    <h6 class="p-name">Choose Your Location</h6>
+</div>
+
+<div class="map-container">
+    <div class="row">
+        <div class="search col s12 m12">
+            <input #searchbox type="text" class="searchbox" placeholder="Search by city or neighborhood">
+        </div>
+    </div>
+    <div #map id="map"></div>
+</div>
+<div class="col s12 m12 ">
+    <button class="btn-small dlvr-uikit-btn" type="submit" name="action" (click)="setLocation()">Apply</button>
+</div>
+<!-- <div class="container">
+    <div class="row">
+        <p class="col s10 range-field">
+            <input type="range" id="test5" min="0" max="100" name="radial_distance" [(ngModel)]="radial_distance"
+                (change)="setRadialDistance($event)" />
+        </p>
+        <p class="col s2"> {{radial_distance}} mi </p>
+    </div>
+    <div class="col s12 m12 ">
+        <button class="btn-full-width dlvr-uikit-btn dlvr-primary-btn" type="submit" name="action"
+            (click)="setLocation()">Apply</button>
+    </div>
+</div> -->

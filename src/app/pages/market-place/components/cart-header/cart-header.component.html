@@ -1,0 +1,55 @@
+<div class="dlvr-nav">
+    <div class="navbar-fixed">
+        <nav class="white-nav">
+            <div class="nav-wrapper">
+
+                <!-- <i class="material-icons">tune</i> -->
+                <!-- <a class="dlvr-hamburger sidenav-trigger right" *ngIf="showLocation"><i class="material-icons">location_on</i></a>       -->
+
+                <!-- <a [hidden]="showBackButton" data-target="mobile-demo" class="dlvr-hamburger sidenav-trigger left" *ngIf="!showBackButton" (click)="openSidenav()">
+                    <i class="material-icons">menu</i></a> -->
+
+                <a [hidden]="!showBackButton" data-target="mobile-demo" class="dlvr-hamburger back-button left" *ngIf="showBackButton" (click)="goBack()">
+                    <i class="material-icons">arrow_back_ios</i>
+                </a>
+
+
+                <a class="dlvr-hamburger profile-container right" *ngIf="showProfile">
+                    <i class="material-icons">account_circle</i>
+                    <!-- <span class="user-name">Kranthi Kumar</span>
+                    <span class="user-role">TO Buy/Sell</span> -->
+                </a>
+
+                <a class="brand-logo center" href="javascript:void(0)">{{title}}</a>
+
+                <a class="dlvr-hamburger right" *ngIf="showLike" (click)="setToggleLike()">
+                    <i class="fav-heart material-icons">{{ isLike ? "favorite" : "favorite_border" }}</i>
+                </a>
+                <!-- <a class="dlvr-hamburger right" *ngIf="showSearch" (click)="goToProducts();">
+                    <span class="fa-stack fa-xx">
+                        <i class="fa fa-circle fa-stack-2x icon-background"></i>
+                        <i class="fa fa-search fa-stack-1x color-black"></i>
+                      </span>
+                </a> -->
+
+                <!-- <a class="dlvr-hamburger right" *ngIf="showFilters" (click)="openFilters();">
+                    <span class="fa-stack fa-xx">
+                        <i class="fa fa-circle fa-stack-2x icon-background"></i>
+                        <i class="fa fa-filter fa-stack-1x color-black"></i>
+                      </span>
+                </a> -->
+                <!-- <a class="dlvr-hamburger right" *ngIf="showCart" (click)="gotoCart()">
+                    <span class="fa-stack fa-xx">
+                        <i class="fa fa-circle fa-stack-2x icon-background"></i>
+                        <i class="fa fa-shopping-cart fa-stack-1x color-black"></i>
+                      </span> 
+                        <span class="cart-badge"
+                        *ngIf="pref.pref?.cartCount">{{ pref.pref?.cartCount || 0 }}</span> </a> -->
+
+
+            </div>
+        </nav>
+    </div>
+
+</div>
+<!-- <i class="material-icons">tune</i> -->

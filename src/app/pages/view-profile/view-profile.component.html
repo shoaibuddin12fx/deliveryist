@@ -1,0 +1,33 @@
+<app-header [headerTitle]="pageTitle" [showBackButton]="true"></app-header>
+<div class="dlvr">
+    <div class="container" data-aos="fade-up">
+        <div class="row">
+            <div class="col s12">
+                <div class="dlvr-profile-img-wrapper">
+                    <div class="card dlvr-card">
+                        <img src="../../../assets/images/step5Hero.svg" alt="profile pic" />
+                        <div class="row">
+                            <div class="col s12"> 
+                                <div class="center">
+                                    <p class="dlvr-profile-title">{{ driverProfileData.firstName + driverProfileData.lastName }}</p>
+                                    <ul class="dlvr-viewProfile-star-wrapper">
+                                        <li class=""><i id="star1" class="material-icons-round">star</i></li>
+                                        <li class=""><i id="star2" class="material-icons-round">star</i></li>
+                                        <li class=""><i id="star3" class="material-icons-round">star</i></li>
+                                        <li class=""><i id="star4" class="material-icons-round">star</i></li>
+                                        <li class=""><i id="star5" class="material-icons-round">star</i></li>
+                                    </ul>
+                                    <p class="card dlvr-card dlvr-profile-successCount">Completed Deliveries: {{ driverProfileData.completedDeliveries }}</p>
+                                </div>
+                            </div> 
+                        </div>
+                    </div>
+                </div> 
+                <!-- <div class="card dlvr-card p-l-20 p-r-20">
+                    <h3 class="m-t-10">Lorem Ipsum da masa</h3>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Inventore culpa ad illo sit eos. Reiciendis quo eius quam et dolores tempora nam cupiditate aspernatur. Quas magni temporibus veritatis tenetur ratione.</p>
+                </div>  -->
+            </div>
+        </div>
+    </div>
+</div> 

@@ -1,0 +1,73 @@
+<div class="dlvr-notification-screen-wrapper">
+    <app-header [headerTitle]="'Notification'" [showBackButton]="true"></app-header>
+    <div class="row bg-lightBlue">
+        <div class="col s12">
+            <p class="m-t-20 m-b-20 f-s-13"><b>Recieve messages from drivers, delivery status incuding offers</b></p>
+        </div>
+    </div>
+    <ion-content style="height:100vh">
+        <div class="" data-aos="fade-up" *ngIf="notifyStatus">
+            <div class="row">
+                <div class="col s11 contain">
+                    <div class="dlvr-uikit-list dlvr-uikit-list-media">
+                        <ul>
+                            <li>
+                                <p>
+                                    <img src="../../../../assets/images/setting/report-an-issue.png" class="">
+                                    Email
+                                </p>
+                                <div class="switch">
+                                    <label>
+                                        <input type="checkbox" [(ngModel)]="notifyStatus.notify_email"
+                                            (ngModelChange)="changeNotifyParam()">
+                                        <span class="lever"></span>
+                                    </label>
+                                </div>
+                            </li>
+                            <li>
+                                <p>
+                                    <img src="../../../../assets/images/setting/smartphone.png" class="">
+                                    Mobile
+                                </p>
+                                <div class="switch">
+                                    <label>
+                                        <input type="checkbox" [(ngModel)]="notifyStatus.notify_order"
+                                            (ngModelChange)="changeNotifyParam()">
+                                        <span class="lever"></span>
+                                    </label>
+                                </div>
+                            </li>
+                            <li>
+                                <p>
+                                    <img src="../../../../assets/images/setting/notification.png" class="">
+                                    Push
+                                </p>
+                                <div class="switch">
+                                    <label>
+                                        <input type="checkbox" [(ngModel)]="notifyStatus.notify_push"
+                                            (ngModelChange)="changeNotifyParam()">
+                                        <span class="lever"></span>
+                                    </label>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="row">
+            <div class="col s12">
+                <div class="card dlvr-card" *ngFor="let notification of notifications; let i=index;">
+                    <i class="material-icons dlvr-notification-bell-icon">notifications_none</i>
+                    <i class="material-icons dlvr-close-icon" (click)="deleteNotification(i)">close</i>
+                    <h3>{{ notification.title  }}</h3>
+                    <p>{{ notification.description  }}</p> 
+                </div>
+                <div class="dlvr-no-notification" *ngIf="notifications.length == 0">
+                    <i class="material-icons fa-4x dlvr-notification-bell-icon">notifications_none</i> 
+                    <h3>No notifications</h3> 
+                </div>
+            </div>
+        </div> -->
+        </div>
+    </ion-content>
+</div>

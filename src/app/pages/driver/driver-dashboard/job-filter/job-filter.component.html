@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar class="blue-header">
+    <ion-title>Job Filter</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="dismiss()">
+        <ion-icon name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-card class="modal-footer">
+    <h5 class="left-align">Meters</h5>
+    <p class="range-field margin-bottom">
+      <input type="range" class="dlvr-range" id="test5" min="0" max="100" [(ngModel)]="filterDistance" />
+    </p>
+    <h5 class="left-align">Car Type</h5>
+    <div class="left-align m-b-40">
+      <label class="dlvr-uikit-checkbox dlvr-uikit-checkbox-green dlvr-uikit-checkbox-large right-margin"
+        *ngFor="let type of filterCarType">
+        <ion-checkbox class="filled-in" [checked]="type.isSelected"
+          (ionChange)="changeFilterCarType($event, type.name)"></ion-checkbox>
+        <span class="mediumFont">{{type.name}}</span>
+      </label>
+    </div>
+    <div class="dlvr-modal-btn-wrapper m-r-40">
+      <button class="dlvr-uikit-btn dlvr-uikit-btn-rounded dlvr-uikit-btn-green" (click)="filterData()"
+        [disabled]="!filterCarType && !filterDistance">Filter</button>
+    </div>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,147 @@
+@import "../../../../theme/variables.scss";
+@import "../../../../assets/scss/custom-variables.scss";
+@import "../../../../assets/scss/dlvr-ui-kit.scss";
+@import "../../../../../node_modules/materialize-css/dist/css/materialize.css";
+
+.dlvr-progress-track {
+  width: 70%;
+}
+.dlvr-trackPackage-map-wrapper {
+  margin-top: 44px;
+  overflow: hidden;
+}
+.dlvr-trackPackage-map-wrapper .dlvr-map {
+  z-index: -1;
+  position: absolute;
+  width: 100%;
+  height: 60%;
+  top: 56px;
+  left: 0px;
+  border: none;
+  padding: 5px 0 0;
+}
+.dlvr-trackPackage-map-wrapper iframe {
+  width: 100%;
+}
+.dlvr-trackPackage-controlBtn-wrapper {
+  position: absolute;
+  width: 100%;
+  margin-top: 150px;
+  margin-bottom: 60px;
+}
+.dlvr-trackPackage-controlBtn-wrapper .card.dlvr-card i {
+  font-size: 34px;
+  color: $light-color2;
+}
+.dlvr-trackPackage-controlBtn-wrapper p {
+  margin: 0;
+  color: $light-color2;
+}
+.dlvr-trackPackage-controlBtn-wrapper i {
+  color: $light-color2;
+}
+.dlvr-trackPackage-screen-wrapper {
+  padding: 0 35px;
+  height: 100vh;
+}
+.dlvr-trackPackage-screen-wrapper .title {
+  font-size: 24px;
+  margin-bottom: 10px;
+  font-weight: 800;
+  margin-top: 26px;
+}
+.dlvr-order-confirmed-block .collection {
+  margin-top: 0;
+  margin-bottom: 0;
+  border: 0;
+}
+.dlvr-order-confirmed-block .collection .collection-item {
+  background: none;
+  min-height: auto;
+}
+.dlvr-order-confirmed-block .collection .collection-item.avatar {
+  padding-left: 38px;
+  border: none;
+}
+.dlvr-order-confirmed-block .collection .collection-item p i {
+  font-size: 16px;
+}
+.dlvr-order-confirmed-block .collection .collection-item p b {
+  vertical-align: middle;
+  font-size: 13px;
+}
+.dlvr-order-confirmed-block .secondary-content {
+  top: -32px;
+  position: absolute;
+  right: 12px;
+}
+.dlvr-order-confirmed-block .secondary-content i {
+  font-size: 60px;
+  color: #e26d0e;
+  margin-top: 22px;
+}
+.dlvr-order-confirmed-block .collection .collection-item.avatar:not(.circle-clipper) > .circle {
+  width: 20px;
+  height: unset;
+  left: 0;
+  border-radius: 0;
+  overflow: hidden;
+}
+.dlvr-order-confirmed-block .collection .collection-item.avatar:not(.circle-clipper) > .circle img {
+  width: 100%;
+  background-size: cover;
+}
+.dlvr-order-confirmed-block .title {
+  font-size: 12px;
+  margin: 0;
+  font-weight: 500;
+  margin-top: -3px;
+  color: #404040;
+}
+.dlvr-order-confirmed-block .text {
+  font-size: 16px;
+  font-weight: 700;
+  margin-top: -3px;
+  color: #404040;
+}
+.dlvr-get-started-btn {
+  color: #fff;
+  background-color: #3a9e54;
+  width: 100%;
+  /* padding: 12px; */
+  font-weight: 600;
+  font-size: 18px;
+  text-align: center;
+  letter-spacing: 1px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height: 45px;
+  padding-top: 16px;
+}
+.dlvr-contact-costomer-btn-wrapper {
+  position: absolute;
+  top: 144px;
+  right: 32px;
+}
+.dlvr-contact-costomer-btn-wrapper .call,
+.dlvr-contact-costomer-btn-wrapper .chat {
+  border-radius: 50%;
+  padding: 20px 10px 6px 10px;
+  color: #fff;
+  cursor: pointer;
+}
+.dlvr-contact-costomer-btn-wrapper .call {
+  background-color: #0b9612;
+  margin-right: 8px;
+}
+.dlvr-contact-costomer-btn-wrapper .chat {
+  background-color: #266ae8;
+}
+@media (min-width: 1025px) {
+}
+.title-1 {
+  font-size: 12px;
+  color: #423e3e;
+  font-weight: 700;
+}

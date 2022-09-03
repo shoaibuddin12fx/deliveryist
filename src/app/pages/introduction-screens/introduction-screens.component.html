@@ -1,0 +1,44 @@
+<div class="container" *ngIf="!showScreen">
+    <div class="row">
+        <div class="col s12">
+            <h1 class="dlvr-intro-title" data-aos="fade-up">Order Place</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <div class="dlvr-intro-img-wrapper">
+                <img src="assets/images/intro1.png" alt="intro1" class="responsive-img" data-aos="fade-up" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <div class="dlvr-intro-btn-wrapper">
+                <button class="waves-effect waves-light btn dlvr-btn dlvr-primary-btn" (click)="goToNextFromOrderPlace()">Next</button>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            </div>
+        </div>
+    </div> 
+</div> 
+<div class="container" *ngIf="showScreen">
+    <div class="row">
+        <div class="col s12">
+            <h1 class="dlvr-intro-title" data-aos="fade-up">Delivery</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <div class="dlvr-intro-img-wrapper">
+                <img src="assets/images/intro3.png" alt="intro3" class="responsive-img" data-aos="fade-up" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <div class="dlvr-intro-btn-wrapper">
+                <button class="waves-effect waves-light btn dlvr-btn dlvr-primary-btn" (click)="goToNextFromDelivery()">Next</button>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            </div>
+        </div>
+    </div> 
+</div> 

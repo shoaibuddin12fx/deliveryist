@@ -1,0 +1,12 @@
+@import '../../../../../node_modules/materialize-css/dist/css/materialize.css';
+.more-option-list-view {
+    .collection-item {
+        span.fa-stack {
+            margin-right: 15px;
+        }
+        .title {
+            font-weight: 400;
+            font-size: 1.2rem;
+        }
+    }
+}

@@ -1,0 +1,23 @@
+<ion-header>
+<app-header [showBackButton]="true" [showMarketIcon]="false" [showSettingIcon]="false" [headerTitle]="'Chats'"></app-header>
+</ion-header>
+<ion-content>
+    <div class="main-page">
+        <div class="row">
+            <div class="dlvr-uikit-list dlvr-uikit-list-media">
+                <ion-list>
+                    <ion-item *ngFor="let item of chats" (click)="this.navigateTo('chat/room/' + item.room_id, {queryParams: {title: item.sender}})">
+                        <!-- <ion-avatar>
+                            <img [src]="item.image" width="35px" height="35px"/>
+                        </ion-avatar> -->
+                        <ion-label class="ion-margin-start">
+                            <h5>{{ item.sender }}</h5>
+                            <p>{{item.last_message}}</p>
+                        </ion-label>
+                        <ion-icon name="chevron-forward-outline"></ion-icon>
+                    </ion-item>
+                </ion-list>
+            </div>
+        </div>
+    </div>
+</ion-content>

@@ -1,0 +1,43 @@
+// @import "../../../../../node_modules/ngx-chips/core/styles/core/_core.scss";
+
+$foundation-primary: rgb(224, 221, 221);
+$foundation-primary-dark: darken($foundation-primary, 10%);
+$foundation-theme: (
+    container-border-bottom: none
+);
+
+$foundation-tag-theme: (
+    background: $foundation-primary,
+    background-focused: $foundation-primary-dark,
+    background-active: $foundation-primary-dark,
+    background-hover: $foundation-primary-dark,
+    color: black,
+    color-hover: none,
+    font-size:small,
+    white-space: normal
+);
+
+$foundation-icon-theme: (
+    fill: black,
+    fill-focus: black,
+    transition: all 0.35s
+);
+
+
+
+// ::ng-deep .ng2-tag-input.foundation-theme {
+//     @include tag-input-theme($foundation-theme);
+//     height: auto !important;
+// }
+
+// ::ng-deep .ng2-tag-input.ng2-tag-input--focused{
+//     border-bottom: none !important;
+// }
+
+// ::ng-deep .ng2-tag-input.foundation-theme tag {
+//     @include tag-theme($foundation-tag-theme);
+// }
+
+// ::ng-deep .ng2-tag-input.foundation-theme tag delete-icon {
+//     @include icon-theme($foundation-icon-theme);
+// }

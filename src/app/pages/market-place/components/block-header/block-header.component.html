@@ -1,0 +1,38 @@
+<div class="dlvr-nav"> 
+    <div class="navbar-fixed"> 
+        <nav class="white-nav">
+            <div class="nav-wrapper"> 
+
+                <!-- <i class="material-icons">keyboard_arrow_left</i> -->
+                <a [hidden]="!showBackButton" data-target="mobile-demo" class="dlvr-hamburger sidenav-trigger left" *ngIf="showBackButton" (click)="goBack()"><ion-icon name="chevron-back-outline"></ion-icon></a> 
+                <a class="brand-logo center ">{{title}}</a>
+                
+                <!-- <a [hidden]="showBackButton" data-target="mobile-demo" class="dlvr-hamburger sidenav-trigger left" *ngIf="!showBackButton" (click)="openSidenav()">
+                    <i class="material-icons">menu</i></a> -->
+                   
+                <!-- <a class="dlvr-hamburger sidenav-trigger right" *ngIf="showLocation"><i class="material-icons">location_on</i></a>       -->
+                
+                <a class="dlvr-hamburger right" *ngIf="showLike" (click)="setToggleLike()" >
+                    <i class="fav-heart material-icons">{{ isLike ? "favorite" : "favorite_border" }}</i>
+                </a>      
+                <a class="dlvr-hamburger right mr-10px" *ngIf="showSearch" (click)="gotoSearch()"><i class="material-icons">search</i> </a>      
+                <a class="dlvr-hamburger right mr-10px" *ngIf="showCart" (click)="gotoCart()"><i class="material-icons">shopping_cart</i> <span class="cart-badge" *ngIf="pref.pref?.cartCount">{{ pref.pref?.cartCount || 0 }}</span> </a>      
+                
+                
+                
+                <!-- <a class="dlvr-hamburger sidenav-trigger right" *ngIf="showProfile"><i class="material-icons">account_circle</i></a> -->
+                
+            </div>
+        </nav> 
+    </div>    
+    <!-- <ul class="sidenav" id="mobile-demo">
+        <li><a class="right p-0" (click)='closeSidenav()'> <i class="m-r-20 f-s-22 f-w-600 icon-close"></i> </a></li>
+        <li><a>Sass</a></li>
+        <li><a>Components</a></li>
+        <li><a>Javascript</a></li>
+        <li><a>Mobile</a></li>
+        <li><a (click)="routeTo('/marketplace')" >Market Place</a></li>
+        <li><a (click)="routeTo('/chat/list')" >Chat</a></li>
+        <li><a (click)="dologout()">Logout</a></li>
+    </ul> -->
+</div>

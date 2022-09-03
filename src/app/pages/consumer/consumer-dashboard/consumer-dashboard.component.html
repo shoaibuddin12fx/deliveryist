@@ -1,0 +1,204 @@
+<app-header [headerTitle]="'Orders'" [showBackButton]="false"></app-header>
+<!-- <div class="dlvr-consumer-wrapper">
+    <div class="dlvr-add-job-btn">
+        <div class="dlvr-addNewJob-toolTip">Add New Order</div>
+        <button class="btn-floating btn-large dlvr-uikit-btn-blue" (click)="postNewJob()"><i
+                class="material-icons f-s-25">add</i></button>
+    </div>
+    <div class="dlvr-job-list">
+        <div class="container">
+            <div class="row">
+                <ul class="tabs consumer-tabs">
+                    <li class="tab col s6"><a [ngClass]=" tab == 'active' ? 'active' : ''" (click)="changeTab('active')">Active</a></li>
+                    <li class="tab col s6"><a [ngClass]=" tab == 'complete' ? 'active' : ''" (click)="changeTab('complete')">Completed</a></li>
+                  </ul>
+            </div>
+            <br>
+            <div class="row" *ngIf="jobsList?.length > 0">
+                <div *ngFor="let jobs of jobsList; let i=index"> -->
+<!-- For Active jobs  -->
+<!-- <div class="col s12 l6" *ngIf="jobs.status != 'Delivered' && tab == 'active'">
+                        <div class="dlvr-uikit-card dlvr-uikit-card-stripe-left m-b-10" 
+                             data-aos="fade-up"
+                             [ngClass]="jobs.jobLabel =='Immediate' ? 'dlvr-uikit-card-stripe-red' : 'dlvr-uikit-card-stripe-blue'">
+                            <label class="dlvr-uikit-badge"
+                                [ngClass]=" jobs.jobLabel =='Immediate' ? 'dlvr-uikit-badge-red' : 'dlvr-uikit-badge-blue' ">
+                            <i class="fa fa-circle"></i> {{ jobs.jobLabel }}
+                            </label>
+                            <label class="dlvr-uikit-badge dlvr-uikit-badge-boxed dlvr-uikit-badge-blue" *ngIf="jobs.status == 'Delivered'">
+                                {{ jobs.status }}
+                            </label>
+                            <div class="dlvr-uikit-card-body">
+                                <h3 class="m-t-0">Order</h3>
+                                <p class="dlvr-uikit-card-text">
+                                    <i class="material-icons-outlined">place</i> {{ jobs.sourceAddress }}
+                                </p>
+                                <p class="dlvr-uikit-card-text">
+                                    <i class="material-icons-outlined">home</i> {{ jobs.destinationAddress }}
+                                </p>  
+                            </div>
+                            <div class="dlvr-uikit-card-footer">
+                                <p class="left">Amount: ${{ jobs.amount }}</p>
+                                <button *ngIf="jobs.driverHired" 
+                                    class="dlvr-uikit-btn dlvr-uikit-btn-small dlvr-uikit-btn-rounded dlvr-uikit-btn-blue right"
+                                    type="button" (click)="goToTrackDriver(jobs)">
+                                Track</button> -->
+<!-- <button *ngIf="jobs.driverHired" 
+                                    class="dlvr-uikit-btn dlvr-uikit-btn-small dlvr-uikit-btn-rounded dlvr-uikit-btn-blue right"
+                                    type="button" (click)="cancelDriver(jobs)">
+                                Cancel Driver</button> -->
+
+<!-- <button *ngIf="jobs?.status == 'Received'" data-target="modal2"
+                                    (click)="openModal('modal2', jobs.id)"
+                                    class="dlvr-uikit-btn dlvr-uikit-btn-small dlvr-uikit-btn-rounded dlvr-uikit-btn-blue right"
+                                    type="button">
+                                    Delivered</button> -->
+<!-- <button *ngIf="!jobs.driverHired"
+                                class="dlvr-uikit-btn dlvr-uikit-btn-small dlvr-uikit-btn-rounded dlvr-uikit-btn-blue right"
+                                type="button" (click)="cancelJob(jobs, i)">
+                                Cancel Job</button>  -->
+<!-- </div>
+                            <div class="right-align" *ngIf="!jobs.driverHired">
+                                <div>
+                                    <div class="left">
+                                        <span>Waiting for Driver.</span>
+                                        <span class="dlvr-preloaderLight m-t-10 m-l-10 right">
+                                            <div class="circ1"></div>
+                                            <div class="circ2"></div>
+                                            <div class="circ3"></div>
+                                        </span>  
+                                    </div>
+                                    <div class="right">
+                                        <i class="material-icons-outlined dlvr-cancel-job" (click)="cancelJob(jobs, i)">delete</i>
+                                    </div>
+                                </div> 
+                            </div> 
+                        </div>
+                    </div> -->
+<!-- For Completed Jobs -->
+<!-- <div class="col s12 l6" *ngIf="jobs.status == 'Delivered' && tab == 'complete'">
+                        <div class="dlvr-uikit-card dlvr-uikit-card-stripe-left m-b-10" 
+                             data-aos="fade-up"
+                             [ngClass]="jobs.jobLabel =='Immediate' ? 'dlvr-uikit-card-stripe-red' : 'dlvr-uikit-card-stripe-blue'">
+                            <label class="dlvr-uikit-badge"
+                                [ngClass]=" jobs.jobLabel =='Immediate' ? 'dlvr-uikit-badge-red' : 'dlvr-uikit-badge-blue' ">
+                            <i class="fa fa-circle"></i> {{ jobs.jobLabel }}
+                            </label>
+                            <label class="dlvr-uikit-badge dlvr-uikit-badge-boxed dlvr-uikit-badge-blue" *ngIf="jobs.status == 'Delivered'">
+                                {{ jobs.status }}
+                            </label>
+                            <div class="dlvr-uikit-card-body">
+                                <h3 class="m-t-0">Order</h3>
+                                <p class="dlvr-uikit-card-text">
+                                    <i class="material-icons-outlined">place</i> {{ jobs.sourceAddress }}
+                                </p>
+                                <p class="dlvr-uikit-card-text">
+                                    <i class="material-icons-outlined">home</i> {{ jobs.destinationAddress }}
+                                </p>  
+                            </div>
+                            <div class="dlvr-uikit-card-footer">
+                                <p class="left">Amount: ${{ jobs.amount }}</p> -->
+<!-- <button *ngIf="jobs.driverHired" 
+                                    class="dlvr-uikit-btn dlvr-uikit-btn-small dlvr-uikit-btn-rounded dlvr-uikit-btn-blue right"
+                                    type="button" (click)="goToTrackDriver(jobs)">
+                                Track</button>
+                                <button *ngIf="jobs.driverHired" 
+                                    class="dlvr-uikit-btn dlvr-uikit-btn-small dlvr-uikit-btn-rounded dlvr-uikit-btn-blue right"
+                                    type="button" (click)="cancelDriver(jobs)">
+                                Cancel Driver</button> -->
+
+<!-- <button *ngIf="jobs?.status == 'Received'" data-target="modal2"
+                                    (click)="openModal('modal2', jobs.id)"
+                                    class="dlvr-uikit-btn dlvr-uikit-btn-small dlvr-uikit-btn-rounded dlvr-uikit-btn-blue right"
+                                    type="button">
+                                    Delivered</button> -->
+<!-- </div> -->
+<!-- <div class="right-align" *ngIf="!jobs.driverHired">
+                                <div>
+                                    <div class="left">
+                                        <span>Waiting for Driver.</span>
+                                        <span class="dlvr-preloaderLight m-t-10 m-l-10 right">
+                                            <div class="circ1"></div>
+                                            <div class="circ2"></div>
+                                            <div class="circ3"></div>
+                                        </span>  
+                                    </div>
+                                    <div class="right">
+                                        <i class="material-icons-outlined dlvr-cancel-job" (click)="cancelJob(jobs, i)">delete</i>
+                                    </div>
+                                </div> 
+                            </div>  -->
+<!-- </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="row" *ngIf="jobsList?.length == 0">
+                <div class="col s12">
+                    <div class="dlvr-jobPost-noPost" data-aos="fade-up">
+                        <i class="fa fa-archive fa-5x"></i>
+                        <h3>You didn't posted any order yet.</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>  -->
+
+<!-- New Design Code -->
+<!-- <div class="dlvr-consumer-wrapper"></div> -->
+<ion-content>
+
+
+    <!-- list will be here -->
+    <!-- inside of list will be a compoennt -->
+
+    <div class="row" *ngIf="jobsList?.length > 0">
+        <ion-list *ngFor="let job of jobsList; let i=index">
+            <!-- <div class="col s12 l6"> </div> -->
+            <app-order-card [job]="job"></app-order-card>
+            
+        </ion-list>
+        <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+            <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+            </ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+    </div>    
+
+    <div id="modal2" class="modal dlvr-payment-success-modal">
+        <div class="modal-content">
+            <div class="center" data-aos="zoom-in">
+                <i class="material-icons-outlined dlvr-warning">info</i>
+            </div>
+            <h3>Did you get your package delivered?</h3>
+            <div class="row">
+                Ask driver to enter this {{jobs.security_code}} security code in the screen.
+                <!-- <div class="col s6">
+                  <button class="btn-full-width dlvr-uikit-btn-small dlvr-uikit-btn dlvr-uikit-btn-green m-t-10 m-r-5"
+                  (click)="packageStatusUpdate('Delivered', 'modal2')" type="button">Yes</button>
+              </div>
+              <div class="col s6">
+                  <button class="btn-full-width dlvr-uikit-btn-small dlvr-uikit-btn dlvr-uikit-btn-red m-t-10"
+                  (click)="closeModal('modal2')" type="button">No</button>
+              </div>  -->
+            </div>
+        </div>
+    </div>
+
+
+    <div class="dlvr-add-job-btn">
+        <!-- <div class="dlvr-addNewJob-toolTip">Add New Order</div> -->
+        <button class="btn-floating btn-large dlvr-uikit-btn-blue" (click)="postNewJob()"><i
+                class="material-icons f-s-25">add</i></button>
+    </div>
+    <!-- <div class="dlvr-job-list"></div> -->
+    <!-- <div class="container"> </div> -->
+    <div class="row" *ngIf="jobsList?.length == 0">
+        <div class="col s12">
+            <div class="dlvr-jobPost-noPost" data-aos="fade-up">
+                <i class="fa fa-archive fa-5x"></i>
+                <h3>You didn't posted any order yet.</h3>
+            </div>
+        </div>
+    </div>
+</ion-content>

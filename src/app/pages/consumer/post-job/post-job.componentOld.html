@@ -1,0 +1,258 @@
+<app-header [headerTitle]="'Order a Delivery'" [showBackButton]="false"></app-header>
+<div class="dlvr-post-job-wrapper">
+    <form [formGroup]="postJobForm">
+        <div class="container">
+            <!--PROGRESS BAR-->
+            <div class="dlvr-progressBar">
+                <div class="dlvr-progress-track"></div>
+                <div id="step1" class="dlvr-progress-step is-active"></div>
+                <div id="step2" class="dlvr-progress-step"></div>
+                <div id="step3" class="dlvr-progress-step"></div>
+                <div id="step4" class="dlvr-progress-step"></div>
+            </div>
+
+            <!--PROGRESS BAR END-->
+            <!--STEP 1 of 5-->
+            <div class="dlvr-postJob-screen-wrapper" *ngIf="step == 'step1'">
+                <div class="dlvr-postJob-step1">
+                    <agm-map [latitude]="lat" [longitude]="lng" width="600" frameborder="0" allowfullscreen=""
+                        class="dlvr-map" [usePanning]="true" *ngIf="origin && destination">
+                        <agm-direction [origin]="origin" [destination]="destination" *ngIf="origin && destination"
+                            [renderOptions]="renderOptions" [markerOptions]="markerOptions"
+                            (onResponse)="onResponse($event)">
+                        </agm-direction>
+                    </agm-map>
+                    <div class="dlvr-postJob-input-wrapper" data-aos="fade-left">
+                        <h2 class="dlvr-postJob-title">Where can we Pick up and Deliver your package?</h2>
+
+                        <div class="dlvr-uikit-icon-input">
+                            <i class="material-icons-outlined">pages</i>
+                            <input type="text" class="dlvr-uikit-input" placeholder="Enter Pickup Address"
+                                formControlName="sourceAddress" #originSearch />
+                        </div>
+                        <div class="dlvr-uikit-icon-input">
+                            <i class="material-icons-outlined">home</i>
+                            <input type="text" class="dlvr-uikit-input" placeholder="Enter Delivery Address"
+                                formControlName="deliveryAddress" #destinationSearch />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--STEP 1 of 5 END-->
+
+            <!--STEP 3 of 5-->
+            <div class="dlvr-postJob-screen-wrapper" *ngIf="step == 'step2'" data-aos="fade-left">
+                <div class="dlvr-postJob-step2">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col s12">
+                                <div class="dlvr-postJob-heroImg">
+                                    <img src="../../../../assets/images/step3Hero.svg" alt="step3Hero" />
+                                </div>
+                                <h2>Select a category of your package</h2>
+                                <div class="row">
+                                    <div class="col s4" *ngFor="let category of categoryList">
+                                        <div class="dlvr-uikit-card dlvr-uikit-icon-card dlvr-uikit-icon-card-blue m-b-10"
+                                            [ngClass]="{'active': category?.labelName == postJobForm.controls['itemCategory'].value }"
+                                            (click)="selectingCategory(category?.labelName)">
+                                            <label class="dlvr-uikit-radio"
+                                                [ngClass]="{'dlvr-uikit-radio-blue': category?.labelName == postJobForm.controls['itemCategory'].value }">
+                                                <input name="radioCategory" value="{{category?.labelName}}" type="radio"
+                                                    [checked]="category?.labelName == postJobForm.controls['itemCategory'].value">
+                                                <span></span>
+                                            </label>
+                                            <i class="material-icons-outlined">{{ category?.iconName }}</i>
+                                            <p class="center m-0">{{ category?.labelName }}</p>
+                                        </div>
+
+                                    </div>
+                                    <div class="col s12">
+
+                                        
+                                        <button
+                                            class="btn-full-width dlvr-uikit-btn dlvr-uikit-btn-small dlvr-uikit-btn-blue m-t-10"
+                                            type="button" (click)="next()"
+                                            [disabled]="!postJobForm.controls['itemCategory'].valid">Next</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--STEP 3 of 5 END-->
+            <!--STEP 4 of 5-->
+            <div class="dlvr-postJob-screen-wrapper" *ngIf="step == 'step3'" data-aos="fade-left">
+                <div class="dlvr-postJob-step2">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col s12">
+                                <div class="dlvr-postJob-heroImg">
+                                    <img src="../../../../assets/images/step4Hero.svg" alt="step4Hero" />
+                                </div>
+                                <h2>Select a vehicle your package fits into</h2>
+                                <div class="row">
+                                    <div class="col s4">
+                                        <div class="dlvr-uikit-card  dlvr-uikit-icon-card dlvr-uikit-icon-card-blue"
+                                            [ngClass]="{'active': postJobForm.controls['deliveryVehicle'].value == 'Sedan' }"
+                                            (click)="setdeliveryVehicle('Sedan')">
+                                            <label class="dlvr-uikit-radio"
+                                                [ngClass]="{'dlvr-uikit-radio-blue': postJobForm.controls['deliveryVehicle'].value == 'Sedan' }">
+                                                <input name="radioSize" type="radio"
+                                                    [checked]="postJobForm.controls['deliveryVehicle'].value == 'Sedan'">
+                                                <span></span>
+                                            </label>
+                                            <i class="material-icons-outlined">crop_free</i>
+                                            <p class="center m-0">Sedan</p>
+                                        </div>
+                                    </div>
+                                    <div class="col s4">
+                                        <div class="dlvr-uikit-card  dlvr-uikit-icon-card dlvr-uikit-icon-card-blue"
+                                            [ngClass]="{'active': postJobForm.controls['deliveryVehicle'].value == 'SUV' }"
+                                            (click)="setdeliveryVehicle('SUV')">
+                                            <label class="dlvr-uikit-radio"
+                                                [ngClass]="{'dlvr-uikit-radio-blue': postJobForm.controls['deliveryVehicle'].value == 'SUV' }">
+                                                <input name="radioSize" type="radio"
+                                                    [checked]="postJobForm.controls['deliveryVehicle'].value == 'SUV'">
+                                                <span></span>
+                                            </label>
+                                            <i class="material-icons-outlined">center_focus_weak</i>
+                                            <p class="center m-0">SUV</p>
+                                        </div>
+                                    </div>
+                                    <div class="col s4">
+                                        <div class="dlvr-uikit-card  dlvr-uikit-icon-card dlvr-uikit-icon-card-blue"
+                                            [ngClass]="{'active': postJobForm.controls['deliveryVehicle'].value == 'Truck' }"
+                                            (click)="setdeliveryVehicle('Truck')">
+                                            <label class="dlvr-uikit-radio"
+                                                [ngClass]="{'dlvr-uikit-radio-blue': postJobForm.controls['deliveryVehicle'].value == 'Truck' }">
+                                                <input name="radioSize" type="radio"
+                                                    [checked]="postJobForm.controls['deliveryVehicle'].value == 'Truck'">
+                                                <span></span>
+                                            </label>
+                                            <i class="material-icons-outlined">center_focus_strong</i>
+                                            <p class="center m-0">Truck</p>
+                                        </div>
+                                    </div>
+                                    <div class="col s12">
+                                        
+                                        <button
+                                            class="btn-full-width dlvr-uikit-btn dlvr-uikit-btn-small dlvr-uikit-btn-blue m-t-10"
+                                            type="button" (click)="next()"
+                                            [disabled]="!postJobForm.controls['itemCategory'].valid">Next</button>
+                                    </div>
+                                </div>
+                                <h2>What is the type of delivery?</h2>
+                                <div class="dlvr-postJob-timeType dlvr-postJob-timeType-blue">
+                                    <div class="dlvr-radio dlvr-radio-blue"
+                                        [ngClass]="{'active': postJobForm.controls['deliveryType'].value == 'Immediate' }">
+                                        <label class="dlvr-uikit-radio dlvr-uikit-radio-blue">
+                                            <input value="Immediate" type="radio" formControlName='deliveryType' />
+                                            <span>Immediate</span>
+                                        </label>
+                                    </div>
+                                    <!-- <div class="dlvr-radio dlvr-radio-blue"
+                                        [ngClass]="{'active': postJobForm.controls['deliveryType'].value == '1 day' }">
+                                        <label class="dlvr-uikit-radio dlvr-uikit-radio-blue">
+                                            <input value="1 day" type="radio" formControlName='deliveryType' />
+                                            <span>1 day</span>
+                                        </label>
+                                    </div> -->
+                                    <div class="dlvr-radio dlvr-radio-blue"
+                                        [ngClass]="{'active': postJobForm.controls['deliveryType'].value == 'Flexible' }">
+                                        <label class="dlvr-uikit-radio dlvr-uikit-radio-blue">
+                                            <input value="Flexible" type="radio" formControlName='deliveryType'
+                                                (change)="openDatePicker()" />
+                                            <span>Flexible</span>
+                                        </label>
+                                    </div>
+                                    <!-- <div class="dlvr-radio dlvr-radio-blue"
+                                        [ngClass]="{'active': postJobForm.controls['deliveryType'].value == 'Exact Time' }">
+                                        <label class="dlvr-uikit-radio dlvr-uikit-radio-blue">
+                                            <input value="Exact Time" type="radio" formControlName='deliveryType'
+                                                (change)="openDatePicker()" />
+                                            <span>Exact Time</span>
+                                        </label>
+                                    </div> -->
+                                    <div class="card dlvr-card m-t-20"
+                                        [hidden]="postJobForm.controls['deliveryType'].value == 'Immediate' ">
+                                        <div class="row" (click)="openDateModal()">
+                                            <div class="col s6">
+                                                <p class="m-b-10 m-t-10"><strong>Pick up Date</strong></p>
+                                            </div>
+                                            <div class="col s6">
+                                                <input type="text" class="dlvr-text-input m-t-0 datepicker"
+                                                    placeholder="Select Date" formControlName='deliveryDate' />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button
+                                        class="btn-full-width dlvr-uikit-btn dlvr-uikit-btn-small dlvr-uikit-btn-blue m-t-10"
+                                        type="button" (click)="next()"
+                                        [disabled]="!postJobForm.controls['deliveryType'].valid || !postJobForm.controls['deliveryVehicle'].valid">NEXT</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--STEP 4 of 5 END-->
+            <!--STEP 5 of 5-->
+            <div class="dlvr-postJob-screen-wrapper" *ngIf="step == 'step4'" data-aos="fade-left">
+                <div class="dlvr-postJob-step2">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col s12">
+                                <div class="dlvr-postJob-heroImg">
+                                    <img src="../../../../assets/images/step5Hero.svg" class="p-0 m-b-30"
+                                        alt="step5Hero" />
+                                </div>
+
+                                <div class="dlvr-uikit-icon-input m-t-10">
+                                    <i class="material-icons-outlined">attach_money</i>
+                                    <input type="number" min="{{postJobForm.controls['jobAmount'].value}}"
+                                        placeholder="How much amount you want to spend? "
+                                        class="dlvr-uikit-input dlvr-uikit-input-grey"
+                                        formControlName="jobAmount" />
+                                </div>
+
+                                <!-- <input type="text" class="dlvr-uikit-input dlvr-uikit-input-grey"
+                                    placeholder="Reciever's Name" formControlName="receiverName" />
+
+                                <input type="text" class="dlvr-uikit-input dlvr-uikit-input-grey"
+                                    placeholder="Reciever's Contact Number" formControlName="receiverNumber" /> -->
+
+                                <textarea class="dlvr-uikit-input dlvr-uikit-input-grey"
+                                    placeholder="Any Instructions For Driver..."
+                                    formControlName="instructionForReceiver"></textarea>
+
+                                <button class="btn-full-width dlvr-uikit-btn dlvr-uikit-btn-small dlvr-uikit-btn-blue"
+                                    type="button" [disabled]="!postJobForm.controls['jobAmount'].valid" (click)="next()">NEXT</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--STEP 5 of 5 END-->
+        </div>
+    </form>
+</div>
+<div class="dlvr-modal dlvr-confirmLocation-modal" materialize *ngIf="step == 'step1'">
+    <!-- Modal -->
+    <div id="modal1" class="modal bottom-sheet" materialize="modal" [materializeParams]="[{dismissible: true}]"
+        [materializeActions]="modalActions">
+        <div class="modal-content">
+            <p><i class="material-icons">swap_calls</i> <b>Distance:</b> {{ totalDistance }}
+                <i class="material-icons m-l-10">access_time</i> <b>Duration:</b> {{ totalDuration }}
+            </p>
+        </div>
+        <div class="modal-footer">
+            <div class="dlvr-modal-btn-wrapper">
+                <button class="dlvr-uikit-btn dlvr-uikit-btn-rounded dlvr-uikit-btn-small dlvr-uikit-btn-blue"
+                    (click)="next()">Confirm
+                    Location</button>
+            </div>
+        </div>
+    </div>
+    <!-- Modal End-->
+</div> 

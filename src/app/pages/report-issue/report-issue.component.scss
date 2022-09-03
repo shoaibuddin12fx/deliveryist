@@ -1,0 +1,43 @@
+.head {
+    font-size: 18px;
+    font-weight: 600;
+}
+ion-select {
+    background-color: #e9f0f2 !important;
+    width: 97%;
+    margin: 0 auto;
+    border-radius: 5px;
+    color: black !important;
+    padding: 13px;
+}
+ion-select::part(placeholder),
+ion-select::part(text) {
+    color: black;
+}
+.textarea {
+    background-color: #e9f0f2 !important;
+    color: #000000;
+    width: 97%;
+    margin: 0 auto;
+    border-radius: 5px;
+    height: 100px;
+    padding-left: 10px;
+    border: none;
+    padding-top: 5px;
+}
+.ss-box {
+    width: 90%;
+}
+input[type="file"] {
+    display: none;
+}
+.fileUpload input.upload {
+    display: inline-block;
+}
+.fileUpload {
+    height: 75px;
+}
+.add-ss {
+    font-size: 14px;
+    margin: 22px 57px 31px;
+}

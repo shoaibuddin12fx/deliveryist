@@ -1,0 +1,125 @@
+@import "../../../../node_modules/materialize-css/dist/css/materialize.css";
+@import "../../../theme/variables.scss";
+@import "../../../assets/scss/custom-variables.scss";
+@import "../../../assets/scss/dlvr-ui-kit.scss";
+.dlvr-nav {
+  margin-bottom: 15px;
+  box-shadow: 0px 10px 4px rgb(0 0 0 / 11%);
+}
+.dlvr-nav nav {
+  background-color: $white-color;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.04);
+}
+.dlvr-nav nav .nav-wrapper span {
+  color: $uikit-Black-color;
+  font-size: 13px;
+  font-weight: 700;
+  margin-left: 68px;
+  // position: absolute;
+  // left: 50%;
+  // transform: translate(-50%, 0);
+}
+.material-icons {
+  font-size: 22px !important;
+}
+.dlvr-nav nav i {
+  display: inline-block;
+  color: $primary-color-dark;
+  font-weight: bold;
+  font-size: 18px;
+  margin: 18px 18px 0 18px;
+  height: 64px;
+  line-height: 64px;
+}
+.dlvr-nav nav .brand-logo,
+.dlvr-nav nav .sidenav-trigger i {
+  color: #58909e;
+}
+.dlvr-nav nav ul a {
+  color: $light-color2;
+  padding: 0 8px;
+  font-size: 14px;
+}
+.dlvr-nav nav ul a.active-blue {
+  color: $uikit-Blue-color;
+}
+.dlvr-nav nav ul a.active-green {
+  color: $uikit-Green-color;
+}
+.dlvr-header-logo {
+  width: 150px;
+  //   margin-top: 13px;
+}
+.dlvr-nav nav i.icon-arrow-left {
+  margin-left: 8px;
+  line-height: 0;
+  height: 20px;
+  font-size: 12px;
+}
+.dlvr-header-logo.dlvr-header-logo-small {
+  width: 43px;
+  margin-top: 9px;
+}
+.dlvr-hamburger img {
+  width: 18px;
+  margin-top: 20px;
+}
+.dlvr-mobile-sidebar-profileHero {
+  margin: 10px 0 22px;
+  background-color: $light-color;
+}
+.dlvr-mobile-sidebar-profileHero a {
+  font-weight: 600;
+}
+.dlvr-mobile-sidebar-profileHero a .img-blue {
+  max-width: 56px;
+  background: #fff;
+  border: 2px solid $primary-color;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+.dlvr-mobile-sidebar-profileHero a .img-green {
+  max-width: 56px;
+  background: #fff;
+  border: 2px solid $secondary-color;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+.icon-arrow-left {
+  color: black;
+}
+
+.custom-header-style {
+  // margin-top: 10%;
+}
+
+@media (max-width: 768px) {
+  .dlvr-nav nav {
+    height: 64px;
+  }
+  .dlvr-nav nav i {
+    margin: 0;
+  }
+  .dlvr-nav nav .sidenav-trigger {
+    margin: 0 10px;
+  }
+}
+@media (max-width: 1025px) {
+  .dlvr-nav nav .brand-logo {
+    left: 45px;
+  }
+}
+
+@media (min-width: 1025px) {
+  .dlvr-nav nav i {
+    margin-top: 0;
+  }
+}
+.hasBackBtn {
+  margin-left: 48px !important;
+}
+.noBackBtn {
+  margin-left: 48px;
+}

@@ -1,0 +1,37 @@
+<!-- <div class="dlvr-consumer-wrapper">
+    <app-block-header [showBackButton]="true" [title]="'Location'" (backPress)="backPress()"></app-block-header>
+</div> -->
+<app-header [headerTitle]="'Select Location'" [showBackButton]="true"></app-header>
+<div class="overflow-hidden">
+<div class="map-container">
+    <div class="row">
+        <div class="col s12 m12">
+            <input #searchbox type="text" class="searchbox" placeholder="Search by city or neighborhood">
+        </div>
+    </div>
+    <div #map id="map"></div>
+</div>
+<div class="container">
+    <p class="radio m-t-20">
+        <label class="p-0">
+            <input class="with-gap" name="group1" type="radio" checked value="1" [(ngModel)]="mapService.radiusType" (click)="setRadius('1')" />
+            <span> <strong class="f-s-16"> Suggested Radius </strong> <br> Show me listings from this general area </span>
+        </label>
+    </p>
+    <p class="radio">
+        <label class="p-0">
+            <input name="group1" type="radio" value="2" [(ngModel)]="mapService.radiusType" (click)="setRadius('2')" />
+            <span> <strong class="f-s-16">Custom Radius</strong><br> Only show me listings with in a specific distance </span>
+        </label>
+    </p>
+    <div class="row">
+        <p class="col s8 range-field">
+            <input type="range" id="test5" min="16093" max="160934" name="radial_distance" [(ngModel)]="mapService.radial_distance" [disabled]="mapService.radiusType == '1'" (change)="setRadialDistance($event)" />
+        </p>
+        <p class="col s2 left"> {{ mapService.setRadiusInMiles( mapService.radial_distance ) }} mi </p>
+    </div>
+</div>
+</div>
+<div class="col s12 m12 p-l-20 p-r-20">
+    <button class="btn-small dlvr-uikit-btn dlvr-uikit-btn-orange center" type="submit" name="action" (click)="setLocation()">Apply</button>
+</div>

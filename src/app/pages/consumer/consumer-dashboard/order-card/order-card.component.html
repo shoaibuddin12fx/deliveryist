@@ -1,0 +1,38 @@
+<div class="dlvr-job-card-new">
+    <div class="dlvr-order-confirmed-block">
+        <ul class="collection left-align">
+            <li class="collection-item avatar"
+                [ngClass]="job.jobLabel =='Immediate' ? 'dlvr-uikit-card-stripe-red' : 'dlvr-uikit-card-stripe-blue'">
+                <label class="dlvr-uikit-badge"
+                    [ngClass]=" job.jobLabel =='Immediate' ? 'dlvr-uikit-badge-red' : 'dlvr-uikit-badge-blue' ">
+                    <i class="fa fa-circle"></i> {{ job.jobLabel }}
+                </label>
+                <span class="amount">${{ job.amount }}</span>
+            </li>
+        </ul>
+        <div class="location">
+            <ul class="collection">
+                <li class="collection-item">{{ job.sourceAddress }}</li>
+                <li class="collection-item">{{ job.destinationAddress }}</li>
+            </ul>
+            <img src="../../../../assets/images/inner-location.png" alt="location pin" class="location-img">
+        </div>
+        <div class="right-align" *ngIf="!job.driverHired">
+            <div class="center">
+                <span>Waiting for Driver.</span>
+                <span class="dlvr-preloaderLight m-t-10 m-l-10">
+                    <div class="circ1"></div>
+                    <div class="circ2"></div>
+                    <div class="circ3"></div>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="job?.driverHired" class="accept-btn dlvr-uikit-btn-blue" (click)="goToTrackDriver(job)">
+        Track
+    </div>
+    <!-- <div *ngIf="jobs?.status == 'Received'" data-target="modal2" 
+          class="accept-btn dlvr-uikit-btn-blue" (click)="openModal('modal2', jobs.id)">
+          Delivered
+      </div> -->
+</div>

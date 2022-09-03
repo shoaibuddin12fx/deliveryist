@@ -1,0 +1,22 @@
+@import "../../../../theme/variables.scss";
+@import "../../../../assets/scss/custom-variables.scss";
+@import "../../../../assets/scss/dlvr-ui-kit.scss";
+@import "../../../../../node_modules/materialize-css/dist/css/materialize.css";
+
+// .center {
+//     display: flex;
+//     flex-direction: row;
+//     justify-content: center;
+//     align-items: center;
+//     margin-top: 100px;
+// }
+
+ion-textarea {
+    --background: rgb(201, 199, 199);
+    height: 164px;
+    padding: 15px;
+}
+.submit-btn {
+    width: 100%;
+    display: flex;
+}

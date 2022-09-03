@@ -1,0 +1,30 @@
+@import '../../../../theme/variables.scss' ;
+@import '../../../../assets/scss/custom-variables.scss';
+@import '../../../../assets/scss/dlvr-ui-kit.scss';
+@import '../../../../../node_modules/materialize-css/dist/css/materialize.css';
+.dlvr-rnr-screen-wrapper {
+    margin-bottom: 60px;
+}
+.dlvr-rnr-star-wrapper .card.dlvr-card { 
+    display: inline-block;
+    margin-top: 0;
+    margin-right: 6px;
+    line-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.dlvr-rnr-star-wrapper .card.dlvr-card i {
+    color: $light-color2;
+}
+.dlvr-rnr-star-wrapper .card.dlvr-card i.active {
+    color: $yellow-color;
+} 
+
+.absolute{
+    position: absolute;
+    bottom: 300px;
+}
+
+.container{
+    margin-bottom: 200px;
+}

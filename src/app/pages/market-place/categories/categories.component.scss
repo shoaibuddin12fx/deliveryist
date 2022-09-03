@@ -1,0 +1,21 @@
+@import '../../../../../node_modules/materialize-css/dist/css/materialize.css';
+.category-box {
+  display: column;
+  flex: 1;
+    .icon-box {
+      padding: 5px;
+      text-align: center;
+      display: inline-block;
+      width: 40%;
+      margin-left: 25px;
+      border-radius: 10px;
+      img {
+        width: 100%;
+        border-radius: 10px;
+      }
+    }
+  }
+
+.icon-box.selected_cat {
+  background: lightblue;
+}

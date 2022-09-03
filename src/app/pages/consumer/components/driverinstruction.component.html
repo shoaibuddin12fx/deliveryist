@@ -1,0 +1,24 @@
+<!-- Modal -->
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-title>Instruction to driver</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-textarea placeholder="Write Your instructions here"></ion-textarea>
+    <div class="dlvr-modal-btn-wrapper center">
+    </div>
+  </ion-card>
+  <div class="submit-btn">
+    <button style="margin: 0 auto; "
+      class="dlvr-uikit-btn dlvr-uikit-btn-rounded dlvr-uikit-btn-large dlvr-uikit-btn-blue"
+      (click)="saveInstructions()">Save</button>
+  </div>
+</ion-content>
+
+<!-- Modal End-->

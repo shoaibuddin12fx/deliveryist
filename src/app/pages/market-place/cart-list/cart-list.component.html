@@ -1,0 +1,100 @@
+<!-- <div class="dlvr-consumer-wrapper"> -->
+<!-- <app-cart-header [showBackButton]="true"></app-cart-header>
+    <h5>Delivery Method</h5> -->
+<!-- </div> -->
+<ion-header collapse="fade" class="product-name-1">
+    <ion-toolbar>
+        <ion-icon size="large" style=" position: absolute; color:89bdc3; left: 4px; top:11px; bottom: 25px; line-height: 0;"
+        name="chevron-back-outline" (click)="goBack()"></ion-icon>
+        <h5 class="p-name">Delivery Method</h5>
+    </ion-toolbar>
+  </ion-header>
+<!-- <div class="product-name-1">
+    <ion-icon size="large" style=" position: absolute; color:89bdc3; left: 4px; top:11px; bottom: 25px; line-height: 0;"
+        name="chevron-back-outline" (click)="goBack()"></ion-icon>
+    <h5 class="p-name">Delivery Method</h5>
+</div> -->
+<!-- <div class="progress" *ngIf="loading">
+    <div class="indeterminate"></div>
+</div> -->
+<div [hidden]="loading" class="wrapper" >
+
+    <ul class="collection">
+        <li class="collection-item avatar" *ngFor="let item of cart.items">
+            <img [src]="item.photos_urls[0].firebase_url" alt="" class="circle-1">
+            <a (click)="onDecrementQuantity(item);" class="secondary"><i class="material-icons">remove</i></a>
+            <a (click)="onIncrementQuantity(item);" class="secondary"><i class="material-icons">add</i></a>
+
+            <h5 class="product-name">{{item.name}}</h5>
+            <p style="margin-left:43px">Qty: {{item.qty}} - {{item.price}}</p>
+        </li>
+        <li class="collection-item">
+            <p>Delivery: {{ deliveryCharges | currency }}</p>
+            <h5 class="total">Total - {{ total + deliveryCharges | currency }}</h5>
+        </li>
+    </ul>
+
+    <table class="picks-div">
+        <tbody>
+            <tr style="border: unset;">
+                <!-- <td class="top-heading">Location</td> -->
+                <td class="top-location">Location<a class="link"
+                        (click)="navigateTo('marketplace/productlocation')">{{mapService.location_block}}</a> </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <form [formGroup]="aForm" novalidate (ngSubmit)="onSubmit()">
+        <div class="row">
+
+            <div class="col s12 m12">
+                <input type="hidden" formControlName="buyer_latitude" name="buyer_latitude" />
+                <input type="hidden" formControlName="buyer_longitude" name="buyer_longitude" />
+                <input type="hidden" formControlName="buyer_address" name="buyer_address" />
+            </div>
+
+            <div class="col s12 m12">
+                <input type="hidden" formControlName="product_id" name="product_id" />
+            </div>
+
+            <div class="col s12 m12">
+                <label>Payment Type</label>
+                <ion-select formControlName="payment_type" (change)="changeOptions($event)" class="dlvr-select-input">
+                    <ion-select-option [value]="paymentTypes[0]">
+                        <i class="fab fa-paypal"></i>Paypal
+                    </ion-select-option>
+                    <ion-select-option [value]="paymentTypes[1]">
+                        <i class="fas fa-money-bill-wave-alt"></i>Pay By Cash
+                    </ion-select-option>
+                </ion-select>
+                <p class="errorMessage" *ngIf="!aForm.get('payment_type').valid && aForm.get('payment_type').touched">
+                    Please Choose Payment Type
+                </p>
+            </div>
+
+
+            <div class="col s12 m12">
+                <label>Delivery Option</label>
+                <ion-select formControlName="delivery_options" (change)="changeDeliveryOptions($event)"
+                    class="dlvr-select-input">
+                    <ion-select-option *ngIf="!disableOption" [value]="deliveryOptions[0]">{{deliveryOptions[0]}}
+                    </ion-select-option>
+                    <ion-select-option [value]="deliveryOptions[1]">{{deliveryOptions[1]}}</ion-select-option>
+                </ion-select>
+                <p class="errorMessage"
+                    *ngIf="!aForm.get('delivery_options').valid && aForm.get('delivery_options').touched">
+                    Please Choose Delivery Options
+                </p>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col s12 m12">
+                <button class="btn btn-full-width btn-large m-t-10" type="submit"
+                    (click)="checkout($event)">Paynow</button>
+            </div>
+        </div>
+    </form>
+</div>

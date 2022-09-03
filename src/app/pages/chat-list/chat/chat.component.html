@@ -1,0 +1,40 @@
+<div class="main-view">
+    <div class="dlvr-consumer-wrapper">
+        <app-header [showBackButton]="true" [headerTitle]="title"></app-header>
+    </div>
+    <div class="main-page">
+        <div class="ps-container ps-theme-default ps-active-y" id="chat-content" #chatcontainer>
+            <ion-list class="chat">
+                <ion-item class="left clearfix w100" *ngFor="let chat of liveChatService.chatMessageCollection">
+                    <!-- <span class="chat-img pull-left" style="position: absolute;">
+                      <img src="{{ chat.user_id != liveChatService.uid ? 'https://placehold.it/50/55C1E7/fff&text=U' : 'https://placehold.it/50/FA6F57/fff&text=ME' }}" alt="User Avatar" class="img-circle" />
+                    </span> -->
+                    <div class="chat-body clearfix">
+                        <p><strong>{{chat.message}}</strong><br>{{ chat.created_at}}</p>
+                    </div>
+                </ion-item>
+            </ion-list>
+        </div>
+
+
+
+
+
+
+    </div>
+    <div class="fixed-action-btn fab-c-btn">
+        <a class="btn-floating btn-large red " (click)="sending ? '' : sendMessage()">
+            <i class="large material-icons">send</i>
+        </a>
+    </div>
+    <footer class="chat-footer">
+        <div class="row">
+            <form class="col s10">
+                <div class="input-field">
+                    <input [disabled]="sending" id="icon_prefix" type="text" class="validate" name="message" [(ngModel)]="message" (keydown)="handleSubmit($event)">
+                </div>
+            </form>
+        </div>
+    </footer>
+
+</div>

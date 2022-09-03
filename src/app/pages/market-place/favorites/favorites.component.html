@@ -1,0 +1,27 @@
+<div class="dlvr-consumer-wrapper">
+    <app-cart-header [showBackButton]="true" [showCart]="true"></app-cart-header>
+  </div>
+<div class="search-page">
+    <ul class="collection with-header">
+        <li class="collection-header"><h4>Favorites</h4></li>        
+      </ul>
+    <form>
+        <div class="center row">
+            <div class="col s12 ">
+                <div class="row" id="topbarsearch">
+                    <div class="input-field col s6 s12 red-text">
+                        <i class="red-text material-icons prefix">search</i>
+                        <input type="text" placeholder="search" id="autocomplete-input" class="autocomplete red-text" (keyup)="searchByText($event)">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <div class="row">
+        <div class="col s6 m6" *ngFor="let item of products">
+            <app-product-item [item]="item"></app-product-item>
+        </div>
+    </div>
+
+</div>

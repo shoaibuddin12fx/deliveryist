@@ -1,0 +1,249 @@
+@import "../../../../../node_modules/materialize-css/dist/css/materialize.css";
+@import "../../../../assets/scss/dlvr-ui-kit.scss";
+@import "../../../../assets/scss/custom-variables.scss";
+@import "../../../../theme/variables.scss";
+@import "../market-place.component.scss";
+
+.mpYellow {
+  background-color: #fc8f28;
+  color: #fff;
+}
+.search-container .searchbox {
+  text-align: left;
+  padding-left: 43px !important;
+  padding-right: 10px !important;
+  margin-bottom: -10px !important;
+}
+.addressLink {
+  text-align: right;
+  white-space: nowrap;
+  width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+  display: inline-block;
+}
+.carousel {
+  height: 220px;
+}
+.card .card-image {
+  margin-left: 4px !important;
+  margin-right: 7px !important;
+}
+.custom-margin-bottom-last {
+  margin-bottom: 110px;
+}
+
+.cat-bottom-border {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  padding: 0 7px;
+}
+
+.person-with-chips {
+  float: left;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+// .products-item {}
+
+.products-item:nth-child(odd) {
+  padding: 0 5px 0 0 !important;
+}
+
+.products-item:nth-child(even) {
+  padding: 0 0 0 5px !important;
+}
+// .fa-search {
+//   position: relative;
+//   top: 33px;
+//   left: 31px;
+// }
+.picks-div {
+  .col {
+    display: table;
+  }
+  .top-heading {
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 2.1rem;
+    font-weight: bold;
+    padding: 0px 20px 0px 20px;
+  }
+  .top-location {
+    display: table-cell;
+    vertical-align: middle;
+    float: right;
+    text-align: right;
+    font-size: 12px;
+    i {
+      font-size: 17px;
+    }
+  }
+}
+
+.link {
+  font-size: 16px;
+  font-weight: 500;
+  color: #0e50a4;
+  i {
+    font-size: 26px !important;
+    color: #0e50a4;
+    vertical-align: middle;
+  }
+}
+
+.spinner {
+  position: relative;
+  margin-top: 30px;
+}
+
+.dlvr-modal .modal {
+  padding: 0 20px;
+}
+
+.dlvr-modal .modal .modal-footer {
+  margin-top: 36px;
+}
+
+.dlvr-modal-btn-wrapper {
+  text-align: center;
+}
+
+.dlvr-modal-btn-wrapper button {
+  display: block;
+  margin: 0 auto;
+  margin-top: 12px;
+  min-width: 100%;
+}
+
+.dlvr-modal .modal.bottom-sheet {
+  min-height: 500px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+// .dlvr-forgetPassword-modal input {
+//     text-align: center;
+// }
+
+// .dlvr-forgetPassword-modal input[type="range"]+.thumb {
+//     background-color: red !important;
+// }
+
+.dlvr-modal .dlvr-uikit-checkbox {
+  margin-right: 16px;
+}
+
+.dlvr-modal .dlvr-uikit-checkbox span {
+  font-size: 19px;
+}
+
+// .dlvr-uikit-btn{
+//   margin-left: 20% !important;
+// }
+.dlvr-uikit-btn-green {
+  background-color: #1691e9;
+}
+
+.select-dropdown {
+  overflow-y: auto !important;
+}
+
+.dropdown-content {
+  max-height: 350px !important;
+  overflow-y: auto !important;
+  backface-visibility: hidden !important;
+}
+
+.select-wrapper ul {
+  overflow: auto;
+}
+
+.icon {
+  padding: 10px;
+  min-width: 40px;
+}
+
+.dlvr-hamburger {
+  .icon-background {
+    color: #fa8e28;
+  }
+}
+
+.cart-badge {
+  height: 15px;
+  width: 15px;
+  background-color: #1691e9;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  font-size: x-small;
+  top: 13px;
+  z-index: 3;
+}
+.more-products-btn {
+  text-align: center;
+}
+ion-button {
+  padding: 6px 49px !important;
+}
+.market {
+  font-weight: 900;
+  font-size: 28px;
+  margin-top: 3px;
+}
+.fa-search {
+  position: relative;
+  left: 30px;
+  bottom: 22px;
+}
+
+// .search-input {
+//     width: 75%;
+//     background: #f1f1f1;
+//     height: 40px;
+//     border-radius: 20px;
+//     margin: 8px;
+//     display: flex;
+//     flex-direction: row;
+//     flex-wrap: nowrap;
+
+//     align-content: center;
+//     justify-content: space-around;
+//     align-items: baseline;
+
+//   input {
+//     display: inline-block !important;
+//     width: 84%;
+//     border: none !important;
+//   }
+//   input:hover{
+//     display: inline-block !important;
+//     border: none !important;
+//     text-decoration: none !important;
+//     border-bottom: none !important;
+//   }
+
+//   input:focus{
+//     display: inline-block !important;
+//     border: none !important;
+//     text-decoration: none !important;
+//     border-bottom: none !important;
+//   }
+//   i {
+//     display: block;
+//   }
+// }
+
+.card-search {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: flex-start;
+}

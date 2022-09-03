@@ -1,0 +1,229 @@
+<div class="dlvr-trackPackage-screen-wrapper">
+    <app-header [headerTitle]="'Track Driver'" [showBackButton]="false"></app-header>
+    <div class="container"> 
+        <!--MAP-->
+        <div class="dlvr-trackPackage-map-wrapper">
+            <agm-map [latitude]="lat" [longitude]="lng" width="600" frameborder="0" allowfullscreen="" class="dlvr-map">
+                <agm-direction [origin]="origin" [destination]="destination" *ngIf="origin && destination" [renderOptions]="renderOptions" 
+                [markerOptions]="markerOptions" (onResponse)="onResponse($event)">
+                </agm-direction>
+            </agm-map>
+        </div>
+        <!--MAP End-->
+        <!--Control Btns-->
+        <!-- <div class="dlvr-trackPackage-controlBtn-wrapper">
+            <div class="container"  data-aos= "fade-up"> 
+                <div class="row" *ngIf=" track[0]?.status != 'Delivered' && track[0]?.driverId"> 
+                    <div class="col s12"> 
+                        <a href="tel:{{ track[0]?.driverNumber}}" class="dlvr-uikit-btn dlvr-uikit-btn-blue m-r-5"><i class="fa fa-phone m-r-10"></i>Call Driver</a>
+                        <button class="dlvr-uikit-btn dlvr-uikit-btn-blue m-r-5"><i class="fa fa-comment m-r-10"></i>Message Driver</button>
+                        <button class="dlvr-uikit-btn dlvr-uikit-btn-blue dlvr-uikit-btn-bordered m-0" (click)="viewDriverDetail()"><i class="fa fa-user-circle m-r-10"></i>View Profile</button>
+                    </div>
+                </div>
+                <div class="row" *ngIf=" track[0]?.status == 'Delivered' && track[0]?.rating == 0 ">
+                    <div class="col s12">
+                        <button class="btn-full-width dlvr-uikit-btn dlvr-uikit-btn-blue " (click)="goToRatings()">Give your reviews to us</button>
+                    </div>
+                </div>
+            </div> 
+        </div> -->
+        <!--Control Btns ENd-->
+        <div class="row absolute">
+            <div class="col s12 no-padding">
+                <div class="dlvr-order-confirmed-block" data-aos="fade-up">  
+                    <ul class="collection left-align">
+                        <li *ngIf="driverInfo" class="collection-item avatar">
+                            <div (click)="viewDriverDetail()" class="circle">
+                                <img src="https://hips.hearstapps.com/ame-prod-goodhousekeeping-assets.s3.amazonaws.com/main/embedded/32567/amber-heard.jpg" alt="user" >                            
+                            </div>
+                            <p (click)="viewDriverDetail()" class="title">{{track[0]?.driverName}}</p>
+                            <p (click)="goToRatings()"><i class="material-icons-outlined f-s-17 m-r-5">star</i> <b>{{track[0]?.rating}}</b> </p>
+                        </li>
+                    </ul>
+                    <a href="javascript:void(0)" class="secondary-content"><i class="material-icons">bookmark</i></a>
+                    <div class="row m-b-5">
+                        <div class="col s6">
+                           <div class="dlvr-trackPackage-content">
+                                <p> 
+                                    <i class="material-icons">swap_calls</i>
+                                    Distance: {{ totalDistance }}
+                                </p>
+                           </div>
+                        </div>
+                        <div class="col s6">
+                            <div class="dlvr-trackPackage-content">
+                                <p> 
+                                    <i class="material-icons">access_time</i>
+                                    Duration: {{ totalDuration }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row p-r-20 p-l-20 m-b-10">
+                        <div class="col s6">
+                            <!-- <a  class="dlvr-uikit-btn dlvr-uikit-btn-green m-r-5"><i class="fa fa-phone m-r-10"></i>Call Consumer</a> -->
+                            <a class="dlvr-btn green-btn" href="tel:{{ track[0]?.driverNumber}}">
+                               <i class="material-icons">phone</i>
+                               Call
+                            </a>
+                        </div>
+                        <div class="col s6">
+                            <button class="dlvr-btn blue-btn">
+                               <i class="material-icons">chat_bubble</i>
+                               Chat
+                            </button> 
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12">
+                            <div class="dlvr-otp"> 
+                                <p>Share this OTP with your delivery agent<br> only after the delivery.</p>
+                                <span class="otp">
+                                    {{securityCode}}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <!--PROGRESS BAR-->
+                    <div class="dlvr-progressBar">
+                        <div class="dlvr-progress-track"></div>
+                        <div id="step1" class="dlvr-progress-step">Waiting for driver</div>
+                        <div id="step2" class="dlvr-progress-step">Picked Package</div>
+                        <div id="step3" class="dlvr-progress-step">Delivered</div> 
+                        <!-- <div id="step4" class="dlvr-progress-step">Arrived</div> 
+                        <div id="step5" class="dlvr-progress-step">Delivered</div>  -->
+                    </div> 
+                    <!--PROGRESS BAR END-->
+                    <div class="container dlvr-new-progress">
+                        <div class="row">
+                          <div class="col s12"> 
+                              <div class="progress">
+                                  <div class="progress-bar" id="truckprogress" style="width:0%; background:#26bae8; height: 12px; transition: .9s;"></div> 
+                              </div> 
+                          </div>
+                      </div>
+                    </div>
+                </div>
+            </div> 
+        </div> 
+    </div>
+</div> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="dlvr-trackPackage-screen-wrapper">
+    <app-header [headerTitle]="'Track Driver'" [showBackButton]="false"></app-header>
+    <div class="container">  -->
+        <!--MAP-->
+        <!-- <div class="dlvr-trackPackage-map-wrapper">
+            <agm-map [latitude]="lat" [longitude]="lng" width="600" frameborder="0" allowfullscreen="" class="dlvr-map">
+                <agm-direction [origin]="origin" [destination]="destination" *ngIf="origin && destination" [renderOptions]="renderOptions" 
+                [markerOptions]="markerOptions" (onResponse)="onResponse($event)">
+                </agm-direction>
+            </agm-map>
+        </div> -->
+        <!--MAP End-->
+        <!--Control Btns-->
+        <!-- <div class="dlvr-trackPackage-controlBtn-wrapper">
+            <div class="container"  data-aos= "fade-up"> 
+                <div class="row" *ngIf=" track[0]?.status != 'Delivered' && track[0]?.driverId"> 
+                    <div class="col s12"> 
+                        <a href="tel:{{ track[0]?.driverNumber}}" class="dlvr-uikit-btn dlvr-uikit-btn-blue m-r-5"><i class="fa fa-phone m-r-10"></i>Call Driver</a>
+                        <button class="dlvr-uikit-btn dlvr-uikit-btn-blue m-r-5"><i class="fa fa-comment m-r-10"></i>Message Driver</button>
+                        <button class="dlvr-uikit-btn dlvr-uikit-btn-blue dlvr-uikit-btn-bordered m-0" (click)="viewDriverDetail()"><i class="fa fa-user-circle m-r-10"></i>View Profile</button>
+                    </div>
+                </div>
+                <div class="row" *ngIf=" track[0]?.status == 'Delivered' && track[0]?.rating == 0 ">
+                    <div class="col s12">
+                        <button class="btn-full-width dlvr-uikit-btn dlvr-uikit-btn-blue " (click)="goToRatings()">Give your reviews to us</button>
+                    </div>
+                </div>
+            </div> 
+        </div> -->
+        <!--Control Btns ENd-->
+        <!-- <div class="row">
+            <div class="col s12 no-padding">
+                <div class="dlvr-order-confirmed-block" data-aos="fade-up">  
+                    <ul class="collection left-align">
+                        <li class="collection-item avatar">
+                            <div class="circle">
+                                <img src="https://hips.hearstapps.com/ame-prod-goodhousekeeping-assets.s3.amazonaws.com/main/embedded/32567/amber-heard.jpg" alt="user" >                            
+                            </div>
+                            <p class="title">Mohammad Husain</p>
+                            <p><i class="material-icons-outlined f-s-17 m-r-5">star</i> <b>4.4</b> </p>
+                        </li>
+                    </ul>
+                    <a href="javascript:void(0)" class="secondary-content"><i class="material-icons">bookmark</i></a>
+                    <div class="row m-b-5">
+                        <div class="col s6">
+                           <div class="dlvr-trackPackage-content">
+                                <p> 
+                                    <i class="material-icons">swap_calls</i>
+                                    Distance: {{ totalDistance }}
+                                </p>
+                           </div>
+                        </div>
+                        <div class="col s6">
+                            <div class="dlvr-trackPackage-content">
+                                <p> 
+                                    <i class="material-icons">access_time</i>
+                                    Duration: {{ totalDuration }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row p-r-20 p-l-20 m-b-10">
+                        <div class="col s6">
+                            <button class="dlvr-btn green-btn">
+                               <i class="material-icons">phone</i>
+                               Call
+                            </button>
+                        </div>
+                        <div class="col s6">
+                            <button class="dlvr-btn blue-btn">
+                               <i class="material-icons">chat_bubble</i>
+                               Chat
+                            </button> 
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12">
+                            <div class="dlvr-otp"> 
+                                <p>Share this OTP with your delivery agent<br> only after the delivery.</p>
+                                <span class="otp">
+                                    456822
+                                </span>
+                            </div>
+                        </div>
+                    </div> -->
+                    <!--PROGRESS BAR-->
+                    <!-- <div class="dlvr-progressBar">
+                        <div class="dlvr-progress-track"></div>
+                        <div id="step1" class="dlvr-progress-step is-active">Waiting for Driver</div>
+                        <div id="step2" class="dlvr-progress-step">Picked Package</div>
+                        <div id="step3" class="dlvr-progress-step">Delivered</div> 
+                    </div>  -->
+                    <!--PROGRESS BAR END-->
+                <!-- </div>
+            </div> 
+        </div> 
+    </div>
+</div>  -->

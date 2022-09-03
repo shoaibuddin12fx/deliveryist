@@ -1,0 +1,54 @@
+<!-- Modal -->
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-title>Edit Your Photo</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <div class="center-Image">
+    <img [src]="profileData?.profile_pic" height="auto" width="100%" />
+  </div>
+
+  <input type="file" id="image" style="display: none;" #fileupload accept="video/mp4, image/png, image/gif, image/jpeg"
+    multiple="false" class="fileupload" name="fileupload" (change)="onSelectFile($event)" />
+
+    <!-- <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+      <ion-fab-button>
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-list>
+        <ion-fab-button (click)="openFile()" color="light">
+          <ion-icon name="image"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button (click)="openFile()" color="light">
+          <ion-icon name="image"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button (click)="AddPicture()" color="light">
+          <ion-icon name="camera"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button (click)="removePhoto()" color="light">
+          <ion-icon name="trash-outline"></ion-icon>
+        </ion-fab-button>
+      </ion-fab-list>
+    </ion-fab> -->
+    <ion-fab vertical="bottom" horizontal="end">
+      <ion-fab-button>
+        <ion-icon name="share"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-list side="top">
+        <ion-fab-button (click)="openFile()" color="light">
+          <ion-icon name="image"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button (click)="AddPicture()" color="light">
+          <ion-icon name="camera"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button (click)="removePhoto()" color="light">
+          <ion-icon name="trash-outline"></ion-icon>
+        </ion-fab-button>
+      </ion-fab-list>
+    </ion-fab>
+</ion-content>

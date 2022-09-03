@@ -1,0 +1,34 @@
+<app-header [headerTitle]="'Card Details'" [showBackButton]="true"></app-header>
+<div class="dlvr-consumer-wrapper">
+    <!-- <div class="dlvr-add-job-btn">
+        <div class="dlvr-addNewJob-toolTip">Add New Order</div>
+        <button class="btn-floating btn-large dlvr-uikit-btn-blue" (click)="postNewJob()"><i
+                class="material-icons f-s-25">add</i></button>
+    </div> -->
+    <div class="dlvr-job-list">
+        <div class="container">
+            <!-- <div class="row">
+                
+                <ul class="tabs consumer-tabs">
+                    <li class="tab col s6"><a [ngClass]=" tab == 'Active' ? 'active' : ''" (click)="changeTab('Active')">Active</a></li>
+                    <li class="tab col s6"><a [ngClass]=" tab == 'Completed' ? 'active' : ''" (click)="changeTab('Completed')">Completed</a></li>
+                  </ul>
+            </div>
+            <br> -->
+            <div class="row" *ngIf="cardDetail?.length > 0">
+                <div *ngFor="let card of cardDetail; let i=index">
+                    <p>{{ card?.brand }}</p>
+                    <p>{{ card?.last4 }}</p>
+                </div>
+            </div>
+            <div class="row" *ngIf="cardDetail?.length == 0">
+                <div class="col s12">
+                    <div class="dlvr-jobPost-noPost" data-aos="fade-up">
+                        <i class="fa fa-archive fa-5x"></i>
+                        <h3>You haven't added any card yet.</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

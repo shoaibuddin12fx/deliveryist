@@ -1,0 +1,19 @@
+<app-header [headerTitle]="'Notification'" [showBackButton]="true"></app-header>
+<div class="dlvr-notification-screen-wrapper overflow">
+    <div class="container" data-aos="fade-up">
+        <div class="row">
+            <div class="col s12">
+                <div class="card dlvr-card" *ngFor="let notification of notifications; let i=index;">
+                    <i class="material-icons dlvr-notification-bell-icon">notifications_none</i>
+                    <i class="material-icons dlvr-close-icon" (click)="deleteNotification(i)">close</i>
+                    <h3>{{ notification.title  }}</h3>
+                    <p>{{ notification.description  }}</p> 
+                </div>
+                <div class="dlvr-no-notification" *ngIf="notifications.length == 0">
+                    <i class="material-icons fa-4x dlvr-notification-bell-icon">notifications_none</i> 
+                    <h3>No notifications</h3> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 

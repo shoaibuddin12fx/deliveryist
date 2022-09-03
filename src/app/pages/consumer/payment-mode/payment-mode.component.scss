@@ -1,0 +1,39 @@
+@import "../../../../theme/variables.scss";
+@import "../../../../assets/scss/custom-variables.scss";
+@import "../../../../assets/scss/dlvr-ui-kit.scss";
+@import "../../../../../node_modules/materialize-css/dist/css/materialize.css";
+.dlvr-accordion-icon {
+  position: absolute;
+  right: 0;
+}
+.modal.dlvr-payment-success-modal {
+  background-color: $white-color;
+  border-radius: 10px;
+}
+.dlvr-payment-success-modal .modal-content .dlvr-success {
+  border-radius: 50px;
+  background: $secondary-gradient-color;
+  color: $white-color;
+  font-size: 40px;
+  padding: 10px;
+}
+.dlvr-payment-success-modal .modal-content h3 {
+  text-align: center;
+  margin-top: 40px;
+}
+.dlvr-payment-success-modal .modal-content p {
+  text-align: center;
+  color: $light-color2;
+}
+.dlvr-payment-success-modal .modal-content .dlvr-fail {
+  border-radius: 50px;
+  background: $urgent-gradient-color;
+  color: $white-color;
+  font-size: 40px;
+  padding: 10px;
+}
+
+.dlvr-paymentMode-screen-wrapper {
+  overflow-y: auto;
+  overflow-x: hidden;
+}

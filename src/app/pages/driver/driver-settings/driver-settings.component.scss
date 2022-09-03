@@ -1,0 +1,91 @@
+@import "../../../../theme/variables.scss";
+@import "../../../../assets/scss/custom-variables.scss";
+@import "../../../../assets/scss/dlvr-ui-kit.scss";
+@import "../../../../../node_modules/materialize-css/dist/css/materialize.css";
+
+.collection {
+  border: none;
+}
+.img-responsive {
+  width: 90%;
+  margin: 25px auto;
+}
+.collection .collection-item {
+  border: 1px solid #3664ad;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  box-shadow: $shadow-light;
+  color: #3664ad;
+  cursor: pointer;
+}
+.collection .collection-item i {
+  color: #3664ad;
+}
+@media (min-width: 1024px) {
+  .collection {
+    max-width: 54%;
+    margin: 0 auto;
+  }
+}
+// .dlvr-profile-wrapper{
+//     margin-bottom: 80px;
+// }
+// .dlvr-profile-img-wrapper {
+//     text-align: center;
+// }
+// .dlvr-profile-img-wrapper .card.dlvr-card{
+//     max-width: 150px;
+//     margin: 0 auto;
+//     margin-top: 50px;
+//     margin-bottom: 30px;
+// }
+// .dlvr-profile-img-wrapper img {
+//     max-width: 150px;
+// }
+
+.setting p {
+  position: relative;
+}
+.setting p i {
+  position: absolute;
+  right: 15px;
+  bottom: 5px;
+}
+.dlvr-profile-wrapper h3 {
+  margin-top: 8px;
+  margin-bottom: 6px;
+}
+
+.dlvr-uikit-list ul li p {
+  padding: 12px 0;
+  font-weight: 600;
+}
+.dlvr-uikit-list ul li p img {
+  max-width: 34px;
+  margin-right: 18px;
+}
+
+.dlvr-profile-wrapper {
+  margin: 8px auto;
+}
+.dlvr-profile-img-wrapper {
+  text-align: center;
+}
+.dlvr-profile-img-wrapper .card.dlvr-card {
+  max-width: 150px;
+  margin: 0 auto;
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
+.dlvr-profile-img-wrapper img {
+  max-width: 150px;
+}
+.dlvr-paymentMode-screen-wrapper {
+  // padding-left: 2% !important;
+  height: 130vh !important;
+  // padding-right: 2% !important;
+}
+.overflow {
+  overflow-y: auto;
+  overflow-x: hidden;
+}

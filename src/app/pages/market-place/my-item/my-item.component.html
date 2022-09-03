@@ -1,0 +1,61 @@
+<app-header [headerTitle]="'Listings'" [showBackButton]="true"></app-header>
+<div class="progress" *ngIf="loading">
+    <div class="indeterminate"></div>
+</div>
+<!-- <div class="search-page">
+    <ul class="collection with-header"></ul>
+    <div class="row">
+        <div class="col s6 m6 products-item" *ngFor="let item of products">
+            <app-product-item [item]="item" (showDetail)="itemDetailPage(item)" [edit]="true" (showEdit)="itemEditPage(item)">
+            </app-product-item>
+        </div>
+    </div>
+
+    <div class="row" infinite-scroll [infiniteScrollDistance]=0 [infiniteScrollThrottle]="1000"
+        (scrolled)="loadMoreProducts()">
+    </div>
+    <div class="fixed-action-btn fab-c-btn">
+        <a class="btn-floating btn-large blue " (click)="navigateTo('marketplace/add_product')">
+            <i class="large material-icons">add</i>
+        </a>
+    </div>
+</div> -->
+<div [hidden]="loading" class="container">
+
+    <div class="row">
+        <div class="search-container input-field col s12 p-l-0">
+            <form>
+                <input type="text" class="searchbox" placeholder="Search" name="searchText" [(ngModel)]="filters.search">
+            </form>
+        </div>
+
+    </div>
+
+    <div class="row" infinite-scroll [infiniteScrollDistance]=0 [infiniteScrollThrottle]='1000' (scrolled)="loadMoreProducts()">
+        <div class="col s3 m6 products-item" *ngFor="let item of products">
+            <app-product-item [item]="item" (showDetail)="itemEditPage(item)" [edit]="true" (showEdit)="itemEditPage(item)">
+            </app-product-item>
+        </div>
+    </div>
+
+    <!-- <div class="dlvr-login-footer">
+        <a class="center" (click)="loadMoreProducts()" class="pointer-cursor dlvr-uikit-btn dlvr-uikit-btn-green btn-full-width">Load More</a>
+    </div> -->
+
+    <div class="spinner">
+        <ngx-spinner bdOpacity=0.9 bdColor="#f4f4f9" size="medium" color="#1a6bc3" type="ball-clip-rotate-multiple" [fullScreen]="false">
+        </ngx-spinner>
+    </div>
+
+
+    <div class="custom-margin-bottom-last">
+
+    </div>
+
+    <div class="fixed-action-btn fab-c-btn">
+        <a class="btn-floating btn-large mpYellow " (click)="navigateTo('marketplace/add_product')">
+            <i class="large material-icons">add</i>
+        </a>
+    </div>
+
+</div>

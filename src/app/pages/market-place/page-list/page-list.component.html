@@ -1,0 +1,55 @@
+<!-- <ul class="collection with-header">
+  <li class="collection-item" *ngFor="let item of pageLinks" (click)="gotoPage(item)" ><div>{{item.label}} {{ !item.route ? '( in-progress )' : ''}} <a href="javascript:void(0)" class="secondary-content" ><i class="material-icons">chevron_right</i></a></div></li>
+</ul> -->
+
+<div class="dlvr-consumer-wrapper">
+    <app-cart-header [showBackButton]="true" [title]="'You'"></app-cart-header>
+</div>
+<div class="progress" *ngIf="loading">
+    <div class="indeterminate"></div>
+</div>
+<div class="container">
+    <div class="row" [hidden]="loading">
+
+        <ul class="collection more-option-list-view">
+            <li class="collection-item" (click)="navigateTo('/marketplace/userlocation')">
+                <span class="fa-stack fa-xx">
+                    <i class="fa fa-map-marker fa-stack-2x"></i>
+                  </span>
+                <span class="title">Location</span>
+            </li>
+            <li class="collection-item collection-header">
+                <h4>Selling</h4>
+            </li>
+            <li class="collection-item" (click)="navigateTo('/marketplace/myitem')">
+                <span class="fa-stack fa-xx">
+                    <i class="fa fa-tags fa-stack-2x"></i>
+                  </span>
+                <span class="title">Your Listings</span>
+            </li>
+            <li class="collection-item">
+                <button class=" waves-light btn btn-full-width btn-large dlvr-btn dlvr-white-btn m-t-10" type="button" (click)="navigateTo('/marketplace/add_product')">Create Listing</button>
+            </li>
+            <li class="collection-item collection-header">
+                <h4>Buying</h4>
+            </li>
+            <li class="collection-item" (click)="navigateTo('/marketplace/cart')">
+                <span class="fa-stack fa-xx">
+                    <i class="fa fa-shopping-cart fa-stack-2x"></i>
+                  </span>
+                <span class="title">Cart</span>
+            </li>
+            <li class="collection-item" (click)="navigateTo('/marketplace/favorites')">
+                <span class="fa-stack fa-xx">
+                    <i class="fa fa-bookmark-o fa-stack-2x"></i>
+                  </span>
+                <span class="title">Saved</span>
+            </li>
+
+
+
+        </ul>
+
+
+    </div>
+</div>

@@ -1,0 +1,54 @@
+<app-header [headerTitle]="'Ratings & Reviews'" [showBackButton]="true"></app-header>
+<div class="dlvr-rnr-screen-wrapper">
+    <div class="container" data-aos="fade-left">
+        <div class="row">
+            <div class="col s12">
+                <h2 class="m-t-0">Over all Experience</h2>
+                <div class="dlvr-rnr-star-wrapper">
+                    <div class="card dlvr-card" (click)="calculateStar('star1')"><i id="star1" class="material-icons-round">star</i></div>
+                    <div class="card dlvr-card" (click)="calculateStar('star2')"><i id="star2" class="material-icons-round">star</i></div>
+                    <div class="card dlvr-card" (click)="calculateStar('star3')"><i id="star3" class="material-icons-round">star</i></div>
+                    <div class="card dlvr-card" (click)="calculateStar('star4')"><i id="star4" class="material-icons-round">star</i></div>
+                    <div class="card dlvr-card" (click)="calculateStar('star5')"><i id="star5" class="material-icons-round">star</i></div>
+                </div>
+                <!-- <h2>How was your experience with the driver?</h2>
+                <div>
+                    <div class="dlvr-checkbox dlvr-checkbox-blue" id="{{i}}" *ngFor="let data of checkAnswersList; let i=index">
+                        <label>
+                            <input type="checkbox" value="data?.answer" (change)="checkValue(i, $event)"/>
+                            <span>{{ data?.answer }}</span>
+                        </label>
+                    </div>
+                </div>
+                <h2>Would you like to refer this app to someone?</h2>
+                <div class="dlvr-radio dlvr-radio-blue" id="referAppYes">
+                    <label>
+                        <input type="radio"  class="dlvr-radio-btn" (change)="clickRadio('referAppYes', $event)"/>
+                        <span>Yes</span>
+                    </label>
+                </div>
+                <div class="dlvr-radio dlvr-radio-blue" id="referAppNo">
+                    <label>
+                        <input type="radio" (change)="clickRadio('referAppNo', $event)"/>
+                        <span>No</span>
+                    </label>
+                </div>
+                <h2>Are you happy with the services?</h2>
+                <div class="dlvr-radio dlvr-radio-blue" id="serviceYes">
+                    <label>
+                        <input type="radio" (change)="clickRadio('serviceYes', $event)" />
+                        <span>Yes</span>
+                    </label>
+                </div>
+                <div class="dlvr-radio dlvr-radio-blue" id="serviceNo">
+                    <label>
+                        <input type="radio" (change)="clickRadio('serviceNo', $event)"/>
+                        <span>No</span>
+                    </label>
+                </div> -->
+                <textarea class="dlvr-text-input" placeholder=" Wrire your feedback here about consumer." [(ngModel)]="reviews"></textarea>
+                <button class="dlvr-uikit-btn dlvr-uikit-btn-medium dlvr-uikit-btn-rounded dlvr-uikit-btn-green"
+                                type="button" (click)="submitRatings()">Submit my review</button>
+            </div>
+        </div>
+    </div> 

@@ -1,0 +1,176 @@
+<app-header [headerTitle]="'Delivery Details'" [showBackButton]="true"></app-header>
+<div class="dlvr-trackPackage-screen-wrapper">
+    <div style="margin-bottom: 61%;">
+        <div class="dlvr-postJob-step1">
+            <h2 class="title">Delivery details</h2>
+            <div class="row">
+                <div class="col no-padding">
+                    <div class="dlvr-order-confirmed-block">
+                        <ul class="collection left-align">
+                            <li class="collection-item avatar">
+                                <div class="circle">
+                                    <img src="../../../../assets/images/user_icon.png" alt="user">
+                                </div>
+                                <p class="title-1">Name</p>
+                                <p class="text">{{ track[0]?.poster_name }}</p>
+                            </li>
+                            <li class="collection-item avatar">
+                                <div class="circle">
+                                    <img src="../../../../assets/images/detail-pickup-add.png" alt="detail-pickup-add"
+                                        style="padding: 3px;">
+                                </div>
+                                <p class="title-1">Pick-up Address</p>
+                                <p class="text">{{ track[0]?.sourceAddress }}</p>
+                            </li>
+                            <li class="collection-item avatar">
+                                <div class="circle">
+                                    <img src="../../../../assets/images/detail--destination.png"
+                                        alt="detail-destination-add">
+                                </div>
+                                <p class="title-1">Delivery Address</p>
+                                <p class="text">{{ track[0]?.deliveryAddress }}</p>
+                            </li>
+                            <li class="collection-item avatar">
+                                <div class="circle">
+                                    <img src="../../../../assets/images/detail-category.png" alt="detail-category">
+                                </div>
+                                <p class="title-1">Package Category</p>
+                                <p class="text">{{ track[0]?.itemCategory }}</p>
+                            </li>
+                            <li class="collection-item avatar">
+                                <div class="circle">
+                                    <img src="../../../../assets/images/detail-car.png" alt="detail-car">
+                                </div>
+                                <p class="title-1">Vehicle Type</p>
+                                <p class="text">{{track[0]?.package_size}}</p>
+                            </li>
+                            <li class="collection-item avatar">
+                                <div class="circle">
+                                    <img src="../../../../assets/images/detail-monthly-calendar.png" alt="detail-car">
+                                </div>
+                                <p class="title-1">Delivery Type</p>
+                                <p class="text">{{track[0]?.priority}}</p>
+                            </li>
+                            <li class="collection-item avatar" *ngIf="track[0]?.deliveryDate">
+                                <div class="circle">
+                                    <img src="../../../../assets/images/detail-monthly-calendar.png" alt="detail-date">
+                                </div>
+                                <p class="title-1">Delivery Date</p>
+                                <p class="text">{{ track[0]?.deliveryDate }}</p>
+                            </li>
+                            <li class="collection-item avatar" *0="track[0]?.photos_urls?.length > 0">
+                                <div class="circle">
+                                    <img src="../../../../assets/images/detail-picture.png" alt="detail-picture">
+                                </div>
+                                <p class="title-1">Product Photos</p>
+                                <div class="row">
+                                    <div class="col s3" *ngFor="let photos of track[0]?.photos_urls">
+                                        <img src="{{photos}}" class="responsive-img">
+                                    </div>
+                                    <!-- <div class="col s3">
+                                        <img src="{{photos}}" class="responsive-img">
+                                    </div>
+                                    <div class="col s3">
+                                        <img src="{{photos}}" class="responsive-img">
+                                    </div> -->
+                                </div>
+                            </li>
+                            <li class="collection-item avatar" *ngIf="track[0]?.instructionForReceiver">
+                                <div class="circle">
+                                    <img src="../../../../assets/images/detail-instruction.png"
+                                        alt="detail-instruction">
+                                </div>
+                                <p class="title-1">Instructions</p>
+                                <p class="text">{{ track[0]?.instructionForReceiver }}</p>
+                            </li>
+                            <li class="collection-item avatar">
+                                <div class="circle">
+                                    <img src="../../../../assets/images/detail-coin.png" alt="detail-coin">
+                                </div>
+                                <p class="title-1">Delivery Amount</p>
+                                <p class="text">${{ track[0]?.jobAmount }}</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="dlvr-contact-costomer-btn-wrapper">
+            <a class="call" href="tel:{{track[0]?.poster_contact}}">
+                <i class="material-icons">local_phone</i>
+            </a>
+            <a class="chat">
+                <i class="material-icons">message</i>
+            </a>
+        </div>
+    </div>
+    <div class="dlvr-get-started-btn" (click)="goToApplyJob()">
+        Let's get started
+        <i class="fa fa-angle-right"></i>
+        <i class="fa fa-angle-right" style="margin-left:-2px"></i>
+        <i class="fa fa-angle-right" style="margin-left:-2px"></i>
+
+    </div>
+</div>
+<!-- <app-header [headerTitle]="'Delivery Details'" [showBackButton]="true"></app-header>
+<div class="dlvr-trackPackage-screen-wrapper">
+    <div class="container"> 
+        <div class="dlvr-trackPackage-map-wrapper">
+            <agm-map [latitude]="lat" [longitude]="lng" width="600" frameborder="0" allowfullscreen="" class="dlvr-map" [zoom]="15">
+                <agm-marker [latitude]="lat" [longitude]="lng" [iconUrl]="icon"></agm-marker>
+            </agm-map>
+        </div> 
+        <div class="dlvr-trackPackage-controlBtn-wrapper">
+            <div class="container"  data-aos= "fade-up">
+                <div class="row">
+                    <div class="col s12">
+                        <div class="dlvr-uikit-card dlvr-uikit-card-detailed m-b-10">
+                            <label class="dlvr-uikit-badge dlvr-uikit-badge-boxed"
+                                [ngClass]="track[0]?.deliveryType =='Immediate' ? 'dlvr-uikit-badge-red' : 'dlvr-uikit-badge-green'">
+                                {{ track[0]?.deliveryType }}
+                            </label>
+                            <div class="dlvr-uikit-card-header">
+                                <h5 class="dlvr-uikit-card-title">Delivery Order</h5>
+                                <p class="dlvr-uikit-card-text">Pickup and delivery instructions</p>
+                            </div>
+                            <div class="dlvr-uikit-card-body">
+                                <div class="dlvr-uikit-divider dlvr-uikit-divider-grey m-b-10"></div>
+                                <div class="row">
+                                    <div class="col s6">
+                                        <p class="dlvr-uikit-card-title">Distance</p>
+                                        <p class="dlvr-uikit-card-text">{{ totalDistance }}</p>
+                                        <p class="dlvr-uikit-card-title">Pick-up Address</p>
+                                        <p class="dlvr-uikit-card-text">{{ track[0]?.sourceAddress }}</p>
+                                        <p class="dlvr-uikit-card-title">Amount</p>
+                                        <p class="dlvr-uikit-card-text">${{ track[0]?.jobAmount }}</p>
+                                        <p class="dlvr-uikit-card-title">Category</p>
+                                        <p class="dlvr-uikit-card-text">{{ track[0]?.itemCategory }}</p> 
+                                    </div>
+                                    <div class="col s6"> 
+                                        <p class="dlvr-uikit-card-title">Duration</p>
+                                        <p class="dlvr-uikit-card-text">{{ totalDuration }}</p>
+                                        <p class="dlvr-uikit-card-title">Delivery Address</p>
+                                        <p class="dlvr-uikit-card-text">{{ track[0]?.deliveryAddress }}</p>
+                                        <p class="dlvr-uikit-card-title">Size of Package</p>
+                                        <p class="dlvr-uikit-card-text">{{ track[0]?.packageSize }}</p>
+                                        <p class="dlvr-uikit-card-title" *ngIf="track[0]?.deliveryDate">Delivery Date</p>
+                                        <p class="dlvr-uikit-card-text" *ngIf="track[0]?.deliveryDate">{{ track[0]?.deliveryDate }}</p> 
+                                    </div>
+                                    <div class="col s12" *ngIf="track[0]?.instructionForReceiver">
+                                        <p class="dlvr-uikit-card-title">Instructions</p>
+                                        <p class="dlvr-uikit-card-text m-b-0">{{ track[0]?.instructionForReceiver }}</p>
+                                    </div> 
+                                </div>
+                            </div> 
+                        </div>
+                    </div>
+                </div> 
+                <div class="row">
+                    <div class="col s12">
+                        <button class="btn-full-width dlvr-uikit-btn dlvr-uikit-btn-green" (click)="goToApplyJob()">Accept Delivery</button>
+                    </div>
+                </div> 
+            </div> 
+        </div> 
+    </div>
+</div>  -->

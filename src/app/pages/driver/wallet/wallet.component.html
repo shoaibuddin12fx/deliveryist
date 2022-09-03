@@ -1,0 +1,75 @@
+<app-header [headerTitle]="'Wallet'" style="height: 60px;" [showBackButton]="true"></app-header>
+<!-- Gray Box -->
+<div class="grey-bg-container">
+  <div class="row">
+    <div class="col s7">
+      <h3 class="text-muted m-0 small">Your Wallet Balance</h3>
+    </div>
+    <div class="col s5 text-right">
+      <h3 class="m-0 float-right small">${{walletBalance}}</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s6 text-center">
+      <button class="dlvr-uikit-btn dlvr-uikit-btn-blue dlvr-uikit-btn-small m-b-0 m-t-20 wallet-btn"
+        style="color: white; background-color: #2e9449;" type="button" (click)="getPaid()">Add Cash</button>
+    </div>
+    <div class="col s6 text-center">
+      <button class="dlvr-uikit-btn dlvr-uikit-btn-blue dlvr-uikit-btn-small m-b-0 m-t-20 wallet-btn"
+        style="color: white;" type="button" (click)="getPaid()">Cashout</button>
+    </div>
+  </div>
+</div>
+
+<!--  Tab View -->
+<ion-content>
+  <div class="container m-t-20">
+    <h3 class="text-muted small m-0">Wallet History</h3>
+    <div class="row wallet-tab-wrapper">
+      <div class="col s12">
+        <ul class="tabs">
+          <li class="tab col s3"><a [ngClass]="{'active':allTab}" (click)="changeRecordsType('all')">All</a></li>
+          <li class="tab col s3 middle"><a [ngClass]="{'active':activeTab}"
+              (click)="changeRecordsType('active')">Added</a></li>
+          <li class="tab col s3"><a [ngClass]="{'active':paidTab}" (click)="changeRecordsType('paid')">Deducted</a></li>
+        </ul>
+      </div>
+      <div id="test1" class="col s11">
+        <ul class="collection">
+          <li class="collection-item avatar m-t-10" *ngFor="let wallet of walletData">
+            <img
+              src="{{ wallet.is_paid ? '../../../../assets/images/minus.png' : '../../../../assets/images/plus.png'}}"
+              alt="plus" class="circle">
+            <span><span [ngClass]="wallet.is_paid ? 'title minus' : 'title plus'">${{wallet.amount | number:
+                '1.1-2'}}</span> {{ wallet.is_paid ? 'Deducted' : 'Added'}}</span>
+            <p><small>#{{wallet.order_id}} | {{wallet.paid_date | date: 'mediumDate'}}</small></p>
+          </li>
+        </ul>
+      </div>
+      <div id="test2" class="col s11">
+        <ul class="collection">
+          <li class="collection-item avatar m-t-10" *ngFor="let wallet of walletData">
+            <img
+              src="{{ wallet.is_paid ? '../../../../assets/images/minus.png' : '../../../../assets/images/plus.png'}}"
+              alt="plus" class="circle">
+            <span><span [ngClass]="wallet.is_paid ? 'title minus' : 'title plus'">${{wallet.amount | number:
+                '1.1-2'}}</span> {{ wallet.is_paid ? 'Deducted' : 'Added'}}</span>
+            <p><small>#{{wallet.order_id}} | {{wallet.paid_date | date: 'mediumDate'}}</small></p>
+          </li>
+        </ul>
+      </div>
+      <div id="test3" class="col s11">
+        <ul class="collection">
+          <li class="collection-item avatar m-t-10" *ngFor="let wallet of walletData">
+            <img
+              src="{{ wallet.is_paid ? '../../../../assets/images/minus.png' : '../../../../assets/images/plus.png'}}"
+              alt="plus" class="circle">
+            <span><span [ngClass]="wallet.is_paid ? 'title minus' : 'title plus'">${{wallet.amount | number:
+                '1.1-2'}}</span> {{ wallet.is_paid ? 'Deducted' : 'Added'}}</span>
+            <p><small>#{{wallet.order_id}} | {{wallet.paid_date | date: 'mediumDate'}}</small></p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,68 @@
+@import '../../../../../../node_modules/materialize-css/dist/css/materialize.css';
+@import "../../../../../assets/scss/dlvr-ui-kit.scss";
+@import "../../../../../assets/scss/custom-variables.scss";
+@import "../../../../../theme/variables.scss";
+
+
+
+.center-Image{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 80px;
+}
+
+.close{
+    margin-left: 100px;
+    margin-bottom: 150px;
+    opacity: 1;
+}
+
+
+
+// .border{
+//     border: 1 solid black;
+// }
+// .dlvr-modal .modal.bottom-sheet { 
+//     border-top-right-radius: 10px;
+//     border-top-left-radius: 10px;
+// }
+// .dlvr-having-trouble-popup .modal.bottom-sheet{
+//     max-height: 65%;
+//     min-height: 245px;
+// }
+// .dlvr-having-trouble-popup .modal .modal-footer{
+//     padding: 0;
+// }
+// .dlvr-hving-trouble-popup-list{
+//     text-align: center;
+//     margin: 0;
+// }
+// .dlvr-hving-trouble-popup-list li{
+//     margin: 0;
+//     border-bottom: 1px solid #d2d2d2;
+//     padding: 15px 0;
+// }
+// .dlvr-hving-trouble-popup-list li.first{
+//     margin: 0;
+//     padding: 8px 0;
+//     font-weight: 700;
+//     font-size: 17px;
+//     background-color: #e5f3f1;
+// }
+// .dlvr-hving-trouble-popup-list li:last-child{
+//     border: none;
+// }
+// .dlvr-hving-trouble-popup-list li a{
+//     padding: 6px 12px;
+//     font-size: 16px;
+//     color: #414141; 
+// }
+// .dlvr-hving-trouble-popup-list li .endLine{
+//     width: 100px;
+//     height: 5px;
+//     border-radius: 60px;
+//     background-color: #bdbdbd;
+//     margin: 0 auto;
+// }

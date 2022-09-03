@@ -1,0 +1,41 @@
+@import '../../../theme/variables.scss' ;
+@import '../../../assets/scss/custom-variables.scss';
+@import '../../../assets/scss/dlvr-ui-kit.scss';
+@import '../../../../node_modules/materialize-css/dist/css/materialize.css';
+.dlvr-profile-img-wrapper {
+    text-align: center;
+}
+.dlvr-profile-img-wrapper .dlvr-profile-title {
+    color: $primary-color;
+    margin: 0px;
+}
+.dlvr-profile-img-wrapper img{
+    background-color: #ececec;
+    border-radius: 10px;
+    max-width: 150px;
+    margin-top: 20px;
+}
+.dlvr-profile-successCount {
+    max-width: 80%;
+    margin: 0 auto;
+    background-color: #ececec;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+.dlvr-viewProfile-star-wrapper {
+    margin-top: 0;
+}
+.dlvr-viewProfile-star-wrapper li{
+    display: inline-block; 
+}
+.dlvr-viewProfile-star-wrapper i {
+    color: $light-color2;
+}
+.dlvr-viewProfile-star-wrapper i.active {
+    color: $yellow-color;
+}
+@media (min-width: 1024px){
+    .container {
+        max-width: 46%;
+    } 
+}

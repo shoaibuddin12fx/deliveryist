@@ -1,0 +1,16 @@
+<div class="container" class="pb-0 pt-0">
+    <div class="row text-center">
+        <div class="col s4 m4" class="couter-box pb-0 pt-0">
+            <a class="waves-effect waves-teal btn-flat" (click)="decrementQuantity(); $event.stopPropagation()"><i
+                    class="material-icons">remove</i></a>
+        </div>
+        <div class="col s4 m4" class="couter-box pb-0 pt-0">
+            <a class="waves-effect waves-teal btn-flat"
+                (click)="decrementQuantity(); $event.stopPropagation()">{{qty}}</a>
+        </div>
+        <div class="col s4 m4" class="couter-box pb-0 pt-0">
+            <a class="waves-effect waves-teal btn-flat" (click)="incrementQuantity(); $event.stopPropagation()"><i
+                    class="material-icons">add</i></a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,243 @@
+@import '../../../../../node_modules/materialize-css/dist/css/materialize.css';
+@import '../../../../assets/scss/dlvr-ui-kit.scss';
+@import '../../../../theme/variables.scss';
+@import '../../../../assets/scss/custom-variables.scss';
+@import "../market-place.component.scss";
+// @import "./ng-tag-input.scss";
+.container {
+    padding: 10px;
+    width: 81% !important;
+}
+
+.upload-image-container {
+    display: inline-block;
+    width: 100%;
+    border-radius: 10px;
+    img {}
+}
+.dlvr-uikit-input{
+    height: 7vh !important;
+    font-weight: 900;
+}
+.image-item {
+    position: relative;
+    padding: 0 0.25rem;
+    i.icon-close {
+        position: absolute;
+        color: white;
+        margin: 5px;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 25px;
+        font-size: 1.4rem;
+    }
+    img {
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+        border: 1px solid #dedcde;
+    }
+}
+
+.plus-add-image-block {
+    border: 1px solid #dedcde;
+    border-radius: 7px;
+    padding: 0 0.25rem;
+    position: relative;
+    i.fa-plus {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 2rem;
+    }
+}
+
+.large-add-image-block {
+    border: 1px solid #dedcde;
+    border-radius: 7px;
+    display: table !important;
+    height: 15vh;
+    float: none;
+    p {
+        text-align: center;
+        display: table-cell;
+        vertical-align: middle;
+        color: #525053;
+    }
+}
+
+.place-holder {
+    height: 200px;
+    width: 100% !important;
+}
+
+.costom_padding_bottom {
+    margin-bottom: 70px;
+}
+
+.picks-div {
+    .col {
+        display: block;
+    }
+    .top-heading {
+        display: table-cell;
+        vertical-align: middle;
+        font-size: 1.4rem;
+        font-weight: bold;
+        padding-top: unset;
+        padding-bottom: unset;
+    }
+    .top-location {
+        vertical-align: middle;
+        float: right;
+        text-align: right;
+        font-size: 12px;
+    }
+}
+
+.link {
+    font-size: 16px;
+    color: #696969;
+    i {
+        font-size: 30px !important;
+        color: #696969;
+        vertical-align: middle;
+    }
+}
+
+.dlvr-text-input {
+    background-color: unset !important;
+}
+
+.dlvr-input-text-options {
+    // border: 1px solid #dedcde;
+    border-radius: 7px;
+    margin-bottom: 10px;
+    display:flex;
+    flex-wrap: wrap;
+}
+
+.dlvr-input-radio {
+    background-color: unset !important;
+    border: 1px solid #dedcde;
+    border-radius: 7px;
+    margin-bottom: 10px;
+}
+
+.dlvr-select-input {
+    display: block !important;
+    border: none !important;
+    border-radius: 5px !important;
+    background-color: unset !important;
+    padding: 0px 10px !important;
+    box-sizing: border-box !important;
+}
+
+.dlvr-select-input:focus {
+    border: unset !important;
+}
+
+.dlvr-modal {
+    padding: 0 20px;
+}
+
+.dlvr-modal .bottom-sheet {
+    min-height: 98vh;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.dlvr-modal .bottom-sheet .modal-footer {
+    margin-top: 36px;
+}
+
+.dlvr-modal .bottom-sheet .modal-header {
+    i {
+        font-size: 20px;
+        transform: translate(10px, 20px);
+    }
+}
+.dlvr-uikit-btn{
+    width: 100% !important;
+}
+
+.dlvr-modal .bottom-sheet .modal-content .category-box {
+    margin-bottom: 15px;
+    .category-items {
+        padding: 10px 0 0 0;
+    }
+}
+
+.dlvr-modal-btn-wrapper {
+    text-align: center;
+}
+
+.dlvr-modal-btn-wrapper button {
+    display: block;
+    margin: 0 auto;
+    margin-top: 12px;
+    min-width: 100%;
+}
+
+.dlvr-category-options {
+    border: 1px solid #dedcde;
+    border-radius: 7px;
+    margin-bottom: 10px;
+    height: 3rem;
+    line-height: 2 !important;
+}
+
+#textarea1 {
+    border: 1px solid #dedcde;
+    border-radius: 7px;
+    margin-bottom: 10px;
+    min-height: 110px;
+    padding: 7px;
+}
+
+.unset-float-left {
+    float: unset !important;
+}
+
+div.scrollmenu .eachitem {
+    display: inline-block !important;
+    height: 15vh;
+    float: none;
+    vertical-align: middle;
+}
+
+ul.collection.more-option-list-view {
+    margin: 0;
+}
+
+.overflow-y-auto{
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.custom-chips{
+    margin-bottom: 200px;
+}
+
+.center{
+    margin-left: 70px;
+}
+.select-interface-option {
+    color: red;
+  }
+
+  .margin-left{
+      margin-right: 20px;
+  }
+.wrap{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.has-focus.sc-ion-input-md-h {
+    border-color:none;
+}
+//   tag-input{
+//       width: 206%;
+//   }

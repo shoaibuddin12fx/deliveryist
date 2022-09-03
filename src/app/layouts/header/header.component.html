@@ -1,0 +1,89 @@
+<div class="dlvr-nav">
+    <div class="navbar-fixed" [ngClass]="isIos ? 'custom-header-style' : ''">
+        <nav>
+            <div class="nav-wrapper">
+                <a class="brand-logo">
+                    <img src="../../../assets/images/logo_full.svg" alt="logo full" class="dlvr-header-logo"
+                        *ngIf="!showBackButton && !headerTitle" (click)="goToDashboard()" />
+                    <img src="../../../assets/images/delivery_profile_icon.png" alt="logo full"
+                        class="dlvr-header-logo dlvr-header-logo-small" *ngIf="currentRole == 'Consumer'"
+                        (click)="goToDashboard()" />
+                    <img src="../../../assets/images/delivery_profile_icon_green.png" alt="logo full"
+                        class="dlvr-header-logo dlvr-header-logo-small" *ngIf="currentRole == 'Driver'"
+                        (click)="goToDashboard()" />
+                    <img src="../../../assets/images/market_place.png" alt="logo full"
+                        class="dlvr-header-logo dlvr-header-logo-small" *ngIf="currentRole == 'marketPlace'"
+                        (click)="goToMarketPalace()" />
+                </a>
+                <span *ngIf="headerTitle" [ngClass]="showBackButton ? 'hasBackBtn' : 'noBackBtn' ">
+                    <!-- <i class="icon-arrow-left" (click)="goBack()" *ngIf="showBackButton"></i> -->
+                    <span *ngIf="showHeaderTitle" style="margin-left: 35px;">
+                        {{ username ? username : '' }}
+                    </span>
+                    <span *ngIf="!showHeaderTitle" style="margin-left: -33px;">
+                        {{ headerTitle ? headerTitle : '' }}
+                    </span>
+                    <span style="color: #ccc; position: absolute; left: 5px; bottom: 18px; line-height: 0;"
+                        *ngIf="userRole == 'Consumer'"></span>
+                    <span style="color: #ccc; position: absolute; left: 4px; bottom: 18px; line-height: 0;"
+                        *ngIf="userRole == 'Driver'">To Drive</span>
+                    <span style="color: #ccc; position: absolute; left: 4px; bottom: 18px; line-height: 0;"
+                        *ngIf="userRole == 'marketPlace'">To Buy/Sell</span>
+                    <ion-icon size="small" style=" position: absolute;
+                    left: 5px;
+                    top: 20px;
+                    line-height: 0;
+                    height: 28px !important;
+                    color: green;
+                    width: 25px !important;" name="chevron-back-outline" (click)="goBack()" *ngIf="showBackButton">
+                    </ion-icon>
+                </span>
+                <a data-target="mobile-demo" class="dlvr-hamburger sidenav-trigger right" (click)="goToUserSelection()">
+                    <i class="material-icons">home</i></a>
+                <a data-target="mobile-demo" class="dlvr-hamburger sidenav-trigger right" (click)="goTosettings()">
+                    <i class="material-icons-outlined">settings</i></a>
+                <a data-target="mobile-demo" class="dlvr-hamburger sidenav-trigger right" (click)="goToMarketPalace()">
+                    <i class="material-icons-outlined">local_mall</i></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a (click)="goTosettings()" [class.active-blue]=" path == 'settings' "
+                            [class.active-green]="path == 'driverSetting'"><i
+                                class="material-icons-outlined">settings</i></a></li>
+                    <li><a [class.active-blue]=" path == 'market' " [class.active-green]="path == 'market'"
+                            *ngIf="currentRole != 'Consumer'"><i class="material-icons-outlined">local_mall</i></a></li>
+                    <li><a><i class="material-icons-outlined">favorite_border</i></a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+
+
+
+
+
+<!-- <div class="dlvr-nav"> 
+    <div class="navbar-fixed"> 
+        <nav>
+            <div class="nav-wrapper"> 
+                <a class="brand-logo">
+                    <img src="../../../assets/images/logo_full.svg" alt="logo full" class="dlvr-header-logo" *ngIf="!showBackButton && !headerTitle" (click)="goToDashboard()" />
+                    <img src="../../../assets/images/logo.svg" alt="logo full" class="dlvr-header-logo dlvr-header-logo-small" *ngIf="!showBackButton && headerTitle" (click)="goToDashboard()"/>
+                </a>
+                <i class="icon-arrow-left" (click)="goBack()" *ngIf="showBackButton"></i>
+                <span *ngIf="headerTitle">{{ headerTitle?.length > 0 ? headerTitle : '' }}</span> 
+                <a data-target="mobile-demo" class="dlvr-hamburger sidenav-trigger right" >
+                    <i class="material-icons-outlined">local_mall</i></a>
+                <a data-target="mobile-demo" class="dlvr-hamburger sidenav-trigger right" (click)="goTosettings()">
+                    <i class="material-icons-outlined">settings</i></a>
+                <!-- <a data-target="mobile-demo" class="dlvr-hamburger sidenav-trigger right" (click)="routeTo('/marketplace')">
+                        <i class="material-icons-outlined">shopping_cart</i></a>
+                <a data-target="mobile-demo" class="dlvr-hamburger sidenav-trigger right" (click)="routeTo('/marketplace')">
+                        <i class="material-icons-outlined">chat</i></a> -->
+<!-- <ul class="right hide-on-med-and-down">
+                    <li><a (click)="goTosettings()" [class.active-blue]=" path == 'settings' " [class.active-green]="path == 'driverSetting'"><i class="material-icons-outlined">settings</i></a></li>
+                    <li><a [class.active-blue]=" path == 'market' " [class.active-green]="path == 'market'"><i class="material-icons-outlined">local_mall</i></a></li>
+                </ul>
+            </div>
+        </nav> 
+    </div> 
+</div> -->

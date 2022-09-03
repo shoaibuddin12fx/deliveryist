@@ -1,0 +1,54 @@
+<app-header [headerTitle]="'Order Delivery History'" [showBackButton]="true"></app-header>
+<ion-content>
+<div class="dlvr-job-list ">
+    <div class="container">
+        <div class="row">
+            <div class="col s11 margin-bottom" *ngFor="let jobs of jobsList; let i=index">
+                <div class="dlvr-job-card-new" data-aos="fade-up">
+                    <div class="dlvr-order-confirmed-block">
+                        <ul class="collection left-align">
+                            <li class="collection-item avatar">
+                                <div class="circle">
+                                    <img [src]="jobs?.poster_profile_pic" alt="user">
+                                </div>
+                                <label class="dlvr-uikit-badge dlvr-uikit-badge-boxed dlvr-uikit-badge-green" *ngIf="jobs.status == 'Delivered'" style="margin-left: 60%; margin-bottom: 6%;">
+                                    {{ jobs.status }}
+                                </label>
+                                <p class="title">
+                                    {{ jobs.title }}
+                                    <span class="amount">${{ jobs.amount }}</span>
+                                </p>
+                                <!-- <p><i class="material-icons-outlined f-s-17 m-r-5">star</i> <b>{{jobs.rating}}</b> </p> -->
+                                <label class="dlvr-uikit-badge dlvr-uikit-badge-boxed"
+                                    *ngIf="jobs.status != 'Delivered'"
+                                    [ngClass]=" jobs.jobLabel =='Immediate' ? 'dlvr-uikit-badge-red' : 'dlvr-uikit-badge-green' ">
+                                    {{ jobs.jobLabel }}
+                                </label>
+                            </li>
+                        </ul>
+                        <div class="location">
+                            <ul class="collection">
+                                <li class="collection-item dlvr-job-address">{{ jobs.sourceAddress }}</li>
+                                <li class="collection-item dlvr-job-address">{{ jobs.destinationAddress }}</li>
+                            </ul>
+                            <img src="../../../../assets/images/inner-location.png" alt="location pin"
+                                class="location-img">
+                        </div>
+                    </div>
+                    <div class="accept-btn" (click)="goForRating(jobs)" *ngIf="!jobs.driverReviewed">
+                        Ratings & Review
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf="jobsList?.length == 0">
+            <div class="col s11">
+                <div class="dlvr-jobPost-noPost">
+                    <i class="fa fa-archive fa-5x"></i>
+                    <h3>You haven't any delivery order.</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</ion-content>

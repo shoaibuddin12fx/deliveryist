@@ -1,0 +1,58 @@
+@import "../../../../../node_modules/materialize-css/dist/css/materialize.css";
+.grey-bg-container {
+    background-color: rgb(240, 240, 240);
+    padding: 26px 16px;
+    overflow: hidden;
+}
+.wallet-tab-wrapper .tabs {
+    border-radius: 50px;
+    border: 1px solid #ccc;
+    margin-top: 16px;
+}
+.wallet-tab-wrapper .tabs .middle {
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+}
+.small {
+    font-size: 18px;
+    font-weight: 600;
+}
+.wallet-tab-wrapper .tabs .tab a {
+    background-color: rgb(238, 238, 238);
+    color: #888;
+    font-weight: 600;
+}
+.wallet-tab-wrapper .tabs .tab a.active {
+    background-color: #fff;
+    color: #26bae8;
+    border-bottom: none;
+}
+.wallet-tab-wrapper .collection {
+    border: 0;
+}
+.wallet-tab-wrapper .collection .collection-item.avatar {
+    padding-left: 42px;
+    border: none;
+    background-color: #eee;
+    margin-bottom: 8px;
+    border-radius: 12px;
+    min-height: unset;
+}
+.wallet-tab-wrapper .plus {
+    color: green;
+}
+.wallet-tab-wrapper .minus {
+    color: red;
+}
+.wallet-tab-wrapper .collection .collection-item.avatar:not(.circle-clipper) > .circle {
+    max-width: 20px;
+    max-height: 20px;
+}
+
+.overflow {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.wallet-btn {
+    width: 90%;
+}

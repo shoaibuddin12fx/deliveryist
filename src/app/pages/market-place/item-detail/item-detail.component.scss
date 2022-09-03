@@ -1,0 +1,128 @@
+@import "../../../../../node_modules/materialize-css/dist/css/materialize.css";
+@import "../../../../assets/scss/dlvr-ui-kit.scss";
+@import "../../../../theme/variables.scss";
+@import "../../../../assets/scss/custom-variables.scss";
+@import "../market-place.component.scss";
+.container {
+  padding: 0;
+  margin-top: -26px;
+}
+.back-arrow {
+  position: absolute;
+  color: #58909e;
+  left: 4px;
+  top: 11px;
+  bottom: 25px;
+  line-height: 0;
+  width: 24px;
+}
+.scroll-bar-indicator {
+  display: none;
+}
+.image-container {
+  position: relative;
+  margin-top: -76px !important;
+}
+.img {
+  margin-top: -20%;
+}
+#myCarousel {
+  height: unset;
+}
+.product-name {
+  background: white;
+  width: 100%;
+  // height: 7vh;
+  border-bottom-left-radius: 21px;
+  border-bottom-right-radius: 21px;
+  box-shadow: 0px 1px #00000000;
+  overflow: overlay;
+  position: absolute;
+  /* margin-top: -7px; */
+  // top: 1px;
+  z-index: 9px;
+  z-index: 1;
+}
+.p-name {
+  margin-left: 39px;
+  font-weight: 500;
+  font-size: 16px;
+  margin-top: 17px;
+}
+.text-primary {
+  color: #337ab7;
+}
+h5 {
+  font-weight: 700;
+}
+.msg-wrapper {
+  background-color: #f5ebd4;
+  border-radius: 18px;
+  padding: 8px 16px;
+  max-height: 90px;
+}
+.msg-input-wrapper {
+  position: relative;
+}
+.msg-input-wrapper {
+  position: relative;
+  margin-top: 16px;
+}
+.msg-input-wrapper input {
+  border-radius: 50px;
+  background-color: #fff;
+  padding: 2px 16px;
+  color: #3e3e3e;
+  max-width: 90%;
+}
+.msg-input-wrapper i {
+  position: absolute;
+  right: 0px;
+  font-style: inherit;
+  top: 0px;
+  border-radius: 77px;
+  background-color: #fc8f28;
+  padding: 14px 23px;
+  color: #fff;
+  font-weight: 900;
+  bottom: 21px;
+}
+.msg-text-icon {
+  vertical-align: middle;
+  font-size: 15px;
+  color: #fc8f28;
+}
+.couter-box {
+  margin-top: 24px;
+}
+.couter-box a.material-icons {
+  background-color: #ccc;
+  border-radius: 12px;
+}
+.product-tag {
+  border-radius: 50px;
+  padding: 3px 9px;
+  color: #337ab7;
+  background-color: #c7d4e0;
+  font-weight: 600;
+  margin-right: 4px;
+  margin-bottom: 6px;
+}
+.collection.with-header {
+  border: 0;
+}
+.chat-my-msg {
+  border-radius: 50px;
+  background-color: rgb(242 153 74 / 0.1);
+  padding: 6px 14px 6px 20px;
+  margin-bottom: 8px;
+  max-width: 75%;
+}
+.bottom-sticky-btn {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 5;
+  padding-top: 14px;
+  padding-bottom: 8px;
+}

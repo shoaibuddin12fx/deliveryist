@@ -1,0 +1,58 @@
+<div class="dlvr-consumer-wrapper">
+    <app-cart-header [showBackButton]="true" [showCart]="true" [showFilters]="true" [title]="'All Products'">
+    </app-cart-header>
+</div>
+<div class="progress" *ngIf="loading">
+    <div class="indeterminate"></div>
+</div>
+
+<div [hidden]="loading" class="container">
+
+    <div class="row" [hidden]="!showFilter">
+
+        <div class="input-field col s6">
+            <input type="text" class="searchbox" placeholder="Search Products" name="searchText" [(ngModel)]="searchText">
+            <label>Search</label>
+        </div>
+
+        <div class="input-field col s6">
+            <input id="price_min" type="number" class="validate" [(ngModel)]="price_min">
+            <label for="price_min">Minimuim Price</label>
+        </div>
+        <div class="input-field col s6">
+            <input id="price_max" type="number" class="validate" [(ngModel)]="price_max">
+            <label for="price_max">Maximum Price</label>
+        </div>
+        <div class="dlvr-modal-btn-wrapper" style="text-align: center;">
+            <button class="dlvr-uikit-btn dlvr-uikit-btn-rounded dlvr-uikit-btn-green" (click)="loadProductsWithFilters()">Set Filter</button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col s12 s12">
+            <h3>{{title}}</h3>
+        </div>
+    </div>
+
+    <div class="row" *ngIf="products?.length == 0">
+        <div class="col s12 m12">
+            <p>No Relavent Products found</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col s6 m6 products-item" *ngFor="let item of products | filter: searchText : ['name']">
+            <app-product-item [item]="item" (showDetail)="itemDetailPage(item)">
+            </app-product-item>
+        </div>
+    </div>
+
+    <div class="row" infinite-scroll [infiniteScrollDistance]=0 [infiniteScrollThrottle]="1000" (scrolled)="loadMoreProducts()">
+    </div>
+
+    <!-- <div class="spinner">
+        <ngx-spinner bdOpacity=0.9 bdColor="#f4f4f9" size="medium" color="#1a6bc3" type="ball-clip-rotate-multiple"
+            [fullScreen]="false">
+        </ngx-spinner>
+    </div> -->
+</div>

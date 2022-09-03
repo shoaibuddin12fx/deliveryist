@@ -1,0 +1,114 @@
+<!-- <div class="dlvr-consumer-wrapper">
+    <app-cart-header [showBackButton]="true" [showCart]="true" [showLike]="true" [isLike]="isFav" (toggleLike)="toggleLike($event)"></app-cart-header>
+</div> -->
+<!-- <app-header [headerTitle]="item?.name" [showBackButton]="true"></app-header> -->
+<div class="progress" *ngIf="loading">
+    <div class="indeterminate"></div>
+</div>
+<ion-header collapse="fade" class="product-name">
+    <ion-toolbar>
+        <ion-icon size="large" class="back-arrow" name="chevron-back-outline" (click)="goBack()"></ion-icon>
+        <h5 class="p-name">{{item?.name}}</h5>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+
+    <!-- <div class="container"></div> -->
+    <div class="img">
+        <app-product-slider [ImageObjs]="imageObject"></app-product-slider>
+    </div>
+
+    <!-- <div class="product-name">
+        <ion-icon size="large"
+            style=" position: absolute; color:89bdc3; left: 4px; top:11px; bottom: 25px; line-height: 0;"
+            name="chevron-back-outline" (click)="goBack()"></ion-icon>
+        <h5 class="p-name"></h5>
+    </div> -->
+    <div class="row" [hidden]="loading">
+        <!-- <ng-image-slider imageSize="{width: '20%', height: '20%'}" [images]="imageObject" #nav></ng-image-slider> -->
+
+        <div class="col s12 m12">
+            <h5 class="m-t-10 m-b-0 m-l-10">{{item?.name}}</h5>
+            <p class="text-primary m-b-0 m-l-10"><small>{{ item?.category_name }}</small></p>
+            <h5 class="m-t-10 m-b-0 m-l-10">{{item?.price | currency}}</h5>
+            <p class="text-muted m-l-10"><small>{{item?.created_at}}{{mapService.location_block}}</small></p>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <div class="chatbox">
+
+                    <ul>
+                        <!-- <li>Send a message to seller</li> -->
+                        <li *ngFor="let message of messages" [innerHTML]="message" class="chat-my-msg"></li>
+                    </ul>
+
+                </div>
+                <div class="msg-wrapper">
+                    <p class="m-t-10 m-b-0"><i class="material-icons m-r-5 m-l-10 msg-text-icon">message</i> <b>Send
+                            a
+                            message to seller</b></p>
+                    <div class="msg-input-wrapper">
+                        <input type="text" placeholder="Hi, i'm interested." [(ngModel)]="input_message">
+                        <i (click)="chatWithVendor($event)">Send</i>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- <div class="row m-t-20">
+            <div class="col s4 m4"></div>
+            <div class="col s4 m4">
+                <div class="qty-container">
+                    <app-qty-counter [qty]="item?.qty" (qtyChange)="item.qty = $event" class=""></app-qty-counter>
+                </div>
+            </div>
+            <div class="col s4 m4"></div>
+        </div> -->
+        <div class="bottom-sticky-btn white">
+            <div class="col s12 m12">
+                <button class="dlvr-uikit-btn dlvr-uikit-btn-orange btn-full-width"
+                    style="font-weight:900 !important; background:#fc8f28 !important;" type="button"
+                    (click)="onAddToCart($event)">Buy Now</button>
+            </div>
+        </div>
+        <div class="m-t-20">
+            <div class="col s12">
+                <ul class="collection with-header" style="margin-left: -10px;">
+                    <li class="collection-item p-l-20">
+                        <h5 class="m-0">Product Details</h5>
+                    </li>
+                    <li class="collection-item p-l-20"><b>Condition</b><span
+                            class="right">{{item?.condition_name}}</span></li>
+                    <li class="collection-item p-l-20"><b>Brand</b><span class="right">{{ item?.brand }}</span></li>
+                    <li class="collection-item p-l-20"><b>Size</b><span class="right">{{ item?.vehicle_name}}</span>
+                    </li>
+                    <li class=""><b></b><span class=""></span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="m-t-20">
+            <div class="col s12 m12 p-20">
+                <h5 class="m-t-0 m-b-10">Description</h5>
+                <p class="m-t-0 m-b-10">{{item?.description}}</p>
+            </div>
+        </div>
+        <hr>
+        <div class="col s12 m-l-10" style="margin-bottom: 95px;">
+            <h5 class="m-t-0 m-b-10 ">Tags</h5>
+            <span class="product-tag" *ngFor="let lbl of extra_labels">{{lbl}}</span>
+        </div>
+        <hr>
+        <!-- <div class="row">
+            <div class="col s12 m12">
+                <div class="chatbox">
+                    <ul>
+                        <li>Send a message to seller</li>
+                        <li *ngFor="let message of messages" [innerHTML]="message"></li>
+                    </ul>
+                </div>
+                <input type="text" id="input_message" name="input_message" [(ngModel)]="input_message" />
+                <button class=" waves-light btn btn-full-width btn-large dlvr-btn dlvr-white-btn m-t-10" type="button" (click)="chatWithVendor($event)">Chat With Person</button>
+            </div>
+        </div> -->
+    </div>
+</ion-content>

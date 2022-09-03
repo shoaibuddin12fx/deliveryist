@@ -1,0 +1,85 @@
+@import "../../../../../node_modules/materialize-css/dist/css/materialize.css";
+@import "../../../../assets/scss/dlvr-ui-kit.scss";
+.dlvr-consumer-wrapper {
+    padding: 0 30px;
+    margin-bottom: 500px;
+}
+.dlvr-consumer-wrapper .title {
+    font-size: 23px;
+    margin-top: 24px;
+    font-weight: 700;
+    margin-bottom: 24px;
+}
+.dlvr-title-subtext {
+    color: rgb(20, 20, 20);
+}
+.dlvr-uikit-input {
+    letter-spacing: normal !important;
+    font-weight: 700;
+    color: #414141 !important;
+    margin-bottom: -6px !important;
+}
+.dlvr-instruction {
+    margin: 8px 0 0 0;
+    border: none;
+}
+.dlvr-instruction .collection-item.avatar {
+    background-color: #eff3f7;
+    border-radius: 8px;
+    color: #484848;
+    padding-left: 54px;
+    min-height: 30px;
+    text-align: center;
+}
+.collection.dlvr-instruction .collection-item.avatar:not(.circle-clipper) > .circle {
+    width: 20px;
+    background: none;
+    color: #484848;
+    position: absolute;
+    top: 7px;
+    left: 55px;
+}
+.collection.dlvr-instruction .collection-item.avatar .title {
+    font-size: 16px;
+    font-weight: 700;
+    vertical-align: middle;
+    line-height: 35px;
+}
+.collection.dlvr-instruction .collection-item.avatar p {
+    margin-bottom: 0;
+}
+// @media (max-width: 500px){
+.dlvr-uikit-btn.verify {
+    position: fixed;
+    left: 50%;
+    bottom: 20px;
+    width: 50% !important;
+    background-color: #369f52 !important;
+    transform: translate(-50%, 0);
+}
+// }
+.tittle {
+    font-weight: bold;
+    margin-top: 25px;
+    font-size: 23px;
+}
+.dlvr-driver-select {
+    letter-spacing: normal !important;
+    font-weight: 700;
+    color: #678385 !important;
+    background-color: #e9f0f2 !important;
+    height: 36px;
+    font-size: 16px;
+    border-radius: 7px;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 84%;
+    padding-right: 11px;
+}
+.collection-item {
+    background-color: #e9f0f2 !important;
+    height: 36px;
+    border-radius: 7px;
+    margin-left: 11px !important;
+    margin-right: 10px !important;
+}

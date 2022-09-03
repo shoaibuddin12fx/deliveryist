@@ -1,0 +1,67 @@
+@import '../../../../../node_modules/materialize-css/dist/css/materialize.css';
+@import '../../../../theme/variables.scss';
+@import '../../../../assets/scss/dlvr-ui-kit.scss';
+@import '../../../../assets/scss/custom-variables.scss';
+#map {
+  width: 100%;
+}
+
+.map-container {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.overflow-hidden{
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.container {
+  padding-left: 16px;
+  padding-right: 8px;
+  width: fit-content;
+}
+
+.apply-button {
+  font-family: "Roboto";
+  font-weight: 700;
+  height: 42px;
+}
+
+strong {
+  font-weight: 700;
+  font-size: 21px;
+  font-family: "Roboto";
+  color: #000000;
+}
+
+.radio1 {
+  margin: 0px;
+  margin-top: 10px;
+}
+
+.radio2 {
+  margin: 0px;
+}
+
+.searchbox {
+  border-bottom: unset;
+  background-color: rgb(204, 204, 204, 12%) !important;
+  /* margin: 5px !important; */
+  padding: 2px 0px !important;
+  /* width: 100% !important; */
+  border-radius: 25px !important;
+  height: 40px !important;
+  padding-right: 20px !important;
+  padding-left: 20px !important;
+  width: calc(100% - 40px) !important;
+}
+
+.center{
+  margin-left: 80px;
+}
+
+.left{
+  margin-right: 25px;
+}

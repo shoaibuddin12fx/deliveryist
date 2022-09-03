@@ -1,0 +1,135 @@
+<app-header style="height: 55px;" [headerTitle]="'Orders'" [showBackButton]="true"></app-header>
+<ion-content>
+    <div class="dlvr-consumer-wrapper">
+        <!-- <div class="dlvr-job-filter" *ngIf="!filterActive">
+            <i class="material-icons-outlined" (click)="openFilter();">tune</i>
+        </div> -->
+        <div class="dlvr-job-list">
+            <div class="container">
+                <div class="row">
+                    <div class="col s12 margin-bottom" *ngFor="let jobs of jobsList; let i=index">
+                        <div class="dlvr-job-card-new" data-aos="fade-up">
+                            <div class="dlvr-order-confirmed-block">
+
+                                <ul class="collection left-align">
+                                    <li class="collection-item avatar">
+                                        <div class="circle">
+                                            <img src="{{jobs?.poster_profile_pic}}" alt="user">
+                                        </div>
+                                        <p class="title poster_name">
+                                            {{ jobs.poster_name }}
+                                            <span class="amount">${{ jobs.amount }}</span>
+                                        </p>
+                                        <p><i class="material-icons-outlined f-s-17 m-r-5">star</i>
+                                            <b>{{jobs.rating}}</b>
+                                        </p>
+                                    </li>
+                                </ul>
+
+                                <div class="location">
+
+                                    <ion-card fullscreen>
+                                        <ion-card-content>
+                                            <ul class="collection">
+                                                <li class="collection-item dlvr-job-address line-break">{{
+                                                    jobs.sourceAddress
+                                                    }}</li>
+                                                <li class="collection-item dlvr-job-address ">{{
+                                                    jobs.destinationAddress }}</li>
+                                            </ul>
+                                            <img src="../../../../assets/images/inner-location.png" alt="location pin"
+                                                class="location-img">
+                                        </ion-card-content>
+                                    </ion-card>
+                                </div>
+                            </div>
+                            <div class="accept-btn" (click)="goToJobDetail(jobs)">
+                                Accept
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" *ngIf="jobsList?.length == 0">
+                    <div class="col s11">
+                        <div class="dlvr-jobPost-noPost">
+                            <i class="fa fa-archive fa-5x"></i>
+                            <h3>You haven't any delivery order.</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ion-content>
+<!-- <app-header [headerTitle]="'Orders'" [showBackButton]="false"></app-header>
+<div class="dlvr-consumer-wrapper">
+    <div class="dlvr-job-filter">
+        <i class="material-icons-outlined" (click)="openFilter();">tune</i>
+    </div> 
+    <div class="dlvr-job-list">
+        <div class="container">
+            <div class="row" *ngIf="jobsList?.length > 0">
+                <div class="col s12 l6" *ngFor="let jobs of jobsList; let i=index">
+
+                    <div class="dlvr-uikit-card dlvr-uikit-card-stripe-left m-b-10" data-aos="fade-up"
+                        [ngClass]="jobs.jobLabel =='Immediate' ? 'dlvr-uikit-card-stripe-red' : 'dlvr-uikit-card-stripe-green'">
+                        <label class="dlvr-uikit-badge dlvr-uikit-badge-boxed"
+                            [ngClass]=" jobs.jobLabel =='Immediate' ? 'dlvr-uikit-badge-red' : 'dlvr-uikit-badge-green' ">
+                            {{ jobs.jobLabel }}
+                        </label>
+                        <div class="dlvr-uikit-card-body">
+                            <h5 class="m-t-0 m-b-20">{{ jobs.title }}</h5>
+                            <p class="dlvr-uikit-card-text">
+                                <i class="material-icons-outlined">place</i> {{ jobs.sourceAddress }}
+                            </p>
+                            <p class="dlvr-uikit-card-text">
+                                <i class="material-icons-outlined">home</i> {{ jobs.destinationAddress }}
+                            </p>
+                        </div>
+                        <div class="dlvr-uikit-card-footer">
+                            <p class="left">Amount: ${{ jobs.amount }}</p>
+                            <button 
+                                class="dlvr-uikit-btn dlvr-uikit-btn-small dlvr-uikit-btn-rounded dlvr-uikit-btn-green right"
+                                type="button" (click)="goToJobDetail(jobs)">
+                                Accept Delivery</button> 
+                        </div> 
+                    </div>
+                </div>
+            </div>
+            <div class="row" *ngIf="jobsList?.length == 0">
+                <div class="col s12">
+                    <div class="dlvr-jobPost-noPost" data-aos="fade-up">
+                        <i class="fa fa-archive fa-5x"></i>
+                        <h3>You haven't any delivery order.</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="dlvr-add-job-btn">
+        <div class="dlvr-addNewJob-toolTip">My Orders</div>
+        <button class="btn-floating btn-large dlvr-uikit-btn-green" (click)="goToMyJob()"><i
+                class="material-icons f-s-25">list</i></button>
+    </div>
+</div> -->
+
+<!-- <div class="dlvr-modal dlvr-forgetPassword-modal" materialize> 
+    <div id="modal1" class="modal bottom-sheet" materialize="modal" [materializeParams]="[{dismissible: true}]" [materializeActions]="modalActions">
+        <div class="modal-footer"> 
+            <h5 class="left-align">Meters</h5>
+            <p class="range-field">
+                <input type="range" class="dlvr-range" id="test5" min="0" max="100" [(ngModel)]="filterDistance"/>
+            </p>
+            <h5 class="left-align">Car Type</h5>
+            <div class="left-align m-b-40">
+                <label class="dlvr-uikit-checkbox dlvr-uikit-checkbox-green dlvr-uikit-checkbox-large" *ngFor="let type of filterCarType">
+                    <input type="checkbox" class="filled-in" [checked]="type.isSelected" (change)="changeFilterCarType($event, type.name)" />
+                    <span>{{type.name}}</span>
+                </label> 
+            </div>
+            <div class="dlvr-modal-btn-wrapper m-r-40">  
+                <button class="dlvr-uikit-btn dlvr-uikit-btn-rounded dlvr-uikit-btn-green" (click)="filterData()" [disabled]="!filterCarType && !filterDistance">Filter</button>
+            </div> 
+        </div>
+    </div>  
+  </div>  -->

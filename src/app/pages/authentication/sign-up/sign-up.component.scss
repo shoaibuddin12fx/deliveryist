@@ -1,0 +1,326 @@
+@import "../../../../theme/variables.scss";
+@import "../../../../assets/scss/custom-variables.scss";
+@import "../../../../assets/scss/dlvr-ui-kit.scss";
+@import "../../../../../node_modules/materialize-css/dist/css/materialize.css";
+// .dlvr-login-wrapper {}
+.dlvr-login-wrapper h2 {
+  font-size: 27px !important;
+  font-weight: 900;
+}
+.spinner-large {
+  width: 10px;
+  height: 10px;
+}
+ion-select {
+  background-color: #545454 !important;
+}
+.detail-text h3 {
+  font-weight: 600;
+
+  font-size: 28px;
+}
+.detail-text p {
+  font-size: 12px;
+}
+.dlvr-login-header {
+  margin-top: 1rem;
+}
+.dlvr-logo-wrapper {
+  max-width: 55px;
+}
+.dlvr-input-text-options {
+  position: relative;
+  // margin-left: -21px !important;
+}
+.dlvr-input-text-options-1 {
+  position: relative;
+  margin-left: -21px !important;
+}
+.dlvr-input-i {
+  position: absolute;
+  right: 10px;
+  top: 4px;
+  font-size: 1.5rem;
+  padding: 1px 6px;
+  border-radius: 50px;
+  border: 1px solid $primary-color;
+  color: $primary-color;
+}
+
+.dlvr-login-divider {
+  border-bottom: 2px solid $primary-color;
+  position: relative;
+  margin: 2rem 0 1.5rem;
+}
+.dlvr-login-divider p {
+  position: absolute;
+  margin: 0;
+  line-height: 1;
+  background-color: #fff;
+  z-index: 1;
+  top: -11px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  padding: 5px 24px;
+  font-weight: 900;
+  color: $primary-color;
+}
+// .otp-inputs {
+//   margin-right: -4px !important;
+// }
+
+.otp-input {
+  width: 52px !important;
+  height: 50px !important;
+  border: none;
+  background: rgb(233, 240, 242);
+  border-radius: 6px;
+  margin-left: 8px !important;
+}
+
+.wrapper .otp-input {
+  margin-right: 0px !important;
+}
+.dlvr-login-footer {
+  text-align: center;
+  margin-top: 30px;
+}
+.dlvr-register-btn-wrapper button img {
+  max-width: 22px;
+  vertical-align: middle;
+  margin-right: 16px;
+}
+.dlvr-signup-address {
+  color: $primary-color;
+}
+.dlvr-modal-btn-wrapper {
+  text-align: center;
+}
+.dlvr-modal-btn-wrapper button {
+  display: block;
+  margin: 0 auto;
+  margin-top: 12px;
+  min-width: 290px;
+}
+.dlvr-modal .modal.bottom-sheet {
+  min-height: 150px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+.dlvr-forgetPassword-modal input {
+  text-align: center;
+  max-width: 290px;
+}
+@media (min-width: 767px) {
+  .dlvr-login-wrapper {
+    max-width: 460px;
+    min-width: 400px;
+    box-shadow: $shadow-light;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 8px;
+    padding: 1em;
+  }
+}
+@media (min-height: 650px) {
+  .dlvr-login-header {
+    margin-top: 2rem;
+  }
+}
+@media (min-width: 1024px) {
+  .dlvr-logo-wrapper {
+    margin-top: 14px;
+    max-width: 42px;
+  }
+  .dlvr-login-header {
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+  .dlvr-login-wrapper h2 {
+    text-align: right;
+    margin-top: 24px;
+  }
+}
+.dlvr-radio {
+  margin: 8px 10px 0px 5px;
+  min-width: 100px;
+  background-color: #fff;
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+  overflow: hidden;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  vertical-align: middle;
+  z-index: 1;
+  -webkit-transition: 0.3s ease-out;
+  transition: 0.3s ease-out;
+  border-radius: 10px;
+  padding: 8px 0px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+}
+
+// .progress-title{
+//     font-size: 16px;
+//     font-weight: 600;
+//     letter-spacing: 0.7px;
+//     color: #414141;
+//     text-transform: uppercase;
+//     margin: 10px 0 5px;
+// }
+
+.dlvr-bg-img {
+  position: relative;
+}
+.dlvr-bg-img .icon {
+  max-width: 50px;
+  position: absolute;
+  left: 50%;
+  bottom: 0px;
+  transform: translate(-50%, 0);
+}
+
+.dlvr-bg-img-secure {
+  position: relative;
+}
+.dlvr-bg-img-secure .icon {
+  max-width: 65px;
+  position: absolute;
+  left: 50%;
+  bottom: -4px;
+  transform: translate(-50%, 0);
+}
+
+.dlvr-login-wrapper h2 {
+  margin-top: 16px;
+  margin-bottom: 10px;
+  font-size: 22px;
+  color: #484848;
+}
+.dlvr-title-subtext {
+  font-size: 12px;
+  color: #747474;
+  margin-bottom: 12px;
+}
+.dlvr-mobile-country-code {
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  background-color: #26bae8 !important;
+  color: #fff !important;
+  border: 0 !important;
+  font-size: 15px !important;
+}
+.dlvr-mobile-number {
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  font-weight: 700 !important;
+  color: #414141 !important;
+  padding-right: 10px !important;
+  font-size: 15px !important;
+}
+.dlvr-signup-first .dlvr-input-text-options.input-field .prefix {
+  right: 30px;
+  top: 40% !important;
+}
+
+.dlvr-forgot-password {
+  text-align: center;
+  margin: 6px 0 17px;
+}
+.dlvr-forgot-password a {
+  color: #a3b5b6;
+  font-size: 13px;
+  text-decoration: underline;
+}
+.dlvr-uikit-input {
+  letter-spacing: -0.75px !important;
+}
+.dlvr-uikit-input.otp {
+  padding-left: 0 !important;
+  text-align: center;
+  font-weight: 700;
+  color: #414141 !important;
+}
+.dlvr-signup-add-wrapper {
+  max-height: 200px;
+  overflow-y: auto;
+}
+.dlvr-having-trouble-popup .modal.bottom-sheet {
+  max-height: 65%;
+  min-height: 245px;
+}
+.dlvr-having-trouble-popup .modal .modal-footer {
+  padding: 0;
+}
+.dlvr-hving-trouble-popup-list {
+  text-align: center;
+  margin: 0;
+}
+.dlvr-hving-trouble-popup-list li {
+  margin: 0;
+  border-bottom: 1px solid #d2d2d2;
+  padding: 15px 0;
+}
+.dlvr-hving-trouble-popup-list li.first {
+  margin: 0;
+  padding: 8px 0;
+  font-weight: 700;
+  font-size: 17px;
+  background-color: #e5f3f1;
+}
+.dlvr-hving-trouble-popup-list li:last-child {
+  border: none;
+}
+.dlvr-hving-trouble-popup-list li a {
+  padding: 6px 12px;
+  font-size: 16px;
+  color: #414141;
+}
+.dlvr-hving-trouble-popup-list li .endLine {
+  width: 100px;
+  height: 5px;
+  border-radius: 60px;
+  background-color: #bdbdbd;
+  margin: 0 auto;
+}
+@media (max-width: 600px) {
+  .dlvr-login-wrapper {
+    padding: 0 10px;
+    height: 100vh;
+    overflow: hidden;
+  }
+  // .dlvr-signup-form{
+  //     height: 100vh;
+  // }
+  .dlvr-signup-first {
+    height: 70vh;
+  }
+  .dlvr-uikit-btn.verify {
+    position: fixed;
+    left: 50%;
+    bottom: 20px;
+    width: 90% !important;
+    transform: translate(-50%, 0);
+  }
+  .dlvr-signup-add-wrapper {
+    max-height: 50vh;
+    overflow-y: auto;
+  }
+
+  .decrease-otp-size {
+    padding-left: 30%;
+  }
+}
+.otp-inputs {
+  width: 53px !important;
+  height: 54px !important;
+  border: none !important;
+  background: rgb(233, 240, 242) !important;
+  border-radius: 6px !important;
+  // margin-left: 9px !important;
+}

@@ -1,0 +1,23 @@
+<div class="dlvr-consumer-wrapper">
+    <app-cart-header [showBackButton]="true" [title]="'Categories'"></app-cart-header>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div *ngFor="let cat_index of categories" class="category-box">
+            <ul class="collection more-option-list-view" *ngFor="let item of cat_index  | keyvalue">
+
+                <li class="collection-item collection-header">
+                    <h4>{{item.key}}</h4>
+                </li>
+
+                <li class="collection-item" *ngFor="let cat of item.value" (click)="goToCategory(cat)">
+                    <!-- (click)="setCategory(cat)" -->
+                    <span class="title">{{cat.name}}</span>
+                </li>
+
+            </ul>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,151 @@
+<!-- <div class="dlvr-consumer-wrapper">
+    <app-cart-header [showBackButton]="true"></app-cart-header>
+</div> -->
+<app-header [headerTitle]="'New Listing'" [showBackButton]="true"></app-header>
+<ion-content>
+    <div class="container">
+
+        <div class="row scrollmenu" *ngIf="urls.length != 0">
+            <div class="eachitem col s3 m3 image-item" *ngFor="let url of urls;index as i">
+                <i *ngIf="url.selected || url.uploaded" class="icon-close" (click)="justDelete(i)"></i>
+                <img class="obj-image" [src]="url.link">
+            </div>
+            <div class="eachitem col s4 m4 plus-add-image-block" *ngIf="urls.length < 5" (click)="openFile()">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+            </div>
+        </div>
+        <div class="row" *ngIf="urls.length == 0">
+            <div class="col s12 m12 large-add-image-block dlvr-uikit-input dlvr-uikit-input-grey m-b-0"
+                style="min-height: 90px;" (click)="openFile()">
+                <p><i class="fa fa-file-image-o" aria-hidden="true"></i> Add Photos</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m12">
+                <p style="margin-top: 10px;">Photos {{urls.length}} / 10 - You can upload up to 10 photos </p>
+            </div>
+        </div>
+
+        <form [formGroup]="aForm" (ngSubmit)="onSubmit()">
+
+            <div class="row">
+
+                <div class="dlvr-input-text-options">
+                    <input type="text" class="dlvr-uikit-input dlvr-uikit-input-black m-b-0" placeholder="Title"
+                        formControlName="name">
+                    <p class="errorMessage" *ngIf="!aForm.get('name').valid && aForm.get('name').touched">Please enter
+                        title.</p>
+                </div>
+
+                <div class="dlvr-input-text-options">
+                    <input type="number" class="dlvr-uikit-input dlvr-uikit-input-black m-b-0" placeholder="Price"
+                        formControlName="price">
+                    <p class="errorMessage" *ngIf="!aForm.get('price').valid && aForm.get('price').touched">Please enter
+                        price.</p>
+                </div>
+
+                <!-- <div class="dlvr-category-options dlvr-uikit-input dlvr-uikit-input-black" (click)="openModal('category')">
+                <div class="dlvr-text-input p-0" [ngClass]="{'disabled': selectedCategory == -1}">{{category}}</div>
+            </div> -->
+                <ion-select [interfaceOptions]="{cssClass: 'interface-options'}"
+                    class="dlvr-category-options dlvr-uikit-input dlvr-uikit-input-black" okText="Okay"
+                    cancelText="Dismiss" interface="action-sheet" placeholder="Categories"
+                    (ionChange)="onChangeCategory($event)">
+                    <ion-select-option *ngFor="let item of categories" [value]="item">{{item['name']}}
+                    </ion-select-option>
+                </ion-select>
+
+                <!-- <div class="dlvr-category-options dlvr-uikit-input dlvr-uikit-input-black" (click)="openModal('condition')">
+                <div class="dlvr-text-input p-0" [ngClass]="{'disabled': selectedCondition == -1}">{{condition}}</div>
+            </div> -->
+                <ion-select [interfaceOptions]="{cssClass: 'interface-options'}"
+                    class="dlvr-category-options dlvr-uikit-input dlvr-uikit-input-black" okText="Okay"
+                    cancelText="Dismiss" interface="action-sheet" placeholder="Conditions"
+                    (ionChange)="onChangeCondition($event)">
+                    <ion-select-option *ngFor="let item of conditions" [value]="item">{{item['name']}}
+                    </ion-select-option>
+                </ion-select>
+
+                <div class="dlvr-input-text-options">
+                    <input type="text" class="dlvr-uikit-input dlvr-uikit-input-black m-b-0" placeholder="Brand"
+                        formControlName="brand">
+                    <p class="errorMessage" *ngIf="!aForm.get('brand').valid && aForm.get('brand').touched">Please enter
+                        brand.</p>
+                </div>
+
+                <!-- <div class="dlvr-category-options dlvr-uikit-input dlvr-uikit-input-black" (click)="openModal('size')">
+                <div class="dlvr-text-input p-0" [ngClass]="{'disabled': selectedSize == -1}">{{vehiclesize}}</div>
+            </div> -->
+
+                <ion-select [interfaceOptions]="{cssClass: 'interface-options'}"
+                    class="dlvr-category-options dlvr-uikit-input dlvr-uikit-input-black" okText="Okay"
+                    cancelText="Dismiss" interface="action-sheet" placeholder="Vehicles"
+                    (ionChange)="onChangeVehicles($event)">
+                    <ion-select-option *ngFor="let item of vehicleSizes" [value]="item.id">{{item['name']}}
+                    </ion-select-option>
+                </ion-select>
+                <div class="">
+                    <textarea id="textarea1" class="materialize-textarea dlvr-uikit-input dlvr-uikit-input-grey m-b-0"
+                        placeholder="Description" formControlName="description" data-length="120"></textarea>
+                    <p class="errorMessage" *ngIf="!aForm.get('description').valid && aForm.get('description').touched">
+                        Please enter description.
+                    </p>
+                </div>
+                <div class="row">
+                    <div class="col s12 m10">
+                        <p style="margin-left: 20px;">Description must contain more then 10 words </p>
+                    </div>
+                </div>
+
+                <input type="hidden" formControlName="latitude" name="latitude" />
+                <input type="hidden" formControlName="longitude" name="longitude" />
+
+                <div>
+                    <input formControlName="extra_labels" class="dlvr-uikit-input dlvr-uikit-input-grey m-b-0"
+                        placeholder="Product Tags" (keyup.space)="addTags()" />
+                </div>
+                <div *ngIf="tags.length != 0">
+                    <ion-chip *ngFor="let tag of tags">
+                        <ion-icon name="close-outline" (click)="deleteTag(tag)"></ion-icon>
+                        <ion-label>{{tag}}</ion-label>
+                    </ion-chip>
+                </div>
+                <!-- <input #input type="text" class="chips tag-chips dlvr-uikit-input dlvr-uikit-input-grey m-0" (keyup.space)="onSpace(input.value)" formControlName="extra_labels"/>
+                    <div class="custom-chips row">
+            <div class="col col-12" *ngFor="let tags of tags">
+                <ion-chip class="chips tag-chips dlvr-uikit-input dlvr-uikit-input-grey m-0">{{tags}}</ion-chip>
+            </div> -->
+
+                <div class="col s12 m12 p-0">
+                    <span [hidden]="!productSaved" style="color: green; text-align: center;">Product Saved</span>
+                    <button class="dlvr-uikit-btn dlvr-uikit-btn-orange m-t-10" type="submit"
+                        name="action">Submit</button>
+                </div>
+
+
+                <input type="file" id="image" style="display: none;" #fileupload
+                    accept="image/x-png,image/gif,image/jpeg" multiple="true" class="fileupload" name="fileupload"
+                    (change)="onSelectFile($event)" />
+            </div>
+        </form>
+        <!-- Model Start -->
+    </div>
+    <!-- <div class="dlvr-modal">
+
+    <div id="modal1" class="modal bottom-sheet" materialize="modal" [materializeParams]="[{dismissible: false}]" [materializeActions]="modalActions">
+        <div class="modal-header p-0">
+            <i class="fa fa-close" (click)="closeModal()"></i>
+            <h3 class="text-center">{{modal_header}}</h3>
+        </div>
+        
+        <ul class="collection more-option-list-view">
+
+            <li *ngFor="let item of modal_options" (click)="setModalOption(item)" class="collection-item collection-header">
+                <h4>{{item['name']}}</h4>
+            </li>
+
+        </ul>
+
+    </div>
+</div> -->
+</ion-content>

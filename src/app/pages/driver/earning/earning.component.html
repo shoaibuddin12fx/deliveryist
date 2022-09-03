@@ -1,0 +1,142 @@
+<app-header [headerTitle]="'Wallet'" [showBackButton]="true"></app-header>
+<!-- Gray Box -->
+<div>
+  <div class="row wallet-tab-wrapper">
+    <div class="col s12">
+      <ul class="tabs">
+        <li class="tab col s3"><a [ngClass]="{'active' : todayTab }" (click)="changeRecordsType('today')">Today</a></li>
+        <li class="tab col s3 middle"><a [ngClass]="{'active' : weeklyTab }"
+            (click)="changeRecordsType('weekly')">Weekly</a></li>
+        <li class="tab col s4"><a [ngClass]="{'active' : monthlyTab }"
+            (click)="changeRecordsType('monthly')">Monthly</a></li>
+        <li class="tab col s3 middle"><a [ngClass]="{'active' : yearlyTab }"
+            (click)="changeRecordsType('yearly')">Yearly</a></li>
+      </ul>
+    </div>
+  </div>
+  <ion-item style="width: 95%; margin:8px auto;" class="ion-no-padding ion-no-margin">
+
+    <div class="container ">
+      <div class="row">
+        <div class="col s7">
+          <h3 class="text-muted m-0 small">Total Earning</h3>
+        </div>
+        <div class="col s5 text-right">
+          <!-- <h3 class="m-0 float-left">Total Earning</h3> -->
+          <h3 class="m-0 float-right small"> ${{totalEarning}}</h3>
+        </div>
+      </div>
+    </div>
+
+  </ion-item>
+  <!-- <hr class="m-l-20 m-r-20"> -->
+</div>
+
+<!--  Tab View -->
+<ion-content>
+  <div class="container m-t-5 p-0">
+    <div class="row wallet-tab-wrapper">
+
+      <div class="chart-box">
+        <img src="../../../../assets/images/setting/pie-chart.png" class="pie-chart" />
+
+      </div>
+
+      <div id="test1" class="col s12 p-0">
+        <ul class="collection">
+          <div class="col s12 p-0">
+            <table>
+              <tr class="table-head">
+                <th style="background-color: #f0c90b; color: #fff; text-align: center;">Time</th>
+                <th style="background-color: #fa8408; color: #fff; text-align: center;">Distance</th>
+                <th style="background-color: #e52006; color: #fff; text-align: center;">Amount</th>
+              </tr>
+              <tr *ngFor="let earning of earningsData">
+                <td style="background-color: #fdf3bd; color: #000; text-align: center;">{{earning.time_taken}}</td>
+                <td style="background-color: #f9dfc4; color: #000; text-align: center;">{{earning.distance}}</td>
+                <td style="background-color: #f0d5d0; color: #000; text-align: center;">{{earning.amount}}</td>
+              </tr>
+            </table>
+          </div>
+        </ul>
+      </div>
+      <!-- <div id="test2" class="col s12 p-0">
+        <ul class="collection">
+          <div class="col s12 p-0">
+            <table>
+              <tr>
+                <th style="background-color: #f0c90b; color: #fff; text-align: center;">Time</th>
+                <th style="background-color: #fa8408; color: #fff; text-align: center;">Distance</th>
+                <th style="background-color: #e52006; color: #fff; text-align: center;">Amount</th>
+              </tr>
+              <tr *ngFor="let earning of earningsData">
+                <td style="background-color: #fdf3bd; color: #000; text-align: center;">{{earning.time_taken}}</td>
+                <td style="background-color: #f9dfc4; color: #000; text-align: center;">{{earning.distance}}</td>
+                <td style="background-color: #f0d5d0; color: #000; text-align: center;">{{earning.amount}}</td>
+              </tr>
+            </table>
+          </div>
+        </ul>
+      </div>
+      <div id="test3" class="col s12 p-0">
+        <ul class="collection">
+          <div class="col s12 p-0">
+            <table>
+              <tr>
+                <th style="background-color: #f0c90b; color: #fff; text-align: center;">Time</th>
+                <th style="background-color: #fa8408; color: #fff; text-align: center;">Distance</th>
+                <th style="background-color: #e52006; color: #fff; text-align: center;">Amount</th>
+              </tr>
+              <tr *ngFor="let earning of earningsData">
+                <td style="background-color: #fdf3bd; color: #000; text-align: center;">{{earning.time_taken}}</td>
+                <td style="background-color: #f9dfc4; color: #000; text-align: center;">{{earning.distance}}</td>
+                <td style="background-color: #f0d5d0; color: #000; text-align: center;">{{earning.amount}}</td>
+              </tr>
+            </table>
+          </div>
+        </ul>
+      </div>
+      <div id="test4" class="col s12 p-0">
+        <ul class="collection">
+          <div class="col s12 p-0">
+            <table>
+              <tr>
+                <th style="background-color: #f0c90b; color: #fff; text-align: center;">Time</th>
+                <th style="background-color: #fa8408; color: #fff; text-align: center;">Distance</th>
+                <th style="background-color: #e52006; color: #fff; text-align: center;">Amount</th>
+              </tr>
+              <tr *ngFor="let earning of earningsData">
+                <td style="background-color: #fdf3bd; color: #000; text-align: center;">{{earning.time_taken}}</td>
+                <td style="background-color: #f9dfc4; color: #000; text-align: center;">{{earning.distance}}</td>
+                <td style="background-color: #f0d5d0; color: #000; text-align: center;">{{earning.amount}}</td>
+              </tr>
+            </table>
+          </div>
+        </ul>
+      </div> -->
+    </div>
+
+    <div class="foot">
+
+      <div class="row">
+        <div class="col s6 p-l-30">
+          <span>Completed</span>
+        </div>
+        <div class="col s6 p-l-30">
+          <span>My Profile Rating</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s6 p-l-30">
+          <b>{{completed_job}}</b>
+        </div>
+        <div class="col s6 p-l-30">
+          <i class="material-icons-round">star</i>
+          <b>{{ratings}}</b>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</ion-content>

@@ -1,0 +1,40 @@
+@import '../../../theme/variables.scss' ;
+@import '../../../assets/scss/custom-variables.scss';
+@import '../../../assets/scss/dlvr-ui-kit.scss';
+@import '../../../../node_modules/materialize-css/dist/css/materialize.css';
+.dlvr-contact-screen-wrapper{
+    margin-bottom: 60px;
+}
+.card.dlvr-card.dlvr-supprt-card h2{ 
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 1.25px;
+}
+.card.dlvr-card.dlvr-supprt-card h2,
+.card.dlvr-card.dlvr-supprt-card p{
+    margin: 0;
+    margin-left: 56px;
+} 
+.card.dlvr-card.dlvr-supprt-card i{
+    color: $uikit-Blue-color;
+}
+.card.dlvr-card.dlvr-supprt-card p{
+    margin-top: 4px;
+    font-size: 12px;
+    line-height: 14px; 
+    letter-spacing: 0.4px; 
+    color: #000000; 
+    opacity: 0.5;
+}
+.card.dlvr-card.dlvr-supprt-card i{
+    font-size: 32px;
+    position: absolute;
+    left: 16px; 
+}
+.card.dlvr-card.dlvr-contact-address{
+    padding: 20px;;
+}
+.card.dlvr-card.dlvr-contact-address i {
+    color: $light-color2;
+}

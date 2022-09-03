@@ -1,0 +1,174 @@
+@import "../../../../theme/variables.scss";
+@import "../../../../assets/scss/custom-variables.scss";
+@import "../../../../assets/scss/dlvr-ui-kit.scss";
+@import "../../../../../node_modules/materialize-css/dist/css/materialize.css";
+.dlvr-login-wrapper {
+  padding-top: 30%;
+}
+.dlvr-login-wrapper h2 {
+  font-size: 22px;
+  font-weight: 900;
+}
+.dlvr-login-header {
+  margin-top: 1rem;
+}
+.dlvr-logo-wrapper {
+  text-align: center;
+}
+.dlvr-logo-wrapper img {
+  max-width: 136px;
+}
+.dlvr-login-header h2 {
+  margin-top: 0;
+  font-size: 22px;
+  text-align: center;
+  color: #484848;
+}
+.dlvr-input-text-options {
+  position: relative;
+}
+.dlvr-input-i {
+  position: absolute;
+  right: 10px;
+  top: 4px;
+  font-size: 1.5rem;
+  padding: 1px 6px;
+  border-radius: 50px;
+  border: 1px solid $primary-color;
+  color: $primary-color;
+}
+
+.dlvr-login-divider {
+  border-bottom: 2px solid $primary-color;
+  position: relative;
+  margin: 4rem 0 1.5rem;
+}
+.dlvr-login-divider p {
+  position: absolute;
+  margin: 0;
+  line-height: 1;
+  background-color: #fff;
+  z-index: 1;
+  top: -11px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  padding: 5px 24px;
+  font-weight: 900;
+  color: $primary-color;
+}
+.dlvr-login-footer {
+  text-align: center;
+  font-size: 11px;
+  color: #a3b5b6;
+}
+.dlvr-login-footer p {
+  margin-top: 16px;
+}
+.dlvr-register-btn-wrapper button img {
+  max-width: 22px;
+  vertical-align: middle;
+  margin-right: 16px;
+}
+.dlvr-forgot-password {
+  text-align: center;
+  margin: 6px 0 17px;
+}
+.col {
+  width: 67.333333%;
+  margin-left: 11px;
+  left: auto;
+  right: auto;
+}
+.dlvr-forgot-password a {
+  color: #a3b5b6;
+  font-size: 13px;
+  text-decoration: underline;
+}
+@media (min-width: 767px) {
+  .dlvr-login-wrapper {
+    max-width: 460px;
+    min-width: 400px;
+    box-shadow: $shadow-light;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 8px;
+    padding: 1em;
+  }
+}
+@media (min-height: 650px) {
+  .dlvr-login-header {
+    margin-top: 2rem;
+  }
+}
+@media (min-width: 1024px) {
+  .dlvr-logo-wrapper {
+    margin-top: 14px;
+    // max-width: 42px;
+  }
+  .dlvr-login-header {
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+  // .dlvr-login-wrapper h2 {
+  //     text-align: right;
+  //     margin-top: 24px;
+  // }
+}
+@media (max-width: 600px) {
+}
+
+@media (max-height: 823px) {
+  .dlvr-login-wrapper::before {
+    top: -148px;
+  }
+}
+@media (max-height: 736px) {
+  .dlvr-login-wrapper::before {
+    top: -107px;
+  }
+}
+@media (max-height: 667px) {
+  .dlvr-login-wrapper::before {
+    top: -75px;
+  }
+}
+@media (max-height: 640px) {
+  .dlvr-login-wrapper::before {
+    top: -60px;
+  }
+  .dlvr-login-wrapper {
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    padding: 0 10px;
+  }
+  .dlvr-login-wrapper::before {
+    content: "";
+    position: absolute;
+    background: #e9f0f2; /* Old browsers */
+    background: -moz-linear-gradient(top, #e9f0f2 0%, #ffffff 29%, #ffffff 90%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #e9f0f2 0%, #ffffff 29%, #ffffff 90%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(
+      to bottom,
+      #e9f0f2 0%,
+      #ffffff 29%,
+      #ffffff 90%
+    ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e9f0f2', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+    background-repeat: no-repeat;
+    height: 285px;
+    width: 100%;
+    top: -57px;
+    left: 0;
+    z-index: -1;
+  }
+}
+.spinner {
+  width: 10px;
+  height: 10px;
+  font-weight: 900;
+}

@@ -1,0 +1,40 @@
+@import '../../../theme/variables.scss' ;
+.dlvr-footer-wrapper{
+    position: fixed;
+    bottom: 0;
+    background: #fff;
+    // box-shadow: $shadow-light;
+    width: 100%;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;   
+    z-index: 12;
+}
+.dlvr-footer-nav ul {
+    margin: 0;
+}
+.dlvr-footer-nav ul li{
+    display: inline-block; 
+    padding: 0;
+} 
+.dlvr-footer-nav ul li a {
+    cursor: pointer; 
+    padding: 13px 26px;
+}
+.dlvr-footer-nav ul li a i{
+    //  color: $light-color2;
+     font-size: 24px;
+}
+.dlvr-footer-nav ul li a.active i{
+    // color: $primary-color;
+}
+@media(min-width: 1025px){ 
+    .dlvr-footer-wrapper{ 
+        width: 40%; 
+        left: 50%;
+        transform: translate(-50%, 0);
+        background-color: #f3faff;
+    }  
+    .dlvr-footer-nav ul li a { 
+        padding: 13px 39px;
+    }
+}

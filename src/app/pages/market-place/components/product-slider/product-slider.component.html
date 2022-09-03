@@ -1,0 +1,28 @@
+<ion-slides pager="true" [options]="slideOpts" #slideWithNav  (ionSlideDidChange)="SlideDidChange(sliderOne,slideWithNav)">
+    <ion-slide *ngFor="let item of ImageObjs">
+        <img class="img-height-width-position" [src]="item.firebase_url" >
+     </ion-slide>
+ </ion-slides>
+<!-- <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" *ngFor="let item of ImageObjs" data-slide-to="0" class="active"></li>
+    </ol>
+
+    
+    <div class="carousel-inner">
+        <div class="carousel-item active" *ngFor="let item of ImageObjs">
+            <img [src]="item.image" alt="Los Angeles" style="width:100%;">
+        </div>
+    </div>
+
+     
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div> -->

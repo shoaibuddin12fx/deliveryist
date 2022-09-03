@@ -1,0 +1,252 @@
+<div class="header-wrapper" [ngClass]="isIos ? 'custom-header-style' : ''">
+    <div class="header">
+        <div class="row">
+            <div class="col s5 p-r-0">
+                <div class="name">
+                    <p class="title">{{track[0]?.receiver_name}}</p>
+                    <a href="javascript:void(0)" (click)="openDetail()">Order Details</a>
+                </div>
+            </div>
+            <div class="col s7">
+                <div class="dlvr-contact-costomer-btn-wrapper">
+                    <a class="call" href="tel:{{track[0]?.poster_contact}}">
+                        <i class="material-icons">local_phone</i>
+                    </a>
+                    <a class="chat">
+                        <i class="material-icons">message</i>
+                    </a>
+                    <a class="help" (click)="openHelp()">
+                        <i class="material-icons">help_outline</i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="dlvr-order-confirmed-block">
+        <ul class="collection left-align">
+            <li class="collection-item avatar">
+                <div class="circle">
+                    <img src="../../../../assets/images/detail-pickup-add.png" alt="user">
+                </div>
+                <p class="title" *ngIf="track[0]?.status == 'Accepted'" style="font-size: 12px !important;">Pick Up
+                    Address</p>
+                <p class="text" *ngIf="track[0]?.status == 'Accepted'">{{track[0].job_address}}</p>
+                <p class="text" *ngIf="track[0]?.status == 'Accepted'">{{track[0].source_address_appartment}}</p>
+                <p class="title f-s-5" *ngIf="track[0]?.status == 'Received'">Delivery Address</p>
+                <p class="text" *ngIf="track[0]?.status == 'Received'">{{track[0].delivery_address}}</p>
+                <p class="text" *ngIf="track[0]?.status == 'Received'">{{ track[0].delivery_address_appartment }}</p>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="dlvr-trackPackage-map-wrapper">
+    <!-- <agm-map [latitude]="lat" [longitude]="lng" width="600" frameborder="0" allowfullscreen="" class="dlvr-map"> -->
+    <!-- <agm-map [latitude]="lat" [longitude]="lng" width="600" frameborder="0" allowfullscreen="" class="dlvr-map">
+        <agm-direction [origin]="origin" [destination]="destination" *ngIf="origin && destination"
+            [renderOptions]="renderOptions" [markerOptions]="markerOptions" (onResponse)="onResponse($event)">
+        </agm-direction>
+    </agm-map> -->
+    <agm-map [zoom]="13" [latitude]="currLat" [longitude]="currLng" class="dlvr-map">
+        <agm-marker maxZoom="100" imagePath="markerOptions.origin.icon">
+            <agm-marker markerOptions="markerOptions.origin.icon" [latitude]="currLat" [longitude]="currLng"
+                [iconUrl]="markerOptions.origin.icon" [visible]="true" iconHeight="10px" iconWidth="10px">
+            </agm-marker>
+        </agm-marker>
+        <agm-marker maxZoom="13" [latitude]="destinationLat" [longitude]="destinationLng">
+        </agm-marker>
+        <!-- <agm-polyline [visible]="true" [strokeWeight]="3" [strokeColor]="'#07b57a'">
+            <agm-polyline-point *ngFor="let coordinate of latlng; let i=index" [latitude]="coordinate[0]"
+                [longitude]="coordinate[1]">
+
+            </agm-polyline-point>
+            <agm-direction [origin]="origin1" [destination]="destination1"></agm-direction>
+        </agm-polyline> -->
+    </agm-map>
+</div>
+<div class="dlvr-get-started-btn" (click)="track[0]?.status == 'Accepted' ? openModel('modal1') : openModel('modal2')">
+    {{ track[0]?.status == 'Accepted' ? 'On the way' : 'Loaded & Delivery Started'}}
+    <i class="fa fa-angle-right"></i>
+    <i class="fa fa-angle-right" style="margin-left:-2px"></i>
+    <i class="fa fa-angle-right" style="margin-left:-2px"></i>
+</div>
+
+<!--ORDER DETAILS-->
+
+<div class="dlvr-modal dlvr instruction-modal" [hidden]=ishidden>
+    <div id="instruction" class="white">
+        <div class="modal-content">
+            <h3 class="modal-title">
+                Order details
+                <i class="material-icons-outlined right cancel-btn" (click)="closeDetail()">cancel</i>
+            </h3>
+            <div class="dlvr-order-confirmed-block">
+                <ul class="collection left-align">
+                    <li class="collection-item avatar">
+                        <p class="details-title" style="padding: 0px !important;">Pickup Address</p>
+                        <p class="text">{{ track[0]?.job_address}}</p>
+                        <p class="details-title">Delivery Address</p>
+                        <p class="text">{{ track[0]?.delivery_address}}</p>
+                        <p class="details-title">Package Catageory</p>
+                        <p class="text">{{ track[0]?.item_category}}</p>
+                        <p class="details-title">Vehical Type</p>
+                        <p class="text">{{ track[0]?.package_size}}</p>
+                        <p class="details-title">Deilvery Type</p>
+                        <p class="text">{{ track[0]?.priority}} - {{track[0]?.expected_delivery_time ?
+                            expected_delivery_time : "N/A" }}</p>
+                        <p class="details-title">Instruction</p>
+                        <p class="text">"No Contact Deilvery, Please."</p>
+                        <p class="details-title">Delivery Amount</p>
+                        <p class="text">$ {{ track[0]?.amount}}</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--HELP-->
+<!-- <div class="dlvr-modal dlvr-instruction-modal help" *ngIf="showMyContainer">
+    <div id="help" class="white">
+        <div class="modal-content">
+            <h3 class="modal-title">
+                Help
+                <i class="material-icons-outlined right cancel-btn" (click)="closeHelp()">cancel</i>
+            </h3>
+            <div class="dlvr-order-confirmed-block text-box">
+                <ul class="collection left-align">
+                    <li class="collection-item avatar line">
+                        <p class="title">User not responding</p>
+                        <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, similique
+                            atque! Odio temporibus sapiente optio? Ducimus iste omnis consectetur voluptates vero, sint
+                            corrupti culpa dignissimos eius deserunt laborum explicabo inventore?</p>
+                    </li>
+                    <li class="collection-item avatar line">
+                        <p class="title">Met with accident</p>
+                        <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt animi
+                            eligendi, quis et quisquam voluptatem, quos fuga officiis saepe, voluptas sit tempore
+                            dolorem! Quam debitis incidunt minus, suscipit cum nostrum.</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<!--OTP-->
+<div class="dlvr-modal dlvr-instruction-modal otp">
+    <div id="otp" class="modal white" materialize="modal" [materializeParams]="[{dismissible: true}]"
+        [materializeActions]="modalActions">
+        <div class="modal-content">
+            <div class="img-wrapper">
+                <img src="../../../../assets/images/otp_img.png" alt="otp">
+            </div>
+            <div class="dlvr-order-confirmed-block">
+                <ul class="collection left-align">
+                    <li class="collection-item avatar">
+                        <p class="text">Please enter the <b>OTP</b> which has been given to ({{track[0]?.poster_name}})
+                            {{track[0]?.poster_contact}}</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="otp">
+                <input type="text" [(ngModel)]="security_code">
+            </div>
+            <button class="btn-full-width dlvr-uikit-btn dlvr-uikit-btn-green m-t-20 verify" type="button"
+                (click)="verifySecurityToken()">Confirm</button>
+        </div>
+    </div>
+</div>
+
+<div class="dlvr-modal dlvr-instruction-modal otp">
+    <div id="modal1" class="modal dlvr-payment-success-modal" materialize="modal"
+        [materializeParams]="[{dismissible: true}]" [materializeActions]="modalActions">
+        <div class="modal-content">
+            <div class="center" data-aos="zoom-in">
+                <i class="material-icons-outlined dlvr-warning">info</i>
+            </div>
+            <h3>Have you reached destination and accepted a package?</h3>
+            <div class="row">
+                <div class="col s6">
+                    <button class="btn-full-width dlvr-uikit-btn-small dlvr-uikit-btn dlvr-uikit-btn-green m-t-10 m-r-5"
+                        (click)="changeStatusToReceived('Received')" type="button">Yes</button>
+                </div>
+                <div class="col s6">
+                    <button class="btn-full-width dlvr-uikit-btn-small dlvr-uikit-btn dlvr-uikit-btn-red m-t-10"
+                        (click)="closeModel('modal1')" type="button">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="dlvr-modal dlvr-instruction-modal otp">
+    <div id="modal2" class="modal dlvr-payment-success-modal" materialize="modal"
+        [materializeParams]="[{dismissible: true}]" [materializeActions]="modalActions">
+        <div class="modal-content">
+            <div class="center" data-aos="zoom-in">
+                <i class="material-icons-outlined dlvr-warning">info</i>
+            </div>
+            <h3>Have you reached destination and delivered a package to consumer?</h3>
+            <div class="row">
+                <div class="col s6">
+                    <button class="btn-full-width dlvr-uikit-btn-small dlvr-uikit-btn dlvr-uikit-btn-green m-t-10 m-r-5"
+                        (click)="changeStatusToReceived('Delivered')" type="button">Yes</button>
+                </div>
+                <div class="col s6">
+                    <button class="btn-full-width dlvr-uikit-btn-small dlvr-uikit-btn dlvr-uikit-btn-red m-t-10"
+                        (click)="closeModel('modal1')" type="button">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <app-header [headerTitle]="'Track Package'" [showBackButton]="true"></app-header>
+<div class="dlvr-trackPackage-screen-wrapper">
+    <div class="container"> 
+        <div class="dlvr-progressBar">
+            <div class="dlvr-progress-track"></div>
+            <div id="step1" class="dlvr-progress-step is-active">Package is waiting for you</div>
+            <div id="step2" class="dlvr-progress-step">You're on the way to deliver the package</div>
+            <div id="step3" class="dlvr-progress-step">You've delivered the package</div> 
+        </div>  
+        <div class="dlvr-trackPackage-map-wrapper">
+            <agm-map [latitude]="lat" [longitude]="lng" width="600" frameborder="0" allowfullscreen="" class="dlvr-map">
+                <agm-direction [origin]="origin" [destination]="destination" *ngIf="origin && destination" [renderOptions]="renderOptions" 
+                [markerOptions]="markerOptions" (onResponse)="onResponse($event)">
+                </agm-direction>
+            </agm-map>
+        </div> 
+         <div class="dlvr-trackPackage-controlBtn-wrapper">
+            <div class="container"  data-aos= "fade-up">
+                <div class="row m-b-30">
+                    <div class="col s4">
+                       <div class="dlvr-trackPackage-content">
+                            <i class="material-icons">swap_calls</i>
+                            <p>Distance: {{ totalDistance }}</p>
+                       </div>
+                    </div>
+                    <div class="col s4">
+                        <div class="dlvr-trackPackage-content">
+                            <i class="material-icons">access_time</i>
+                            <p>Duration: {{ totalDuration }}</p>
+                        </div>
+                    </div>
+                    <div class="col s4">
+                        <div class="dlvr-trackPackage-content">
+                             <i class="material-icons">face</i>
+                             <p>Consumer Name: {{ track[0]?.receiver_name}}</p>
+                        </div>
+                     </div>
+                </div>
+                <div class="row" *ngIf=" track[0]?.status != 'Delivered' "> 
+                    <div class="col s12"> 
+                        <a href="tel:{{ track[0]?.receiver_contact}}" class="dlvr-uikit-btn dlvr-uikit-btn-green m-r-5"><i class="fa fa-phone m-r-10"></i>Call Consumer</a>
+                        <button class="dlvr-uikit-btn dlvr-uikit-btn-green m-r-5"><i class="fa fa-comment m-r-10"></i>Message Receiver</button>
+                        <button class="dlvr-uikit-btn dlvr-uikit-btn-green dlvr-uikit-btn-bordered m-0" (click)="viewConsumerDetail(track[0]?.poster_id)"><i class="fa fa-user-circle m-r-10"></i>View Profile</button>
+                    </div>
+                </div> 
+            </div> 
+        </div> 
+    </div>
+</div>  -->

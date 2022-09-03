@@ -1,0 +1,188 @@
+<app-header [headerTitle]="'Settings'" [showBackButton]="true"></app-header>
+<div class="dlvr-paymentMode-screen-wrapper overflow-y">
+    <div class=" p-0">
+        <div class="row" *ngIf="profileData">
+            <div class="col s8 dlvr-profile-wrapper">
+                <h5 style="font-weight:900">{{profileData.full_name}}</h5>
+                <p class="f-s-14 m-0"><i class="material-icons f-s-14" style="color: #51be79;">star</i>
+                    {{profileData.rating}}</p>
+                <button (click)="goToProfile()"
+                    class="mt-2 d-block dlvr-uikit-btn dlvr-uikit-btn-black dlvr-uikit-btn-bordered dlvr-uikit-btn-small"
+                    style="padding: 5px 12px; font-size: 12px; margin-top: 10px; width: 90px;">Edit Profile</button>
+            </div>
+            <div class="col s4">
+                <img src="../../../assets/images/delivery_profile_icon_green.png" alt="profile pic"
+                    class="img-responsive" (click)="goToProfile()" />
+                <!-- <img src="{{profileData.profile_pic}}" alt="profile pic" class="img-responsive" (click)="goToProfile()" *ngIf= "profileData.profile_pic"/> -->
+            </div>
+        </div>
+        <div class="row" data-aos="fade-up">
+            <div class="setting">
+                <div class="dlvr-uikit-list dlvr-uikit-list-media">
+                    <ul>
+                        <li (click)="goToNotification()">
+                            <p class="bg-success">
+                                <img class="m-l-20" src="../../../../assets/images/setting/notification.png">
+                                Notification
+                                <i class="material-icons-outlined dlvr-uikit-list-right-arrow">chevron_right</i>
+                            </p>
+                        </li>
+                        <li (click)="goToWallet()">
+                            <p>
+                                <img class="m-l-20" src="../../../../assets/images/setting/wallet.png">
+                                Wallet
+                                <i class="material-icons-outlined dlvr-uikit-list-right-arrow">chevron_right</i>
+                            </p>
+                        </li>
+                        <li (click)="goToEarning()">
+                            <p class="bg-success">
+                                <img class="m-l-20" src="../../../../assets/images/setting/pie-chart.png">
+                                Earning
+                                <i class="material-icons-outlined dlvr-uikit-list-right-arrow">chevron_right</i>
+                            </p>
+                        </li>
+                        <!-- <li (click)="goToMyJobs()">
+                            <p class="bg-success">
+                                <img class="m-l-20" src="../../../../assets/images/setting/chat-2.png">
+                                My Delivery Orders
+                                <i class="material-icons-outlined dlvr-uikit-list-right-arrow">chevron_right</i>
+                            </p>
+                        </li> -->
+                        <li (click)="goToDeliveryHistory()">
+                            <p>
+                                <img class="m-l-20" src="../../../../assets/images/setting/packing-list.png">
+                                Order History
+                                <i class="material-icons-outlined dlvr-uikit-list-right-arrow">chevron_right</i>
+                            </p>
+                        </li>
+                        <li (click)="goToPayment()">
+                            <p class="bg-success">
+                                <img class="m-l-20" src="../../../../assets/images/setting/secure-payment.png">
+                                Payment Method
+                                <i class="material-icons-outlined dlvr-uikit-list-right-arrow">chevron_right</i>
+                            </p>
+                        </li>
+                        <li (click)="goToHelp()">
+                            <p>
+                                <img class="m-l-20" src="../../../../assets/images/setting/notification.png">
+                                Help
+                                <i class="material-icons-outlined dlvr-uikit-list-right-arrow">chevron_right</i>
+                            </p>
+                        </li>
+
+                        <li (click)="goToReport()">
+                            <p class="bg-success">
+                                <img class="m-l-20" src="../../../../assets/images/setting/report-an-issue.png">
+                                Report an issue
+                                <i class="material-icons-outlined dlvr-uikit-list-right-arrow">chevron_right</i>
+                            </p>
+                        </li>
+                        <li (click)="showLogoutConfirmation()">
+                            <p>
+                                <img class="m-l-20" src="../../../../assets/images/setting/logout.png">
+                                Logout
+                                <i class="material-icons-outlined dlvr-uikit-list-right-arrow">chevron_right</i>
+                            </p>
+                        </li>
+                        <li (click)="showDeleteAccountConfirmation()">
+                            <p class="bg-success">
+                                <img class="m-l-20" src="../../../../assets/images/setting/delete.png">
+                                Delete Account
+                                <i class="material-icons-outlined dlvr-uikit-list-right-arrow">chevron_right</i>
+                            </p>
+                        </li>
+                        <!-- <li (click)="goToVehicleDetails()">
+                            <p>
+                                <img class="m-l-20" src="../../../../assets/images/setting/chat-2.png">
+                                My Vehicle
+                                <i class="material-icons-outlined dlvr-uikit-list-right-arrow">chevron_right</i>
+                            </p>
+                        </li> -->
+                        <!-- <li> 
+                            <p>
+                                <img class="m-l-20" src="../../../../assets/images/setting/secure-payment.png">
+                                Payment Mode
+                                <i class="material-icons-outlined dlvr-uikit-list-right-arrow">chevron_right</i>
+                            </p>
+                        </li> -->
+
+
+                        <!-- <li (click)="goToMyItems()">
+                            <p class="bg-success">
+                                <img class="m-l-20" src="../../../../assets/images/setting/packing-list.png">
+                                Your Listings
+                                <i class="material-icons-outlined dlvr-uikit-list-right-arrow">chevron_right</i>
+                            </p>
+                        </li> -->
+                        <!-- <li (click)="goToChatlist()">
+                            <p>
+                                <img class="m-l-20" src="../../../../assets/images/setting/chat-2.png">
+                                Messages
+                                <i class="material-icons-outlined dlvr-uikit-list-right-arrow">chevron_right</i>
+                            </p>
+                        </li> -->
+                        <!-- <li (click)="goToRoleSelection()">
+                            <p>
+                                <img class="m-l-20" src="../../../../assets/images/setting/secure-payment.png">
+                                Switch My Role
+                                <i class="material-icons-outlined dlvr-uikit-list-right-arrow">chevron_right</i>
+                            </p>
+                        </li> -->
+                        <!-- <li (click)="goToAboutUs()">
+                            <p class="bg-success">
+                                <img class="m-l-20" src="../../../../assets/images/setting/report-an-issue.png">
+                                About Us
+                                <i class="material-icons-outlined dlvr-uikit-list-right-arrow">chevron_right</i>
+                            </p>
+                        </li> -->
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modal1" class="modal dlvr-payment-success-modal">
+    <div class="modal-content">
+        <!-- <div class="center" data-aos="zoom-in">
+            <i class="material-icons-outlined dlvr-warning">info</i>
+        </div> -->
+        <h3>Are you sure you want to logout?</h3>
+        <div class="row">
+            <div class="col s6">
+                <button
+                    class="btn-full-width dlvr-uikit-btn-small dlvr-uikit-btn dlvr-uikit-btn-green dlvr-uikit-btn-bordered m-t-10"
+                    (click)="closeModal('modal1')" type="button">No</button>
+            </div>
+            <div class="col s6">
+                <button
+                    class="btn-full-width dlvr-uikit-btn-small dlvr-uikit-btn dlvr-uikit-btn-green m-t-10 m-r-5 p-l-20"
+                    (click)="logout()" type="button">Logout</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modal2" class="modal dlvr-payment-success-modal">
+    <div class="modal-content">
+        <!-- <div class="center" data-aos="zoom-in">
+            <i class="material-icons-outlined dlvr-warning">info</i>
+        </div> -->
+        <h3>Are you sure?
+            <br>
+            <h6>By Deleting your Deliveryist account, you’re also deleting your order history.</h6>
+        </h3>
+        <div class="row">
+            <div class="col s6">
+                <button class="btn-full-width dlvr-uikit-btn-small dlvr-uikit-btn dlvr-uikit-btn-red m-t-10"
+                    (click)="closeModal('modal2')" type="button">No</button>
+            </div>
+            <div class="col s6">
+                <button
+                    class="btn-full-width dlvr-uikit-btn-small dlvr-uikit-btn dlvr-uikit-btn-green m-t-10 m-r-5 p-l-20"
+                    (click)="deleteAccount()" type="button">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>

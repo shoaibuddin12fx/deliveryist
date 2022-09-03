@@ -1,0 +1,136 @@
+.main-view {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    background: #fff;
+}
+
+.main-page {
+    flex: 1;
+    margin-bottom: 50px;
+    // overflow: auto;
+}
+
+.top-5-tabs {
+    height: 50px;
+    li.tab {
+        height: 50px;
+        width: 20%;
+        line-height: unset;
+    }
+}
+
+a.tab-element {
+    display: column;
+    margin: 0;
+    padding-top: 10px;
+    i {
+        display: block;
+    }
+    span {
+        font-size: 12px;
+    }
+}
+
+.tab a:not(.active) {
+    color: rgba(0, 0, 0, 1) !important
+}
+
+.tab a.active {
+    color: #3b5998 !important;
+    border-top: 2px solid #3b5998;
+}
+
+.tab-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+}
+
+.scrollable {
+    white-space: normal;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+div.scrollmenu {
+    overflow: auto;
+    white-space: nowrap;
+}
+
+div.scrollmenu .eachitem {
+    display: inline-block;
+}
+
+div.scrollmenu .eachitem:hover {
+    background-color: #777;
+}
+
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+
+div.scrollmenu::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* Hide scrollbar for IE and Edge */
+
+div.scrollmenu {
+    -ms-overflow-style: none;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.pad-7 {
+    padding: 7px;
+}
+
+.mr-10px {
+    margin-right: 10px;
+}
+
+.fa-xx {
+    font-size: 1.5em;
+}
+
+.color-black {
+    color: #000;
+}
+
+.color-white {
+    color: #fff;
+}
+
+.search-container {
+    margin: 0;
+    
+    
+    .searchbox {
+        border-bottom: unset;
+        margin-left: 13px;
+        text-align: left;
+        background-color: rgba(141, 141, 141, 0.12) !important;
+        /* margin: 5px !important; */
+        padding: 2px 0px !important;
+        /* width: 100% !important; */
+        border-radius: 25px !important;
+        height: 40px !important;
+        padding-right: 20px !important;
+        padding-left: 20px !important;
+        width: calc(100% - 60px) !important;
+    }
+    .searchicon {
+        position: left;
+        padding: 20px;
+        min-width: 40px;
+    }
+}

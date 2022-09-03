@@ -1,0 +1,40 @@
+@import '../../../../../node_modules/materialize-css/dist/css/materialize.css';
+@import '../../../../theme/variables.scss';
+@import '../../../../assets/scss/dlvr-ui-kit.scss';
+@import '../../../../assets/scss/custom-variables.scss';
+.collection .collection-item {
+    border-radius: 25px;
+    margin-bottom: 10px;
+}
+
+.collection .collection-item.avatar {
+    padding-left: 0px;
+}
+
+.pull-text-right {
+    padding-left: 72px;
+    margin: 0;
+    display: inline-block;
+}
+
+h3 {
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.pull-icon-left {
+    float: left;
+    position: absolute;
+    font-size: 60px;
+}
+
+.right-arrow {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+}
+
+// .chat{
+//     position: relative;
+//     bottom: 520px;
+// }

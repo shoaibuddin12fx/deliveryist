@@ -1,0 +1,60 @@
+@import '../../../../../theme/variables.scss' ;
+@import '../../../../../assets/scss/custom-variables.scss';
+@import '../../../../../assets/scss/dlvr-ui-kit.scss';
+@import '../../../../../../node_modules/materialize-css/dist/css/materialize.css';
+
+.modal-footer{
+    margin-top: 36px;
+}
+
+
+.dlvr-modal-btn-wrapper {
+    text-align: center;
+}
+.dlvr-modal-btn-wrapper button{
+    display: block; 
+    margin: 0 auto;
+    margin-top: 12px;
+    min-width: 30%;
+}
+
+.mediumFont{
+    font-size: medium;
+}
+
+
+.modal-overlay {
+    position: fixed; 
+    width: 100%; 
+    height: 100%; 
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5); 
+    z-index: 2; 
+    cursor: pointer; 
+  }
+
+ .right-margin{
+     margin-right:5% ;
+ }
+
+ .left-padding{
+     padding-left: 3%;
+ }
+
+ .modal-footer{
+     margin-top: 5%;
+     width: 80%;
+     margin-left: 6%;
+ }
+
+ .margin-bottom{
+     margin-bottom: 15%;
+ }
+
+ .blue-header{
+     --background:#4476d3;
+     color:white;
+ }
