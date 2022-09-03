@@ -150,8 +150,18 @@
     content: "";
     position: absolute;
     background: #e9f0f2; /* Old browsers */
-    background: -moz-linear-gradient(top, #e9f0f2 0%, #ffffff 29%, #ffffff 90%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(top, #e9f0f2 0%, #ffffff 29%, #ffffff 90%); /* Chrome10-25,Safari5.1-6 */
+    background: -moz-linear-gradient(
+      top,
+      #e9f0f2 0%,
+      #ffffff 29%,
+      #ffffff 90%
+    ); /* FF3.6-15 */
+    background: -webkit-linear-gradient(
+      top,
+      #e9f0f2 0%,
+      #ffffff 29%,
+      #ffffff 90%
+    ); /* Chrome10-25,Safari5.1-6 */
     background: linear-gradient(
       to bottom,
       #e9f0f2 0%,

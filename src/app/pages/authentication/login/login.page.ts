@@ -1,40 +1,35 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, Injector, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-// import PhoneNumber from 'awesome-phonenumber';
-import { CommonServicesService } from 'src/app/services/common-services.service';
+import { Router } from '@angular/router';
+import { SplashScreen } from '@capacitor/splash-screen';
 import { errorMessages } from 'src/app/helpers/error_messages';
 import { AuthService } from 'src/app/services/authguards/auth.service';
-import { MessagingService } from 'src/app/shared/messaging.service';
-import { SplashScreen } from '@capacitor/splash-screen';
+import { CommonServicesService } from 'src/app/services/common-services.service';
 import { GeolocationsService } from 'src/app/services/_helpers/geolocation.service';
+import { MessagingService } from 'src/app/shared/messaging.service';
+import { BasePage } from '../../base-page/base-page';
 
-declare var google;
-
+declare let google;
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  templateUrl: './login.page.html',
+  styleUrls: ['./login.page.scss'],
 })
-export class LoginComponent implements OnInit {
+export class LoginPage extends BasePage implements OnInit {
   loginForm: FormGroup;
-  loginSuccessful: boolean = false;
+  loginSuccessful = false;
   regionCode = localStorage.getItem('countryCode');
   currLat: any;
   currLng: any;
   currentLocation: string;
+  loading = false;
 
-  constructor(
-    private route: Router,
-    private commonService: CommonServicesService,
-    public geolocation: GeolocationsService,
-    private messagingService: MessagingService,
-    private authService: AuthService
-  ) {
-    if (!localStorage.getItem('introVisited')) {
-      this.route.navigate(['auth/introductionScreen']);
-    }
+  constructor(injector: Injector) {
+    super(injector);
+    this.setupForm();
+  }
 
+  setupForm() {
     // create form
     this.loginForm = new FormGroup({
       email: new FormControl('anupresy@gmail.com', [
@@ -47,17 +42,17 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  async isLoggedIn() {
-    // Go ahead if user already signIn
-    if (localStorage.getItem('currentUser')) {
-      const flag = await this.authService.isAuthenticated();
-      if (flag) {
-        this.goToUserRoleSelection(
-          JSON.parse(localStorage.getItem('currentUser'))
-        );
-      }
-    }
-  }
+  // async isLoggedIn() {
+  //   // Go ahead if user already signIn
+  //   if (localStorage.getItem('currentUser')) {
+  //     const flag = await this.authService.isAuthenticated();
+  //     if (flag) {
+  //       this.goToUserRoleSelection(
+  //         JSON.parse(localStorage.getItem('currentUser'))
+  //       );
+  //     }
+  //   }
+  // }
 
   ngOnInit() {
     SplashScreen.hide();
@@ -65,7 +60,7 @@ export class LoginComponent implements OnInit {
 
   // Go to signUp
   goToSignUp() {
-    this.route.navigate(['auth/signUp']);
+    this.route.navigate(['pages/signUp']);
   }
 
   // After Login button clicked
@@ -96,11 +91,11 @@ export class LoginComponent implements OnInit {
 
   getCurrentLocation() {
     this.geolocation.getCurrentLocationCoordinates().then((v) => {
-      let geocoder = new google.maps.Geocoder();
+      const geocoder = new google.maps.Geocoder();
       this.currLat = v['lat'];
       this.currLng = v['lng'];
-      let latlng = { lat: this.currLat, lng: this.currLng };
-      let that = this;
+      const latlng = { lat: this.currLat, lng: this.currLng };
+      const that = this;
       geocoder.geocode({ location: latlng }, (results, status) => {
         console.log(status);
         if (results[0]) {
@@ -168,12 +163,12 @@ export class LoginComponent implements OnInit {
   goToUserRoleSelection(userData) {
     this.commonService.getUserProfileData().then(async (res) => {
       localStorage.setItem('currentUser', JSON.stringify(userData));
-      this.route.navigate(['auth/userRoleSelection']);
+      this.route.navigate(['pages/userRoleSelection']);
     });
   }
 
   goToMobileVarification(userData) {
-    this.route.navigate(['auth/signUp'], {
+    this.route.navigate(['auth/sign-up'], {
       queryParams: { isSocialLoginInitiated: 'true' },
     });
   }
@@ -185,11 +180,18 @@ export class LoginComponent implements OnInit {
     // this.messagingService.requestPermission();
     // this.goToUserRoleSelection(res);
     // })
-    this.commonService.userLogin(userData).then(async (res) => {
-      this.loginSuccessful = true;
-      // await this.messagingService.requestPermission();
-      this.goToUserRoleSelection(res);
-    });
+    this.loading = true;
+    this.commonService.userLogin(userData).then(
+      async (res) => {
+        this.loginSuccessful = true;
+        this.loading = false;
+        // await this.messagingService.requestPermission();
+        this.goToUserRoleSelection(res);
+      },
+      (error) => {
+        this.loading = false;
+      }
+    );
   }
 
   goToForgotPassword() {

@@ -1,15 +1,12 @@
-import { Component, OnInit, EventEmitter } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Component, EventEmitter, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-// import { MaterializeAction } from 'angular2-materialize';
-import PhoneNumber from 'awesome-phonenumber';
-import { CommonServicesService } from 'src/app/services/common-services.service';
-import { UtilityService } from 'src/app/services/_helpers/utility.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { ModalController, ActionSheetController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/authguards/auth.service';
-import { ActionSheetController, ModalController } from '@ionic/angular';
+import { CommonServicesService } from 'src/app/services/common-services.service';
 import { ModalService } from 'src/app/services/_helpers/modal.service';
+import { UtilityService } from 'src/app/services/_helpers/utility.service';
 import { AutocompletePage } from '../autocomplete/autocomplete.page';
-import { HavingTroubleComponentComponent } from '../having-trouble-component/having-trouble-component.component';
 
 const countries = require('./../../../data/countries.json');
 
@@ -22,11 +19,11 @@ interface Countries {
 
 @Component({
   selector: 'app-sign-up',
-  templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.scss'],
+  templateUrl: './sign-up.page.html',
+  styleUrls: ['./sign-up.page.scss'],
 })
-export class SignUpComponent implements OnInit {
-  modalActions = new EventEmitter<string >(); // | MaterializeAction
+export class SignUpPage implements OnInit {
+  modalActions = new EventEmitter<string>(); // | MaterializeAction
   signupForm: FormGroup;
   aForm: FormGroup;
   displayUserDetail;

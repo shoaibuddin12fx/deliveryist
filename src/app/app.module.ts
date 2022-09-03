@@ -57,7 +57,7 @@ import { OrderCardComponent } from './pages/consumer/consumer-dashboard/order-ca
     // MaterializeModule,
     // TagInputModule,
     // AgmCoreModule.forRoot({
-    //   apiKey: 'AIzaSyBMJa73RYD3-HOwR9ndGWS3SxH9mp4qkJA',
+    //   apiKey: 'L',
     //   libraries: ['places'],
     // }),
     // AgmDirectionModule,

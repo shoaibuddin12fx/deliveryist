@@ -12,7 +12,7 @@ import { GeolocationsService } from './services/_helpers/geolocation.service';
 // import { SplashScreen } from '@capacitor/splash-screen';
 import { FirebaseService } from './services/_helpers/firebase.service';
 
-declare var google;
+// declare var google;
 
 @Component({
   selector: 'app-root',
@@ -44,7 +44,6 @@ export class AppComponent implements OnInit, AfterViewInit {
     //     this.getCurrentLocation();
     //   })
     //   .catch((err) => console.log('Geolocation is not supported', err));
-
     // updates.available.subscribe(event => {
     //   console.log('current version is', event.current);
     //   console.log('available version is', event.available);
@@ -58,7 +57,6 @@ export class AppComponent implements OnInit, AfterViewInit {
     //     updates.activateUpdate().then(() => document.location.reload());
     //   }
     // });
-
     // subscribes to firebase
     // firebaseService.getFCMToken();
     // this.events.subscribe('receivePush', this.receivePush.bind(this));
@@ -107,9 +105,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     //   this.jobId = JSON.parse(res.data.job).job_id;
     //   this.openModel('msg')
     // });
-
     // AOS.init();
-
     // if ('serviceWorker' in navigator) {
     //   let self = this;
     //   // ensure service worker is ready
@@ -119,14 +115,11 @@ export class AppComponent implements OnInit, AfterViewInit {
     //       if (!worker) {
     //         return;
     //       }
-
     //       // PING to service worker, later we will use this ping to identifies our client.
     //       worker.active.postMessage('ping');
-
     //       worker.getNotifications().then((res) => {
     //         console.log('Got notification', res);
     //       });
-
     //       // listening for messages from service worker
     //       navigator.serviceWorker.addEventListener(
     //         'message',

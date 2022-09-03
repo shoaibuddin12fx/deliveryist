@@ -1,8 +1,6 @@
 import { MarketPlaceComponentModule } from './market-place/market-place.component.module';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LoginComponent } from './authentication/login/login.component';
-import { SignUpComponent } from './authentication/sign-up/sign-up.component';
 import { ForgetPasswordComponent } from './authentication/forget-password/forget-password.component';
 import { UserSelectionScreenComponent } from './user-selection-screen/user-selection-screen.component';
 import { ConsumerDashboardComponent } from './consumer/consumer-dashboard/consumer-dashboard.component';
@@ -46,7 +44,7 @@ const routes: Routes = [
   {
     path: '',
     redirectTo: 'splash',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: 'splash',
@@ -56,8 +54,20 @@ const routes: Routes = [
       ),
   },
   { path: 'introductionScreen', component: IntroductionScreensComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'signUp', component: SignUpComponent },
+  {
+    path: 'login',
+    loadChildren: () =>
+      import('./authentication/login/login.module').then(
+        (m) => m.LoginPageModule
+      ),
+  },
+  {
+    path: 'sign-up',
+    loadChildren: () =>
+      import('./authentication/sign-up/sign-up.module').then(
+        (m) => m.SignUpPageModule
+      ),
+  },
   { path: 'forgetPassword', component: ForgetPasswordComponent },
   { path: 'postJob', component: PostJobComponent },
   { path: 'driverDashboard', component: DriverDashboardComponent },
@@ -102,7 +112,6 @@ const routes: Routes = [
   { path: 'wallet', component: WalletComponent },
   { path: 'earning', component: EarningComponent },
 
-
   // {
   //   path: 'autocomplete',
   //   loadChildren: () => import('./autocomplete/autocomplete.module').then( m => m.AutocompletePageModule)
@@ -114,6 +123,7 @@ const routes: Routes = [
         (m) => m.AutocompletePageModule
       ),
   },
+
   // {
   //   path: 'order-detail',
   // },

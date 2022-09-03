@@ -1,14 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PagesRoutingModule } from './pages-routing.module';
-import { LoginComponent } from './authentication/login/login.component';
-import { SignUpComponent } from './authentication/sign-up/sign-up.component';
 import { ForgetPasswordComponent } from './authentication/forget-password/forget-password.component';
 // import { LayoutsModule } from '../layouts/layouts.module';
 import { UserSelectionScreenComponent } from './user-selection-screen/user-selection-screen.component';
 import { ConsumerDashboardComponent } from './consumer/consumer-dashboard/consumer-dashboard.component';
 import { DriverDashboardComponent } from './driver/driver-dashboard/driver-dashboard.component';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { IntroductionScreensComponent } from './introduction-screens/introduction-screens.component';
 import 'materialize-css';
 // import { MaterializeModule } from 'angular2-materialize';
@@ -30,7 +27,6 @@ import { JobListComponent } from './driver/job-list/job-list.component';
 import { DriverRatingsReviewsComponent } from './driver/driver-ratings-reviews/driver-ratings-reviews.component';
 import { TrackPackageComponent } from './driver/track-package/track-package.component';
 import { DriverSettingsComponent } from './driver/driver-settings/driver-settings.component';
-import { ChatListComponentModule } from './chat-list/chat-list.component.module';
 import { VehicleDetailComponent } from './driver/vehicle-detail/vehicle-detail.component';
 import { ReportIssueComponent } from './report-issue/report-issue.component';
 import { DeliveryHistoryComponent } from './driver/delivery-history/delivery-history.component';
@@ -38,11 +34,9 @@ import { OrderHistoryComponent } from './consumer/order-history/order-history.co
 import { CardDetailComponent } from './consumer/card-detail/card-detail.component';
 import { OrderSummaryComponent } from './consumer/order-summary/order-summary.component';
 import { AddPhotoComponent } from './driver/add-photo/add-photo.component';
-import { NgOtpInputModule } from 'ng-otp-input';
 import { PhoneMaskDirective } from '../shared/pipe/phone-mask.directive';
 import { WalletComponent } from './driver/wallet/wallet.component';
 import { EarningComponent } from './driver/earning/earning.component';
-import { HttpClientModule } from '@angular/common/http';
 import { MessagingService } from '../shared/messaging.service';
 // import { TagInputModule } from 'ngx-chips';
 import { IonicModule } from '@ionic/angular';
@@ -57,8 +51,6 @@ import { MarketPlaceComponent } from './market-place/market-place.component';
 
 @NgModule({
   declarations: [
-    LoginComponent,
-    SignUpComponent,
     ForgetPasswordComponent,
     UserSelectionScreenComponent,
     ConsumerDashboardComponent,

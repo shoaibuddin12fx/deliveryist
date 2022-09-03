@@ -97,7 +97,6 @@ export class AuthService {
   isAuthenticated() {
     // here you can check if user is authenticated or not through his token
     return new Promise(async (resolve) => {
-      let flag = await this.storage.getKey('token');
       resolve(this.network.getProfile());
     });
   }

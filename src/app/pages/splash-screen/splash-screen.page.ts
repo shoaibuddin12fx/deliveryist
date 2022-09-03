@@ -32,7 +32,7 @@ export class SplashScreenPage implements OnInit {
         JSON.parse(localStorage.getItem('currentUser'))
       );
     } else {
-      this.route.navigate(['auth/login']);
+      this.route.navigate(['pages/login']);
     }
     // } else {
     //   this.route.navigate(['auth/login']);

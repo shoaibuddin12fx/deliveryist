@@ -7,6 +7,7 @@ import { Location } from '@angular/common';
 // import { NgxPubSubService } from '@pscoped/ngx-pub-sub';
 import { StorageService } from 'src/app/services/_helpers/storage.service';
 import { EventsService } from 'src/app/services/_helpers/events.service';
+import { CommonServicesService } from 'src/app/services/common-services.service';
 
 export abstract class BasePage {
   public activatedRoute: ActivatedRoute;
@@ -19,6 +20,8 @@ export abstract class BasePage {
   public storage: StorageService;
   public zone: NgZone;
 
+  public commonService: CommonServicesService;
+
   constructor(injector: Injector) {
     this.router = injector.get(Router);
     this.activatedRoute = injector.get(ActivatedRoute);
@@ -29,6 +32,7 @@ export abstract class BasePage {
     this.zone = injector.get(NgZone);
     this.authService = injector.get(AuthService);
     this.storage = injector.get(StorageService);
+    this.commonService = injector.get(CommonServicesService);
   }
 
   navigateTo(link, data?: NavigationExtras) {
