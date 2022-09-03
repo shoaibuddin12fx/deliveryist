@@ -16,7 +16,7 @@ import { SettingsComponent } from './consumer/settings/settings.component';
 import { AuthGuard } from '../services/authguards/auth.guard';
 import { MarketPlaceComponent } from './market-place/market-place.component';
 import { ChatListComponent } from './chat-list/chat-list.component';
-import { ChatPageRoutingModule } from './chat-list/chat-list-routing.module';
+// import { ChatPageRoutingModule } from './chat-list/chat-list-routing.module';
 import { ChatListComponentModule } from './chat-list/chat-list.component.module';
 import { ProfileComponent } from './profile/profile.component';
 import { AboutComponent } from './about/about.component';
@@ -43,6 +43,18 @@ import { EarningComponent } from './driver/earning/earning.component';
 import { DeliveryCompletedComponent } from './driver/delivery-completed/delivery-completed.component';
 
 const routes: Routes = [
+  {
+    path: '',
+    redirectTo: 'splash',
+    pathMatch: 'full'
+  },
+  {
+    path: 'splash',
+    loadChildren: () =>
+      import('./splash-screen/splash-screen.module').then(
+        (m) => m.SplashScreenPageModule
+      ),
+  },
   { path: 'introductionScreen', component: IntroductionScreensComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signUp', component: SignUpComponent },
@@ -90,13 +102,7 @@ const routes: Routes = [
   { path: 'wallet', component: WalletComponent },
   { path: 'earning', component: EarningComponent },
 
-  {
-    path: 'splash-screen',
-    loadChildren: () =>
-      import('./splash-screen/splash-screen.module').then(
-        (m) => m.SplashScreenPageModule
-      ),
-  },
+
   // {
   //   path: 'autocomplete',
   //   loadChildren: () => import('./autocomplete/autocomplete.module').then( m => m.AutocompletePageModule)
@@ -108,9 +114,9 @@ const routes: Routes = [
         (m) => m.AutocompletePageModule
       ),
   },
-  {
-    path: 'order-detail',
-  },
+  // {
+  //   path: 'order-detail',
+  // },
 ];
 
 @NgModule({

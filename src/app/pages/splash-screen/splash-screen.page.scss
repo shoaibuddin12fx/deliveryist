@@ -7,10 +7,10 @@
   position: absolute;
   top: 45%;
   left: 50%;
-  transform: translate(-45%, -50%);
+  transform: translate(-50%, -45%);
 }
 .splash-logo {
-  width: 150px;
+  width: 200px;
 }
 .main h2 {
   font-size: 30px;
@@ -25,34 +25,34 @@
 .dlvr-uss-img-wrapper {
   width: 100%;
   // min-width: 260px;
-  max-width: 250px;
+  max-width: 300px;
   margin: 0 auto;
 }
 
-@media (max-width: 320px) {
-  .dlvr-uss-img-wrapper {
-    width: 100%;
-    // min-width: 180px;
-    max-width: 180px;
-  }
-}
-@media (max-height: 800px) {
-  .dlvr-uss-img-wrapper {
-    width: 100%;
-    // min-width: 200px;
-    max-width: 200px;
-  }
-}
-@media (max-width: 360px) {
-  .dlvr-uss-img-wrapper {
-    width: 100%;
-    // min-width: 220px;
-    max-width: 200px;
-  }
-}
-@media (max-width: 320px) {
-  .dlvr-uss-img-wrapper {
-    min-width: 180px;
-    max-width: 180px;
-  }
-}
+// @media (max-width: 320px) {
+//   .dlvr-uss-img-wrapper {
+//     width: 100%;
+//     // min-width: 180px;
+//     max-width: 180px;
+//   }
+// }
+// @media (max-height: 800px) {
+//   .dlvr-uss-img-wrapper {
+//     width: 100%;
+//     // min-width: 200px;
+//     max-width: 200px;
+//   }
+// }
+// @media (max-width: 360px) {
+//   .dlvr-uss-img-wrapper {
+//     width: 100%;
+//     // min-width: 220px;
+//     max-width: 200px;
+//   }
+// }
+// @media (max-width: 320px) {
+//   .dlvr-uss-img-wrapper {
+//     min-width: 180px;
+//     max-width: 180px;
+//   }
+// }

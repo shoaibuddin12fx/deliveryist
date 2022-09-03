@@ -38,12 +38,12 @@ export class AppComponent implements OnInit, AfterViewInit {
     public events: EventsService,
     public firebaseService: FirebaseService
   ) {
-    this.isLoggedIn();
-    this.getCurrentPosition()
-      .then(() => {
-        this.getCurrentLocation();
-      })
-      .catch((err) => console.log('Geolocation is not supported', err));
+    // this.isLoggedIn();
+    // this.getCurrentPosition()
+    //   .then(() => {
+    //     this.getCurrentLocation();
+    //   })
+    //   .catch((err) => console.log('Geolocation is not supported', err));
 
     // updates.available.subscribe(event => {
     //   console.log('current version is', event.current);
@@ -60,43 +60,43 @@ export class AppComponent implements OnInit, AfterViewInit {
     // });
 
     // subscribes to firebase
-    firebaseService.getFCMToken();
-    this.events.subscribe('receivePush', this.receivePush.bind(this));
+    // firebaseService.getFCMToken();
+    // this.events.subscribe('receivePush', this.receivePush.bind(this));
     // this.registerPush();
   }
 
   registerPush() {
-    this.messagingService.requestPermission();
-    this.messagingService.receiveMessage();
+    // this.messagingService.requestPermission();
+    // this.messagingService.receiveMessage();
     // this.message = this.messagingService.currentMessage
   }
 
-  receivePush(data) {
-    console.log(data);
-  }
+  // receivePush(data) {
+  //   console.log(data);
+  // }
 
-  async isLoggedIn() {
-    // Go ahead if user already signIn
-    // if(localStorage.getItem('currentUser')) {
-    let flag = await this.authService.isAuthenticated();
-    if (flag) {
-      if (localStorage.getItem('introVisited') == 'true') {
-        this.route.navigate(['auth/userRoleSelection']);
-      }
-      // else{
-      //   this.route.navigate(['auth/introductionScreen']);
-      // }
-    } else {
-      this.route.navigate(['auth/login']);
-    }
+  // async isLoggedIn() {
+  //   // Go ahead if user already signIn
+  //   // if(localStorage.getItem('currentUser')) {
+  //   let flag = await this.authService.isAuthenticated();
+  //   if (flag) {
+  //     if (localStorage.getItem('introVisited') == 'true') {
+  //       this.route.navigate(['auth/userRoleSelection']);
+  //     }
+  //     // else{
+  //     //   this.route.navigate(['auth/introductionScreen']);
+  //     // }
+  //   } else {
+  //     this.route.navigate(['auth/login']);
+  //   }
 
-    // }
-  }
+  //   // }
+  // }
 
-  goToUserRoleSelection(userData) {
-    localStorage.setItem('currentUser', JSON.stringify(userData));
-    this.route.navigate(['auth/userRoleSelection']);
-  }
+  // goToUserRoleSelection(userData) {
+  //   localStorage.setItem('currentUser', JSON.stringify(userData));
+  //   this.route.navigate(['auth/userRoleSelection']);
+  // }
 
   ngOnInit() {
     // FCM implementation
@@ -155,44 +155,44 @@ export class AppComponent implements OnInit, AfterViewInit {
     //   M.Modal.init(this.successModalEle, { dismissible: true });
   }
 
-  getCurrentLocation() {
-    this.geolocation.getCurrentLocationCoordinates().then((v) => {
-      let geocoder = new google.maps.Geocoder();
-      this.currLat = v['lat'];
-      this.currLng = v['lng'];
-      let latlng = { lat: this.currLat, lng: this.currLng };
-      let that = this;
-      geocoder.geocode({ location: latlng }, (results, status) => {
-        console.log(status);
-        if (results[0]) {
-          that.currentLocation =
-            results[results.length - 1].address_components[0].short_name;
-          localStorage.setItem('countryCode', that.currentLocation);
-          localStorage.setItem('location', JSON.stringify(latlng));
-          console.log(that.currentLocation);
-        } else {
-          console.log('No results found');
-        }
-      });
-    });
-  }
+  // getCurrentLocation() {
+  //   this.geolocation.getCurrentLocationCoordinates().then((v) => {
+  //     let geocoder = new google.maps.Geocoder();
+  //     this.currLat = v['lat'];
+  //     this.currLng = v['lng'];
+  //     let latlng = { lat: this.currLat, lng: this.currLng };
+  //     let that = this;
+  //     geocoder.geocode({ location: latlng }, (results, status) => {
+  //       console.log(status);
+  //       if (results[0]) {
+  //         that.currentLocation =
+  //           results[results.length - 1].address_components[0].short_name;
+  //         localStorage.setItem('countryCode', that.currentLocation);
+  //         localStorage.setItem('location', JSON.stringify(latlng));
+  //         console.log(that.currentLocation);
+  //       } else {
+  //         console.log('No results found');
+  //       }
+  //     });
+  //   });
+  // }
 
-  getCurrentPosition(): Promise<any> {
-    return new Promise((resolve, reject) => {
-      navigator.geolocation.getCurrentPosition(
-        (resp) => {
-          this.currLat = resp.coords.latitude;
-          this.currLng = resp.coords.longitude;
-          resolve({ lng: resp.coords.longitude, lat: resp.coords.latitude });
-          console.log(this.currLng);
-          console.log(this.currLat);
-        },
-        (err) => {
-          reject(err);
-        }
-      );
-    });
-  }
+  // getCurrentPosition(): Promise<any> {
+  //   return new Promise((resolve, reject) => {
+  //     navigator.geolocation.getCurrentPosition(
+  //       (resp) => {
+  //         this.currLat = resp.coords.latitude;
+  //         this.currLng = resp.coords.longitude;
+  //         resolve({ lng: resp.coords.longitude, lat: resp.coords.latitude });
+  //         console.log(this.currLng);
+  //         console.log(this.currLat);
+  //       },
+  //       (err) => {
+  //         reject(err);
+  //       }
+  //     );
+  //   });
+  // }
 
   openModel(modal) {
     // var elems = document.getElementById(modal);
@@ -205,18 +205,18 @@ export class AppComponent implements OnInit, AfterViewInit {
     // instances.close();
   }
 
-  acceptJob() {
-    this.driverApiService
-      .applyToJob({
-        job_id: this.jobId,
-        bid_details: 'Hello, I can get this delivered. Contact me in chat',
-      })
-      .then((res) => {
-        console.log(res);
-        this.closeModel('msg');
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
+  // acceptJob() {
+  //   this.driverApiService
+  //     .applyToJob({
+  //       job_id: this.jobId,
+  //       bid_details: 'Hello, I can get this delivered. Contact me in chat',
+  //     })
+  //     .then((res) => {
+  //       console.log(res);
+  //       this.closeModel('msg');
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }
 }
