@@ -1,8 +1,8 @@
-@import '../../../../theme/variables.scss' ;
-@import '../../../../assets/scss/custom-variables.scss';
-@import '../../../../assets/scss/dlvr-ui-kit.scss';
-@import '../../../../../node_modules/materialize-css/dist/css/materialize.css';
-.dlvr-consumer-wrapper{
+@import "../../../../theme/variables.scss";
+@import "../../../../assets/scss/custom-variables.scss";
+@import "../../../../assets/scss/dlvr-ui-kit.scss";
+@import "../../../../../node_modules/materialize-css/dist/css/materialize.css";
+.dlvr-consumer-wrapper {
     margin-bottom: 120px;
 }
 .dlvr-add-job-btn {
@@ -11,15 +11,14 @@
     right: 20px;
     z-index: 12;
 }
-.dlvr-add-job-btn button{
+.dlvr-add-job-btn button {
     background: $primary-gradient-color;
 }
 .dlvr-job-list .card {
     border-radius: 10px;
 }
 .dlvr-job-list .card .card-title,
-.dlvr-job-list .card .card-title i
-{
+.dlvr-job-list .card .card-title i {
     font-size: 18px;
     font-weight: 500;
     margin: 0;
@@ -29,7 +28,7 @@
 .dlvr-job-list .card .card-title i {
     font-weight: 500;
 }
-.dlvr-job-list .card .card-content{
+.dlvr-job-list .card .card-content {
     border-left: 4px solid;
     border-radius: 10px;
     padding: 14px;
@@ -38,17 +37,17 @@
 .dlvr-job-list .card .card-content.dlvr-card-red {
     border-color: $error-color;
 }
-.dlvr-job-list .card .card-content.dlvr-card-blue{
+.dlvr-job-list .card .card-content.dlvr-card-blue {
     border-color: $primary-color;
 }
-.dlvr-job-list .card .card-content .dlvr-btn { 
+.dlvr-job-list .card .card-content .dlvr-btn {
     margin-top: 10px;
 }
 .dlvr-jobList-item p {
     margin-top: 10px;
 }
 .dlvr-jobList-item p,
-.dlvr-jobList-item i{
+.dlvr-jobList-item i {
     color: $light-color2;
 }
 .dlvr-jobList-amount p {
@@ -68,12 +67,12 @@
 .dlvr-jobPost-noPost {
     text-align: center;
     color: $light-color2;
-    margin-top: 60px;
+    margin-top: 100px;
 }
 .dlvr-addNewJob-toolTip {
     margin-bottom: 10px;
     text-align: center;
-    background: rgba(0, 0, 0, .61);
+    background: rgba(0, 0, 0, 0.61);
     border-radius: 10px;
     padding: 10px 20px;
     color: #fff;
@@ -84,15 +83,14 @@
     z-index: 12;
 }
 .dlvr-addNewJob-toolTip::after {
-    content: "\f0da"; 
-    font-family: 'FontAwesome';
+    content: "\f0da";
+    font-family: "FontAwesome";
     font-size: 30px;
     position: absolute;
     right: -10px;
     top: -2px;
-    color: rgba(0, 0, 0, .61);
+    color: rgba(0, 0, 0, 0.61);
 }
-
 
 .modal.dlvr-payment-success-modal {
     background-color: $white-color;
@@ -100,18 +98,18 @@
 }
 .dlvr-payment-success-modal .modal-content .dlvr-success,
 .dlvr-payment-success-modal .modal-content .dlvr-warning,
-.dlvr-payment-success-modal .modal-content .dlvr-danger{
+.dlvr-payment-success-modal .modal-content .dlvr-danger {
     border-radius: 50px;
     background: $uikit-Green-color;
     color: $white-color;
     font-size: 66px;
     padding: 10px;
 }
-.dlvr-payment-success-modal .modal-content .dlvr-warning{
+.dlvr-payment-success-modal .modal-content .dlvr-warning {
     background: $uikit-White-color;
     color: $uikit-Yellow-color;
 }
-.dlvr-payment-success-modal .modal-content .dlvr-danger{
+.dlvr-payment-success-modal .modal-content .dlvr-danger {
     background: $uikit-White-color;
     color: $uikit-Red-color;
 }
@@ -124,25 +122,25 @@
     text-align: center;
     color: $light-color2;
 }
-.dlvr-payment-success-modal .modal-content .dlvr-fail{
+.dlvr-payment-success-modal .modal-content .dlvr-fail {
     border-radius: 50px;
     background: $urgent-gradient-color;
     color: $white-color;
     font-size: 40px;
     padding: 10px;
-} 
-.dlvr-instruction-modal.otp .img-wrapper{
+}
+.dlvr-instruction-modal.otp .img-wrapper {
     text-align: center;
 }
-.dlvr-instruction-modal.otp .img-wrapper img{ 
+.dlvr-instruction-modal.otp .img-wrapper img {
     max-width: 48px;
     margin-bottom: 16px;
     margin-top: 16px;
 }
-.dlvr-instruction-modal.otp .dlvr-order-confirmed-block .collection .collection-item .text{
+.dlvr-instruction-modal.otp .dlvr-order-confirmed-block .collection .collection-item .text {
     font-weight: normal;
 }
-.dlvr-instruction-modal.otp .otp{
+.dlvr-instruction-modal.otp .otp {
     font-size: 18px;
     color: #111;
     font-weight: 700;
@@ -152,9 +150,9 @@
     border-radius: 6px;
     letter-spacing: 2px;
     text-align: center;
-} 
+}
 
-.overflow{
+.overflow {
     overflow-y: auto;
     overflow-x: hidden;
 }

@@ -1,0 +1,13 @@
+ion-content.transparent-ion-content {
+    --background-color: rgba(155, 155, 155, 0.7);
+    height: 100vh;
+    color: black;
+    text-align: center;
+}
+.date-picker {
+    height: 46vh;
+    background-color: #f4f5f8;
+    margin: 200px auto;
+    width: 90%;
+    padding: 6px;
+}

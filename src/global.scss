@@ -28,3 +28,18 @@
 .height-48 {
   height: 48px;
 }
+
+.transparent-modal {
+  --background: unset !important;
+  app-date-picker {
+    background: transparent;
+
+    ion-content {
+      --background: rgba(0, 0, 0, 0.5) !important;
+    }
+  }
+
+  .modal-wrapper {
+    background: transparent !important;
+  }
+}

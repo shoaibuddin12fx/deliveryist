@@ -8,6 +8,7 @@ import { PostJobPageRoutingModule } from './post-job-routing.module';
 
 import { PostJobPage } from './post-job.page';
 import { LayoutsModule } from 'src/app/layouts/layouts.module';
+import { DatePickerModule } from 'src/app/components/date-picker/date-picker.module';
 
 @NgModule({
   imports: [
@@ -17,8 +18,8 @@ import { LayoutsModule } from 'src/app/layouts/layouts.module';
     IonicModule,
     PostJobPageRoutingModule,
     LayoutsModule,
-
+    DatePickerModule,
   ],
-  declarations: [PostJobPage]
+  declarations: [PostJobPage],
 })
 export class PostJobPageModule {}

@@ -1,4 +1,10 @@
-import { Component, OnInit, EventEmitter, AfterViewInit, Injector } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  EventEmitter,
+  AfterViewInit,
+  Injector,
+} from '@angular/core';
 // import { MaterializeAction } from 'angular2-materialize';
 import { Router, ActivatedRoute } from '@angular/router';
 // import M from "materialize-css/dist/js/materialize.min.js";
@@ -9,48 +15,48 @@ import { BasePage } from '../../base-page/base-page';
 @Component({
   selector: 'app-order-summary',
   templateUrl: './order-summary.component.html',
-  styleUrls: ['./order-summary.component.scss']
+  styleUrls: ['./order-summary.component.scss'],
 })
 export class OrderSummaryComponent extends BasePage implements OnInit {
   modalActions = new EventEmitter<string>(); // |MaterializeAction
-  orderSummary:any;
+  orderSummary: any;
   details;
   deliveryDetails = {
     delivery_Address: '',
-    pickUp_Address:'',
-    package_Category:'',
-    delivery_Type:'',
-    vehicle_Type:''
+    pickUp_Address: '',
+    package_Category: '',
+    delivery_Type: '',
+    vehicle_Type: '',
   };
   categories;
   filteredCategory;
   pickup_Address;
-  constructor(public injector:Injector,private cartService:CartService) {
-     super(injector)
+  constructor(public injector: Injector, private cartService: CartService) {
+    super(injector);
 
-     this.activatedRoute.params.subscribe((data) => {
+    this.activatedRoute.params.subscribe((data) => {
       this.orderSummary = data;
 
-      console.log(this.orderSummary);
+      console.log('data', this.orderSummary);
       this.setPackageDetails(this.orderSummary);
-    })
+    });
   }
 
+  ngOnInit() {}
 
-  ngOnInit() {
-  }
-
-  setPackageDetails(detail){
+  setPackageDetails(detail) {
     this.deliveryDetails.delivery_Address = detail.delivery;
-    this.deliveryDetails.package_Category = detail.packageCategory ? detail.packageCategory : this.cartService.cart.items[0].category_name
+    this.deliveryDetails.package_Category = detail.packageCategory
+      ? detail.packageCategory
+      : this.cartService.cart.items[0].category_name;
     this.deliveryDetails.vehicle_Type = detail.vehicleType;
 
-    if(!detail.pickup){
+    if (!detail.pickup) {
       const latLong = {
         lat: this.cartService.details.job_latitude,
-        lng: this.cartService.details.job_longitude
-      }
-      this.cartService.mapService.getGeoAddress(latLong).then(data=>{
+        lng: this.cartService.details.job_longitude,
+      };
+      this.cartService.mapService.getGeoAddress(latLong).then((data) => {
         this.pickup_Address = data;
       });
     }

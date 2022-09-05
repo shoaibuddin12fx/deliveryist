@@ -12,11 +12,13 @@ import {
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
 import { AutocompletePage } from 'src/app/components/autocomplete/autocomplete.page';
+import { DatePickerComponent } from 'src/app/components/date-picker/date-picker.component';
 import { ConsumerApiService } from 'src/app/services/consumer-api.service';
 import { ImageCompressService } from 'src/app/services/image-compress.service';
 import { StorageService } from 'src/app/services/_helpers/storage.service';
 import { BasePage } from '../../base-page/base-page';
 import { CartService } from '../../market-place/services/cart.service';
+import { OrderSummaryComponent } from '../order-summary/order-summary.component';
 // import { DriverinstructionComponent } from '../components/driverinstruction.component';
 
 declare var google;
@@ -46,7 +48,6 @@ export class PostJobPage extends BasePage implements OnInit, AfterViewInit {
   btnEnabled = false;
   btnEnabledForVehical = false;
   categoryBtnEnabled = false;
-
   step = 'step4';
   loader = false;
   step1;
@@ -69,6 +70,7 @@ export class PostJobPage extends BasePage implements OnInit, AfterViewInit {
   showBackButton = false;
   hidden = true;
   loading;
+  openInstruction = false;
   categoryList = [
     {
       iconName: 'devices_other',
@@ -334,6 +336,7 @@ export class PostJobPage extends BasePage implements OnInit, AfterViewInit {
         // this.step4.classList.add("is-complete");
         // this.step5.classList.add("is-active");
       }
+      this.modals.present(OrderSummaryComponent);
     } else if (this.step === 'step5') {
       this.loader = true;
       this.showBackButton = true;
@@ -441,6 +444,16 @@ export class PostJobPage extends BasePage implements OnInit, AfterViewInit {
 
   setdeliveryVehicle(size) {
     this.postJobForm.controls.deliveryVehicle.setValue(size);
+  }
+
+  async activeType(type) {
+    this.postJobForm.controls.deliveryType.setValue(type);
+    const res = await this.modals.present(
+      DatePickerComponent,
+      {},
+      'transparent-modal'
+    );
+    console.log('Flixilbe Time', res);
   }
 
   searchLoad(types) {
@@ -556,6 +569,7 @@ export class PostJobPage extends BasePage implements OnInit, AfterViewInit {
 
   //Open  Modal
   async openModel() {
+    this.openInstruction = true;
     // const modal = await this.modalController.create({
     //   component: DriverinstructionComponent,
     // });
@@ -563,6 +577,9 @@ export class PostJobPage extends BasePage implements OnInit, AfterViewInit {
     // return await modal.present().then(() => {
     //   console.log('model opened');
     // });
+  }
+  closeInstruction() {
+    this.openInstruction = false;
   }
   //close modal
   closeModel() {
