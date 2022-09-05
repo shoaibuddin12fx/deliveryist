@@ -11,12 +11,13 @@ import {
 } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
+import { AutocompletePage } from 'src/app/components/autocomplete/autocomplete.page';
 import { ConsumerApiService } from 'src/app/services/consumer-api.service';
 import { ImageCompressService } from 'src/app/services/image-compress.service';
 import { StorageService } from 'src/app/services/_helpers/storage.service';
 import { BasePage } from '../../base-page/base-page';
 import { CartService } from '../../market-place/services/cart.service';
-import { DriverinstructionComponent } from '../components/driverinstruction.component';
+// import { DriverinstructionComponent } from '../components/driverinstruction.component';
 
 declare var google;
 
@@ -38,7 +39,7 @@ export class PostJobPage extends BasePage implements OnInit, AfterViewInit {
   firebaseUrls: any = [];
   dynamic_col = 's12 m12';
   postJobForm: FormGroup;
-  modalActions = new EventEmitter<string>(); //| MaterializeAction
+  // modalActions = new EventEmitter<string>(); //| MaterializeAction
   datepickerInstance;
   selectedDate;
   disabled: true;
@@ -46,7 +47,7 @@ export class PostJobPage extends BasePage implements OnInit, AfterViewInit {
   btnEnabledForVehical = false;
   categoryBtnEnabled = false;
 
-  step = 'step1';
+  step = 'step4';
   loader = false;
   step1;
   step2;
@@ -129,89 +130,89 @@ export class PostJobPage extends BasePage implements OnInit, AfterViewInit {
     public modalController: ModalController // private mapsAPILoader: MapsAPILoader
   ) {
     super(injector);
-    this.ngZone.run(() => {
-      const location = JSON.parse(localStorage.getItem('location'));
+    // this.ngZone.run(() => {
+    // const location = JSON.parse(localStorage.getItem('location'));
 
-      // let location = {lat: 24.9091488, lng:67.104036}
-      // console.log(location);
-      this.lat = location.lat;
-      this.lng = location.lng;
+    // // let location = {lat: 24.9091488, lng:67.104036}
+    // // console.log(location);
+    // this.lat = location.lat;
+    // this.lng = location.lng;
 
-      console.log(this.totalDistance);
+    // console.log(this.totalDistance);
 
-      // prepare post job form
-      this.postJobForm = new FormGroup({
-        sourceAddress: new FormControl(null, [Validators.required]),
-        sourceAddressAppartment: new FormControl(null, [Validators.required]),
-        deliveryAddress: new FormControl(null, [Validators.required]),
-        deliveryAddressAppartment: new FormControl(null, [Validators.required]),
-        jobAmount: new FormControl(23, [Validators.required]),
-        itemCategory: new FormControl('Accessories', [Validators.required]),
-        deliveryVehicle: new FormControl('Sedan', [Validators.required]),
-        deliveryType: new FormControl('Immediate', Validators.required),
-        deliveryDate: new FormControl(),
-        receiverName: new FormControl(''),
-        receiverNumber: new FormControl(''),
-        instructionForReceiver: new FormControl(null),
-      });
-
-      this.order_id = this.activatedRoute.snapshot.queryParams.order_id;
-      if (this.order_id) {
-        console.log(this.order_id);
-        this.getOrderDetail(this.order_id);
-      }
-
-      history.pushState(null, null, window.location.href);
-      this.loc.onPopState(() => {
-        const postFormValues = this.postJobForm.controls;
-        if (this.step == 'step2') {
-          history.pushState(null, null, window.location.href);
-          this.step = 'step1';
-          document.getElementById('truckprogress').style.width = '0%';
-          postFormValues.itemCategory.setValue('Accessories');
-          this.showBackButton = false;
-        } else if (this.step == 'step3') {
-          history.pushState(null, null, window.location.href);
-          this.step = 'step2';
-          document.getElementById('truckprogress').style.width = '20%';
-          postFormValues.deliveryVehicle.setValue('Sedan');
-        } else if (this.step == 'step4') {
-          history.pushState(null, null, window.location.href);
-          this.step = 'step3';
-          document.getElementById('truckprogress').style.width = '40%';
-          postFormValues.instructionForReceiver.reset();
-          postFormValues.deliveryType.setValue('Immediate');
-          postFormValues.deliveryDate.reset();
-          this.datepickerInstance = undefined;
-          this.elems = undefined;
-          this.urls = [];
-          this.files = [];
-          this.links = [];
-        } else if (this.step == 'step5') {
-          history.pushState(null, null, window.location.href);
-          this.step = 'step4';
-          document.getElementById('truckprogress').style.width = '80%';
-          postFormValues.receiverName.reset();
-          postFormValues.receiverNumber.reset();
-          postFormValues.jobAmount.reset();
-          this.datepickerInstance = undefined;
-          this.elems = undefined;
-
-          this.selectedDate = postFormValues.deliveryDate.value;
-          if (this.selectedDate) {
-            const year = this.selectedDate.getFullYear();
-            const month = this.selectedDate.toLocaleString('default', {
-              month: 'short',
-            });
-            const date = this.selectedDate.getDate();
-            const formatedDate = month + ' ' + date + ', ' + year;
-            postFormValues.deliveryDate.setValue(formatedDate);
-          }
-        } else if (this.step == 'step1') {
-          history.pushState(null, null, window.location.href);
-        }
-      });
+    // prepare post job form
+    this.postJobForm = new FormGroup({
+      sourceAddress: new FormControl(null, [Validators.required]),
+      sourceAddressAppartment: new FormControl(null, [Validators.required]),
+      deliveryAddress: new FormControl(null, [Validators.required]),
+      deliveryAddressAppartment: new FormControl(null, [Validators.required]),
+      jobAmount: new FormControl(23, [Validators.required]),
+      itemCategory: new FormControl('Accessories', [Validators.required]),
+      deliveryVehicle: new FormControl('Sedan', [Validators.required]),
+      deliveryType: new FormControl('Immediate', Validators.required),
+      deliveryDate: new FormControl(),
+      receiverName: new FormControl(''),
+      receiverNumber: new FormControl(''),
+      instructionForReceiver: new FormControl(null),
     });
+
+    this.order_id = this.activatedRoute.snapshot.queryParams.order_id;
+    if (this.order_id) {
+      console.log(this.order_id);
+      this.getOrderDetail(this.order_id);
+    }
+
+    history.pushState(null, null, window.location.href);
+    this.loc.onPopState(() => {
+      const postFormValues = this.postJobForm.controls;
+      if (this.step == 'step2') {
+        history.pushState(null, null, window.location.href);
+        this.step = 'step1';
+        document.getElementById('truckprogress').style.width = '0%';
+        postFormValues.itemCategory.setValue('Accessories');
+        this.showBackButton = false;
+      } else if (this.step == 'step3') {
+        history.pushState(null, null, window.location.href);
+        this.step = 'step2';
+        document.getElementById('truckprogress').style.width = '20%';
+        postFormValues.deliveryVehicle.setValue('Sedan');
+      } else if (this.step == 'step4') {
+        history.pushState(null, null, window.location.href);
+        this.step = 'step3';
+        document.getElementById('truckprogress').style.width = '40%';
+        postFormValues.instructionForReceiver.reset();
+        postFormValues.deliveryType.setValue('Immediate');
+        postFormValues.deliveryDate.reset();
+        this.datepickerInstance = undefined;
+        this.elems = undefined;
+        this.urls = [];
+        this.files = [];
+        this.links = [];
+      } else if (this.step == 'step5') {
+        history.pushState(null, null, window.location.href);
+        this.step = 'step4';
+        document.getElementById('truckprogress').style.width = '80%';
+        postFormValues.receiverName.reset();
+        postFormValues.receiverNumber.reset();
+        postFormValues.jobAmount.reset();
+        this.datepickerInstance = undefined;
+        this.elems = undefined;
+
+        this.selectedDate = postFormValues.deliveryDate.value;
+        if (this.selectedDate) {
+          const year = this.selectedDate.getFullYear();
+          const month = this.selectedDate.toLocaleString('default', {
+            month: 'short',
+          });
+          const date = this.selectedDate.getDate();
+          const formatedDate = month + ' ' + date + ', ' + year;
+          postFormValues.deliveryDate.setValue(formatedDate);
+        }
+      } else if (this.step == 'step1') {
+        history.pushState(null, null, window.location.href);
+      }
+    });
+    // });
   }
 
   // scrollEvent(){
@@ -264,19 +265,36 @@ export class PostJobPage extends BasePage implements OnInit, AfterViewInit {
 
     if (this.step === 'step1') {
       this.showBackButton = true;
-      console.log('Here');
+
       if (
         postFormValues.sourceAddress != null &&
         postFormValues.deliveryAddress != null
       ) {
-        this.onResponse().then(async (res) => {
-          await this.callForAmount();
-        });
+        const res = await this.utility.getDistanceOfCoordinates(
+          this.origin,
+          this.destination
+        );
+        console.log(res);
+
+        if (res['distance']) {
+          this.totalDistance = res['distance'];
+
+          if (this.totalDistance.includes('ft')) {
+            this.utility.showToast(
+              'please select distance larger then ' + this.totalDistance,
+              'error'
+            );
+            return;
+          }
+
+          // await this.callForAmount();
+        }
+        // await this.callForAmount();
         this.step = 'step2';
         document.getElementById('truckprogress').style.width = '20%';
-        // this.step1.classList.remove("is-active");
-        // this.step1.classList.add("is-complete");
-        // this.step2.classList.add("is-active");
+        // this.step1.classList.remove('is-active');
+        // this.step1.classList.add('is-complete');
+        // this.step2.classList.add('is-active');
       }
     } else if (this.step === 'step2') {
       this.showBackButton = true;
@@ -479,31 +497,31 @@ export class PostJobPage extends BasePage implements OnInit, AfterViewInit {
     console.log(this.origin);
   }
 
-  onResponse() {
-    return new Promise<void>((resolve, reject) => {
-      const service = new google.maps.DistanceMatrixService();
-      const origin1 = new google.maps.LatLng(this.origin.lat, this.origin.lng);
-      // let origin1 = new google.maps.LatLng(24.9091488,  67.104036);
-      console.log(origin1);
-      const destinationB = new google.maps.LatLng(
-        this.destination.lat,
-        this.destination.lng
-      );
-      service.getDistanceMatrix(
-        {
-          origins: [origin1],
-          destinations: [destinationB],
-          unitSystem: google.maps.UnitSystem.IMPERIAL,
-          travelMode: google.maps.TravelMode.DRIVING,
-        },
-        (response, status) => {
-          this.totalDistance = response.rows[0].elements[0].distance.text;
-          this.totalDuration = response.rows[0].elements[0].duration.text;
-          resolve(this.totalDistance);
-        }
-      );
-    });
-  }
+  // onResponse() {
+  //   return new Promise<void>((resolve, reject) => {
+  //     const service = new google.maps.DistanceMatrixService();
+  //     const origin1 = new google.maps.LatLng(this.origin.lat, this.origin.lng);
+  //     // let origin1 = new google.maps.LatLng(24.9091488,  67.104036);
+  //     console.log(origin1);
+  //     const destinationB = new google.maps.LatLng(
+  //       this.destination.lat,
+  //       this.destination.lng
+  //     );
+  //     service.getDistanceMatrix(
+  //       {
+  //         origins: [origin1],
+  //         destinations: [destinationB],
+  //         unitSystem: google.maps.UnitSystem.IMPERIAL,
+  //         travelMode: google.maps.TravelMode.DRIVING,
+  //       },
+  //       (response, status) => {
+  //         this.totalDistance = response.rows[0].elements[0].distance.text;
+  //         this.totalDuration = response.rows[0].elements[0].duration.text;
+  //         resolve(this.totalDistance);
+  //       }
+  //     );
+  //   });
+  // }
 
   // setCurrentLocation() {
   //   if ('geolocation' in navigator) {
@@ -538,13 +556,13 @@ export class PostJobPage extends BasePage implements OnInit, AfterViewInit {
 
   //Open  Modal
   async openModel() {
-    const modal = await this.modalController.create({
-      component: DriverinstructionComponent,
-    });
-    console.log('modal opening');
-    return await modal.present().then(() => {
-      console.log('model opened');
-    });
+    // const modal = await this.modalController.create({
+    //   component: DriverinstructionComponent,
+    // });
+    // console.log('modal opening');
+    // return await modal.present().then(() => {
+    //   console.log('model opened');
+    // });
   }
   //close modal
   closeModel() {
@@ -562,23 +580,26 @@ export class PostJobPage extends BasePage implements OnInit, AfterViewInit {
     this.closeModel();
   }
   // Call to calculate amount from distance and time
-  async callForAmount() {
-    console.log(this.totalDistance);
-    const data = {
-      distance: parseFloat(this.totalDistance.split('mi')[0]) * 1609,
-      // duration: this.totalDuration,
-      // deliveryVehicle: this.postJobForm.controls['deliveryVehicle'].value,
-      // deliveryType: this.postJobForm.controls['deliveryType'].value
-    };
-    await this.consumerApiService
-      .getAmountForOrder(data)
-      .then((res: any) => {
-        const total = parseFloat(res.total.toFixed(2));
-        this.postJobForm.controls.jobAmount.setValue(total);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  callForAmount() {
+    return new Promise(async (resolve) => {
+      console.log(this.totalDistance);
+
+      const data = {
+        distance: this.totalDistance, // parseFloat(this.totalDistance.split('mi')[0]) * 1609,
+        // duration: this.totalDuration,
+        // deliveryVehicle: this.postJobForm.controls['deliveryVehicle'].value,
+        // deliveryType: this.postJobForm.controls['deliveryType'].value
+      };
+      await this.consumerApiService
+        .getAmountForOrder(data)
+        .then((res: any) => {
+          const total = parseFloat(res.total.toFixed(2));
+          this.postJobForm.controls.jobAmount.setValue(total);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    });
   }
 
   openFile() {
@@ -711,5 +732,30 @@ export class PostJobPage extends BasePage implements OnInit, AfterViewInit {
   btnSetForVehical() {
     console.log('clicked setBtn for vehical');
     this.btnEnabledForVehical = true;
+  }
+
+  async openAutoComplete(param) {
+    const res = await this.modals.present(AutocompletePage);
+    console.log(res);
+
+    let data = res.data;
+
+    if (param == 'pick') {
+      if (data.address) {
+        this.postJobForm.controls['sourceAddress'].patchValue(data.address);
+      }
+      if (data.coords) {
+        this.origin = data.coords;
+      }
+    }
+
+    if (param == 'drop') {
+      if (data.address) {
+        this.postJobForm.controls['deliveryAddress'].patchValue(data.address);
+      }
+      if (data.coords) {
+        this.destination = data.coords;
+      }
+    }
   }
 }

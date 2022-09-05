@@ -41,7 +41,7 @@ export class SplashScreenPage implements OnInit {
   goToUserRoleSelection(userData) {
     this.commonService.getUserProfileData().then(async (res) => {
       localStorage.setItem('currentUser', JSON.stringify(userData));
-      this.route.navigate(['auth/userRoleSelection']);
+      this.route.navigate(['pages/user-role-selection']);
     });
   }
 }

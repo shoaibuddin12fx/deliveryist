@@ -9,6 +9,42 @@ declare let google;
 export class GeolocationsService {
   constructor(private geolocation: Geolocation) {}
 
+  getDistanceOfCoordinates(origin, destination) {
+    return new Promise((resolve) => {
+      const service = new google.maps.DistanceMatrixService();
+      const origin1 = new google.maps.LatLng(origin.lat, origin.lng);
+      // let origin1 = new google.maps.LatLng(24.9091488,  67.104036);
+      const destinationB = new google.maps.LatLng(
+        destination.lat,
+        destination.lng
+      );
+      service.getDistanceMatrix(
+        {
+          origins: [origin1],
+          destinations: [destinationB],
+          unitSystem: google.maps.UnitSystem.IMPERIAL,
+          travelMode: google.maps.TravelMode.DRIVING,
+        },
+        (response, status) => {
+
+          console.log(status)
+          if(status == 'OK'){
+
+            let obj = {
+              distance: response.rows[0].elements[0].distance.text,
+              duration: response.rows[0].elements[0].duration.text
+            }
+
+            resolve(obj);
+          } else{
+            resolve(null);
+          }
+
+        }
+      );
+    });
+  }
+
   getCurrentLocationWithAddressWeb() {
     return new Promise(async (resolve) => {
       const coords = await this.getCurrentPositionWeb();

@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, Input } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Input, Output, EventEmitter } from '@angular/core';
 // import M from 'materialize-css/dist/js/materialize.min.js';
 // import { MaterializeAction } from 'angular2-materialize';
 import { AuthService } from 'src/app/services/authguards/auth.service';
@@ -16,35 +16,36 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   @Input('showHeaderTitle') showHeaderTitle: boolean = true;
   @Input('showMarketIcon') showMarketIcon: boolean = true;
   @Input('showSettingIcon') showSettingIcon: boolean = true;
+  @Input('headerTitle') headerTitle: String;
+  @Output('navigateTo') navigateTo: EventEmitter<any> = new EventEmitter<any>();
   elem;
-
+  path;
   userRole = localStorage.getItem('userRole');
   userData = JSON.parse(localStorage.getItem('userData'));
-  @Input() headerTitle: String;
-  path;
   currentRole = localStorage.getItem('userRole');
   username = this.userData?.full_name;
   isIos = false;
+
   constructor(
     private location: Location,
-    private route: Router,
-    private activatedRoute: ActivatedRoute,
-    private authService: AuthService,
-    private platform: Platform
+    // private route: Router,
+    // private activatedRoute: ActivatedRoute,
+    // private authService: AuthService,
+    // private platform: Platform
   ) {
-    this.activatedRoute.url.subscribe((data) => {
-      this.path = data[0].path;
-      console.log(this.path);
-    });
+    // this.activatedRoute.url.subscribe((data) => {
+    //   this.path = data[0].path;
+    //   console.log(this.path);
+    // });
   }
 
   ngOnInit() {}
 
   ngAfterViewInit() {
-    if (this.platform.is('ios')) {
-      this.isIos = true;
-    }
-    this.elem = document.querySelector('.sidenav');
+    // if (this.platform.is('ios')) {
+    //   this.isIos = true;
+    // }
+    // this.elem = document.querySelector('.sidenav');
   }
 
   openSidenav() {
@@ -60,14 +61,15 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   }
 
   dologout() {
-    this.closeSidenav();
-    this.authService.logout();
+    // this.closeSidenav();
+    // this.authService.logout();
+    this.navigateTo.emit('logout');
   }
 
-  routeTo(link) {
-    this.closeSidenav();
-    this.route.navigate([link]);
-  }
+  // routeTo(link) {
+  //   this.closeSidenav();
+  //   this.route.navigate([link]);
+  // }
 
   goBack() {
     this.location.back();
@@ -76,36 +78,47 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   //Post a new job
   postNewJob() {
     // Go to dashboard after posting a new job
-    this.route.navigate(['consumer/postJob']);
+    // this.route.navigate(['consumer/postJob']);
     // this.closeSidenav();
+    this.navigateTo.emit('pages/consumer/post-job');
   }
 
   goToDashboard() {
     if (this.userRole == 'Consumer') {
-      this.route.navigate(['consumer/consumerDashboard']);
+      this.navigateTo.emit('pages/consumer/consumer-dashboard');
+      // this.route.navigate(['consumer/consumerDashboard']);
     } else if (this.userRole == 'Driver') {
-      this.route.navigate(['driver/driverDashboard']);
+      this.navigateTo.emit('pages/driver/driver-dashboard');
+      // this.route.navigate(['driver/driverDashboard']);
+
     }
     // this.closeSidenav();
   }
   goToNotification() {
     if (this.userRole == 'Consumer') {
-      this.route.navigate(['consumer/consumerNotification']);
+      this.navigateTo.emit('pages/consumer/consumer-notification');
+      // this.route.navigate(['consumer/consumerNotification']);
     } else if (this.userRole == 'Driver') {
-      this.route.navigate(['driver/driverNotification']);
+      this.navigateTo.emit('pages/driver/driver-notification');
+      // this.route.navigate(['driver/driverNotification']);
     }
     // this.closeSidenav();
   }
   goTosettings() {
     if (this.userRole == 'Consumer') {
-      this.route.navigate(['consumer/settings']);
-    } else if (this.userRole == 'Driver') {
-      this.route.navigate(['driver/driverSetting']);
-    } else {
-      localStorage.setItem('userRole', 'Consumer');
-      this.userRole = 'Consumer';
-      this.route.navigate(['consumer/settings']);
+      this.navigateTo.emit('pages/consumer/consumer-settings');
+      // this.route.navigate(['consumer/settings']);
     }
+
+    if (this.userRole == 'Driver') {
+      this.navigateTo.emit('pages/driver/driver-settings');
+      // this.route.navigate(['driver/driverSetting']);
+    }
+    // else {
+    //   localStorage.setItem('userRole', 'Consumer');
+    //   this.userRole = 'Consumer';
+    //   this.route.navigate(['consumer/settings']);
+    // }
     // this.closeSidenav();
   }
 
@@ -113,36 +126,36 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   //   this.route.navigate(['driver/driverSetting']);
   // }
   goToUserSelection() {
-    this.route.navigate(['auth/userRoleSelection']);
+    // this.route.navigate(['auth/userRoleSelection']);
   }
   goToAboutUs() {
-    this.route.navigate(['auth/about']);
+    // this.route.navigate(['auth/about']);
     // this.closeSidenav();
   }
   goToContactUs() {
-    this.route.navigate(['auth/contact']);
+    // this.route.navigate(['auth/contact']);
     // this.closeSidenav();
   }
   goToHelp() {
-    this.route.navigate(['auth/help']);
+    // this.route.navigate(['auth/help']);
     // this.closeSidenav();
   }
   goToPolicy() {
-    this, this.route.navigate(['auth/policy']);
+    // this, this.route.navigate(['auth/policy']);
     // this.closeSidenav();
   }
   viewMyJobs() {
-    this.route.navigate(['driver/jobList']);
+    // this.route.navigate(['driver/jobList']);
     // this.closeSidenav();
   }
   goToMarketPalace() {
-    this.activatedRoute.url.subscribe((v) => {
-      if (v[0].path.includes('market-home')) {
-        this.route.navigate(['auth/userRoleSelection']);
-      } else {
-        localStorage.setItem('userRole', 'marketPlace');
-        this.route.navigate(['marketplace/market-home']);
-      }
-    });
+    // this.activatedRoute.url.subscribe((v) => {
+    //   if (v[0].path.includes('market-home')) {
+    //     this.route.navigate(['auth/userRoleSelection']);
+    //   } else {
+    //     localStorage.setItem('userRole', 'marketPlace');
+    //     this.route.navigate(['marketplace/market-home']);
+    //   }
+    // });
   }
 }

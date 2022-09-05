@@ -6,7 +6,7 @@ import { AuthService } from 'src/app/services/authguards/auth.service';
 import { CommonServicesService } from 'src/app/services/common-services.service';
 import { ModalService } from 'src/app/services/_helpers/modal.service';
 import { UtilityService } from 'src/app/services/_helpers/utility.service';
-import { AutocompletePage } from '../autocomplete/autocomplete.page';
+import { AutocompletePage } from '../../../components/autocomplete/autocomplete.page';
 
 const countries = require('./../../../data/countries.json');
 
@@ -134,8 +134,7 @@ export class SignUpPage implements OnInit {
   }
 
   goForLogin() {
-    // this.route.navigate(['auth/login']);
-    this.route.navigate(['auth/userRoleSelection']);
+    this.route.navigate(['pages/user-role-selection']);
   }
 
   onVerify() {

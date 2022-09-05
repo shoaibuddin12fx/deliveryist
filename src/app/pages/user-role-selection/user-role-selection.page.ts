@@ -1,100 +1,96 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injector, OnInit } from '@angular/core';
+import { BasePage } from '../base-page/base-page';
 
 @Component({
   selector: 'app-user-role-selection',
   templateUrl: './user-role-selection.page.html',
   styleUrls: ['./user-role-selection.page.scss'],
 })
-export class UserRoleSelectionPage implements OnInit {
+export class UserRoleSelectionPage extends BasePage implements OnInit {
   // modalActions = new EventEmitter<string|MaterializeAction>();
   userRole;
   userName: any = JSON.parse(localStorage.getItem('userData'));
+  isGeolocationEnabledAndSet = false;
+  coords = null;
 
-  constructor(
-    private route: Router,
-    private commonApiService: CommonServicesService,
-    private geoLocation: Geolocation,
-    private utility: UtilityService
-  ) {}
+  constructor(injector: Injector) {
+    super(injector);
+  }
+  ngOnInit(): void {
 
-  ngOnInit() {
-    this.userRole = localStorage.getItem('userRole');
-    if (!localStorage.getItem('token')) {
-      this.route.navigate(['auth/login']);
-    }
-    SplashScreen.hide();
   }
 
   ionViewWillEnter() {
     const fcm_token = localStorage.getItem('fcm_token');
     console.log(fcm_token);
-
-    //
-    this.commonApiService.setFcmToken({ fcm_token: fcm_token });
+    this.commonService.setFcmToken({ fcm_token: fcm_token });
+    this.getUserLocation();
   }
 
-  goAsConsumer() {
-    // if (this.geoLocation.getCurrentPosition()) {
-    this.geoLocation
-      .getCurrentPosition()
-      .then((resp) => {
-        console.log('location response', resp);
+  getUserLocation() {
+    return new Promise(async (resolve) => {
+      this.coords = await this.utility.getCurrentLocationCoordinates();
 
-        this.changeRole('Consumer').then((x) => {
-          console.log({ x });
-
-          this.route.navigateByUrl('consumer/postJob');
-        });
-      })
-      .catch(() => {
-        alert('Please on your location');
-        console.log('Error getting location');
-      });
-    // } else {
-    //   alert('Please on your location');
-    // }
-  }
-
-  goAsDriver() {
-    this.changeRole('Driver').then(() => {
-      this.commonApiService.getUserProfileData().then((res: any) => {
-        if (res.profile.is_vehicle_verified) {
-          console.log('photo page');
-          this.route.navigateByUrl('driver/driverDashboard');
-          // this.route.navigateByUrl('driver/addPhoto');
-        } else {
-          // this.route.navigateByUrl('driver/myVehicle');
-          console.log('photo page');
-          this.route.navigateByUrl('driver/addPhoto');
-        }
-        console.log(res);
-      });
+      if (this.coords) {
+        console.log(this.coords);
+      }
     });
+
+    //   .getCurrentPosition()
   }
 
-  goToMarket() {
-    localStorage.setItem('userRole', 'marketPlace');
-    this.route.navigate(['marketplace']);
+  async goAsConsumer() {
+
+    const res = await this.changeRole('Consumer')
+    this.navigateTo('pages/consumer/consumer-dashboard');
+
+  }
+
+  async goAsDriver() {
+    const res = await this.changeRole('Driver');
+    this.navigateTo('pages/driver/job-list');
+
+
+
+
+    // .then(() => {
+    //   this.commonApiService.getUserProfileData().then((res: any) => {
+    //     if (res.profile.is_vehicle_verified) {
+    //       console.log('photo page');
+    //       this.route.navigateByUrl('driver/driverDashboard');
+    //       // this.route.navigateByUrl('driver/addPhoto');
+    //     } else {
+    //       // this.route.navigateByUrl('driver/myVehicle');
+    //       console.log('photo page');
+    //       this.route.navigateByUrl('driver/addPhoto');
+    //     }
+    //     console.log(res);
+    //   });
+    // });
+  }
+
+  async goToMarket() {
+    const res = await this.changeRole('Marketplace');
+    this.navigateTo('marketplace');
   }
 
   async trackUser() {
-    await this.commonApiService
-      .trackUser()
-      .then((data) => {})
-      .catch((err) => {});
+    return await this.commonService.trackUser()
   }
 
   changeRole(role) {
-    return new Promise((resolve, reject) => {
-      this.commonApiService
+    return new Promise((resolve) => {
+      this.commonService
         .userRoleChange({ role: role })
         .then((data) => {
+          console.log(data);
           localStorage.setItem('userRole', role);
           this.trackUser();
-          resolve('');
+          resolve(role);
         })
         .catch((err) => {
-          reject();
+          console.error(err)
+          resolve(null);
         });
     });
   }

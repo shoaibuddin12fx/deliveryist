@@ -2,9 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PagesRoutingModule } from './pages-routing.module';
 import { ForgetPasswordComponent } from './authentication/forget-password/forget-password.component';
-// import { LayoutsModule } from '../layouts/layouts.module';
-import { UserSelectionScreenComponent } from './user-selection-screen/user-selection-screen.component';
-import { ConsumerDashboardComponent } from './consumer/consumer-dashboard/consumer-dashboard.component';
 import { DriverDashboardComponent } from './driver/driver-dashboard/driver-dashboard.component';
 import { IntroductionScreensComponent } from './introduction-screens/introduction-screens.component';
 import 'materialize-css';
@@ -22,7 +19,6 @@ import { DriverNotificationComponent } from './driver/driver-notification/driver
 import { ConsumerNotificationComponent } from './consumer/consumer-notification/consumer-notification.component';
 import { ViewProfileComponent } from './view-profile/view-profile.component';
 import { ApplyToJobComponent } from './driver/apply-to-job/apply-to-job.component';
-import { JobListComponent } from './driver/job-list/job-list.component';
 import { DriverRatingsReviewsComponent } from './driver/driver-ratings-reviews/driver-ratings-reviews.component';
 import { TrackPackageComponent } from './driver/track-package/track-package.component';
 import { DriverSettingsComponent } from './driver/driver-settings/driver-settings.component';
@@ -43,7 +39,6 @@ import { ProfilePicSelectionComponent } from './market-place/components/ProfileP
 // import { AgmCoreModule } from '@agm/core';
 // import { AgmDirectionModule } from 'agm-direction';
 import { CalendarModule } from 'ion2-calendar';
-import { OrderCardComponent } from './consumer/consumer-dashboard/order-card/order-card.component';
 import { JobFilterComponent } from './driver/driver-dashboard/job-filter/job-filter.component';
 import { DeliveryCompletedComponent } from './driver/delivery-completed/delivery-completed.component';
 import { MarketPlaceComponent } from './market-place/market-place.component';
@@ -51,8 +46,6 @@ import { MarketPlaceComponent } from './market-place/market-place.component';
 @NgModule({
   declarations: [
     ForgetPasswordComponent,
-    UserSelectionScreenComponent,
-    ConsumerDashboardComponent,
     DriverDashboardComponent,
     IntroductionScreensComponent,
     TrackDriverComponent,
@@ -69,7 +62,6 @@ import { MarketPlaceComponent } from './market-place/market-place.component';
     ConsumerNotificationComponent,
     ViewProfileComponent,
     ApplyToJobComponent,
-    JobListComponent,
     DriverRatingsReviewsComponent,
     TrackPackageComponent,
     DriverSettingsComponent,
@@ -84,7 +76,6 @@ import { MarketPlaceComponent } from './market-place/market-place.component';
     WalletComponent,
     EarningComponent,
     ProfilePicSelectionComponent,
-    OrderCardComponent,
     JobFilterComponent,
     MarketPlaceComponent,
   ],

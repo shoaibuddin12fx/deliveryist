@@ -23,7 +23,7 @@ export class CommonServicesService implements OnInit {
   constructor(
     public apiService: ApiService,
     private network: NetworkService,
-    private utilityService: UtilityService,
+    private utility: UtilityService,
     public storage: StorageService
   ) {}
 
@@ -143,14 +143,14 @@ export class CommonServicesService implements OnInit {
         .subscribe(
           (data: any) => {
             if (data.status === 200) {
-              this.utilityService.showToast(data.message, 'success');
+              this.utility.showToast(data.message, 'success');
               localStorage.setItem('token', data.token);
               // this.getUserProfileData();
               resolve(data);
             }
           },
           (err) => {
-            this.utilityService.showToast(err.error.message, 'error');
+            this.utility.showToast(err.error.message, 'error');
             reject(err.error.message);
           }
         );
@@ -166,19 +166,19 @@ export class CommonServicesService implements OnInit {
         .subscribe(
           (data: any) => {
             if (data.status === 200) {
-              this.utilityService.showToast(data.message, 'success');
+              this.utility.showToast(data.message, 'success');
               localStorage.setItem('token', data.token);
               console.log(data);
               this.getUserProfileData();
               resolve(userData);
               // } else {
-              //   this.utilityService.showToast((data.message == 'No such user') ? (errorMessages.ERROR_SOCIAL_LOGIN) : data.message, 'error');
+              //   this.utility.showToast((data.message == 'No such user') ? (errorMessages.ERROR_SOCIAL_LOGIN) : data.message, 'error');
               //   reject(data.message);
             }
           },
           (err) => {
             console.log(err.error.message);
-            this.utilityService.showToast(err.error.message, 'error');
+            this.utility.showToast(err.error.message, 'error');
             reject(err.error.message);
           }
         );
@@ -192,17 +192,17 @@ export class CommonServicesService implements OnInit {
       this.apiService.post(config.api.user.register, userData).subscribe(
         (data: any) => {
           if (data.status == 200) {
-            this.utilityService.showToast(data.message, 'success');
+            this.utility.showToast(data.message, 'success');
             localStorage.setItem('token', data.token.access_token);
             this.getUserProfileData();
             resolve(data);
             // } else {
-            //   this.utilityService.showToast(data.message, 'error');
+            //   this.utility.showToast(data.message, 'error');
             //   reject(data.message);
           }
         },
         (err) => {
-          this.utilityService.showToast(err.error.message, 'error');
+          this.utility.showToast(err.error.message, 'error');
           reject(err.error.message);
         }
       );
@@ -232,14 +232,11 @@ export class CommonServicesService implements OnInit {
     return new Promise((resolve, reject) => {
       this.network.postForgetPassword({ email: email }).then(
         (v) => {
-          this.utilityService.showToast(
-            v['message'],
-            v['bool'] ? 'success' : 'error'
-          );
+          this.utility.showToast(v['message'], v['bool'] ? 'success' : 'error');
           resolve('');
         },
         (err) => {
-          this.utilityService.showToast(err.error.message, 'error');
+          this.utility.showToast(err.error.message, 'error');
           reject(err.error.message);
         }
       );
@@ -271,15 +268,15 @@ export class CommonServicesService implements OnInit {
         (data: any) => {
           console.log('sending OTP');
           if (data.status == 200) {
-            this.utilityService.showToast(data.message, 'success');
+            this.utility.showToast(data.message, 'success');
             resolve(data);
             // } else {
-            //   this.utilityService.showToast(data.message, 'error');
+            //   this.utility.showToast(data.message, 'error');
             //   reject(data.message);
           }
         },
         (err) => {
-          this.utilityService.showToast(err.error.message, 'error');
+          this.utility.showToast(err.error.message, 'error');
           reject(err.error.message);
         }
       );
@@ -293,16 +290,16 @@ export class CommonServicesService implements OnInit {
       this.apiService.post(config.api.user.verifyOTP, data, {}).subscribe(
         (data: any) => {
           if (data.status == 200) {
-            this.utilityService.showToast(data.message, 'success');
+            this.utility.showToast(data.message, 'success');
             localStorage.setItem('token', data.token);
             resolve(data);
             // } else {
-            //   this.utilityService.showToast(data.message, 'error');
+            //   this.utility.showToast(data.message, 'error');
             //   reject(data.message);
           }
         },
         (err) => {
-          this.utilityService.showToast(err.error.message, 'error');
+          this.utility.showToast(err.error.message, 'error');
           reject(err.error.message);
         }
       );
@@ -318,16 +315,16 @@ export class CommonServicesService implements OnInit {
         .subscribe(
           (data: any) => {
             if (data.status == 200) {
-              this.utilityService.showToast(data.message, 'success');
+              this.utility.showToast(data.message, 'success');
 
               resolve(data);
               // } else {
-              //   this.utilityService.showToast(data.message, 'error');
+              //   this.utility.showToast(data.message, 'error');
               //   reject(data.message);
             }
           },
           (err) => {
-            this.utilityService.showToast(err.error.message, 'error');
+            this.utility.showToast(err.error.message, 'error');
             reject(err.error.message);
           }
         );
@@ -343,16 +340,16 @@ export class CommonServicesService implements OnInit {
         .subscribe(
           (data: any) => {
             if (data.status == 200) {
-              this.utilityService.showToast(data.message, 'success');
+              this.utility.showToast(data.message, 'success');
               this.getUserProfileData();
               resolve(data);
               // } else {
-              //   this.utilityService.showToast(data.message, 'error');
+              //   this.utility.showToast(data.message, 'error');
               //   reject(data.message);
             }
           },
           (err) => {
-            this.utilityService.showToast(err.error.message, 'error');
+            this.utility.showToast(err.error.message, 'error');
             reject(err.error.message);
           }
         );
@@ -373,12 +370,12 @@ export class CommonServicesService implements OnInit {
             localStorage.setItem('userId', data.profile.id);
             resolve(data);
             // } else {
-            //   this.utilityService.showToast(data['message'], 'error');
+            //   this.utility.showToast(data['message'], 'error');
             //   resolve(null)
           }
         },
         (err) => {
-          this.utilityService.showToast(err.error.message, 'error');
+          this.utility.showToast(err.error.message, 'error');
           reject(err.error.message);
         }
       );
@@ -393,15 +390,15 @@ export class CommonServicesService implements OnInit {
         (data: any) => {
           if (data.status == 200) {
             console.log(data);
-            this.utilityService.showToast(data.message, 'success');
+            this.utility.showToast(data.message, 'success');
             resolve(data);
             // } else {
-            //  this.utilityService.showToast(data.message, 'error');
+            //  this.utility.showToast(data.message, 'error');
             //  reject(data.message);
           }
         },
         (err) => {
-          this.utilityService.showToast(err.error.message, 'error');
+          this.utility.showToast(err.error.message, 'error');
           reject(err.error.message);
         }
       );
@@ -416,15 +413,15 @@ export class CommonServicesService implements OnInit {
         (data: any) => {
           console.log(data);
           if (data.status == 200) {
-            this.utilityService.showToast(data.message, 'success');
+            this.utility.showToast(data.message, 'success');
             resolve(data);
             // } else {
-            //   this.utilityService.showToast(data.message, 'error');
+            //   this.utility.showToast(data.message, 'error');
             //   reject(data.message);
           }
         },
         (err) => {
-          this.utilityService.showToast(err.error.message, 'error');
+          this.utility.showToast(err.error.message, 'error');
           reject(err.error.message);
         }
       );
@@ -437,15 +434,15 @@ export class CommonServicesService implements OnInit {
       this.apiService.post(config.api.user.deleteAccount, data, {}).subscribe(
         (data: any) => {
           if (data.status == 200) {
-            this.utilityService.showToast(data.message, 'success');
+            this.utility.showToast(data.message, 'success');
             resolve(data);
             // } else {
-            //   this.utilityService.showToast(data.message, 'error');
+            //   this.utility.showToast(data.message, 'error');
             //   reject(data.message);
           }
         },
         (err) => {
-          this.utilityService.showToast(err.error.message, 'error');
+          this.utility.showToast(err.error.message, 'error');
           reject(err.error.message);
         }
       );
@@ -458,15 +455,15 @@ export class CommonServicesService implements OnInit {
       this.apiService.post(config.api.user.reportIssue, data, {}).subscribe(
         (data: any) => {
           if (data.status == 200) {
-            this.utilityService.showToast(data.message, 'success');
+            this.utility.showToast(data.message, 'success');
             resolve(data);
             // } else {
-            //   this.utilityService.showToast(data.message, 'error');
+            //   this.utility.showToast(data.message, 'error');
             //   reject(data.message);
           }
         },
         (err) => {
-          this.utilityService.showToast(err.error.message, 'error');
+          this.utility.showToast(err.error.message, 'error');
           reject(err.error.message);
         }
       );
@@ -481,16 +478,16 @@ export class CommonServicesService implements OnInit {
         .subscribe(
           (data: any) => {
             if (data.status == 200) {
-              this.utilityService.showToast(data.message, 'success');
+              this.utility.showToast(data.message, 'success');
               this.trackUser();
               resolve(data);
               // } else {
-              //   this.utilityService.showToast(data.message, 'error');
+              //   this.utility.showToast(data.message, 'error');
               //   reject(data.message);
             }
           },
           (err) => {
-            this.utilityService.showToast(err.error.message, 'error');
+            this.utility.showToast(err.error.message, 'error');
             reject(err.error.message);
           }
         );
@@ -499,34 +496,28 @@ export class CommonServicesService implements OnInit {
 
   //track user
   trackUser() {
-    return new Promise((resolve, reject) => {
-      if (localStorage.getItem('DeviceToken')) {
-        this.updateUserProfile({
-          fcm_token: localStorage.getItem('DeviceToken'),
-        });
-        let location = JSON.parse(localStorage.getItem('location'));
-        let data = {
-          latitude: location.lat,
-          longitude: location.lng,
-        };
-        this.apiService.post(config.api.user.trackUser, data, {}).subscribe(
-          (data: any) => {
-            if (data.status == 200) {
-              // this.utilityService.showToast(data.message, 'success');
-              resolve(data);
-              // } else {
-              //   this.utilityService.showToast(data.message, 'error');
-              //   reject(data.message);
-            }
-          },
-          (err) => {
-            this.utilityService.showToast(err.error.message, 'error');
-            reject(err.error.message);
+    return new Promise(async (resolve) => {
+      const res = await this.utility.getCurrentLocationCoordinates();
+
+      let data = {
+        latitude: res['coords'].lat,
+        longitude: res['coords'].lng,
+      };
+      this.apiService.post(config.api.user.trackUser, data, {}).subscribe(
+        (data: any) => {
+          if (data.status == 200) {
+            // this.utility.showToast(data.message, 'success');
+            resolve(data);
+            // } else {
+            //   this.utility.showToast(data.message, 'error');
+            //   reject(data.message);
           }
-        );
-      } else {
-        reject('Not able to track');
-      }
+        },
+        (err) => {
+          this.utility.showToast(err.error.message, 'error');
+          resolve(null);
+        }
+      );
     });
   }
 
@@ -538,15 +529,15 @@ export class CommonServicesService implements OnInit {
         .subscribe(
           (data: any) => {
             if (data.status == 200) {
-              // this.utilityService.showToast(data.message, 'success');
+              // this.utility.showToast(data.message, 'success');
               resolve(data);
               // } else {
-              //   this.utilityService.showToast(data.message, 'error');
+              //   this.utility.showToast(data.message, 'error');
               //   reject(data.message);
             }
           },
           (err) => {
-            this.utilityService.showToast(err.error.message, 'error');
+            this.utility.showToast(err.error.message, 'error');
             reject(err.error.message);
           }
         );
@@ -559,15 +550,15 @@ export class CommonServicesService implements OnInit {
       this.apiService.post(config.api.pay.payToStripe, payData, {}).subscribe(
         (data: any) => {
           if (data.status == 200) {
-            this.utilityService.showToast(data.message, 'success');
+            this.utility.showToast(data.message, 'success');
             resolve(data);
             // } else {
-            //   this.utilityService.showToast(data.message, 'error');
+            //   this.utility.showToast(data.message, 'error');
             //   reject(data.message);
           }
         },
         (err) => {
-          this.utilityService.showToast(err.error.message, 'error');
+          this.utility.showToast(err.error.message, 'error');
           reject(err.error.message);
         }
       );
@@ -579,15 +570,15 @@ export class CommonServicesService implements OnInit {
       this.apiService.post('payment/createPaypalOrder', data, {}).subscribe(
         (data: any) => {
           if (data.status == 200) {
-            this.utilityService.showToast(data.message, 'success');
+            this.utility.showToast(data.message, 'success');
             resolve(data);
             // } else {
-            //   this.utilityService.showToast(data.message, 'error');
+            //   this.utility.showToast(data.message, 'error');
             //   reject(data.message);
           }
         },
         (err) => {
-          this.utilityService.showToast(err.error.message, 'error');
+          this.utility.showToast(err.error.message, 'error');
           reject(err.error.message);
         }
       );
@@ -599,15 +590,15 @@ export class CommonServicesService implements OnInit {
       this.apiService.post('payment/createPaypalCapture', data, {}).subscribe(
         (data: any) => {
           if (data.status == 200) {
-            this.utilityService.showToast(data.message, 'success');
+            this.utility.showToast(data.message, 'success');
             resolve(data);
             // } else {
-            //   this.utilityService.showToast(data.message, 'error');
+            //   this.utility.showToast(data.message, 'error');
             //   reject(data.message);
           }
         },
         (err) => {
-          this.utilityService.showToast(err.error.message, 'error');
+          this.utility.showToast(err.error.message, 'error');
           reject(err.error.message);
         }
       );
@@ -619,15 +610,15 @@ export class CommonServicesService implements OnInit {
       this.apiService.post('user/setFcmToken', data, {}).subscribe(
         (data: any) => {
           if (data.status == 200) {
-            this.utilityService.showToast(data.message, 'success');
+            this.utility.showToast(data.message, 'success');
             resolve(data);
             // } else {
-            //   this.utilityService.showToast(data.message, 'error');
+            //   this.utility.showToast(data.message, 'error');
             //   reject(data.message);
           }
         },
         (err) => {
-          this.utilityService.showToast(err.error.message, 'error');
+          this.utility.showToast(err.error.message, 'error');
           reject(err.error.message);
         }
       );

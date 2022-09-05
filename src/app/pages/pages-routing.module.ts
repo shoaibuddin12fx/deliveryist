@@ -2,8 +2,6 @@ import { MarketPlaceComponentModule } from './market-place/market-place.componen
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ForgetPasswordComponent } from './authentication/forget-password/forget-password.component';
-import { UserSelectionScreenComponent } from './user-selection-screen/user-selection-screen.component';
-import { ConsumerDashboardComponent } from './consumer/consumer-dashboard/consumer-dashboard.component';
 import { DriverDashboardComponent } from './driver/driver-dashboard/driver-dashboard.component';
 import { IntroductionScreensComponent } from './introduction-screens/introduction-screens.component';
 import { TrackDriverComponent } from './consumer/track-driver/track-driver.component';
@@ -24,7 +22,6 @@ import { DriverNotificationComponent } from './driver/driver-notification/driver
 import { ContactComponent } from './contact/contact.component';
 import { ViewProfileComponent } from './view-profile/view-profile.component';
 import { ApplyToJobComponent } from './driver/apply-to-job/apply-to-job.component';
-import { JobListComponent } from './driver/job-list/job-list.component';
 import { DriverRatingsReviewsComponent } from './driver/driver-ratings-reviews/driver-ratings-reviews.component';
 import { TrackPackageComponent } from './driver/track-package/track-package.component';
 import { DriverSettingsComponent } from './driver/driver-settings/driver-settings.component';
@@ -71,24 +68,27 @@ const routes: Routes = [
     path: 'user-role-selection',
     loadChildren: () =>
       import(
-        './authentication/user-role-selection/user-role-selection.module'
+        './user-role-selection/user-role-selection.module'
       ).then((m) => m.UserRoleSelectionPageModule),
   },
   {
-    path: 'post-job',
+    path: 'consumer',
     loadChildren: () =>
-      import('./consumer/post-job/post-job.module').then(
-        (m) => m.PostJobPageModule
-      ),
+      import(
+        './consumer/consumer.module'
+      ).then((m) => m.ConsumerModule),
   },
+  {
+    path: 'driver',
+    loadChildren: () =>
+      import(
+        './driver/driver.module'
+      ).then((m) => m.DriverModule),
+  },
+
+
   { path: 'forgetPassword', component: ForgetPasswordComponent },
   { path: 'driverDashboard', component: DriverDashboardComponent },
-  {
-    path: 'userRoleSelection',
-    component: UserSelectionScreenComponent,
-    canActivate: [AuthGuard],
-  },
-  { path: 'consumerDashboard', component: ConsumerDashboardComponent },
   { path: 'deliveryCompleted', component: DeliveryCompletedComponent },
   { path: 'trackDriver', component: TrackDriverComponent },
   { path: 'paymentMode', component: PaymentModeComponent },
@@ -103,7 +103,6 @@ const routes: Routes = [
   { path: 'consumerNotification', component: ConsumerNotificationComponent },
   { path: 'driverNotification', component: DriverNotificationComponent },
   { path: 'applyToJob', component: ApplyToJobComponent },
-  { path: 'jobList', component: JobListComponent },
   { path: 'driverReviews', component: DriverRatingsReviewsComponent },
   { path: 'trackPackage', component: TrackPackageComponent },
   { path: 'driverNotification', component: DriverNotificationComponent },
@@ -131,14 +130,11 @@ const routes: Routes = [
   {
     path: 'autocomplete',
     loadChildren: () =>
-      import('./authentication/autocomplete/autocomplete.module').then(
+      import('../components/autocomplete/autocomplete.module').then(
         (m) => m.AutocompletePageModule
       ),
   },
-  {
-    path: 'user-role-selection',
-    loadChildren: () => import('./user-role-selection/user-role-selection.module').then( m => m.UserRoleSelectionPageModule)
-  },
+
 
   // {
   //   path: 'order-detail',
@@ -146,7 +142,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes), ChatListComponentModule],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
 export class PagesRoutingModule {}

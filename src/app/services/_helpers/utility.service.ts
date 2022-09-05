@@ -146,6 +146,10 @@ export class UtilityService {
     }
   }
 
+  getDistanceOfCoordinates(origin, destination){
+    return this.geolocationsService.getDistanceOfCoordinates(origin, destination)
+  }
+
   getCoordsForPlaceId(placeId, _default = true) {
     return this.geolocationsService.getCoordsForPlaceId(
       placeId,

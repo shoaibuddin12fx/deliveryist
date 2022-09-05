@@ -29,7 +29,8 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-47%, -62%);
+  transform: translate(-50%, -50%);
+  width: 100%;
 }
 
 .dlvr-connect-with.drive {
@@ -83,12 +84,12 @@
     max-width: 200px;
   }
 }
-@media (max-width: 768px) {
-  .dlvr-center-content {
-    transform: translate(-47%, -62%);
-    width: 100%;
-  }
-}
+// @media (max-width: 768px) {
+//   .dlvr-center-content {
+//     transform: translate(-47%, -62%);
+//     width: 100%;
+//   }
+// }
 @media (max-width: 360px) {
   .dlvr-uss-img-wrapper {
     width: 100%;

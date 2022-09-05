@@ -2,18 +2,6 @@
   <div class="dlvr-login-wrapper">
     <div class="row">
       <div class="col s12">
-        <!-- <div class="dlvr-login-header">
-        <div class="row">
-          <div class="col s12 l6">
-            <div class="dlvr-logo-wrapper">
-              <img src="assets/images/logo.svg" alt="logo" />
-            </div>
-          </div>
-          <div class="col s12 l6">
-            <h2>Sign up</h2>
-          </div>
-        </div>
-      </div> -->
         <div class="container dlvr-new-progress">
           <div class="row" data-aos="fade-down">
             <div class="col s12">
@@ -133,8 +121,6 @@
                 Verify
               </p>
             </button>
-
-            <!-- <ion-button class="ion-margin add-btn" expand="block" (click)="addPhoto()"><ion-spinner [hidden]="!loading"></ion-spinner><p [hidden]="loading" style="text-align:center; margin: 0px !important;"> Add Photo</p></ion-button> -->
           </div>
           <!--New 2nd-->
           <div class="dlvr-signup-varify-otp" *ngIf="step == 'step2'">
@@ -164,20 +150,7 @@
                 </div>
               </div>
             </div>
-            <!-- <div class="row" data-aos="fade-left"  data-aos-delay="600">
-              <div class="col s3">
-                <input type="text" id="firstNum" class="dlvr-uikit-input dlvr-uikit-input-grey otp" maxlength="1" placeholder="_">
-              </div>
-              <div class="col s3">
-                <input type="text" id="secondNum" class="dlvr-uikit-input dlvr-uikit-input-grey otp" maxlength="1" placeholder="_">
-              </div>
-              <div class="col s3">
-                <input type="text" id="thirdNum" class="dlvr-uikit-input dlvr-uikit-input-grey otp" maxlength="1" placeholder="_">
-              </div>
-              <div class="col s3">
-                <input type="text" id="fourthNum" class="dlvr-uikit-input dlvr-uikit-input-grey otp" maxlength="1" placeholder="_">
-              </div>
-            </div> -->
+
             <div
               class="row"
               data-aos="fade-left"
@@ -194,7 +167,7 @@
             <div class="row">
               <div class="col s12">
                 <div class="dlvr-forgot-password">
-                  <a (click)="openModel('modalTroubleList')">Having Trouble?</a>
+                  <a (click)="openModel()">Having Trouble?</a>
                 </div>
               </div>
             </div>
@@ -327,19 +300,13 @@
               class="btn-full-width dlvr-uikit-btn dlvr-uikit-btn-blue m-t-20 verify"
               type="button"
               (click)="goToSignupFourth()"
-              [disabled]="!signupForm.controls['first_name'].valid 
+              [disabled]="!signupForm.controls['first_name'].valid
             && !signupForm.controls['last_name'].valid
             && !signupForm.controls['email'].valid
             && !signupForm.controls['password'].valid"
             >
               Next
             </button>
-
-            <!-- <button class="btn-full-width dlvr-uikit-btn dlvr-uikit-btn-blue m-t-20"
-            type="button" (click)="goToSignupThird()" [disabled]="!signupForm.controls['first_name'].valid 
-            && !signupForm.controls['last_name'].valid
-            && !signupForm.controls['email'].valid
-            && !signupForm.controls['password'].valid">Save &amp; Next</button>  -->
           </div>
           <!--3rd-->
           <div class="dlvr-signup-third" *ngIf="step == 'step4'">
@@ -389,59 +356,6 @@
                   />
                 </div>
               </div>
-
-              <!-- <div class=" col s12">
-                                <ion-item (click)="showAddressModal('drop')" [hidden]="jobtype == 'personal' ">
-                                    <ion-label>{{ drop.add ? drop.add : 'Enter your destination'}}</ion-label>
-                                    <ion-icon slot="end" name="search-outline"></ion-icon>
-                                </ion-item>
-                            </div> -->
-
-              <!-- <div class="col s12">
-                            <div class="dlvr-input-text-options input-field">
-                                <img src="assets/images/location_icon_grey.png" alt="location_icon_grey" class="prefix">
-                                <input type="text" class="dlvr-uikit-input dlvr-uikit-input-grey" placeholder="Block"
-                                    formControlName="unit">
-                            </div>
-                        </div>
-                        <div class="col s12">
-                            <div class="dlvr-input-text-options input-field">
-                                <img src="assets/images/location_icon_grey.png" alt="location_icon_grey" class="prefix">
-                                <input type="text" class="dlvr-uikit-input dlvr-uikit-input-grey" placeholder="Street"
-                                    formControlName="street">
-                            </div>
-                            <p class="errorMessage"
-                                *ngIf="!signupForm.get('street').valid && signupForm.get('street').touched">
-                                Please Enter a valid street name.</p>
-                        </div>
-                        <div class="col s12">
-                            <div class="dlvr-input-text-options input-field">
-                                <img src="assets/images/location_icon_grey.png" alt="location_icon_grey" class="prefix">
-                                <input type="text" class="dlvr-uikit-input dlvr-uikit-input-grey" placeholder="City"
-                                    formControlName="city">
-                            </div>
-                        </div>
-                        <div class="col s12">
-                            <div class="dlvr-input-text-options input-field">
-                                <img src="assets/images/location_icon_grey.png" alt="location_icon_grey" class="prefix">
-                                <input type="text" class="dlvr-uikit-input dlvr-uikit-input-grey" placeholder="State"
-                                    formControlName="state">
-                            </div>
-                            <p class="errorMessage"
-                                *ngIf="!signupForm.get('state').valid && signupForm.get('state').touched">
-                                Please Enter a valid state name.</p>
-                        </div>
-                        <div class="col s12">
-                            <div class="dlvr-input-text-options input-field">
-                                <img src="assets/images/current_location_icon.png" alt="current_location_icon"
-                                    class="prefix">
-                                <input type="text" class="dlvr-uikit-input dlvr-uikit-input-grey" placeholder="Zip"
-                                    formControlName="zip">
-                            </div>
-                            <p class="errorMessage"
-                                *ngIf="!signupForm.get('zip').valid && signupForm.get('zip').touched">
-                                Please Enter a valid zip name.</p>
-                        </div> -->
             </div>
             <button
               class="btn-full-width dlvr-uikit-btn dlvr-uikit-btn-blue m-t-20 verify"
@@ -459,71 +373,9 @@
                 Sign up
               </p>
             </button>
-            <!-- <button class="btn-full-width dlvr-uikit-btn dlvr-uikit-btn-blue m-t-20"
-              type="button" (click)="signupUser()" [disabled]="!signupForm.valid">Sign up</button> -->
           </div>
         </form>
-        <!-- </div> -->
-        <!-- <div class="dlvr-login-divider">
-            <p>Sign up with</p>
-          </div>
-      <div class="dlvr-register-btn-wrapper">
-      <button class="waves-effect waves-ripple btn btn-full-width btn-large dlvr-btn dlvr-white-btn m-t-10 m-b-5" type="button" (click)="signInWithGoogle()">
-              <img src="assets/images/google.svg" alt="google"/> 
-              Sign up with Google
-      </button>
-      </div> -->
-        <!-- <div class="dlvr-login-footer">
-        <p>By Signing in you accepts the Terms of Services and Privacy Policy</p>
-        <a class="center" (click)="goForLogin()" class="pointer-cursor">Already have an account?</a>
-      </div> -->
       </div>
     </div>
-  </div>
-
-  <!-- <div class="dlvr-modal dlvr-forgetPassword-modal" materialize>
-  <div id="modalOTP" class="modal bottom-sheet" materialize="modal" [materializeParams]="[{dismissible: true}]" [materializeActions]="modalActions">
-      <div class="modal-footer">
-          <div class="dlvr-modal-btn-wrapper">
-              <input type="text" class="dlvr-text-input" placeholder="Enter OTP" [(ngModel)]="userOTP">
-              <button class="dlvr-uikit-btn dlvr-uikit-btn-rounded dlvr-uikit-btn-blue" (click)="goToSignupSecond()" [disabled]="userOTP == undefined || userOTP?.length == 0">Enter</button>
-          </div> 
-      </div>
-  </div> 
-</div> -->
-
-  <div class="dlvr-modal dlvr-having-trouble-popup" materialize>
-    <!-- Modal -->
-    <div
-      id="modalTroubleList"
-      class="modal bottom-sheet"
-      materialize="modal"
-      [materializeParams]="[{dismissible: true}]"
-      [materializeActions]="modalActions"
-    >
-      <div class="modal-footer">
-        <ul class="dlvr-hving-trouble-popup-list">
-          <li class="first">Number: {{signupForm.get('contact').value}}</li>
-          <li (click)="sendNewCode()">
-            <a> Send a new code </a>
-          </li>
-          <li (click)="useDiffNum()">
-            <a> Use different number </a>
-          </li>
-          <!-- <li>
-              <a>
-                Skip
-              </a>
-            </li> -->
-          <li (click)="closeModel('modalTroubleList')">
-            <a> Cancel </a>
-          </li>
-          <li>
-            <div class="endLine"></div>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <!-- Modal End-->
   </div>
 </ion-content>

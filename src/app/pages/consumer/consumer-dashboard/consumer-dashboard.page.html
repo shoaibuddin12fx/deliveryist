@@ -1,0 +1,47 @@
+<app-header [headerTitle]="'Orders'" [showBackButton]="false" (navigateTo)="navigateTo" ></app-header>
+
+<ion-content>
+  <div class="row" *ngIf="jobsList?.length == 0">
+    <div class="col s12">
+      <div class="dlvr-jobPost-noPost" data-aos="fade-up">
+        <i class="fa fa-archive fa-5x"></i>
+        <h4>You didn't posted any order yet.</h4>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="jobsList?.length > 0">
+    <ion-list *ngFor="let job of jobsList; let i=index">
+      <!-- <div class="col s12 l6"> </div> -->
+      <app-order-card [job]="job"></app-order-card>
+    </ion-list>
+    <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+      <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="Loading more data..."
+      >
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </div>
+
+  <!-- <div class="dlvr-add-job-btn">
+
+    <button
+      class="btn-floating btn-large dlvr-uikit-btn-blue"
+      (click)="postNewJob()"
+    >
+      <i class="material-icons f-s-25">add</i>
+    </button>
+  </div> -->
+  <!-- <div class="dlvr-job-list"></div> -->
+  <!-- <div class="container"> </div> -->
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="tertiary" (click)="postNewJob()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+
+
+</ion-content>
