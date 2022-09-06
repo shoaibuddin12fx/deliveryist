@@ -1,5 +1,6 @@
 import { Component, Injector, OnInit } from '@angular/core';
 import { BasePage } from '../base-page/base-page';
+import { JobListPageModule } from '../driver/job-list/job-list.module';
 
 @Component({
   selector: 'app-user-role-selection',
@@ -9,6 +10,7 @@ import { BasePage } from '../base-page/base-page';
 export class UserRoleSelectionPage extends BasePage implements OnInit {
   // modalActions = new EventEmitter<string|MaterializeAction>();
   userRole;
+  JobListPageModule;
   userName: any = JSON.parse(localStorage.getItem('userData'));
   isGeolocationEnabledAndSet = false;
   coords = null;
@@ -16,9 +18,7 @@ export class UserRoleSelectionPage extends BasePage implements OnInit {
   constructor(injector: Injector) {
     super(injector);
   }
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
   ionViewWillEnter() {
     const fcm_token = localStorage.getItem('fcm_token');
@@ -40,18 +40,13 @@ export class UserRoleSelectionPage extends BasePage implements OnInit {
   }
 
   async goAsConsumer() {
-
-    const res = await this.changeRole('Consumer')
+    const res = await this.changeRole('Consumer');
     this.navigateTo('pages/consumer/consumer-dashboard');
-
   }
 
   async goAsDriver() {
     const res = await this.changeRole('Driver');
     this.navigateTo('pages/driver/job-list');
-
-
-
 
     // .then(() => {
     //   this.commonApiService.getUserProfileData().then((res: any) => {
@@ -75,7 +70,7 @@ export class UserRoleSelectionPage extends BasePage implements OnInit {
   }
 
   async trackUser() {
-    return await this.commonService.trackUser()
+    return await this.commonService.trackUser();
   }
 
   changeRole(role) {
@@ -89,7 +84,7 @@ export class UserRoleSelectionPage extends BasePage implements OnInit {
           resolve(role);
         })
         .catch((err) => {
-          console.error(err)
+          console.error(err);
           resolve(null);
         });
     });

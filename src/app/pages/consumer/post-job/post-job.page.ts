@@ -48,7 +48,7 @@ export class PostJobPage extends BasePage implements OnInit, AfterViewInit {
   btnEnabled = false;
   btnEnabledForVehical = false;
   categoryBtnEnabled = false;
-  step = 'step4';
+  step = 'step1';
   loader = false;
   step1;
   step2;
@@ -132,6 +132,7 @@ export class PostJobPage extends BasePage implements OnInit, AfterViewInit {
     public modalController: ModalController // private mapsAPILoader: MapsAPILoader
   ) {
     super(injector);
+
     // this.ngZone.run(() => {
     // const location = JSON.parse(localStorage.getItem('location'));
 
@@ -160,12 +161,14 @@ export class PostJobPage extends BasePage implements OnInit, AfterViewInit {
 
     this.order_id = this.activatedRoute.snapshot.queryParams.order_id;
     if (this.order_id) {
-      console.log(this.order_id);
+      console.log('Order Id', this.order_id);
       this.getOrderDetail(this.order_id);
     }
 
     history.pushState(null, null, window.location.href);
     this.loc.onPopState(() => {
+      console.log('onPopState');
+
       const postFormValues = this.postJobForm.controls;
       if (this.step == 'step2') {
         history.pushState(null, null, window.location.href);
@@ -226,11 +229,11 @@ export class PostJobPage extends BasePage implements OnInit, AfterViewInit {
     const order = (await this.storage.getKey('order')) as any;
     if (order) {
       this.OrderDetail = JSON.parse(order);
-      console.log(this.OrderDetail);
+      console.log('Order Detail', this.OrderDetail);
       this.deliveryCharges = this.OrderDetail.delivery_charges;
       this.cart = this.cartService.get();
       this.total = this.cart.total;
-      console.log(this.deliveryCharges);
+      console.log('Order Charges', this.deliveryCharges);
     }
   }
 
@@ -366,7 +369,7 @@ export class PostJobPage extends BasePage implements OnInit, AfterViewInit {
 
     if (this.postJobForm.valid) {
       const newJobData = this.postJobForm.value;
-      console.log(newJobData.deliveryDate);
+      console.log('Nav Delivery Date', newJobData.deliveryDate);
       const postJobData: any = {
         job_latitude: this.origin.lat,
         job_longitude: this.origin.lng,

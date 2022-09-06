@@ -45,16 +45,19 @@ export class OrderSummaryComponent extends BasePage implements OnInit {
   ngOnInit() {}
 
   setPackageDetails(detail) {
+    console.log('detail', detail);
     this.deliveryDetails.delivery_Address = detail.delivery;
+    console.log('llllll', this.deliveryDetails);
+
     this.deliveryDetails.package_Category = detail.packageCategory
       ? detail.packageCategory
-      : this.cartService.cart.items[0].category_name;
+      : this.cartService.cart.items[0]?.category_name;
     this.deliveryDetails.vehicle_Type = detail.vehicleType;
 
     if (!detail.pickup) {
       const latLong = {
-        lat: this.cartService.details.job_latitude,
-        lng: this.cartService.details.job_longitude,
+        lat: this.cartService.details?.job_latitude,
+        lng: this.cartService.details?.job_longitude,
       };
       this.cartService.mapService.getGeoAddress(latLong).then((data) => {
         this.pickup_Address = data;

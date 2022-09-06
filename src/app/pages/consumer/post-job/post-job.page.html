@@ -323,10 +323,11 @@
                           </label>
                         </div> -->
                       </div>
+
                       <div class="col s6">
                         <div class="dlvr-uikit-card dlvr-uikit-icon-card dlvr-uikit-icon-card-green asap-green"
                           [ngClass]="{'active': postJobForm.controls['deliveryType'].value == 'flexible' }  "
-                          (click)="activeType('flexible')">
+                          (click)="activeType()">
                           <div class="col s6">
                             <p class="dlvr-car-category-title asap-title">Flexible</p>
                           </div>
@@ -339,29 +340,22 @@
                           </label>
 
                         </div>
-                        <!-- <div
-                          class="dlvr-radio dlvr-radio-green p-0"
-                          [ngClass]="{'active': postJobForm.controls['deliveryType'].value == 'Flexible' }"
-                        >
-                          <label
-                            class="dlvr-uikit-radio dlvr-uikit-radio-green delivery-label"
-                          > -->
-                        <!-- (click)="activateandDeactivateCalendarModal()" -->
-                        <!-- <input
-                              value="Flexible"
-                              type="radio"
-                              formControlName="deliveryType"
+                      </div>
 
-                            />
+                      <!-- <div class="col s6">
+                        <div class=" dlvr-radio dlvr-radio-green p-0"
+                          [ngClass]="{'active': postJobForm.controls['deliveryType'].value == 'Flexible' }">
+                          <label class="dlvr-uikit-radio dlvr-uikit-radio-green delivery-label">
+                            <input value="Flexible" type="radio" formControlName='deliveryType'
+                              (click)="activeType()" />
                             <ion-icon
                               [ngClass]="postJobForm.controls['deliveryType'].value == 'Flexible' ? 'tick-icon' : 'tick-icon-off'"
-                              name="checkmark"
-                            ></ion-icon>
+                              name="checkmark"></ion-icon>
                             <p>Flexible</p>
-                          </label> -->
-                        <!-- </div> -->
-                        <!-- <span></span> -->
-                      </div>
+                          </label>
+                        </div>
+                        <span></span>
+                      </div> -->
 
                     </ion-radio-group>
 

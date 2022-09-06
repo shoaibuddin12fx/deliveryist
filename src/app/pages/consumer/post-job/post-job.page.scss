@@ -857,11 +857,11 @@ ion-calendar .title {
   z-index: 100;
 }
 .modal-inner {
-  width: 90%;
+  width: 80%;
   margin: 210px auto;
   border-radius: 10px;
   background-color: #fff;
-  height: 48%;
+  padding: 20px;
 }
 .instruction {
   display: flex;
@@ -877,15 +877,13 @@ ion-calendar .title {
   color: rgb(45 55 92);
 }
 .modal-inner textarea {
-  margin: 2px 16px !important;
   background-color: rgb(239, 243, 247);
-  width: 81%;
+  width: 94%;
   height: 221px;
   border-radius: 10px;
   color: black;
   border: none;
-  /* padding: 7px 0 0 9px; */
-  padding: 18px;
+  padding: 10px;
 }
 .inst-btn {
   width: 85%;
