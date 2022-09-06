@@ -6,12 +6,8 @@ import { UserRoleSelectionPage } from './user-role-selection.page';
 const routes: Routes = [
   {
     path: '',
-    component: UserRoleSelectionPage
-  }
-  {
-    path: 'job-list',
-    component: 
-  }
+    component: UserRoleSelectionPage,
+  },
 ];
 
 @NgModule({

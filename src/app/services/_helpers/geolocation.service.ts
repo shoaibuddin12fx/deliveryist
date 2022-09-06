@@ -26,20 +26,29 @@ export class GeolocationsService {
           travelMode: google.maps.TravelMode.DRIVING,
         },
         (response, status) => {
-
-          console.log(status)
-          if(status == 'OK'){
-
+          console.log(status);
+          if (status == 'OK') {
+            console.log(response);
             let obj = {
-              distance: response.rows[0].elements[0].distance.text,
-              duration: response.rows[0].elements[0].duration.text
+              distance: 0,
+              duration: 0,
+            };
+            if (response.rows[0].elements[0].distance) {
+              obj.distance = response.rows[0].elements[0].distance.text;
             }
 
-            resolve(obj);
-          } else{
+            if (response.rows[0].elements[0].duration) {
+              obj.duration = response.rows[0].elements[0].duration;
+            }
+
+            if (obj.distance == 0 || obj.duration == 0) {
+              resolve(null);
+            } else {
+              resolve(obj);
+            }
+          } else {
             resolve(null);
           }
-
         }
       );
     });

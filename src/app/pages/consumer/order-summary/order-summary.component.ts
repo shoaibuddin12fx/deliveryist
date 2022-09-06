@@ -4,6 +4,7 @@ import {
   EventEmitter,
   AfterViewInit,
   Injector,
+  Input,
 } from '@angular/core';
 // import { MaterializeAction } from 'angular2-materialize';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -18,8 +19,6 @@ import { BasePage } from '../../base-page/base-page';
   styleUrls: ['./order-summary.component.scss'],
 })
 export class OrderSummaryComponent extends BasePage implements OnInit {
-  modalActions = new EventEmitter<string>(); // |MaterializeAction
-  orderSummary: any;
   details;
   deliveryDetails = {
     delivery_Address: '',
@@ -31,15 +30,20 @@ export class OrderSummaryComponent extends BasePage implements OnInit {
   categories;
   filteredCategory;
   pickup_Address;
-  constructor(public injector: Injector, private cartService: CartService) {
+  private _orderSummary: any;
+
+  constructor(public injector: Injector, public cartService: CartService) {
     super(injector);
+  }
 
-    this.activatedRoute.params.subscribe((data) => {
-      this.orderSummary = data;
+  @Input()
+  public get orderSummary(): any {
+    return this._orderSummary;
+  }
 
-      console.log('data', this.orderSummary);
-      this.setPackageDetails(this.orderSummary);
-    });
+  public set orderSummary(value: any) {
+    this._orderSummary = value;
+    this.setPackageDetails(this.orderSummary);
   }
 
   ngOnInit() {}

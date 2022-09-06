@@ -1,6 +1,5 @@
-import { NgModule } from "@angular/core";
-import { RouterModule, Routes } from "@angular/router";
-
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
@@ -11,16 +10,12 @@ const routes: Routes = [
   {
     path: 'job-list',
     loadChildren: () =>
-      import('./job-list/job-list.module').then(
-        (m) => m.JobListPageModule
-      ),
+      import('./job-list/job-list.module').then((m) => m.JobListPageModule),
   },
-
-
-]
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class ConsumerRoutingModule {}
+export class DriverRoutingModule {}

@@ -339,7 +339,9 @@ export class PostJobPage extends BasePage implements OnInit, AfterViewInit {
         // this.step4.classList.add("is-complete");
         // this.step5.classList.add("is-active");
       }
-      this.modals.present(OrderSummaryComponent);
+      const res = await this.modals.present(OrderSummaryComponent, {
+        orderSummary: this.postJobForm.value,
+      });
     } else if (this.step === 'step5') {
       this.loader = true;
       this.showBackButton = true;
@@ -435,7 +437,9 @@ export class PostJobPage extends BasePage implements OnInit, AfterViewInit {
             obj['paymentType'] = this.OrderDetail.payment_type;
           }
 
-          this.navigateTo('consumer/paymentMode', obj]);
+          localStorage.setItem('pre_order_details', JSON.stringify(obj));
+
+          this.navigateTo('pages/consumer/paymentMode');
         })
         .catch((err) => console.log({ err }));
       // } else {
@@ -459,17 +463,9 @@ export class PostJobPage extends BasePage implements OnInit, AfterViewInit {
     console.log('Flixilbe Time', res);
 
     let data = res.data;
-    if(data.date){
+    if (data.date) {
       this.postJobForm.controls.deliveryDate.setValue(data.date);
     }
-
-
-
-
-
-
-
-
   }
 
   searchLoad(types) {
