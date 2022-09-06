@@ -17,6 +17,6 @@ export class DatePickerComponent implements OnInit {
   sendToParent($event) {
     let v = $event.target.value;
 
-    this.modals.dismiss({ key: v });
+    this.modals.dismiss({ date: v });
   }
 }

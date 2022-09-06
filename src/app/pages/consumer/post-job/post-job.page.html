@@ -361,6 +361,15 @@
 
 
                   </div>
+                  <div class="row" *ngIf="postJobForm.controls['deliveryType'].value == 'flexible'">
+                    <div class="col s12">
+
+                      <button class="dlvr-add-photos-btn" (click)="openFile()">
+                        <i class="material-icons">library_add</i>
+                        {{ postJobForm.controls['deliveryDate'].value | date: 'Y-m-d hh:mm a'  }}
+                      </button>
+                    </div>
+                  </div>
                   <div class="row scrollmenu" *ngIf="urls.length != 0">
                     <div class="eachitem col s3 m3 image-item" *ngFor="let url of urls;index as i">
                       <i *ngIf="url.selected || url.uploaded" class="icon-close" (click)="justDelete(i)"></i>
