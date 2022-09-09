@@ -1,9 +1,123 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>job-list</ion-title>
-  </ion-toolbar>
-</ion-header>
+<!-- <app-header [headerTitle]="'My Delivery Orders'" [showBackButton]="false"></app-header> -->
 
 <ion-content>
+  <div class="dlvr-consumer-wrapper">
 
+    <div class="dlvr-job-list">
+      <div class="container">
+        <div class="row">
+          <div class="col s12 l6" *ngFor="let jobs of jobsList; let i=index">
+
+            <div class="dlvr-uikit-card dlvr-uikit-card-stripe-left m-b-10"
+              [ngClass]="jobs.jobLabel =='Immediate' ? 'dlvr-uikit-card-stripe-red' : 'dlvr-uikit-card-stripe-green'">
+              <label class="dlvr-uikit-badge dlvr-uikit-badge-boxed" *ngIf="jobs.status != 'Delivered'"
+                [ngClass]=" jobs.jobLabel =='Immediate' ? 'dlvr-uikit-badge-red' : 'dlvr-uikit-badge-green' ">
+                {{ jobs.jobLabel }}
+              </label>
+              <label class="dlvr-uikit-badge dlvr-uikit-badge-boxed dlvr-uikit-badge-green"
+                *ngIf="jobs.status == 'Delivered'">
+                {{ jobs.status }}
+              </label>
+              <div class="dlvr-uikit-card-body">
+                <h5 class="m-t-0 m-b-20">{{ jobs.title }}</h5>
+                <p class="dlvr-uikit-card-text">
+                  <i class="material-icons-outlined">place</i> {{ jobs.sourceAddress }}
+                </p>
+                <p class="dlvr-uikit-card-text">
+                  <i class="material-icons-outlined">home</i> {{ jobs.destinationAddress }}
+                </p>
+              </div>
+              <div class="dlvr-uikit-card-footer">
+                <!-- <p class="left">Amount: ${{ jobs.amount }}</p> -->
+                <button data-target="modal1" *ngIf="jobs.status == 'Accepted'" (click)="openModal('modal1', jobs.id)"
+                  class="dlvr-uikit-btn dlvr-uikit-btn-small dlvr-uikit-btn-rounded dlvr-uikit-btn-green right"
+                  type="button">
+                  Accepted</button>
+                <button *ngIf="jobs.status == 'Received'" data-target="modal2" (click)="openModal('modal2', jobs.id)"
+                  class="dlvr-uikit-btn dlvr-uikit-btn-small dlvr-uikit-btn-rounded dlvr-uikit-btn-green right"
+                  type="button">
+                  Delivered</button>
+                <button
+                  class="dlvr-uikit-btn dlvr-uikit-btn-small dlvr-uikit-btn-bordered dlvr-uikit-btn-rounded dlvr-uikit-btn-green right m-r-5"
+                  type="button" (click)="trackJob(jobs)">
+                  Track Delivery Order</button>
+              </div>
+            </div>
+            <div class="dlvr-modal dlvr-instruction-modal otp" materialize>
+              <div id="otp" class="modal white" materialize="modal" [materializeParams]="[{dismissible: true}]"
+                [materializeActions]="modalActions">
+                <div class="modal-content">
+                  <div class="img-wrapper">
+                    <img src="../../../../assets/images/otp_img.png" alt="otp">
+                  </div>
+                  <div class="dlvr-order-confirmed-block">
+                    <ul class="collection left-align">
+                      <li class="collection-item avatar">
+                        <p class="text">Please enter the <b>OTP</b> which has been given to ({{jobs?.poster_name}})
+                          {{jobs?.poster_contact}}</p>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="otp">
+                    <input type="text" [(ngModel)]="security_code">
+                  </div>
+                  <button class="btn-full-width dlvr-uikit-btn dlvr-uikit-btn-green m-t-20 verify" type="button"
+                    (click)="verifySecurityToken()">Confirm</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row" *ngIf="jobsList?.length == 0">
+          <div class="col s12">
+            <div class="dlvr-jobPost-noPost" data-aos="fade-up">
+              <i class="fa fa-archive fa-5x"></i>
+              <h3>You haven't any delivery order.</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </ion-content>
+<!-- Modal Structure Have you reached destination and accepted a package?-->
+<div id="modal1" class="modal dlvr-payment-success-modal">
+  <div class="modal-content">
+    <div class="center" data-aos="zoom-in">
+      <i class="material-icons-outlined dlvr-warning">info</i>
+    </div>
+    <h3>Have you reached destination and accepted a package?</h3>
+    <div class="row">
+      <div class="col s6">
+        <button class="btn-full-width dlvr-uikit-btn-small dlvr-uikit-btn dlvr-uikit-btn-green m-t-10 m-r-5"
+          (click)="packageStatusUpdate('Received', 'modal1')" type="button">Yes</button>
+      </div>
+      <div class="col s6">
+        <button class="btn-full-width dlvr-uikit-btn-small dlvr-uikit-btn dlvr-uikit-btn-red m-t-10"
+          (click)="closeModal('modal1')" type="button">No</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal Structure Have you reached destination and delivered a package to consumer?-->
+<div id="modal2" class="modal dlvr-payment-success-modal">
+  <div class="modal-content">
+    <div class="center" data-aos="zoom-in">
+      <i class="material-icons-outlined dlvr-warning">info</i>
+    </div>
+    <h3>Have you reached destination and delivered a package to consumer?</h3>
+    <div class="row">
+      <div class="col s6">
+        <button class="btn-full-width dlvr-uikit-btn-small dlvr-uikit-btn dlvr-uikit-btn-green m-t-10 m-r-5"
+          (click)="packageStatusUpdate('Delivered', 'modal2')" type="button">Yes</button>
+      </div>
+      <div class="col s6">
+        <button class="btn-full-width dlvr-uikit-btn-small dlvr-uikit-btn dlvr-uikit-btn-red m-t-10"
+          (click)="closeModal('modal2')" type="button">No</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,6 @@
 .modal-content {
     width: 90%;
-    margin: 195px auto;
+    margin: 210px auto;
     background: #fff;
     padding: 0px auto;
     border-radius: 5px;
@@ -19,17 +19,30 @@
 .cancel-btn {
     font-size: 25px;
 }
-.details-title {
-    font-size: 12px;
+.text-box {
+    width: 81%;
+    margin: 0 auto;
+}
+.line {
+    margin: 16px auto;
+    border-top: 1px solid #e6e6e6 !important;
+}
+.line p {
+    margin: 8px auto !important;
+}
+.title {
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: #42598e;
     font-weight: 500;
-    color: rgb(70 70 70);
+}
+.text-box {
+    color: rgb(79 79 79);
+}
+li {
+    text-decoration: none;
 }
 .text {
-    color: rgb(60 60 60);
-    font-size: 15px;
-    margin-top: -3%;
-    font-weight: 600;
-}
-.collection {
-    margin-top: -3px;
+    font-size: 13px;
+    font-weight: 500;
 }

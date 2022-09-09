@@ -152,8 +152,7 @@
 }
 
 /*NEW*/
-.dlvr-job-card-new {
-}
+
 .dlvr-order-confirmed-block {
     background-color: #f3f8f9;
     overflow: hidden;
@@ -245,9 +244,10 @@
 }
 .dlvr-job-card-new .dlvr-order-confirmed-block .location .location-img {
     position: absolute;
-    left: 8px;
-    top: 17px;
-    width: 13px;
+    left: 11px;
+    top: 20px;
+    width: 11px;
+    height: 48px;
 }
 .dlvr-job-card-new .accept-btn {
     background-color: #3a9e54;
@@ -267,17 +267,6 @@
     white-space: nowrap;
 }
 
-.container {
-    // position: absolute;
-    // z-index: -2;
-    // overflow-y: auto;
-    // bottom: 35%;
-}
-
-.margin-bottom {
-    // position: relative;
-    // bottom: 85%;
-}
 .collection-item {
     text-decoration: none !important;
     border-bottom: none !important;

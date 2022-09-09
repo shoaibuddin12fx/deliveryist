@@ -2,7 +2,7 @@ import { MarketPlaceComponentModule } from './market-place/market-place.componen
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ForgetPasswordComponent } from './authentication/forget-password/forget-password.component';
-import { DriverDashboardComponent } from './driver/driver-dashboard/driver-dashboard.component';
+// import { DriverDashboardComponent } from './driver/driver-dashboard/driver-dashboard.component';
 import { IntroductionScreensComponent } from './introduction-screens/introduction-screens.component';
 import { TrackDriverComponent } from './consumer/track-driver/track-driver.component';
 import { PaymentModeComponent } from './consumer/payment-mode/payment-mode.component';
@@ -21,9 +21,9 @@ import { ConsumerNotificationComponent } from './consumer/consumer-notification/
 import { DriverNotificationComponent } from './driver/driver-notification/driver-notification.component';
 import { ContactComponent } from './contact/contact.component';
 import { ViewProfileComponent } from './view-profile/view-profile.component';
-import { ApplyToJobComponent } from './driver/apply-to-job/apply-to-job.component';
+import { ApplyToJobComponent } from './driver/apply-to-job-old/apply-to-job.component';
 import { DriverRatingsReviewsComponent } from './driver/driver-ratings-reviews/driver-ratings-reviews.component';
-import { TrackPackageComponent } from './driver/track-package/track-package.component';
+import { TrackPackageComponent } from './driver/track-package-old/track-package.component';
 import { DriverSettingsComponent } from './driver/driver-settings/driver-settings.component';
 import { VehicleDetailComponent } from './driver/vehicle-detail/vehicle-detail.component';
 import { ReportIssueComponent } from './report-issue/report-issue.component';
@@ -67,28 +67,38 @@ const routes: Routes = [
   {
     path: 'user-role-selection',
     loadChildren: () =>
-      import(
-        './user-role-selection/user-role-selection.module'
-      ).then((m) => m.UserRoleSelectionPageModule),
+      import('./user-role-selection/user-role-selection.module').then(
+        (m) => m.UserRoleSelectionPageModule
+      ),
+  },
+
+  {
+    path: 'apply-to-job/:id',
+    loadChildren: () =>
+      import('./driver/apply-to-job/apply-to-job.module').then(
+        (m) => m.ApplyToJobPageModule
+      ),
   },
   {
     path: 'consumer',
     loadChildren: () =>
-      import(
-        './consumer/consumer.module'
-      ).then((m) => m.ConsumerModule),
+      import('./consumer/consumer.module').then((m) => m.ConsumerModule),
   },
   {
     path: 'driver',
     loadChildren: () =>
-      import(
-        './driver/driver.module'
-      ).then((m) => m.DriverModule),
+      import('./driver/driver.module').then((m) => m.DriverModule),
+  },
+  {
+    path: 'track-package/:id',
+    loadChildren: () =>
+      import('./driver/track-package/track-package.module').then(
+        (m) => m.TrackPackagePageModule
+      ),
   },
 
-
   { path: 'forgetPassword', component: ForgetPasswordComponent },
-  { path: 'driverDashboard', component: DriverDashboardComponent },
+  // { path: 'driverDashboard', component: DriverDashboardComponent },
   { path: 'deliveryCompleted', component: DeliveryCompletedComponent },
   { path: 'trackDriver', component: TrackDriverComponent },
   { path: 'paymentMode', component: PaymentModeComponent },
@@ -134,7 +144,6 @@ const routes: Routes = [
         (m) => m.AutocompletePageModule
       ),
   },
-
 
   // {
   //   path: 'order-detail',

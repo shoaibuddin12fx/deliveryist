@@ -1,0 +1,48 @@
+ion-content.transparent-ion-content {
+    --background-color: rgba(155, 155, 155, 0.5);
+    height: 100vh;
+    color: black;
+    text-align: center;
+}
+.otp-modal-inner {
+    width: 90%;
+    margin: 230px auto;
+    background-color: #fff;
+    border-radius: 5px;
+    // display: flex;
+}
+.otp-phone {
+    width: 50px;
+    margin: 25px auto;
+}
+.otp-text {
+    width: 85%;
+    margin: 0 auto;
+    text-align: center;
+    color: rgb(54 54 54);
+    font-size: 14px;
+    font-weight: 600;
+}
+.otp-input {
+    width: 80%;
+    margin: 15px auto;
+    background-color: rgb(233, 240, 242);
+    text-align: center;
+    border-radius: 5px;
+    padding: 0px 0px 0px 12px !important;
+}
+
+.btn-otp {
+    width: 80%;
+    background-color: rgb(58, 158, 84);
+    height: 43px;
+    border-radius: 50px;
+    margin: 0 auto;
+    font-size: 17px;
+    margin-bottom: 25px;
+    font-weight: 500;
+}
+.uper-box {
+    width: 100%;
+    display: flex;
+}

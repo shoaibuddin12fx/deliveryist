@@ -46,7 +46,7 @@ export class UserRoleSelectionPage extends BasePage implements OnInit {
 
   async goAsDriver() {
     const res = await this.changeRole('Driver');
-    this.navigateTo('pages/driver/job-list');
+    this.navigateTo('pages/driver/driver-dashbaord');
 
     // .then(() => {
     //   this.commonApiService.getUserProfileData().then((res: any) => {

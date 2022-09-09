@@ -439,7 +439,7 @@ export class PostJobPage extends BasePage implements OnInit, AfterViewInit {
 
           localStorage.setItem('pre_order_details', JSON.stringify(obj));
 
-          this.navigateTo('pages/consumer/paymentMode');
+          this.navigateTo('pages/consumer/paymentMode/');
         })
         .catch((err) => console.log({ err }));
       // } else {

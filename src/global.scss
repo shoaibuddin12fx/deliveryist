@@ -29,6 +29,13 @@
   height: 48px;
 }
 
+.modal-default {
+  --background: unset !important;
+  ion-content {
+    --background: rgba(0, 0, 0, 13%) !important;
+  }
+}
+
 .transparent-modal {
   --background: unset !important;
   app-date-picker {

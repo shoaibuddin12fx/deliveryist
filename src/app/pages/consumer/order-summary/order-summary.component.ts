@@ -7,7 +7,7 @@ import {
   Input,
 } from '@angular/core';
 // import { MaterializeAction } from 'angular2-materialize';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, Route } from '@angular/router';
 // import M from "materialize-css/dist/js/materialize.min.js";
 import { CartService } from '../../market-place/services/cart.service';
 import { NetworkService } from 'src/app/services/_helpers/network.service';
@@ -32,8 +32,28 @@ export class OrderSummaryComponent extends BasePage implements OnInit {
   pickup_Address;
   private _orderSummary: any;
 
-  constructor(public injector: Injector, public cartService: CartService) {
+  constructor(
+    public injector: Injector,
+    public cartService: CartService,
+    private route: Router
+  ) {
     super(injector);
+  }
+
+  goToHome() {
+    this.modals.dismiss();
+
+    this.route.navigate(['pages/user-role-selection']);
+
+    this.modals.dismiss();
+  }
+
+  goToSetting() {
+    this.modals.dismiss();  
+
+    this.route.navigate(['pages/settings']);
+
+    this.modals.dismiss();
   }
 
   @Input()
@@ -50,15 +70,15 @@ export class OrderSummaryComponent extends BasePage implements OnInit {
 
   setPackageDetails(detail) {
     console.log('detail', detail);
-    this.deliveryDetails.delivery_Address = detail.delivery;
-    console.log('llllll', this.deliveryDetails);
 
-    this.deliveryDetails.package_Category = detail.packageCategory
+    this.deliveryDetails.delivery_Address = detail.deliveryAddress;
+
+    this.deliveryDetails.package_Category = detail.itemCategory
       ? detail.packageCategory
       : this.cartService.cart.items[0]?.category_name;
-    this.deliveryDetails.vehicle_Type = detail.vehicleType;
+    this.deliveryDetails.vehicle_Type = detail.deliveryVehicle;
 
-    if (!detail.pickup) {
+    if (!detail.sourceAddress) {
       const latLong = {
         lat: this.cartService.details?.job_latitude,
         lng: this.cartService.details?.job_longitude,
