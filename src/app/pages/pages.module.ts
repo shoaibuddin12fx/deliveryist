@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PagesRoutingModule } from './pages-routing.module';
 import { ForgetPasswordComponent } from './authentication/forget-password/forget-password.component';
-import { DriverDashboardComponent } from './driver/driver-dashboard/driver-dashboard.component';
 import { IntroductionScreensComponent } from './introduction-screens/introduction-screens.component';
 import 'materialize-css';
 // import { MaterializeModule } from 'angular2-materialize';
@@ -18,9 +17,9 @@ import { ContactComponent } from './contact/contact.component';
 import { DriverNotificationComponent } from './driver/driver-notification/driver-notification.component';
 import { ConsumerNotificationComponent } from './consumer/consumer-notification/consumer-notification.component';
 import { ViewProfileComponent } from './view-profile/view-profile.component';
-import { ApplyToJobComponent } from './driver/apply-to-job/apply-to-job.component';
+import { ApplyToJobComponent } from './driver/apply-to-job-old/apply-to-job.component';
 import { DriverRatingsReviewsComponent } from './driver/driver-ratings-reviews/driver-ratings-reviews.component';
-import { TrackPackageComponent } from './driver/track-package/track-package.component';
+import { TrackPackageComponent } from './driver/track-package-old/track-package.component';
 import { DriverSettingsComponent } from './driver/driver-settings/driver-settings.component';
 import { VehicleDetailComponent } from './driver/vehicle-detail/vehicle-detail.component';
 import { ReportIssueComponent } from './report-issue/report-issue.component';
@@ -39,14 +38,13 @@ import { ProfilePicSelectionComponent } from './market-place/components/ProfileP
 // import { AgmCoreModule } from '@agm/core';
 // import { AgmDirectionModule } from 'agm-direction';
 import { CalendarModule } from 'ion2-calendar';
-import { JobFilterComponent } from './driver/driver-dashboard/job-filter/job-filter.component';
+import { JobFilterComponent } from './driver/driver-dashbaord/job-filter/job-filter.component';
 import { DeliveryCompletedComponent } from './driver/delivery-completed/delivery-completed.component';
 import { MarketPlaceComponent } from './market-place/market-place.component';
 
 @NgModule({
   declarations: [
     ForgetPasswordComponent,
-    DriverDashboardComponent,
     IntroductionScreensComponent,
     TrackDriverComponent,
     PaymentModeComponent,

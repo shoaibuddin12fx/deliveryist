@@ -1,0 +1,56 @@
+<ion-content>
+  <div class="header">
+    <div class="row header-line">
+      <div class="col s5 p-r-0 name-line">
+        <div class="name">
+          <p class="title">Matthew Perry</p>
+          <a (click)="openDetail()">Order Details</a>
+        </div>
+      </div>
+      <div class="col s7 p-r-5">
+        <div class="dlvr-contact-costomer-btn-wrapper">
+          <a class="call" href="tel:34597564315315">
+            <i class="material-icons">local_phone</i>
+          </a>
+          <a class="chat" (click)="openOtpModal()">
+            <i class="material-icons">message</i>
+          </a>
+          <a class="help" (click)="openHelp()">
+            <i class="material-icons">help_outline</i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="map-header">
+    <div class="dlvr-order-confirmed-block header-wrapper">
+      <ul class="collection left-align">
+        <li class="collection-item avatar">
+          <div class="circle">
+            <img src="../../../../assets/images/detail-pickup-add.png" alt="user">
+          </div>
+          <div class="pickup-address-line">
+            <p class="title" style="font-size: 11px !important;">Pick Up
+              Address</p>
+            <a class="text">Gulshan-e-iqbal Karcahi</a>
+            <a class="text" *ngIf="track?.status == 'Accepted'">JOhar</a>
+            <p class="title f-s-5" *ngIf="track?.status == 'Received'">Deli very Address</p>
+            <a class="text" *ngIf="track?.status == 'Received'">Sadar</a>
+            <a class="text" *ngIf="track?.status == 'Received'">DHA</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <app-track-map class="app-track-map-component"></app-track-map>
+  </div>
+
+  <div class="dlvr-get-started-btn"
+    (click)="track[0]?.status == 'Accepted' ? openModel('modal1') : openModel('modal2')">
+    {{ status == 'Accepted' ? 'On the way' : 'Loaded & Delivery Started'}}
+    <i class="fa fa-angle-right"></i>
+    <i class="fa fa-angle-right" style="margin-left:-2px"></i>
+    <i class="fa fa-angle-right" style="margin-left:-2px"></i>
+  </div>
+
+</ion-content>

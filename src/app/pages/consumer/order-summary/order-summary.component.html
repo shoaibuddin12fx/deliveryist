@@ -1,47 +1,55 @@
 <div class="dlvr-order-summary">
-    <!-- <app-header [headerTitle]="'Order Summary'" [showHeaderTitle]="false" [showBackButton]="false"></app-header> -->
+
+    <div class="order-header">
+        <h5 style="font-size: 18px; 
+        font-weight: 500;">Order Summary</h5>
+        <div class="icons">
+            <ion-icon name="settings" (click)="goToSetting()"></ion-icon>
+            <ion-icon name="home" (click)="goToHome()"></ion-icon>
+        </div>
+    </div>
     <div class="dlvr-postJob-step1">
-        <div class="dlvr-input-container m-b-5 pickup" *ngIf="orderSummary.pickup" data-aos="fade-left">
+        <div class="dlvr-input-container m-b-5 pickup " data-aos="fade-left">
             <p class="pickup-address">Pickup Address</p>
-            <small>{{orderSummary.pickup}}</small>
+            <small class="text-wrap-dot">{{orderSummary.sourceAddress}}</small>
         </div>
 
-        <div class="dlvr-input-container m-b-5 pickup" *ngIf="pickup_Address" data-aos="fade-left">
+        <!-- <div class="dlvr-input-container m-b-5 pickup" data-aos="fade-left">
             <p class="pickup-address">Pickup Address</p>
             <small>{{pickup_Address}}</small>
-        </div>
-        <!-- <div class="top-ball"></div>
-        <div class="vertical-line"></div> -->
-        <div class="dlvr-input-container delivery" *ngIf="orderSummary.delivery_address" data-aos="fade-left">
+        </div> -->
+        <div class="top-ball"></div>
+        <div class="vertical-line"></div>
+        <div class="dlvr-input-container delivery" data-aos="fade-left">
             <p class="pickup-address">Delivery Address</p>
-            <small>{{orderSummary.delivery_address}}</small>
+            <small class="text-wrap-dot">{{orderSummary.deliveryAddress}}</small>
         </div>
 
-        <!-- <div class="bottom-ball"></div> -->
-        <div class="dlvr-input-container delivery" *ngIf="orderSummary.delivery" data-aos="fade-left">
+        <div class="bottom-ball"></div>
+        <!-- <div class="dlvr-input-container delivery" data-aos="fade-left">
             <p class="pickup-address">Delivery Address</p>
             <small>{{orderSummary.delivery}}</small>
-        </div>
+        </div> -->
 
         <div class="row p-l-20 p-r-20">
             <div class="col s6" data-aos="zoom-in" data-aos-delay="400">
                 <div class="dlvr-os-list">
                     <p class="title">Packege Category</p>
-                    <p class="content">{{deliveryDetails.package_Category}}</p>
+                    <p class="content">{{orderSummary.itemCategory}}</p>
                 </div>
             </div>
-            <div class="col s6" data-aos="zoom-in" data-aos-delay="400" *ngIf="orderSummary.vehicleType">
+            <div class="col s6" data-aos="zoom-in" data-aos-delay="400">
                 <div class="dlvr-os-list">
                     <p class="title">Vehicle Type</p>
-                    <p class="content">{{orderSummary.vehicleType}}</p>
+                    <p class="content">{{orderSummary.deliveryVehicle}}</p>
                 </div>
             </div>
-            <div class="col s6" data-aos="zoom-in" data-aos-delay="400" *ngIf="orderSummary.vehicle_type">
+            <!-- <div class="col s6" data-aos="zoom-in" data-aos-delay="400">
                 <div class="dlvr-os-list">
                     <p class="title">Vehicle Type</p>
-                    <p class="content">{{orderSummary.vehicle_type}}</p>
+                    <p class="content">{{orderSummary.deliveryVehicle}}</p>
                 </div>
-            </div>
+            </div> -->
 
             <!-- <div class="col s6"  data-aos="zoom-in" data-aos-delay="400" *ngIf="orderSummary.deliveryType">
                 <div class="dlvr-os-list">
@@ -50,36 +58,37 @@
                 </div>
             </div> -->
 
-            <div class="col s6" data-aos="zoom-in" data-aos-delay="400" *ngIf="orderSummary.deliveryType">
+            <div class="col s6" data-aos="zoom-in" data-aos-delay="400">
                 <div class="dlvr-os-list">
                     <p class="title">Delivery Type</p>
-                    <p class="content">{{orderSummary.deliveryType}} <span *ngIf="orderSummary.delivery_time !='N/A'">
-                            {{- orderSummary.delivery_time | date}}</span></p>
+                    <p class="content">{{orderSummary.deliveryType}} - <span>
+                            {{orderSummary.deliveryDate | date}}</span></p>
                 </div>
             </div>
 
-            <div class="col s6" data-aos="zoom-in" data-aos-delay="400" *ngIf="orderSummary.priority">
+            <!-- <div class="col s6" data-aos="zoom-in" data-aos-delay="400">
                 <div class="dlvr-os-list">
                     <p class="title">Delivery Type</p>
-                    <p class="content">{{orderSummary.priority}} <span *ngIf="orderSummary.delivery_time !='N/A'"> {{-
+                    <p class="content">{{orderSummary.priority}} <span> {{-
                             orderSummary.delivery_time | date}}</span></p>
                 </div>
-            </div>
+            </div> -->
             <div class="col s6" data-aos="zoom-in" data-aos-delay="400">
                 <div class="dlvr-os-list">
                     <p class="title">Delivery Amount</p>
-                    <p class="content">${{orderSummary.amount}}</p>
+                    <p class="content">${{orderSummary.jobAmount}}</p>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col s12 no-padding">
-                <div class="dlvr-order-confirmed-block" data-aos="fade-up">
-                    <i class="material-icons-outlined">check_circle</i>
-                    <h3 class="title">Your order is confirmed</h3>
-                    <p class="content">A delivery agent will assign shortly</p>
-                    <img src="../../../../assets/images/order_summery_bottom_img.png" alt="order_summery_bottom_img">
-                </div>
+
+    </div>
+    <div class="row">
+        <div class="col s12 no-padding">
+            <div class="dlvr-order-confirmed-block" data-aos="fade-up">
+                <i class="material-icons-outlined">check_circle</i>
+                <h3 class="title">Your order is confirmed</h3>
+                <p class="content">A delivery agent will assign shortly</p>
+                <img src="../../../../assets/images/order_summery_bottom_img.png" alt="order_summery_bottom_img">
             </div>
         </div>
     </div>

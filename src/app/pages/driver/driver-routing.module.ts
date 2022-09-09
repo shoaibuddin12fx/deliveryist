@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'job-list',
+    redirectTo: 'driver-dashbaord',
     pathMatch: 'full',
   },
   {
@@ -12,6 +12,25 @@ const routes: Routes = [
     loadChildren: () =>
       import('./job-list/job-list.module').then((m) => m.JobListPageModule),
   },
+  {
+    path: 'driver-dashbaord',
+    loadChildren: () =>
+      import('./driver-dashbaord/driver-dashbaord.module').then(
+        (m) => m.DriverDashbaordPageModule
+      ),
+  },
+  {
+    path: 'apply-to-job/:id',
+    loadChildren: () =>
+      import('./apply-to-job/apply-to-job.module').then(
+        (m) => m.ApplyToJobPageModule
+      ),
+  },
+  {
+    path: 'track-package/:id',
+    loadChildren: () => import('./track-package/track-package.module').then( m => m.TrackPackagePageModule)
+  },
+
 ];
 
 @NgModule({

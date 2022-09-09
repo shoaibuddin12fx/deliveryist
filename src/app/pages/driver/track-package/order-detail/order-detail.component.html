@@ -1,32 +1,27 @@
-<ion-content color="none">
-  <div class="dlvr-modal dlvr instruction-modal">
-    <!-- <div id="instruction" class="white">
-      <div class="modal-content">
-        <h3 class="modal-title">
-          Order details
-          <i class="material-icons-outlined right cancel-btn" (click)="closeDetail()">cancel</i>
-        </h3>
-        <div class="dlvr-order-confirmed-block">
-          <ul class="collection left-align">
-            <li class="collection-item avatar">
-              <p class="details-title" style="padding: 0px !important;">Pickup Address</p>
-              <p class="text">{{ track[0]?.job_address}}</p>
-              <p class="details-title">Delivery Address</p>
-              <p class="text">{{ track[0]?.delivery_address}}</p>
-              <p class="details-title">Package Catageory</p>
-              <p class="text">{{ track[0]?.item_category}}</p>
-              <p class="details-title">Vehical Type</p>
-              <p class="text">{{ track[0]?.package_size}}</p>
-              <p class="details-title">Deilvery Type</p>
-              <p class="text">{{ track[0]?.priority}} - {{track[0]?.expected_delivery_time}}</p>
-              <p class="details-title">Instruction</p>
-              <p class="text">"No Contact Deilvery, Please."</p>
-              <p class="details-title">Delivery Amount</p>
-              <p class="text">$ {{ track[0]?.job_price}}</p>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div> -->
+<div class="modal-content">
+  <h3 class="modal-title">
+    Order details
+    <i class="material-icons-outlined right cancel-btn" (click)="closeDetail()">cancel</i>
+  </h3>
+  <div class="dlvr-order-confirmed-block">
+    <ul class="collection left-align">
+      <li class="collection-item avatar">
+
+        <p class="details-title">Pickup Address</p>
+        <p class="text">{{track?.sourceAddress}}</p>
+        <p class="details-title">Delivery Address</p>
+        <p class="text">{{track?.deliveryAddress}}</p>
+        <p class="details-title">Package Catageory</p>
+        <p class="text">{{track?.itemCategory}}</p>
+        <p class="details-title">Vehical Type</p>
+        <p class="text"></p>
+        <p class="details-title">Deilvery Type</p>
+        <p class="text">Immediate</p>
+        <p class="details-title">Instruction</p>
+        <p class="text">"No Contact Deilvery, Please."</p>
+        <p class="details-title">Delivery Amount</p>
+        <p class="text">$ 89</p>
+      </li>
+    </ul>
   </div>
-</ion-content>
+</div>

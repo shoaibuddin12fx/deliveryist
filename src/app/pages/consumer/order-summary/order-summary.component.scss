@@ -13,12 +13,12 @@
   height: 130vh;
 }
 .dlvr-input-container {
-  padding: 16px 16px 16px 36px;
-  width: 70%;
+  padding: 10px 14px 10px 36px;
+  width: 100%;
   background-color: black;
-  background: rgb(34 34 34 / 50%);
-  border-radius: 10px;
-  margin: 10px auto;
+  background: rgb(34 34 34 / 40%);
+  border-radius: 5px;
+  margin: 0px auto;
   position: relative;
 }
 .dlvr-input-container input {
@@ -47,6 +47,7 @@
 }
 .dlvr-input-container p.pickup-address,
 .dlvr-input-container p.delivery-address {
+  font-size: 14px;
   color: #26bae8;
   margin: 0;
   font-weight: 400;
@@ -61,12 +62,13 @@
 .dlvr-os-list .content {
   color: rgb(255 255 255 / 71%);
   font-size: 13px;
-  margin: 0;
+  margin: 6px;
   font-family: system-ui;
 }
 .dlvr-os-list .content {
   color: #fff;
   font-weight: 600;
+  width: 165px;
 }
 .dlvr-having-trouble-popup .modal.bottom-sheet {
   max-height: 65%;
@@ -114,15 +116,15 @@
   background: #32a7e9;
   width: 10px;
   height: 10px;
-  top: -57px;
-  left: 50px;
+  top: -46px;
+  left: 15px;
   border-radius: 50%;
 }
 
 .bottom-ball {
   position: relative;
-  top: 34px;
-  left: 50px;
+  top: -41px;
+  left: 15px;
   z-index: 5;
   width: 10px;
   height: 10px;
@@ -132,12 +134,39 @@
 
 .vertical-line {
   width: 0px;
-  height: 89px;
+  height: 65px;
   z-index: 5;
   position: absolute;
-  top: 140px;
-  left: 54px;
+  top: 115px;
+  left: 39px;
   border: 0.4px dashed #32a7e9;
+}
+.text-wrap-dot {
+  font-size: 13px;
+  width: 290px;
+  overflow: hidden;
+  display: inline-block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.dlvr-postJob-step1 {
+  width: 90%;
+  margin: 34px auto;
+}
+.order-header {
+  width: 90%;
+  background-color: #4679d4;
+  height: 56px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+}
+.icons {
+  width: 18%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
 }
 @media (max-width: 375px) {
   .dlvr-order-confirmed-block {
