@@ -1,31 +1,33 @@
-import { Component, EventEmitter, AfterViewInit } from '@angular/core';
-import { CommonServicesService } from 'src/app/services/common-services.service';
+import { Component, EventEmitter, Injector, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-// import M from 'materialize-css/dist/js/materialize.min.js';
-import 'materialize-css';
-// import { MaterializeAction } from 'angular2-materialize';
+import { CommonServicesService } from 'src/app/services/common-services.service';
 import { AlertsService } from 'src/app/services/_helpers/alerts.service';
-import { BasePage } from '../../base-page/base-page';
-import { ModalService } from 'src/app/services/_helpers/modal.service';
-import { ProfileComponent } from '../../profile/profile.component';
+import { BasePage } from '../base-page/base-page';
+import { ConsumerNotificationComponent } from '../consumer/consumer-notification/consumer-notification.component';
+import { WalletComponent } from '../driver/wallet/wallet.component';
+import { ProfileComponent } from '../profile/profile.component';
 
 @Component({
-  selector: 'app-driver-settings',
-  templateUrl: './driver-settings.component.html',
-  styleUrls: ['./driver-settings.component.scss'],
+  selector: 'app-setting',
+  templateUrl: './setting.page.html',
+  styleUrls: ['./setting.page.scss'],
 })
-export class DriverSettingsComponent implements AfterViewInit {
+export class SettingPage extends BasePage implements OnInit {
   modalActions = new EventEmitter<string>(); // | MaterializeAction
   successModalEle;
   profileData;
 
   constructor(
-    private commonService: CommonServicesService,
+    injector: Injector,
+    public commonService: CommonServicesService,
     private route: Router,
-    public alert: AlertsService,
-    public modals: ModalService
+    public alert: AlertsService
   ) {
+    super(injector);
     this.getProfileData();
+  }
+  ngOnInit(): void {
+    // throw new Error('Method not implemented.');
   }
 
   getProfileData() {
@@ -68,7 +70,8 @@ export class DriverSettingsComponent implements AfterViewInit {
   }
 
   goToNotification() {
-    this.route.navigate(['auth/consumerNotification']);
+    this.modals.present(ConsumerNotificationComponent);
+    // this.route.navigate(['auth/consumerNotification']);
   }
 
   goToMyJobs() {
@@ -92,7 +95,7 @@ export class DriverSettingsComponent implements AfterViewInit {
   }
 
   goToWallet() {
-    this.route.navigate(['driver/wallet']);
+    this.modals.present(WalletComponent);
   }
 
   goToEarning() {

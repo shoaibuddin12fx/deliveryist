@@ -1,4 +1,9 @@
-<app-header [headerTitle]="'Profile'" [showBackButton]="true" style="height: 60px;"></app-header>
+<!-- <app-header [headerTitle]="'Profile'" [showBackButton]="true" style="height: 60px;"></app-header> -->
+
+<div class="setting-header">
+  <h4>Profile</h4>
+</div>
+
 <ion-content class="ion-no-padding ion-no-margin">
   <div class="dlvr-profile-wrapper">
     <div class="p-0">
@@ -16,19 +21,20 @@
       <div class="dlvr-uikit-list dlvr-uikit-list-media info-container">
         <ul>
           <li>
-            <p class="p-l-20 p-t-20 p-b-20" style="position: relative; height: 40px;"
+            <p class="p-l-20 p-t-20 p-b-20"
+              style="position: relative; height: 40px; background-color: rgb(236 242 244);"
               [ngClass]="userRole == 'Consumer' ? 'consumer-bg' : 'bg-success'">
               <b>{{editProfileForm?.get('first_name')?.value}}{{editProfileForm?.get('last_name')?.value}}</b>
               <span class="f-s-14 m-0" class="rating"><i class="material-icons f-s-14"
-                  style="color: #51be79;">star</i>{{profileData?.rating}}</span>
-              <!-- <i class="material-icons-outlined dlvr-uikit-list-right-arrow">chevron_right</i> -->
+                  style="color: #51be79; font-size: 18px;">star</i>{{profileData?.rating}}</span>
+              <i class="material-icons-outlined dlvr-uikit-list-right-arrow arrow">chevron_right</i>
             </p>
           </li>
           <li>
             <p>
               <img class="m-l-10" src="../../../../assets/images/setting/email22.png">
               <b class="info-sec-details p-l-10"> {{editProfileForm?.get('email')?.value}}</b>
-              <!-- <i class="material-icons-outlined dlvr-uikit-list-right-arrow">chevron_right</i> -->
+              <i class="material-icons-outlined dlvr-uikit-list-right-arrow arrow">chevron_right</i>
               <img src="../../../assets/images/green_tick_icon.png"
                 style="max-width: 20px; float: right; margin-top: 4px;">
             </p>
@@ -37,82 +43,15 @@
             <p>
               <img class="m-l-10" src="../../../../assets/images/setting/smartphone22.png">
               <b class="info-sec-details p-l-10"> {{editProfileForm?.get('contact')?.value}}</b>
-              <!-- <i class="material-icons-outlined dlvr-uikit-list-right-arrow">chevron_right</i> -->
+              <i class="material-icons-outlined dlvr-uikit-list-right-arrow arrow">chevron_right</i>
               <img src="../../../assets/images/green_tick_icon.png"
                 style="max-width: 20px; float: right; margin-top: 4px;">
             </p>
           </li>
-          <!-- <li>
-                <p>
-                    <img class="m-l-10" src="../../../../assets/images/setting/user22.png"> 
-                    <b>Say something about you</b>
-                    <i class="material-icons-outlined dlvr-uikit-list-right-arrow">chevron_right</i>
-                </p>
-              </li> -->
+
         </ul>
       </div>
-      <!-- <form [formGroup]="editProfileForm">
-            <div class="row">
-                <div class="col s6 p-r-0">
-                    <input type="text" placeholder="First Name" class="dlvr-uikit-input dlvr-uikit-input-grey" value="John" formControlName="first_name"/>
-                </div>
-                <div class="col s6">
-                    <input type="text" placeholder="Last Name" class="dlvr-uikit-input dlvr-uikit-input-grey" value="Doe" formControlName="last_name"/>
-                </div>
-                <div class="col s12">
-                    <input type="email" placeholder="Email" class="dlvr-uikit-input dlvr-uikit-input-grey" value="johndoe@gmail.com" formControlName="email"/>
-                    <input type="tel" placeholder="Contact Number" class="dlvr-uikit-input dlvr-uikit-input-grey" value="+1698989898" formControlName="contact"/>
-                    <div class="row">
-                        <div class="col s3">
-                          <input type="number" class="dlvr-uikit-input dlvr-uikit-input-grey" placeholder="Age" formControlName="age">
-                        </div>
-                        <div class="col s9">
-                          <div class="dlvr-radio dlvr-radio-blue"
-                            [ngClass]="{'active': editProfileForm.controls['gender'].value == 'male' }">
-                            <label class="dlvr-uikit-radio">
-                              <input value="male" type="radio" formControlName='gender' />
-                              <span>Male</span>
-                            </label>
-                          </div>
-                          <div class="dlvr-radio dlvr-radio-blue"
-                            [ngClass]="{'active': editProfileForm.controls['gender'].value == 'female' }">
-                            <label class="dlvr-uikit-radio">
-                              <input value="female" type="radio" formControlName='gender'/>
-                              <span>Female</span>
-                            </label>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col s3">
-                          <input type="text" class="dlvr-uikit-input dlvr-uikit-input-grey" placeholder="Block" formControlName="unit">
-                        </div>
-                        <div class="col s9">
-                          <input type="text" class="dlvr-uikit-input dlvr-uikit-input-grey" placeholder="Street" formControlName="street">
-                          <p class="errorMessage" *ngIf="!editProfileForm.get('street').valid && editProfileForm.get('street').touched">
-                            Please Enter a valid street name.</p>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col s4">
-                          <input type="text" class="dlvr-uikit-input dlvr-uikit-input-grey" placeholder="City" formControlName="city">
-                        </div>
-                        <div class="col s4">
-                          <input type="text" class="dlvr-uikit-input dlvr-uikit-input-grey" placeholder="State" formControlName="state">
-                          <p class="errorMessage" *ngIf="!editProfileForm.get('state').valid && editProfileForm.get('state').touched">
-                            Please Enter a valid state name.</p>
-                        </div>
-                        <div class="col s4">
-                          <input type="text" class="dlvr-uikit-input dlvr-uikit-input-grey" placeholder="Zip" formControlName="zip">
-                          <p class="errorMessage" *ngIf="!editProfileForm.get('zip').valid && editProfileForm.get('zip').touched">
-                            Please Enter a valid zip name.</p>
-                        </div>
-                      </div>
-                    <button class="btn-full-width dlvr-uikit-btn dlvr-uikit-btn-blue m-t-10"
-                        type="button" [disabled]="!editProfileForm.valid" (click)="editUserProfile()">Edit profile</button>
-                </div>
-            </div>
-        </form> -->
+
     </div>
   </div>
 </ion-content>

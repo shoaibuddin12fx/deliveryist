@@ -14,13 +14,14 @@
         <p class="details-title">Package Catageory</p>
         <p class="text">{{track?.itemCategory}}</p>
         <p class="details-title">Vehical Type</p>
-        <p class="text"></p>
+        <p class="text">{{track?.package_size}}</p>
         <p class="details-title">Deilvery Type</p>
-        <p class="text">Immediate</p>
+        <p class="text">{{ track?.priority}} - {{track?.expected_delivery_time ?
+          expected_delivery_time : "N/A" }}</p>
         <p class="details-title">Instruction</p>
-        <p class="text">"No Contact Deilvery, Please."</p>
+        <p class="text">"{{track?.instructionForReceiver ? instructionForReceiver : "No Current Instruction" }}"</p>
         <p class="details-title">Delivery Amount</p>
-        <p class="text">$ 89</p>
+        <p class="text">$ {{track?.jobAmount}}</p>
       </li>
     </ul>
   </div>

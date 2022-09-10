@@ -4,22 +4,11 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
-
-
+import { SettingPageModule } from '../pages/setting/setting.module';
 
 @NgModule({
-  declarations: [
-    HeaderComponent,
-    FooterComponent,
-  ],
-  imports: [
-    CommonModule,
-    IonicModule,
-    RouterModule
-  ],
-  exports:[
-    HeaderComponent,
-    FooterComponent
-  ]
+  declarations: [HeaderComponent, FooterComponent],
+  imports: [CommonModule, IonicModule, RouterModule, SettingPageModule],
+  exports: [HeaderComponent, FooterComponent],
 })
-export class LayoutsModule { }
+export class LayoutsModule {}

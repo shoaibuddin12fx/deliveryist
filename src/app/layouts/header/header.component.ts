@@ -5,15 +5,12 @@ import {
   Input,
   Output,
   EventEmitter,
-  Injector,
 } from '@angular/core';
 // import M from 'materialize-css/dist/js/materialize.min.js';
 // import { MaterializeAction } from 'angular2-materialize';
 import { AuthService } from 'src/app/services/authguards/auth.service';
 import { Location } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Platform } from '@ionic/angular';
-import { BasePage } from 'src/app/pages/base-page/base-page';
 
 @Component({
   selector: 'app-header',
@@ -109,29 +106,35 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     }
     // this.closeSidenav();
   }
-  goTosettings() {
-    console.log('goTosettings', this.userRole);
-
-    if (this.userRole == 'Consumer') {
-      // this.navigateTo.emit('pages/consumer/consumer-settings');
-      this.route.navigate(['pages/consumer/settings']);
-    }
-
-    if (this.userRole == 'Driver') {
-      // this.navigateTo.emit('pages/driver/driver-settings');
-      this.route.navigate(['pages/settings']);
-    }
-    // else {
-    //   localStorage.setItem('userRole', 'Consumer');
-    //   this.userRole = 'Consumer';
-    //   this.route.navigate(['consumer/settings']);
-    // }
-    // this.closeSidenav();
-  }
 
   // goTosettings() {
-  //   this.route.navigate(['driver/driverSetting']);
+  //   alert();
+  //   this.navigateTo.emit('pages/setting');
   // }
+
+  // goTosettings() {
+  //   console.log('goTosettings', this.userRole);
+
+  //   if (this.userRole == 'Consumer') {
+  //     // this.navigateTo.emit('pages/consumer/consumer-settings');
+  //     this.route.navigate(['pages/consumer/settings']);
+  //   }
+
+  //   if (this.userRole == 'Driver') {
+  //     // this.navigateTo.emit('pages/driver/driver-settings');
+  //     this.route.navigate(['pages/settings']);
+  //   }
+  //   // else {
+  //   //   localStorage.setItem('userRole', 'Consumer');
+  //   //   this.userRole = 'Consumer';
+  //   //   this.route.navigate(['consumer/settings']);
+  //   // }
+  //   // this.closeSidenav();
+  // }
+
+  goTosettings() {
+    this.route.navigate(['/pages/setting']);
+  }
 
   goToUserSelection() {
     console.log('Home');

@@ -1,18 +1,13 @@
-import { Component, EventEmitter, Injector, OnInit } from '@angular/core';
+import { Component, Injector, OnInit } from '@angular/core';
 import { DriverApiService } from 'src/app/services/driver-api.service';
 import { BasePage } from '../../base-page/base-page';
-import { HelpModalComponent } from './help-modal/help-modal.component';
-import { OrderDetailComponent } from './order-detail/order-detail.component';
-import { OtpModalComponent } from './otp-modal/otp-modal.component';
-
-declare var google;
 
 @Component({
-  selector: 'app-track-package',
-  templateUrl: './track-package.page.html',
-  styleUrls: ['./track-package.page.scss'],
+  selector: 'app-delivery-completed',
+  templateUrl: './delivery-completed.page.html',
+  styleUrls: ['./delivery-completed.page.scss'],
 })
-export class TrackPackagePage extends BasePage implements OnInit {
+export class DeliveryCompletedPage extends BasePage implements OnInit {
   job: any;
   origin: any;
   destination: any;
@@ -32,7 +27,8 @@ export class TrackPackagePage extends BasePage implements OnInit {
       }
     });
   }
-  ngOnInit(): void {}
+
+  ngOnInit() {}
 
   async getJobDetails() {
     console.log('APPLY TO JOB TS');
@@ -41,10 +37,9 @@ export class TrackPackagePage extends BasePage implements OnInit {
 
     if (res) {
       console.log('JobID data', this.jobId);
-      console.log('Get Track Detail', res);
+      console.log('Delviery Compelete Detail', res);
 
       this.job = res;
-      console.log('Get Track', this.job);
 
       this.track = {
         sourceAddress: res.job_address,
@@ -80,18 +75,7 @@ export class TrackPackagePage extends BasePage implements OnInit {
       this.totalDuration = dis.duration;
     }
   }
-
-  openOtpModal() {
-    this.modals.present(OtpModalComponent, { track: this.track });
-  }
-  openDetail() {
-    this.modals.present(OrderDetailComponent, { track: this.track });
-  }
-  openHelp() {
-    this.modals.present(HelpModalComponent);
-  }
-
-  deliveryComplete(job) {
-    this.navigateTo('/pages/driver/delivery-completed/' + job.id);
+  goToDriver() {
+    this.navigateTo('/pages/user-role-selection/');
   }
 }

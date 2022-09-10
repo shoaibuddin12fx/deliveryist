@@ -29,6 +29,10 @@
     font-size: 15px;
     margin-top: -3%;
     font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 295px;
 }
 .collection {
     margin-top: -3px;

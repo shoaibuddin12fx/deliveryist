@@ -39,7 +39,7 @@ import { ProfilePicSelectionComponent } from './market-place/components/ProfileP
 // import { AgmDirectionModule } from 'agm-direction';
 import { CalendarModule } from 'ion2-calendar';
 import { JobFilterComponent } from './driver/driver-dashbaord/job-filter/job-filter.component';
-import { DeliveryCompletedComponent } from './driver/delivery-completed/delivery-completed.component';
+import { DeliveryCompletedComponent } from './driver/delivery-completed-old/delivery-completed.component';
 import { MarketPlaceComponent } from './market-place/market-place.component';
 
 @NgModule({

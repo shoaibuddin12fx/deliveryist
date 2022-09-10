@@ -1,0 +1,60 @@
+.dlvr-get-started-btn {
+    color: #fff;
+    background-color: #3a9e54;
+    width: 100%;
+    /* padding: 12px; */
+    font-weight: 600;
+    font-size: 18px;
+    text-align: center;
+    letter-spacing: 1px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    height: 57px;
+    padding-top: 16px;
+}
+.delivery-heading {
+    font-size: 26px;
+    font-weight: 700;
+    color: rgb(70 70 70);
+}
+.customer-name {
+    margin-left: 16px;
+}
+.finacnial-detail {
+    width: 90%;
+    margin: 0 auto;
+    border-radius: 20px;
+    background-color: #f3f8f9 !important;
+}
+.detail-header {
+    --background: #f3f8f9;
+    color: #3d3d3d;
+    font-weight: 600;
+    height: 44px;
+    width: 95%;
+}
+
+.detail-list {
+    --background: #f3f8f9;
+    font-size: 14px;
+    font-weight: 500;
+    color: #4e4e4e;
+    height: 35px;
+}
+.detail-footer {
+    --background: #e8eff0;
+    border-radius: 5px;
+    font-weight: 800;
+    margin-top: 10px;
+}
+ion-note {
+    font-weight: 800;
+    color: black;
+}
+.customer-detail {
+    color: #4d4d4d;
+}
+.customer-name p {
+    color: #4d4d4d;
+}

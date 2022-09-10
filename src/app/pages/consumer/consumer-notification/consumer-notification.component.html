@@ -1,8 +1,13 @@
+<!-- <app-header [headerTitle]="'Notification'" [showBackButton]="true"></app-header> -->
+
+<div class="setting-header">
+    <h4>Settings</h4>
+</div>
+
 <div class="dlvr-notification-screen-wrapper">
-    <app-header [headerTitle]="'Notification'" [showBackButton]="true"></app-header>
     <div class="row bg-lightBlue">
         <div class="col s12">
-            <p class="m-t-20 m-b-20 f-s-13"><b>Recieve messages from drivers, delivery status incuding offers</b></p>
+            <p class="content"><b>Recieve messages from drivers, delivery status incuding offers</b></p>
         </div>
     </div>
     <ion-content style="height:100vh">
@@ -11,7 +16,7 @@
                 <div class="col s11 contain">
                     <div class="dlvr-uikit-list dlvr-uikit-list-media">
                         <ul>
-                            <li>
+                            <li class="line">
                                 <p>
                                     <img src="../../../../assets/images/setting/report-an-issue.png" class="">
                                     Email
@@ -24,7 +29,7 @@
                                     </label>
                                 </div>
                             </li>
-                            <li>
+                            <li class="line">
                                 <p>
                                     <img src="../../../../assets/images/setting/smartphone.png" class="">
                                     Mobile
@@ -37,7 +42,7 @@
                                     </label>
                                 </div>
                             </li>
-                            <li>
+                            <li class="line">
                                 <p>
                                     <img src="../../../../assets/images/setting/notification.png" class="">
                                     Push

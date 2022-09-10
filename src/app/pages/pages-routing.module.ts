@@ -34,7 +34,7 @@ import { OrderSummaryComponent } from './consumer/order-summary/order-summary.co
 import { AddPhotoComponent } from './driver/add-photo/add-photo.component';
 import { WalletComponent } from './driver/wallet/wallet.component';
 import { EarningComponent } from './driver/earning/earning.component';
-import { DeliveryCompletedComponent } from './driver/delivery-completed/delivery-completed.component';
+import { DeliveryCompletedComponent } from './driver/delivery-completed-old/delivery-completed.component';
 
 const routes: Routes = [
   {
@@ -97,9 +97,17 @@ const routes: Routes = [
       ),
   },
 
+  {
+    path: 'delivery-completed',
+    loadChildren: () =>
+      import('./driver/delivery-completed/delivery-completed.module').then(
+        (m) => m.DeliveryCompletedPageModule
+      ),
+  },
+
   { path: 'forgetPassword', component: ForgetPasswordComponent },
   // { path: 'driverDashboard', component: DriverDashboardComponent },
-  { path: 'deliveryCompleted', component: DeliveryCompletedComponent },
+  // { path: 'deliveryCompleted', component: DeliveryCompletedComponent },
   { path: 'trackDriver', component: TrackDriverComponent },
   { path: 'paymentMode', component: PaymentModeComponent },
   { path: 'reviews', component: RatingsAndReviewsComponent },
@@ -143,6 +151,11 @@ const routes: Routes = [
       import('../components/autocomplete/autocomplete.module').then(
         (m) => m.AutocompletePageModule
       ),
+  },
+  {
+    path: 'setting',
+    loadChildren: () =>
+      import('./setting/setting.module').then((m) => m.SettingPageModule),
   },
 
   // {

@@ -4,7 +4,22 @@
 @import "../../../../node_modules/materialize-css/dist/css/materialize.css";
 // .dlvr-profile-wrapper{
 //     margin-bottom: 80px;
+
 // }
+
+.setting-header {
+    background-color: #58909e;
+    color: #fff;
+    width: 100%;
+    height: 56px;
+    text-align: center;
+}
+
+.setting-header h4 {
+    font-size: 22px;
+    margin: 14px;
+}
+
 .dlvr-profile-img-wrapper {
     text-align: center;
     position: relative;
@@ -22,16 +37,18 @@
 }
 .dlvr-profile-img-wrapper i {
     background-color: #fff;
-    padding: 6px;
     border-radius: 50px;
     box-shadow: 0 0 5px #333;
     position: absolute;
-    bottom: 31px;
+    bottom: 34px;
     right: 15px;
     z-index: 75;
     cursor: pointer;
     width: 35px;
-    height: 35px;
+    height: 26px;
+    font-size: 18px;
+    padding-top: 8px;
+    color: rgb(54 97 108);
 }
 @media (min-width: 1024px) {
     .container {
@@ -60,7 +77,7 @@
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
 }
 .dlvr-uikit-list ul li p {
-    padding: 12px 10px;
+    padding: 12px 22px;
 }
 .dlvr-uikit-list-media ul li p img {
     max-width: 30px;
@@ -142,27 +159,42 @@
 }
 .rating {
     position: absolute;
-    left: 2px;
-    bottom: 11px;
+    left: 21px;
+    bottom: 7px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 27px;
+    width: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 0px !important;
 }
-.image-container {
-    margin-bottom: 80px;
-}
+// .image-container {
+//     margin-bottom: 80px;
+// }
 
 .info-container {
     position: relative;
-    bottom: 100px;
+    bottom: 38px;
     color: #3c3c3c;
 }
 .info-container b {
     font-size: 18px;
     font-weight: 700;
+    color: rgb(60 60 60);
 }
 .info-sec-details {
     font-size: 16px !important;
     font-weight: 600 !important;
+    position: absolute;
+    margin-top: 3px;
+}
+
+.arrow {
+    float: right;
+    font-size: 28px;
+    color: #bdbdbd;
+    height: 100%;
+    display: flex;
+    align-items: center;
 }

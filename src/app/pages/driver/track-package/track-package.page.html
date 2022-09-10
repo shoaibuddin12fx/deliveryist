@@ -3,7 +3,7 @@
     <div class="row header-line">
       <div class="col s5 p-r-0 name-line">
         <div class="name">
-          <p class="title">Matthew Perry</p>
+          <p class="title">{{track?.poster_name}}</p>
           <a (click)="openDetail()">Order Details</a>
         </div>
       </div>
@@ -45,8 +45,7 @@
     <app-track-map class="app-track-map-component"></app-track-map>
   </div>
 
-  <div class="dlvr-get-started-btn"
-    (click)="track[0]?.status == 'Accepted' ? openModel('modal1') : openModel('modal2')">
+  <div class="dlvr-get-started-btn" (click)=deliveryComplete(job)>
     {{ status == 'Accepted' ? 'On the way' : 'Loaded & Delivery Started'}}
     <i class="fa fa-angle-right"></i>
     <i class="fa fa-angle-right" style="margin-left:-2px"></i>

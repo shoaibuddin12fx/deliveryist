@@ -2,6 +2,18 @@
 @import "../../../../assets/scss/custom-variables.scss";
 @import "../../../../assets/scss/dlvr-ui-kit.scss";
 @import "../../../../../node_modules/materialize-css/dist/css/materialize.css";
+
+.setting-header {
+    background-color: #58909e;
+    color: #fff;
+    width: 100%;
+    height: 56px;
+    text-align: center;
+}
+.setting-header h4 {
+    font-size: 18px;
+    margin: 18px 12px;
+}
 .dlvr-notification-screen-wrapper .dlvr-card h3,
 .dlvr-notification-screen-wrapper .dlvr-card p {
     margin-top: 6px;
@@ -38,25 +50,45 @@
 }
 .bg-lightBlue {
     background-color: #eaf0f2;
+    color: rgb(54 100 112);
+    margin: 0px !important;
 }
 .dlvr-uikit-list ul li p {
     padding: 12px 0;
     font-weight: 600;
 }
 .dlvr-uikit-list ul li p img {
-    max-width: 28px;
-    margin-right: 12px;
+    width: 35px;
+    margin-right: 14px;
+    margin-left: 10px;
 }
 .switch {
     float: right;
-    position: relative;
-    top: -38px;
-    right: -0.25px;
-}
 
+    width: 50%;
+}
+.switch label {
+    float: right;
+}
 // .container{
 //     margin-bottom: 500px;
 // }
 .contain {
     width: 100% !important;
+}
+.content {
+    font-size: 14px;
+    width: 96%;
+    margin: 12px auto;
+}
+.line {
+    display: flex;
+    align-items: center;
+}
+.line p {
+    padding: 12px 0;
+    font-weight: 600;
+    width: 50%;
+    display: flex;
+    align-items: center;
 }

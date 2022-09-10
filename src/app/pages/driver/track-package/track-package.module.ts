@@ -12,6 +12,7 @@ import { TrackMapComponent } from './track-map/track-map.component';
 import { OtpModalComponent } from './otp-modal/otp-modal.component';
 import { OrderDetailComponent } from './order-detail/order-detail.component';
 import { HelpModalComponent } from './help-modal/help-modal.component';
+import { DeliveryCompletedPageModule } from '../delivery-completed/delivery-completed.module';
 
 @NgModule({
   imports: [
@@ -20,6 +21,7 @@ import { HelpModalComponent } from './help-modal/help-modal.component';
     IonicModule,
     TrackPackagePageRoutingModule,
     LayoutsModule,
+    DeliveryCompletedPageModule,
   ],
   declarations: [
     TrackPackagePage,

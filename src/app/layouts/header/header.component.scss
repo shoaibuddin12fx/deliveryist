@@ -22,7 +22,7 @@
   // transform: translate(-50%, 0);
 }
 .material-icons {
-  font-size: 22px !important;
+  height: 100% !important;
 }
 .dlvr-nav nav i {
   display: inline-block;
@@ -60,7 +60,8 @@
 }
 .dlvr-header-logo.dlvr-header-logo-small {
   width: 43px;
-  margin-top: 9px;
+  margin-top: 15px;
+  margin-left: 32px;
 }
 .dlvr-hamburger img {
   width: 18px;
@@ -91,9 +92,9 @@
   color: black;
 }
 
-.custom-header-style {
-  // margin-top: 10%;
-}
+// .custom-header-style {
+//   // margin-top: 10%;
+// }
 
 @media (max-width: 768px) {
   .dlvr-nav nav {

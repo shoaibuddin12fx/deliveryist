@@ -28,9 +28,18 @@ const routes: Routes = [
   },
   {
     path: 'track-package/:id',
-    loadChildren: () => import('./track-package/track-package.module').then( m => m.TrackPackagePageModule)
+    loadChildren: () =>
+      import('./track-package/track-package.module').then(
+        (m) => m.TrackPackagePageModule
+      ),
   },
-
+  {
+    path: 'delivery-completed/:id',
+    loadChildren: () =>
+      import('./delivery-completed/delivery-completed.module').then(
+        (m) => m.DeliveryCompletedPageModule
+      ),
+  },
 ];
 
 @NgModule({
