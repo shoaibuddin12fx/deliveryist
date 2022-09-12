@@ -15,9 +15,9 @@ import { ChatListComponent } from './chat-list/chat-list.component';
 import { ChatListComponentModule } from './chat-list/chat-list.component.module';
 import { ProfileComponent } from './profile/profile.component';
 import { AboutComponent } from './about/about.component';
-import { PolicyComponent } from './policy/policy.component';
-import { HelpComponent } from './help/help.component';
-import { ConsumerNotificationComponent } from './consumer/consumer-notification/consumer-notification.component';
+import { PolicyComponent } from './payment-old/policy.component';
+import { HelpComponent } from './help-old/help.component';
+import { ConsumerNotificationComponent } from './consumer/consumer-notification-old/consumer-notification.component';
 import { DriverNotificationComponent } from './driver/driver-notification/driver-notification.component';
 import { ContactComponent } from './contact/contact.component';
 import { ViewProfileComponent } from './view-profile/view-profile.component';
@@ -26,14 +26,14 @@ import { DriverRatingsReviewsComponent } from './driver/driver-ratings-reviews/d
 import { TrackPackageComponent } from './driver/track-package-old/track-package.component';
 import { DriverSettingsComponent } from './driver/driver-settings/driver-settings.component';
 import { VehicleDetailComponent } from './driver/vehicle-detail/vehicle-detail.component';
-import { ReportIssueComponent } from './report-issue/report-issue.component';
+import { ReportIssueComponent } from './report-issue-old/report-issue.component';
 import { DeliveryHistoryComponent } from './driver/delivery-history/delivery-history.component';
-import { OrderHistoryComponent } from './consumer/order-history/order-history.component';
+import { OrderHistoryComponent } from './consumer/order-history-old/order-history.component';
 import { CardDetailComponent } from './consumer/card-detail/card-detail.component';
 import { OrderSummaryComponent } from './consumer/order-summary/order-summary.component';
 import { AddPhotoComponent } from './driver/add-photo/add-photo.component';
-import { WalletComponent } from './driver/wallet/wallet.component';
-import { EarningComponent } from './driver/earning/earning.component';
+import { WalletComponent } from './driver/wallet-old/wallet.component';
+import { EarningComponent } from './driver/earning-old/earning.component';
 import { DeliveryCompletedComponent } from './driver/delivery-completed-old/delivery-completed.component';
 
 const routes: Routes = [
@@ -102,6 +102,56 @@ const routes: Routes = [
     loadChildren: () =>
       import('./driver/delivery-completed/delivery-completed.module').then(
         (m) => m.DeliveryCompletedPageModule
+      ),
+  },
+
+  {
+    path: 'notification',
+    loadChildren: () =>
+      import('./consumer/notification/notification.module').then(
+        (m) => m.NotificationPageModule
+      ),
+  },
+
+  {
+    path: 'wallet',
+    loadChildren: () =>
+      import('./driver/wallet/wallet.module').then((m) => m.WalletPageModule),
+  },
+
+  {
+    path: 'earning',
+    loadChildren: () =>
+      import('./driver/earning/earning.module').then(
+        (m) => m.EarningPageModule
+      ),
+  },
+
+  {
+    path: 'order-history',
+    loadChildren: () =>
+      import('./consumer/order-history/order-history.module').then(
+        (m) => m.OrderHistoryPageModule
+      ),
+  },
+
+  {
+    path: 'payment',
+    loadChildren: () =>
+      import('./payment/payment.module').then((m) => m.PaymentPageModule),
+  },
+
+  {
+    path: 'help',
+    loadChildren: () =>
+      import('./help-page/help-page.module').then((m) => m.HelpPagePageModule),
+  },
+
+  {
+    path: 'report-issue',
+    loadChildren: () =>
+      import('./report-issue/report-issue.module').then(
+        (m) => m.ReportIssuePageModule
       ),
   },
 

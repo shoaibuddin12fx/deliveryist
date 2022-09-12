@@ -8,6 +8,12 @@
     background-color: #eaf0f2;
     height: 80px !important;
     color: grey;
+    margin: 0px;
+    padding: 5px 6px;
+}
+.bg-lightBlue p {
+    font-size: 14px;
+    color: rgb(54 100 112);
 }
 .paypal-logo {
     width: 55px;
@@ -16,7 +22,7 @@
 .paypal-txt {
     font-size: 17px;
     font-weight: 600;
-    color: #666666;
+    color: rgb(60 60 60);
 }
 .paypal-row {
     display: flex;

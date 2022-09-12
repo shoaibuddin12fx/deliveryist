@@ -1,0 +1,121 @@
+@import "../../../../../node_modules/materialize-css/dist/css/materialize.css";
+.grey-bg-container {
+    background-color: rgb(240, 240, 240);
+    padding: 26px 16px;
+}
+// .wallet-tab-wrapper{
+
+// }
+
+.earning-header {
+    width: 90%;
+    margin: 0 auto;
+}
+.chart-box {
+    width: 100%;
+    display: flex;
+}
+.totalEarning-box {
+    display: flex;
+    align-items: center;
+}
+.pie-chart {
+    margin: 20px auto;
+}
+.small {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0px;
+    color: rgb(54 100 112);
+}
+.wallet-tab-wrapper .tabs {
+    border-radius: 50px;
+    border: 1px solid #ccc;
+    margin-top: 16px;
+    overflow-x: hidden;
+}
+.wallet-tab-wrapper .tabs .middle {
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+}
+.wallet-tab-wrapper .tabs .tab a {
+    background-color: rgb(238, 238, 238);
+    color: #888;
+    font-weight: 500;
+}
+.wallet-tab-wrapper .tabs .tab a.active {
+    background-color: #fff;
+    color: #26bae8;
+    border-bottom: none;
+}
+.wallet-tab-wrapper .collection {
+    border: 1px solid #fff;
+    border-color: #fff;
+}
+.wallet-tab-wrapper .collection .collection-item.avatar {
+    padding-left: 42px;
+    border: none;
+    background-color: #eee;
+    margin-bottom: 8px;
+    border-radius: 12px;
+    min-height: unset;
+}
+.wallet-tab-wrapper .plus {
+    color: green;
+}
+.wallet-tab-wrapper .minus {
+    color: red;
+}
+.wallet-tab-wrapper .collection .collection-item.avatar:not(.circle-clipper) > .circle {
+    max-width: 20px;
+    max-height: 20px;
+}
+
+.overflow {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+a:active {
+    background-color: #fff;
+    color: #26bae8;
+    border-bottom: none;
+}
+.table-head th {
+    width: 20%;
+    border-left: 1px solid #fff;
+}
+.foot {
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+.foot span {
+    font-size: 12px;
+    color: grey;
+}
+.foot b {
+    font-size: 22px;
+    font-weight: 800;
+    color: rgb(37 37 37);
+    padding-top: 2px;
+}
+.dollar {
+    float: right;
+    color: black;
+}
+.task-complete {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.inner-rating {
+    display: flex;
+    align-items: center;
+}
+.rating {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

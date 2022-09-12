@@ -3,6 +3,23 @@
 @import "../../../assets/scss/dlvr-ui-kit.scss";
 // @import "/node_modules/materialize-css/dist/css/materialize.css";
 
+ion-header {
+    ion-toolbar {
+        // set background color
+        --background: #58909e;
+        // set icon/text color
+        color: #fff;
+        width: 100%;
+        height: 56px;
+        padding-top: 4px;
+        text-align: center;
+
+        ion-title {
+            font-size: 18px;
+        }
+    }
+}
+
 .collection {
     border: none;
 }
@@ -82,7 +99,7 @@
 .profile-info {
     color: #3c3c3c;
     width: 100%;
-    margin: 10px auto !important;
+    margin: 15px auto !important;
     display: flex;
     align-items: center;
     background-color: #f8fafb;

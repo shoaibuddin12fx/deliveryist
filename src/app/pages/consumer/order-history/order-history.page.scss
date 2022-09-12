@@ -1,0 +1,283 @@
+@import "../../../../theme/variables.scss";
+@import "../../../../assets/scss/custom-variables.scss";
+@import "../../../../assets/scss/dlvr-ui-kit.scss";
+// @import "../../../../../node_modules/materialize-css/dist/css/materialize.css";
+// .dlvr-consumer-wrapper {
+//     margin-bottom: 80%;
+//     margin-right: 50px;
+//     margin-left: 40px;
+// }
+
+// .dlvr-job-list .card {
+//     border-radius: 10px;
+// }
+// .dlvr-job-list .card .card-title,
+// .dlvr-job-list .card .card-title i {
+//     font-size: 18px;
+//     font-weight: 500;
+//     margin: 0;
+//     vertical-align: bottom;
+//     line-height: 1.3;
+// }
+// .dlvr-job-list .card .card-title i {
+//     font-weight: 500;
+// }
+// .dlvr-job-list .card .card-content {
+//     border-left: 4px solid;
+//     border-radius: 10px;
+//     padding: 14px;
+// }
+
+// .dlvr-job-list .card .card-content.dlvr-card-red {
+//     border-color: $error-color;
+// }
+// .dlvr-job-list .card .card-content.dlvr-card-blue {
+//     border-color: $primary-color;
+// }
+// .dlvr-job-list .card .card-content .dlvr-btn {
+//     margin-top: 10px;
+// }
+// .dlvr-jobList-item p {
+//     margin-top: 10px;
+// }
+// .dlvr-jobList-item p,
+// .dlvr-jobList-item i {
+//     color: $light-color2;
+// }
+// .dlvr-jobList-amount p {
+//     margin: 20px 0 10px;
+//     font-weight: 600;
+//     color: $light-color2;
+// }
+// .dlvr-set-label {
+//     position: absolute;
+//     right: 16px;
+//     top: 0;
+// }
+// .dlvr-set-label .dlvr-label {
+//     border-top-right-radius: 0px;
+//     border-top-left-radius: 0px;
+// }
+// .dlvr-jobPost-noPost {
+//     text-align: center;
+//     color: $light-color2;
+//     margin-top: 100px;
+// }
+
+// // new design
+// .dlvr-job-card-new {
+//     box-shadow: 0px 0 4px rgba(0, 0, 0, 0.2);
+//     border-radius: 6px;
+// }
+// .dlvr-job-card-new .dlvr-order-confirmed-block {
+//     box-shadow: none;
+// }
+// .dlvr-job-card-new .dlvr-order-confirmed-block .location {
+//     text-align: left;
+//     margin: 0 16px 16px 16px;
+//     background-color: #fff;
+//     border-radius: 6px;
+//     padding-left: 18px;
+//     position: relative;
+// }
+// .dlvr-job-card-new .dlvr-order-confirmed-block .location .location-img {
+//     position: absolute;
+//     left: 14px;
+//     top: 15px;
+//     width: 13px;
+// }
+// .dlvr-job-card-new .accept-btn {
+//     background-color: #3a9e54;
+//     color: #fff;
+//     font-weight: 600;
+//     letter-spacing: 1px;
+//     text-align: center;
+//     padding: 14px;
+//     border-bottom-right-radius: 6px;
+//     border-bottom-left-radius: 6px;
+//     cursor: pointer;
+//     font-size: 16px;
+// }
+
+// .dlvr-order-confirmed-block {
+//     background-color: #f3f8f9;
+//     overflow: hidden;
+//     border-top-right-radius: 6px;
+//     border-top-left-radius: 6px;
+//     margin-top: 20px;
+//     padding: 17px 0 0;
+//     text-align: center;
+//     // position: absolute;
+//     bottom: -6px;
+//     box-shadow: 0px 0 4px rgba(0, 0, 0, 0.2);
+// }
+// .dlvr-order-confirmed-block .amount {
+//     font-size: 19px;
+//     font-weight: 700;
+//     float: right;
+// }
+// .dlvr-order-confirmed-block .content {
+//     margin-top: 8px;
+//     font-weight: 600;
+//     color: #313131;
+// }
+// .dlvr-order-confirmed-block .collection {
+//     margin-top: 0;
+//     margin-bottom: 0;
+//     border: 0;
+// }
+// .dlvr-order-confirmed-block .collection .collection-item {
+//     background: none;
+// }
+// .dlvr-order-confirmed-block .collection .collection-item p i {
+//     font-size: 16px;
+// }
+// .dlvr-order-confirmed-block .collection .collection-item p b {
+//     vertical-align: middle;
+//     font-size: 13px;
+// }
+// .dlvr-order-confirmed-block .secondary-content {
+//     top: -32px;
+//     position: absolute;
+//     right: 12px;
+// }
+// .dlvr-order-confirmed-block .secondary-content i {
+//     font-size: 60px;
+//     color: #e26d0e;
+//     margin-top: 22px;
+// }
+// .dlvr-order-confirmed-block .collection .collection-item.avatar:not(.circle-clipper) > .circle {
+//     width: 62px;
+//     height: 62px;
+//     left: 22px;
+//     border-radius: 50%;
+//     overflow: hidden;
+// }
+// .dlvr-order-confirmed-block .collection .collection-item.avatar:not(.circle-clipper) > .circle img {
+//     width: 100%;
+//     background-size: cover;
+//     min-height: 45px;
+//     padding-left: 18px;
+// }
+
+// .dlvr-order-confirmed-block .collection .collection-item.avatar {
+//     min-height: 45px;
+//     border: none;
+//     padding-left: 45px;
+// }
+
+// .overflow {
+//     overflow-x: hidden;
+//     overflow-y: auto;
+// }
+
+.dlvr-add-job-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 12;
+}
+.dlvr-add-job-btn button {
+    background: $primary-gradient-color;
+}
+
+.overflow-y {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.dlvr-jobPost-noPost {
+    text-align: center;
+    color: $light-color2;
+    margin-top: 60px;
+}
+.order-card {
+    width: 90%;
+    background-color: rgb(243, 248, 249);
+    border-radius: 5px;
+    margin: 15px auto;
+    border: 1px solid rgb(232 239 241);
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: 0 auto;
+}
+.inner-header {
+    display: flex;
+    /* flex-direction: row; */
+    align-items: center;
+
+    p {
+        color: rgb(66 75 77);
+        font-weight: 600;
+    }
+}
+.check-mark {
+    font-size: 20px;
+    padding-right: 5px;
+    color: rgb(62 197 15);
+}
+.content {
+    background-color: #fff;
+    width: 90%;
+    margin: 0 auto;
+    border-radius: 10px;
+    padding: 5px;
+    border: 1px solid rgb(232 239 241);
+    position: relative;
+
+    div {
+        width: 85%;
+        margin: 0 atuo;
+        margin: 0 auto;
+        padding: 6px;
+        color: rgb(60, 60, 60);
+        font-weight: 400;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 13px;
+        font-weight: 500;
+    }
+}
+
+.uper {
+    border-bottom: 1px solid rgb(242 242 242);
+}
+.footer {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    color: rgb(79 86 89);
+    font-weight: 500;
+    margin: 10px auto;
+
+    .footer-inner {
+        display: flex;
+        justify-content: space-between;
+        width: 50%;
+
+        div {
+            width: 50%;
+        }
+    }
+    .amount {
+        color: black;
+        font-weight: 600;
+    }
+}
+.time-box {
+    border-right: 2px solid rgb(210 216 219);
+}
+.time-box-2 {
+    padding-left: 3px;
+}
+.location-img {
+    width: 10px;
+    position: absolute;
+    top: 16px;
+    left: 12px;
+}

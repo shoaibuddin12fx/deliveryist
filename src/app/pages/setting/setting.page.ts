@@ -3,10 +3,16 @@ import { Router } from '@angular/router';
 import { CommonServicesService } from 'src/app/services/common-services.service';
 import { AlertsService } from 'src/app/services/_helpers/alerts.service';
 import { BasePage } from '../base-page/base-page';
-import { ConsumerNotificationComponent } from '../consumer/consumer-notification/consumer-notification.component';
-import { EarningComponent } from '../driver/earning/earning.component';
-import { WalletComponent } from '../driver/wallet/wallet.component';
+import { ConsumerNotificationComponent } from '../consumer/consumer-notification-old/consumer-notification.component';
+import { NotificationPageModule } from '../consumer/notification/notification.module';
+import { OrderHistoryComponent } from '../consumer/order-history-old/order-history.component';
+import { DeliveryHistoryComponent } from '../driver/delivery-history/delivery-history.component';
+import { EarningComponent } from '../driver/earning-old/earning.component';
+import { WalletComponent } from '../driver/wallet-old/wallet.component';
+import { HelpComponent } from '../help-old/help.component';
+import { PolicyComponent } from '../payment-old/policy.component';
 import { ProfileComponent } from '../profile/profile.component';
+import { ReportIssueComponent } from '../report-issue-old/report-issue.component';
 
 @Component({
   selector: 'app-setting',
@@ -17,6 +23,9 @@ export class SettingPage extends BasePage implements OnInit {
   modalActions = new EventEmitter<string>(); // | MaterializeAction
   successModalEle;
   profileData;
+  consumer = false;
+  userRole = localStorage.getItem('userRole');
+  settingPage: any;
 
   constructor(
     injector: Injector,
@@ -29,11 +38,20 @@ export class SettingPage extends BasePage implements OnInit {
   }
   ngOnInit(): void {
     // throw new Error('Method not implemented.');
+    if (this.userRole == 'Driver') {
+      this.consumer = true;
+    }
   }
+
+  // hideDriversettings() {
+  //   this.consumer = false;
+  // }
+
+  goBack() {}
 
   getProfileData() {
     this.commonService.getUserProfileData().then((res: any) => {
-      console.log(res);
+      console.log(' User Data', res);
       this.profileData = res['profile'];
     });
   }
@@ -51,7 +69,8 @@ export class SettingPage extends BasePage implements OnInit {
     localStorage.removeItem('userData');
     localStorage.removeItem('userId');
     localStorage.removeItem('__paypal_storage__');
-    this.route.navigate(['auth/login']);
+    // this.route.navigate(['auth/login']);
+    this.navigateTo('/pages/login/');
   }
 
   goToProfile() {
@@ -63,16 +82,16 @@ export class SettingPage extends BasePage implements OnInit {
   }
 
   goToHelp() {
-    this.route.navigate(['auth/help']);
+    this.navigateTo('/pages/help');
   }
 
   goToPayment() {
-    this.route.navigate(['auth/policy']);
+    this.navigateTo('/pages/payment/');
   }
 
   goToNotification() {
-    this.modals.present(ConsumerNotificationComponent);
-    // this.route.navigate(['auth/consumerNotification']);
+    // this.modals.present(ConsumerNotificationComponent);
+    this.navigateTo('/pages/notification/');
   }
 
   goToMyJobs() {
@@ -84,23 +103,26 @@ export class SettingPage extends BasePage implements OnInit {
   }
 
   goToDeliveryHistory() {
-    this.route.navigate(['driver/deliveryHistory']);
+    // this.modals.present(OrderHistoryComponent);
+    this.navigateTo('/pages/order-history/');
   }
 
   goToRoleSelection() {
     this.route.navigate(['auth/userRoleSelection']);
   }
 
-  goToReport() {
-    this.route.navigate(['auth/reportIssue']);
+  ReportIssueComponent() {
+    this.navigateTo('/pages/report-issue/');
   }
 
   goToWallet() {
-    this.modals.present(WalletComponent);
+    // this.modals.present(WalletComponent);
+    this.navigateTo('/pages/wallet/');
   }
 
   goToEarning() {
-    this.modals.present(EarningComponent);
+    // this.modals.present(EarningComponent);
+    this.navigateTo('/pages/earning/');
   }
 
   deleteAccount() {

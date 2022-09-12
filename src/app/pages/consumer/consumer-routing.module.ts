@@ -1,6 +1,5 @@
-import { NgModule } from "@angular/core";
-import { RouterModule, Routes } from "@angular/router";
-
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
@@ -10,18 +9,31 @@ const routes: Routes = [
   },
   {
     path: 'consumer-dashboard',
-    loadChildren: () => import('./consumer-dashboard/consumer-dashboard.module').then( m => m.ConsumerDashboardPageModule)
+    loadChildren: () =>
+      import('./consumer-dashboard/consumer-dashboard.module').then(
+        (m) => m.ConsumerDashboardPageModule
+      ),
   },
   {
     path: 'post-job',
     loadChildren: () =>
-      import('./post-job/post-job.module').then(
-        (m) => m.PostJobPageModule
+      import('./post-job/post-job.module').then((m) => m.PostJobPageModule),
+  },
+  {
+    path: 'notification',
+    loadChildren: () =>
+      import('./notification/notification.module').then(
+        (m) => m.NotificationPageModule
       ),
   },
-
-
-]
+  {
+    path: 'order-history',
+    loadChildren: () =>
+      import('./order-history/order-history.module').then(
+        (m) => m.OrderHistoryPageModule
+      ),
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

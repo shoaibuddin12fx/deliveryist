@@ -108,11 +108,6 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   }
 
   // goTosettings() {
-  //   alert();
-  //   this.navigateTo.emit('pages/setting');
-  // }
-
-  // goTosettings() {
   //   console.log('goTosettings', this.userRole);
 
   //   if (this.userRole == 'Consumer') {

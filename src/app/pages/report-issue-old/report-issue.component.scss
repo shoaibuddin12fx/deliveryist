@@ -1,0 +1,78 @@
+.head {
+    font-size: 20px;
+    font-weight: 600;
+    color: rgb(70 70 70);
+    width: 98%;
+    margin: 0 auto;
+}
+ion-select {
+    background-color: #e9f0f2 !important;
+    width: 97%;
+    margin: 0 auto;
+    border-radius: 5px;
+    color: black !important;
+    padding: 13px;
+}
+ion-select::part(placeholder),
+ion-select::part(text) {
+    color: black;
+}
+.textarea {
+    background-color: #e9f0f2 !important;
+    color: #000000;
+    width: 97%;
+    margin: 0 auto;
+    border-radius: 5px;
+    height: 120px;
+    padding-left: 10px;
+    border: none;
+    padding-top: 5px;
+    margin-top: 3%;
+}
+// .ss-box {
+//     width: 90%;
+// }
+input[type="file"] {
+    display: none;
+}
+.fileUpload input.upload {
+    display: inline-block;
+}
+
+.add-ss {
+    font-size: 15px;
+    margin: 2px auto;
+    font-weight: 700;
+    display: flex;
+    justify-content: space-evenly;
+    height: 54px;
+    color: rgb(45 55 92);
+    align-items: center;
+    width: 50%;
+}
+.main {
+    width: 96%;
+    margin: 10px auto;
+}
+.text-item {
+    width: 98%;
+    margin: 0 auto;
+    font-weight: 500;
+    font-size: 15px;
+}
+.outer-box {
+    width: 89%;
+    margin: 0px 0px 0px 25px;
+    background: rgb(239 243 247);
+    border-radius: 5px;
+}
+.submit-btn {
+    margin: 20px 0 0 34px;
+    width: 85% !important;
+    background: rgb(38 186 232);
+    height: 45px;
+    border-radius: 50px;
+    color: #fff;
+    font-weight: 400;
+    font-size: 18px;
+}

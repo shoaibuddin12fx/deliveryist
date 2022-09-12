@@ -39,7 +39,15 @@ const routes: Routes = [
       import('./delivery-completed/delivery-completed.module').then(
         (m) => m.DeliveryCompletedPageModule
       ),
+  },  {
+    path: 'wallet',
+    loadChildren: () => import('./wallet/wallet.module').then( m => m.WalletPageModule)
   },
+  {
+    path: 'earning',
+    loadChildren: () => import('./earning/earning.module').then( m => m.EarningPageModule)
+  },
+
 ];
 
 @NgModule({

@@ -1,0 +1,39 @@
+.del {
+    font-size: 18px;
+    font-weight: 400;
+    color: grey;
+    float: right;
+}
+.help-text {
+    font-size: 22px;
+    color: dodgerblue;
+    margin: 25px auto;
+    width: 59%;
+}
+.search {
+    width: 90%;
+    margin: 0 auto;
+    box-shadow: 1px 3px 14px -9px black;
+    height: 50px;
+    border-radius: 10px;
+}
+
+ion-searchbar {
+    --background: #fff;
+}
+
+.inner-header {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin: 10px auto;
+    align-items: center;
+}
+.outer-center {
+    width: 215px;
+}
+
+.inner-header img {
+    width: 28%;
+    float: right;
+}

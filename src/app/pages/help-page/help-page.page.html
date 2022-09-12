@@ -1,0 +1,49 @@
+<app-setting-header [title]="'Help Center'"></app-setting-header>
+
+<ion-content>
+  <div class="container m-t-20 m-b-20">
+    <div class="row inner-header">
+      <div class="col s3">
+        <ion-icon name="menu-outline" style="font-size: 24px;"></ion-icon>
+      </div>
+      <div class="col s6 outer-center">
+        <div class="center del">Deliveriyst Help</div>
+      </div>
+      <div class="col s3">
+        <img src="../../../assets/images/setting/user22.png" />
+      </div>
+    </div>
+  </div>
+
+  <div class="center help-text" color="primary">
+    How Can We Help You?
+  </div>
+
+  <ion-searchbar placeholder="Discribe your issue" class="ion-no-padding ion-no-margin search ">
+  </ion-searchbar>
+
+
+  <ion-card>
+    <ion-accordion-group>
+      <ion-accordion value="first">
+        <ion-item slot="header" color="light" (click)="toggleShow()">
+          <ion-label>First Accordion</ion-label>
+        </ion-item>
+        <div class="ion-padding" slot="content" *ngIf="isShown">First Content</div>
+      </ion-accordion>
+      <ion-accordion value="second">
+        <ion-item slot="header" color="light">
+          <ion-label>Second Accordion</ion-label>
+        </ion-item>
+        <div class="ion-padding" slot="content">Second Content</div>
+      </ion-accordion>
+      <ion-accordion value="third">
+        <ion-item slot="header" color="light">
+          <ion-label>Third Accordion</ion-label>
+        </ion-item>
+        <div class="ion-padding" slot="content">Third Content</div>
+      </ion-accordion>
+    </ion-accordion-group>
+  </ion-card>
+
+</ion-content>

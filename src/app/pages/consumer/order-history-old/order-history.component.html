@@ -1,0 +1,111 @@
+<app-setting-header [title]="'Order History'"></app-setting-header>
+
+<!-- New Design Code -->
+
+
+<ion-content>
+    <!-- <div class="row" *ngIf="jobsList?.length == 0">
+        <div class="col s12">
+            <div class="dlvr-jobPost-noPost" data-aos="fade-up">
+                <i class="fa fa-archive fa-5x"></i>
+                <h4>You didn't have any order yet.</h4>
+            </div>
+        </div>
+    </div> -->
+
+
+    <div class="order-card">
+
+        <div class="header">
+            <div class="inner-header">
+                <ion-icon class="check-mark" name="checkmark-circle"></ion-icon>
+                <p>Order #122221</p>
+            </div>
+            <ion-icon style="color:rgb(171 182 185);" name="chevron-forward-outline"></ion-icon>
+        </div>
+
+        <div class="content">
+            <div class="uper">Aahfkhdaksjfwkmf</div>
+            <div>FkjbhaJfjhsfj</div>
+        </div>
+
+        <div class="footer">
+            <div class="footer-inner">
+                <div class="time-box">10:50 AM</div>
+                <div class="time-box-2">12:09 PM</div>
+            </div>
+
+            <div class="amount"> $50</div>
+        </div>
+
+    </div>
+
+    <!-- <div class="row" *ngIf="jobsList?.length > 0">
+        <ion-list *ngFor="let job of jobsList; let i=index">
+            <app-order-card [job]="job"></app-order-card>
+        </ion-list>
+        <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+            <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+            </ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+    </div> -->
+
+
+
+
+</ion-content>
+
+
+
+
+<!-- OLD -->
+<!-- <div class="overflow">
+    <div class="dlvr-consumer-wrapper">
+        <div class="dlvr-job-list">
+            <div class="container">
+                <div class="row" *ngIf="jobsList?.length > 0">
+                    <div *ngFor="let jobs of jobsList; let i=index">
+                        <div class="col s12 l6" *ngIf="jobs.status == 'Delivered'">
+                            <div class="dlvr-job-card-new" data-aos="fade-up">
+                                <div class="dlvr-order-confirmed-block">
+                                    <ul class="collection left-align">
+                                        <li class="collection-item avatar">
+                                            <label class="dlvr-uikit-badge"
+                                                [ngClass]=" jobs.jobLabel =='Immediate' ? 'dlvr-uikit-badge-red' : 'dlvr-uikit-badge-blue' ">
+                                                <i class="fa fa-circle"></i> {{ jobs.jobLabel }}
+                                            </label> <br>
+                                            <label class="dlvr-uikit-badge" class="dlvr-uikit-badge-blue">
+                                                <i class="fa fa-circle"></i> Delivered
+                                            </label>
+                                            <span class="amount">${{ jobs.amount }}</span>
+                                        </li>
+                                    </ul>
+                                    <div class="location">
+                                        <ul class="collection">
+                                            <li class="collection-item">{{ jobs.sourceAddress }}</li>
+                                            <li class="collection-item">{{ jobs.destinationAddress }}</li>
+                                        </ul>
+                                        <img src="../../../../assets/images/inner-location.png" alt="location pin"
+                                            class="location-img">
+                                    </div>
+                                </div>
+                                <div class="accept-btn dlvr-uikit-btn-blue btn.disabled" type="button"
+                                    (click)="goForRating(jobs)" *ngIf="!jobs.clientReviewed">
+                                    Ratings & Review
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" *ngIf="jobsList?.length == 0">
+                    <div class="col s12">
+                        <div class="dlvr-jobPost-noPost" data-aos="fade-up">
+                            <i class="fa fa-archive fa-5x"></i>
+                            <h3>You didn't any delivered order yet.</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
