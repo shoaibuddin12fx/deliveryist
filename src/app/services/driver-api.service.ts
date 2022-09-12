@@ -77,6 +77,46 @@ export class DriverApiService {
     });
   }
 
+  trackJobLocations(id, data) {
+    return new Promise((resolve, reject) => {
+      this.apiService
+        .post(config.api.job.trackJobLocations + id, data)
+        .subscribe(
+          (data: any) => {
+            if (data.status == 200) {
+              resolve(data.job);
+              // } else {
+              //   this.utilityService.showToast(data.message, 'error');
+              //   reject(data.message);
+            }
+          },
+          (err) => {
+            this.utilityService.showToast(err.error.message, 'error');
+            reject(err.error.message);
+          }
+        );
+    });
+  }
+
+  gettrackJobLocations(id) {
+    return new Promise((resolve, reject) => {
+      this.apiService.get(config.api.job.gettrackJobLocations + id).subscribe(
+        (data: any) => {
+          if (data.status == 200) {
+            resolve(data.job_locations);
+            // } else {
+            //   this.utilityService.showToast(data.message, 'error');
+            //   reject(data.message);
+          }
+        },
+        (err) => {
+          this.utilityService.showToast(err.error.message, 'error');
+          reject(err.error.message);
+        }
+      );
+    });
+  }
+
   //apply tojob
   applyToJob(jobData) {
     return new Promise((resolve, reject) => {

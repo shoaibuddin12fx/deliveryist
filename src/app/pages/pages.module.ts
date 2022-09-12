@@ -15,7 +15,7 @@ import { PolicyComponent } from './policy/policy.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { DriverNotificationComponent } from './driver/driver-notification/driver-notification.component';
-import { ConsumerNotificationComponent } from './consumer/consumer-notification/consumer-notification.component';
+// import { ConsumerNotificationComponent } from './consumer/consumer-notification/consumer-notification.component';
 import { ViewProfileComponent } from './view-profile/view-profile.component';
 import { ApplyToJobComponent } from './driver/apply-to-job-old/apply-to-job.component';
 import { DriverRatingsReviewsComponent } from './driver/driver-ratings-reviews/driver-ratings-reviews.component';
@@ -47,32 +47,31 @@ import { MarketPlaceComponent } from './market-place/market-place.component';
     ForgetPasswordComponent,
     IntroductionScreensComponent,
     TrackDriverComponent,
-    PaymentModeComponent,
+    // PaymentModeComponent,
     RatingsAndReviewsComponent,
     SettingsComponent,
     DeliveryCompletedComponent,
-    ProfileComponent,
-    HelpComponent,
+    // ProfileComponent,
+    // HelpComponent,
     PolicyComponent,
     AboutComponent,
     ContactComponent,
     DriverNotificationComponent,
-    ConsumerNotificationComponent,
+    // ConsumerNotificationComponent,
     ViewProfileComponent,
     ApplyToJobComponent,
     DriverRatingsReviewsComponent,
     TrackPackageComponent,
     DriverSettingsComponent,
     VehicleDetailComponent,
-    ReportIssueComponent,
+    // ReportIssueComponent,
     DeliveryHistoryComponent,
-    OrderHistoryComponent,
+    // OrderHistoryComponent,
     CardDetailComponent,
     OrderSummaryComponent,
     AddPhotoComponent,
     PhoneMaskDirective,
-    WalletComponent,
-    EarningComponent,
+    // WalletComponent,
     ProfilePicSelectionComponent,
     JobFilterComponent,
     MarketPlaceComponent,

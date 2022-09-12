@@ -62,6 +62,8 @@ export let config = {
       // Consumer
       addJob: 'job/add',
       trackJob: 'job/trackJob/', //'job/',
+      trackJobLocations: 'job/trackJobLocations/',
+      gettrackJobLocations: 'job/trackJobLocations/',
       getAllJob: 'job/postedJobs?offset=0&jobtype=', // 'job/postedJobs',
       cancelJob: 'job/delete',
       ratingAndReview: 'job/reviewFromClient', // 'job/complete',

@@ -9,57 +9,56 @@
             <ul class="collection left-align">
               <li class="collection-item avatar">
                 <div class="circle">
-                  <img src="../../../../assets/images/user_icon.png" alt="user">
+                  <img src="assets/images/user_icon.png" alt="user">
                 </div>
                 <p class="title-1">Name</p>
                 <p class="text">{{ track?.poster_name }}</p>
               </li>
               <li class="collection-item avatar">
                 <div class="circle">
-                  <img src="../../../../assets/images/detail-pickup-add.png" alt="detail-pickup-add"
-                    style="padding: 3px;">
+                  <img src="assets/images/detail-pickup-add.png" alt="detail-pickup-add" style="padding: 3px;">
                 </div>
                 <p class="title-1">Pick-up Address</p>
                 <p class="text-wrap-dot">{{ track?.sourceAddress }}</p>
               </li>
               <li class="collection-item avatar">
                 <div class="circle">
-                  <img src="../../../../assets/images/detail--destination.png" alt="detail-destination-add">
+                  <img src="assets/images/detail--destination.png" alt="detail-destination-add">
                 </div>
                 <p class="title-1">Delivery Address</p>
                 <p class="text-wrap-dot">{{ track?.deliveryAddress }}</p>
               </li>
               <li class="collection-item avatar">
                 <div class="circle">
-                  <img src="../../../../assets/images/detail-category.png" alt="detail-category">
+                  <img src="assets/images/detail-category.png" alt="detail-category">
                 </div>
                 <p class="title-1">Package Category</p>
                 <p class="text">{{ track?.itemCategory }}</p>
               </li>
               <li class="collection-item avatar">
                 <div class="circle">
-                  <img src="../../../../assets/images/detail-car.png" alt="detail-car">
+                  <img src="assets/images/detail-car.png" alt="detail-car">
                 </div>
                 <p class="title-1">Vehicle Type</p>
                 <p class="text">{{track?.package_size}}</p>
               </li>
               <li class="collection-item avatar">
                 <div class="circle">
-                  <img src="../../../../assets/images/detail-monthly-calendar.png" alt="detail-car">
+                  <img src="assets/images/detail-monthly-calendar.png" alt="detail-car">
                 </div>
                 <p class="title-1">Delivery Type</p>
                 <p class="text">{{track?.priority}}</p>
               </li>
               <li class="collection-item avatar" *ngIf="track?.deliveryDate">
                 <div class="circle">
-                  <img src="../../../../assets/images/detail-monthly-calendar.png" alt="detail-date">
+                  <img src="assets/images/detail-monthly-calendar.png" alt="detail-date">
                 </div>
                 <p class="title-1">Delivery Date</p>
                 <p class="text">{{ track?.deliveryDate }}</p>
               </li>
               <li class="collection-item avatar" *ngIf="track?.photos_urls?.length > 0">
                 <div class="circle">
-                  <img src="../../../../assets/images/detail-picture.png" alt="detail-picture">
+                  <img src="assets/images/detail-picture.png" alt="detail-picture">
                 </div>
                 <p class="title-1">Product Photos</p>
                 <div class="row">
@@ -71,14 +70,14 @@
               </li>
               <li class="collection-item avatar" *ngIf="track?.instructionForReceiver">
                 <div class="circle">
-                  <img src="../../../../assets/images/detail-instruction.png" alt="detail-instruction">
+                  <img src="assets/images/detail-instruction.png" alt="detail-instruction">
                 </div>
                 <p class="title-1">Instructions</p>
                 <p class="text">{{ track?.instructionForReceiver }}</p>
               </li>
               <li class="collection-item avatar">
                 <div class="circle">
-                  <img src="../../../../assets/images/detail-coin.png" alt="detail-coin">
+                  <img src="assets/images/detail-coin.png" alt="detail-coin">
                 </div>
                 <p class="title-1">Delivery Amount</p>
                 <p class="text">${{ track?.jobAmount }}</p>

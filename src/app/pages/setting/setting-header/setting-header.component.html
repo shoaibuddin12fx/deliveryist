@@ -1,3 +1,17 @@
-<div class="setting-header">
-  <h4>Settings</h4>
-</div>
+<!-- <div class="setting-header">
+  <h4>{{title}}</h4>
+</div> -->
+
+
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon style="color: #fff;" name="chevron-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      {{title}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>

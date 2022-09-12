@@ -20,6 +20,7 @@ export class TrackPackagePage extends BasePage implements OnInit {
   totalDistance;
   track: any;
   jobId;
+  progressLocations: any;
 
   constructor(injector: Injector, private driverApiService: DriverApiService) {
     super(injector);
@@ -47,6 +48,7 @@ export class TrackPackagePage extends BasePage implements OnInit {
       console.log('Get Track', this.job);
 
       this.track = {
+        status: res.status,
         sourceAddress: res.job_address,
         deliveryAddress: res.delivery_address,
         jobAmount: res.job_price,
@@ -91,7 +93,97 @@ export class TrackPackagePage extends BasePage implements OnInit {
     this.modals.present(HelpModalComponent);
   }
 
+  statusDrivingChange() {
+    switch (this.track.status) {
+      case 'pending':
+        this.track.status = 'start_journey_to_origin';
+
+        this.events.publish('update_map_behaviour', {
+          key: 'start_journey_to_origin',
+          value: { k: 'p' },
+        });
+
+        break;
+      case 'start_journey_to_origin':
+        break;
+      case 'arrived_at_pickup':
+        this.track.status = 'start_journey_to_origin';
+        break;
+    }
+  }
+
   deliveryComplete(job) {
     this.navigateTo('/pages/driver/delivery-completed/' + job.id);
+  }
+
+  returnButtonText(status) {
+    switch (status) {
+      case 'pending':
+        return "Let's Starts";
+        break;
+      case 'start_journey_to_origin':
+        return 'On the way';
+        break;
+      case 'arrived_at_pickup':
+        return 'Arrived at pickup';
+        break;
+    }
+  }
+
+  async mockLocations() {
+    console.log('location');
+    // this.progressLocations = await this.utility.getCurrentLocationCoordinates();
+
+    // console.log(this.progressLocations);
+
+    this.gettrackJobLocations();
+  }
+
+  async gettrackJobLocations() {
+    let res = (await this.driverApiService.gettrackJobLocations(
+      this.jobId
+    )) as any;
+
+    const loc = (await this.utility.getCurrentLocationCoordinates()) as any;
+
+    res.coords = loc.coords;
+
+    this.progressLocations = res;
+  }
+
+  async updatetrackJobLocations() {
+    let data = {
+      id: this.jobId,
+      driver_lat: this.progressLocations.coords.lat,
+      driver_lng: this.progressLocations.coords.lng,
+      status: this.track.status,
+    };
+
+    const res = (await this.driverApiService.trackJobLocations(
+      this.jobId,
+      data
+    )) as any;
+
+    console.log(res);
+  }
+
+  mapOutput($event) {
+    console.log($event);
+    const key = $event.key;
+    const value = $event.value;
+
+    switch (key) {
+      case 'driverLocationUpdate':
+        this.progressLocations.coords.lat = value.lat;
+        this.progressLocations.coords.lng = value.lng;
+        this.track.status = value.status;
+
+        this.updatetrackJobLocations();
+
+        break;
+      case 'driverReachedToPickup':
+        this.track.status = 'arrived_at_pickup';
+        break;
+    }
   }
 }

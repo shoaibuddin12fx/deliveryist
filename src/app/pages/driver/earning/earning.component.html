@@ -1,6 +1,7 @@
-<app-header [headerTitle]="'Wallet'" [showBackButton]="true"></app-header>
+<!-- <app-header [headerTitle]="'Wallet'" [showBackButton]="true"></app-header> -->
+<app-setting-header [title]="'Earning'"></app-setting-header>
 <!-- Gray Box -->
-<div>
+<div style="background-color: #fff;">
   <div class="row wallet-tab-wrapper">
     <div class="col s12">
       <ul class="tabs">
@@ -14,7 +15,8 @@
       </ul>
     </div>
   </div>
-  <ion-item style="width: 95%; margin:8px auto;" class="ion-no-padding ion-no-margin">
+
+  <ion-item class="ion-no-padding ion-no-margin earning-header">
 
     <div class="container ">
       <div class="row">
@@ -22,8 +24,7 @@
           <h3 class="text-muted m-0 small">Total Earning</h3>
         </div>
         <div class="col s5 text-right">
-          <!-- <h3 class="m-0 float-left">Total Earning</h3> -->
-          <h3 class="m-0 float-right small"> ${{totalEarning}}</h3>
+          <h3 class="m-0 dollar small"> ${{totalEarning}}</h3>
         </div>
       </div>
     </div>
@@ -42,24 +43,7 @@
 
       </div>
 
-      <div id="test1" class="col s12 p-0">
-        <ul class="collection">
-          <div class="col s12 p-0">
-            <table>
-              <tr class="table-head">
-                <th style="background-color: #f0c90b; color: #fff; text-align: center;">Time</th>
-                <th style="background-color: #fa8408; color: #fff; text-align: center;">Distance</th>
-                <th style="background-color: #e52006; color: #fff; text-align: center;">Amount</th>
-              </tr>
-              <tr *ngFor="let earning of earningsData">
-                <td style="background-color: #fdf3bd; color: #000; text-align: center;">{{earning.time_taken}}</td>
-                <td style="background-color: #f9dfc4; color: #000; text-align: center;">{{earning.distance}}</td>
-                <td style="background-color: #f0d5d0; color: #000; text-align: center;">{{earning.amount}}</td>
-              </tr>
-            </table>
-          </div>
-        </ul>
-      </div>
+
       <!-- <div id="test2" class="col s12 p-0">
         <ul class="collection">
           <div class="col s12 p-0">
@@ -115,28 +99,64 @@
         </ul>
       </div> -->
     </div>
+  </div>
 
-    <div class="foot">
+  <div id="test1" class="col s12 p-0">
+    <ul class="collection">
+      <div class="col s12 p-0">
+        <table>
+          <tr class="table-head">
+            <th style="background-color: #f0c90b; color: #fff; text-align: center;">Time</th>
+            <th style="background-color: #fa8408; color: #fff; text-align: center;">Distance</th>
+            <th style="background-color: #e52006; color: #fff; text-align: center;">Amount</th>
+          </tr>
+          <tr *ngFor="let earning of earningsData">
+            <td style="background-color: #fdf3bd; color: #000; text-align: center;">{{earning.time_taken}}</td>
+            <td style="background-color: #f9dfc4; color: #000; text-align: center;">{{earning.distance}}</td>
+            <td style="background-color: #f0d5d0; color: #000; text-align: center;">{{earning.amount}}</td>
+          </tr>
+        </table>
+      </div>
+    </ul>
+  </div>
 
-      <div class="row">
-        <div class="col s6 p-l-30">
-          <span>Completed</span>
-        </div>
-        <div class="col s6 p-l-30">
-          <span>My Profile Rating</span>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col s6 p-l-30">
-          <b>{{completed_job}}</b>
-        </div>
-        <div class="col s6 p-l-30">
-          <i class="material-icons-round">star</i>
-          <b>{{ratings}}</b>
-        </div>
-      </div>
+  <div class="foot">
+
+    <div class="task-complete">
+      <span>Completed</span>
+      <b>06</b>
 
     </div>
+    <div class="rating">
+      <span>My Profile Rating</span>
+
+      <div class="inner-rating">
+        <i class="material-icons-round" style="color: rgb(44 170 23);"> star</i>
+        <b>4.5</b>
+
+      </div>
+    </div>
+
+    <!-- <div class="row">
+      <div class="col s6 p-l-30">
+        <span>Completed</span>
+      </div>
+      <div class="col s6 p-l-30">
+        <span>My Profile Rating</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s6 p-l-30">
+        <b>{{completed_job}}</b>
+        <b>06</b>
+      </div>
+      <div class="col s6 p-l-30">
+        <i class="material-icons-round" style="color: rgb(44 170 23);"> star</i>
+        <b>{{ratings}}</b>
+        <b>4.5</b>
+      </div>
+    </div> -->
 
   </div>
+
 </ion-content>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-setting-header',
@@ -6,9 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./setting-header.component.scss'],
 })
 export class SettingHeaderComponent implements OnInit {
+  @Input() title = '';
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {}
-
 }

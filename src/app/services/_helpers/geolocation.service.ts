@@ -94,8 +94,6 @@ export class GeolocationsService {
     console.log(latlng);
     return new Promise((resolve) => {
       geocoder.geocode({ location: latlng }, (results, status) => {
-        console.log(latlng);
-
         if (status !== 'OK') {
           resolve(null);
           return;
@@ -103,7 +101,6 @@ export class GeolocationsService {
         if (status === 'OK') {
           console.log(results);
           if (results[0]) {
-            console.log(results);
             // let f = results[0]['address_components'].find((x) => {
             //   if (x.types.includes('route')) {
             //     return x.types.includes('route');

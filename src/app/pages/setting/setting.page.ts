@@ -4,6 +4,7 @@ import { CommonServicesService } from 'src/app/services/common-services.service'
 import { AlertsService } from 'src/app/services/_helpers/alerts.service';
 import { BasePage } from '../base-page/base-page';
 import { ConsumerNotificationComponent } from '../consumer/consumer-notification/consumer-notification.component';
+import { EarningComponent } from '../driver/earning/earning.component';
 import { WalletComponent } from '../driver/wallet/wallet.component';
 import { ProfileComponent } from '../profile/profile.component';
 
@@ -99,7 +100,7 @@ export class SettingPage extends BasePage implements OnInit {
   }
 
   goToEarning() {
-    this.route.navigate(['driver/earning']);
+    this.modals.present(EarningComponent);
   }
 
   deleteAccount() {

@@ -9,6 +9,10 @@ import { SettingPageRoutingModule } from './setting-routing.module';
 import { SettingPage } from './setting.page';
 import { LayoutsModule } from 'src/app/layouts/layouts.module';
 import { SettingHeaderModule } from './setting-header/setting-header.module';
+import { EarningComponent } from '../driver/earning/earning.component';
+import { ConsumerNotificationComponent } from '../consumer/consumer-notification/consumer-notification.component';
+import { ProfileComponent } from '../profile/profile.component';
+import { WalletComponent } from '../driver/wallet/wallet.component';
 
 @NgModule({
   imports: [
@@ -18,6 +22,12 @@ import { SettingHeaderModule } from './setting-header/setting-header.module';
     SettingPageRoutingModule,
     SettingHeaderModule,
   ],
-  declarations: [SettingPage],
+  declarations: [
+    SettingPage,
+    EarningComponent,
+    ConsumerNotificationComponent,
+    ProfileComponent,
+    WalletComponent,
+  ],
 })
 export class SettingPageModule {}

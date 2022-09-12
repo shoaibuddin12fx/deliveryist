@@ -29,13 +29,13 @@ export class LoginPage extends BasePage implements OnInit {
   setupForm() {
     // create form
     this.loginForm = new FormGroup({
-      email: new FormControl('anupresy@gmail.com', [
+      email: new FormControl('user8@test.com', [
         Validators.email,
         Validators.required,
       ]),
       // 'countryCode': new FormControl(PhoneNumber.getCountryCodeForRegionCode(this.regionCode), []),
       // 'mobile': new FormControl(null, []),
-      password: new FormControl('@1981king', Validators.required),
+      password: new FormControl('123456', Validators.required),
     });
   }
   // Go to signUp
