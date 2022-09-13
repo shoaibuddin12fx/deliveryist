@@ -47,6 +47,14 @@ const routes: Routes = [
     path: 'earning',
     loadChildren: () => import('./earning/earning.module').then( m => m.EarningPageModule)
   },
+  {
+    path: 'add-photo',
+    loadChildren: () => import('./add-photo/add-photo.module').then( m => m.AddPhotoPageModule)
+  },
+  {
+    path: 'vehicle-detail',
+    loadChildren: () => import('./vehicle-detail/vehicle-detail.module').then( m => m.VehicleDetailPageModule)
+  },
 
 ];
 

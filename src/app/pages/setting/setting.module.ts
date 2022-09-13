@@ -11,7 +11,7 @@ import { LayoutsModule } from 'src/app/layouts/layouts.module';
 import { SettingHeaderModule } from './setting-header/setting-header.module';
 import { EarningComponent } from '../driver/earning-old/earning.component';
 import { ConsumerNotificationComponent } from '../consumer/consumer-notification-old/consumer-notification.component';
-import { ProfileComponent } from '../profile/profile.component';
+import { ProfileComponent } from '../profile-old/profile.component';
 import { WalletComponent } from '../driver/wallet-old/wallet.component';
 import { PolicyComponent } from '../payment-old/policy.component';
 import { HelpComponent } from '../help-old/help.component';

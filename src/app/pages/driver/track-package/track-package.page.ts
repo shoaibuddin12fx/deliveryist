@@ -80,6 +80,9 @@ export class TrackPackagePage extends BasePage implements OnInit {
 
       this.totalDistance = dis.distance;
       this.totalDuration = dis.duration;
+
+      await this.gettrackJobLocations();
+      this.updatetrackJobLocations();
     }
   }
 
@@ -140,34 +143,54 @@ export class TrackPackagePage extends BasePage implements OnInit {
   }
 
   async gettrackJobLocations() {
-    let res = (await this.driverApiService.gettrackJobLocations(
-      this.jobId
-    )) as any;
-
+    var self = this;
     const loc = (await this.utility.getCurrentLocationCoordinates()) as any;
-
-    res.coords = loc.coords;
-
-    this.progressLocations = res;
-  }
-
-  async updatetrackJobLocations() {
-    let data = {
+    var params = {
       id: this.jobId,
-      driver_lat: this.progressLocations.coords.lat,
-      driver_lng: this.progressLocations.coords.lng,
+      driver_lat: loc.coords.lat,
+      driver_lng: loc.coords.lng,
       status: this.track.status,
     };
 
-    const res = (await this.driverApiService.trackJobLocations(
-      this.jobId,
-      data
-    )) as any;
+    return new Promise(async (resolve) => {
+      let res = (await this.driverApiService.gettrackJobLocations(
+        this.jobId,
+        params
+      )) as any;
 
-    console.log(res);
+      console.log(res);
+
+      res.coords = loc.coords;
+      self.progressLocations = res;
+      self.events.publish('update_data', res);
+
+      resolve(true);
+    });
   }
 
-  mapOutput($event) {
+  async updatetrackJobLocations() {
+    return new Promise(async (resolve) => {
+      let data = {
+        id: this.jobId,
+        driver_lat: this.progressLocations.coords.lat,
+        driver_lng: this.progressLocations.coords.lng,
+        status: this.track.status,
+      };
+
+      const res = (await this.driverApiService.trackJobLocations(
+        this.jobId,
+        data
+      )) as any;
+
+      console.log(res);
+      resolve(true);
+    });
+
+    // update map pointers with locations
+    //this.progressLocations = res.job_locations;
+  }
+
+  async mapOutput($event) {
     console.log($event);
     const key = $event.key;
     const value = $event.value;
@@ -183,6 +206,15 @@ export class TrackPackagePage extends BasePage implements OnInit {
         break;
       case 'driverReachedToPickup':
         this.track.status = 'arrived_at_pickup';
+
+        // call api update driver location and now change its course and destination
+        this.progressLocations.coords.lat = value.lat;
+        this.progressLocations.coords.lng = value.lng;
+        this.track.status = value.status;
+
+        await this.updatetrackJobLocations();
+        await this.gettrackJobLocations();
+        this.updatetrackJobLocations();
         break;
     }
   }

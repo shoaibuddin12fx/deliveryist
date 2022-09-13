@@ -20,7 +20,7 @@ export abstract class BasePage {
   public authService: AuthService;
   public storage: StorageService;
   public zone: NgZone;
-  public modals: ModalService
+  public modals: ModalService;
 
   public commonService: CommonServicesService;
 

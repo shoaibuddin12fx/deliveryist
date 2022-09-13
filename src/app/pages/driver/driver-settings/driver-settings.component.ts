@@ -7,7 +7,7 @@ import 'materialize-css';
 import { AlertsService } from 'src/app/services/_helpers/alerts.service';
 import { BasePage } from '../../base-page/base-page';
 import { ModalService } from 'src/app/services/_helpers/modal.service';
-import { ProfileComponent } from '../../profile/profile.component';
+import { ProfileComponent } from '../../profile-old/profile.component';
 
 @Component({
   selector: 'app-driver-settings',

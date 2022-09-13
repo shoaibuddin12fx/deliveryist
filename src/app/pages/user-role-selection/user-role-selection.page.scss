@@ -2,6 +2,14 @@
 @import "../../../assets/scss/custom-variables.scss";
 @import "../../../assets/scss/dlvr-ui-kit.scss";
 @import "../../../../node_modules/materialize-css/dist/css/materialize.css";
+
+.title {
+  color: #404242;
+  font-size: 24px;
+  font-weight: 900;
+  margin-top: 0px;
+}
+
 .dlvr-uss-title {
   font-weight: bold;
   // font-size: calc(2vw + 16px);
@@ -53,7 +61,7 @@
 .dlvr-connect-with.drive img {
   max-width: 52px;
   border-radius: 0;
-  margin-left: 25px;
+  // margin-left: 25px;
 }
 .dlvr-connect-with.drive.shop img,
 .dlvr-connect-with.drive.delivery img {
@@ -68,11 +76,12 @@
   font-size: 12px;
   display: block;
   margin-top: 15px;
+  font-weight: 600;
   padding-left: 10px;
-  color: #3c3c3c;
+  color: rgb(131, 131, 131);
 }
 .dlvr-connect-with.drive p {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 700;
   padding-left: 10px;
   color: #3c3c3c;

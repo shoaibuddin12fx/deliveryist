@@ -9,7 +9,7 @@ import { TrackDriverComponent } from './consumer/track-driver/track-driver.compo
 import { PaymentModeComponent } from './consumer/payment-mode/payment-mode.component';
 import { RatingsAndReviewsComponent } from './consumer/ratings-and-reviews/ratings-and-reviews.component';
 import { SettingsComponent } from './consumer/settings/settings.component';
-import { ProfileComponent } from './profile/profile.component';
+import { ProfileComponent } from './profile-old/profile.component';
 import { HelpComponent } from './help-old/help.component';
 import { PolicyComponent } from './payment-old/policy.component';
 import { AboutComponent } from './about/about.component';
@@ -21,13 +21,13 @@ import { ApplyToJobComponent } from './driver/apply-to-job-old/apply-to-job.comp
 import { DriverRatingsReviewsComponent } from './driver/driver-ratings-reviews/driver-ratings-reviews.component';
 import { TrackPackageComponent } from './driver/track-package-old/track-package.component';
 import { DriverSettingsComponent } from './driver/driver-settings/driver-settings.component';
-import { VehicleDetailComponent } from './driver/vehicle-detail/vehicle-detail.component';
+import { VehicleDetailComponent } from './driver/vehicle-detail-old/vehicle-detail.component';
 import { ReportIssueComponent } from './report-issue-old/report-issue.component';
 import { DeliveryHistoryComponent } from './driver/delivery-history/delivery-history.component';
 import { OrderHistoryComponent } from './consumer/order-history-old/order-history.component';
 import { CardDetailComponent } from './consumer/card-detail/card-detail.component';
 import { OrderSummaryComponent } from './consumer/order-summary/order-summary.component';
-import { AddPhotoComponent } from './driver/add-photo/add-photo.component';
+import { AddPhotoComponent } from './driver/add-photo-old/add-photo.component';
 import { PhoneMaskDirective } from '../shared/pipe/phone-mask.directive';
 import { WalletComponent } from './driver/wallet-old/wallet.component';
 import { EarningComponent } from './driver/earning-old/earning.component';

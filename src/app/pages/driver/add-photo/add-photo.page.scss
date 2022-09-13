@@ -1,0 +1,29 @@
+.img {
+    margin: 35px auto 25px auto;
+    width: 100px;
+    height: 100px;
+}
+.heading {
+    font-size: 29px;
+    color: #404242;
+    font-weight: 800;
+    text-align: center;
+    margin: 0px 0px 15px 0px;
+}
+.add-btn {
+    width: 85%;
+    --background: #3a9e54;
+    --border-radius: 50px;
+    text-transform: none;
+    margin: 15px auto;
+    font-size: 20px;
+    font-weight: 400;
+}
+.description {
+    font-size: 15px;
+    font-weight: 400;
+    /* text-align: center; */
+    width: 85%;
+    margin: 0 auto;
+    color: #757575;
+}

@@ -1,0 +1,88 @@
+@import "../../../../../node_modules/materialize-css/dist/css/materialize.css";
+@import "../../../../assets/scss/dlvr-ui-kit.scss";
+.dlvr-consumer-wrapper {
+    width: 95%;
+    margin: 26px auto;
+}
+.dlvr-consumer-wrapper .title {
+    font-size: 27px;
+    font-weight: 800;
+    color: #464646;
+    margin: 0px;
+}
+.dlvr-title-subtext {
+    color: rgb(20, 20, 20);
+}
+.dlvr-uikit-input {
+    letter-spacing: normal !important;
+    font-weight: 700;
+    color: #414141 !important;
+    margin-bottom: -6px !important;
+}
+.dlvr-instruction {
+    margin: 0px 0 0 0;
+    border: none;
+}
+.dlvr-instruction .collection-item.avatar {
+    background-color: #eff3f7;
+    border-radius: 8px;
+    color: #484848;
+    padding-left: 5px;
+    min-height: 30px;
+    text-align: center;
+    width: 100%;
+}
+.collection.dlvr-instruction .collection-item.avatar:not(.circle-clipper) > .circle {
+    width: 20px;
+    background: none;
+    color: #2d375c;
+    position: absolute;
+    top: 7px;
+    left: 40px;
+}
+.collection.dlvr-instruction .collection-item.avatar .title {
+    font-size: 18px;
+    font-weight: 800;
+    vertical-align: middle;
+    line-height: 35px;
+    color: #2d375c;
+}
+.collection.dlvr-instruction .collection-item.avatar p {
+    margin-bottom: 0;
+}
+// @media (max-width: 500px){
+.dlvr-uikit-btn.verify {
+    position: fixed;
+    left: 50%;
+    bottom: 20px;
+    width: 85% !important;
+    background-color: #369f52 !important;
+    transform: translate(-50%, 0);
+    padding: 0px !important;
+    height: 52px;
+    font-size: 19px;
+}
+// }
+.tittle {
+    font-weight: bold;
+    margin-top: 25px;
+    font-size: 23px;
+}
+.dlvr-driver-select {
+    letter-spacing: normal !important;
+    font-weight: 700;
+    color: #678385 !important;
+    background-color: #e9f0f2 !important;
+    height: 36px;
+    font-size: 16px;
+    border-radius: 7px;
+    /* margin-left: 10px; */
+    /* margin-right: 10px; */
+    width: 91%;
+    padding-right: 11px;
+}
+.collection-item {
+    background-color: #e9f0f2 !important;
+    height: 36px;
+    border-radius: 7px;
+}

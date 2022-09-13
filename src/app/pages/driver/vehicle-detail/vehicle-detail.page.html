@@ -1,0 +1,75 @@
+<app-header [headerTitle]="'My Vehicle'" [showBackButton]="true"></app-header>
+<ion-content>
+
+  <div class="dlvr-consumer-wrapper">
+    <div class="container">
+      <form class="dlvr-postJob-step1" [formGroup]="vehicleForm">
+        <h2 class="title">Enter your vehicle details</h2>
+        <div class="dlvr-input-text-options " style="    margin: 20px auto;">
+          <input type="text" class="dlvr-uikit-input dlvr-uikit-input-grey" placeholder="Vehicle Registration Number"
+            formControlName="vehicleNumber">
+        </div>
+        <div class="row" style="margin: 0px !important;">
+          <div class="input-field">
+            <ion-select class="dlvr-driver-select dlvr-uikit-input-grey" placeholder="Vehicle Type"
+              (click)="getSelected()" formControlName="vehicleType">
+              <ion-select-option value="sedan">Sedan</ion-select-option>
+              <ion-select-option value="suv">SUV</ion-select-option>
+              <ion-select-option value="truck">Truck</ion-select-option>
+            </ion-select>
+          </div>
+        </div>
+        <div class="row">
+          <ul class="collection dlvr-instruction">
+            <input type="file" accept=".jpg,.jpeg,.png" style="display: none;" #fileupload
+              (change)="processFile($event)" formControlName="driver_licence">
+            <li class="collection-item avatar" (click)="openFilePicker()">
+              <i class="material-icons-outlined circle">speaker_notes</i>
+              <span class="title">Upload Drivers License</span>
+            </li>
+          </ul>
+        </div>
+        <div class="dlvr-profile-img-wrapper" *ngIf="vehicleForm.get('licensePhoto')?.value?.documentURL">
+          <div class="card dlvr-card">
+            <img src="{{vehicleForm.get('licensePhoto')?.value?.documentURL}}" />
+          </div>
+        </div>
+
+
+      </form>
+    </div>
+    <!-- <div id='vouched-element' style="height: 30%" [hidden]="licenseVerified"></div> -->
+  </div>
+
+  <button class="btn-full-width dlvr-uikit-btn dlvr-uikit-btn-green m-t-20 verify" type="button"
+    (click)="submitVehicleInfo()">
+    <ion-spinner [hidden]="!loading"></ion-spinner>
+    <p [hidden]="loading" style="text-align:center ;"> Next</p>
+  </button>
+
+
+  <!-- <form [formGroup]="vehicleForm">
+            <div>
+                Enter Your Full Name:
+                **enter same name written in your driving license**
+                <input type="text" formControlName="fullName">
+            </div>
+            <div>
+                Enter Your Vehicle Number:
+                <input type="text" formControlName="vehicleNumber">
+            </div>
+            <div>
+                Upload your driving license:
+                <input type="file" accept=".jpg,.jpeg,.png"
+                (change)="processFile($event)">
+            </div>
+            <div class="dlvr-profile-img-wrapper">
+                <div class="card dlvr-card">
+                    <img src="{{vehicleForm.get('licensePhoto')?.value?.documentURL}}" />
+                </div>
+            </div>
+            <div class="dlvr-modal-btn-wrapper">  
+                <button class="dlvr-uikit-btn dlvr-uikit-btn-rounded dlvr-uikit-btn-green" (click)="submitVehicleInfo()" [disabled]="vehicleForm.get('vehicleNumber').invalid && vehicleForm.get('fullName').invalid && vehicleForm.get('licensePhoto').invalid">Submit</button>
+            </div>
+        </form>  -->
+</ion-content>

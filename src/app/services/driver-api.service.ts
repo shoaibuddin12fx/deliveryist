@@ -84,7 +84,7 @@ export class DriverApiService {
         .subscribe(
           (data: any) => {
             if (data.status == 200) {
-              resolve(data.job);
+              resolve(data.job_locations);
               // } else {
               //   this.utilityService.showToast(data.message, 'error');
               //   reject(data.message);
@@ -98,22 +98,25 @@ export class DriverApiService {
     });
   }
 
-  gettrackJobLocations(id) {
+  gettrackJobLocations(id, params) {
+    const str = this.serialize(params);
     return new Promise((resolve, reject) => {
-      this.apiService.get(config.api.job.gettrackJobLocations + id).subscribe(
-        (data: any) => {
-          if (data.status == 200) {
-            resolve(data.job_locations);
-            // } else {
-            //   this.utilityService.showToast(data.message, 'error');
-            //   reject(data.message);
+      this.apiService
+        .get(config.api.job.gettrackJobLocations + id + '?' + str)
+        .subscribe(
+          (data: any) => {
+            if (data.status == 200) {
+              resolve(data.job_locations);
+              // } else {
+              //   this.utilityService.showToast(data.message, 'error');
+              //   reject(data.message);
+            }
+          },
+          (err) => {
+            this.utilityService.showToast(err.error.message, 'error');
+            reject(err.error.message);
           }
-        },
-        (err) => {
-          this.utilityService.showToast(err.error.message, 'error');
-          reject(err.error.message);
-        }
-      );
+        );
     });
   }
 
@@ -349,4 +352,14 @@ export class DriverApiService {
         );
     });
   }
+
+  serialize = (obj) => {
+    const str = [];
+    for (const p in obj) {
+      if (obj.hasOwnProperty(p)) {
+        str.push(encodeURIComponent(p) + '=' + encodeURIComponent(obj[p]));
+      }
+    }
+    return str.join('&');
+  };
 }

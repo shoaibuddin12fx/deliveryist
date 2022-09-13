@@ -11,7 +11,7 @@ import { EarningComponent } from '../driver/earning-old/earning.component';
 import { WalletComponent } from '../driver/wallet-old/wallet.component';
 import { HelpComponent } from '../help-old/help.component';
 import { PolicyComponent } from '../payment-old/policy.component';
-import { ProfileComponent } from '../profile/profile.component';
+import { ProfileComponent } from '../profile-old/profile.component';
 import { ReportIssueComponent } from '../report-issue-old/report-issue.component';
 
 @Component({
@@ -47,7 +47,9 @@ export class SettingPage extends BasePage implements OnInit {
   //   this.consumer = false;
   // }
 
-  goBack() {}
+  goBack() {
+    this.location.back();
+  }
 
   getProfileData() {
     this.commonService.getUserProfileData().then((res: any) => {
@@ -74,7 +76,7 @@ export class SettingPage extends BasePage implements OnInit {
   }
 
   goToProfile() {
-    this.modals.present(ProfileComponent);
+    this.navigateTo('/pages/profile/');
   }
 
   goToAboutUs() {

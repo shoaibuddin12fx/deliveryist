@@ -1,0 +1,95 @@
+// @import '../../../../../node_modules/materialize-css/dist/css/materialize.css';
+// .dlvr-add-photo-wrapper{
+//     padding: 0 30px;
+// }
+// .dlvr-add-photo-wrapper .img-wrapper{
+//     margin: 10px auto 0;
+//     text-align: center;
+// }
+// .dlvr-add-photo-wrapper .img-wrapper .icon-img{
+//     max-width: 80px;
+// }
+// .dlvr-add-photo-wrapper .title{
+//     font-size: 24px;
+//     margin-bottom: 10px;
+//     margin-top: 16px;
+// }
+// .dlvr-title-subtext{
+//     color: #777;
+// }
+// .dlvr-modal .modal.bottom-sheet {
+//     border-top-right-radius: 10px;
+//     border-top-left-radius: 10px;
+// }
+// .dlvr-having-trouble-popup .modal.bottom-sheet{
+//     max-height: 65%;
+//     min-height: 245px;
+// }
+// .dlvr-having-trouble-popup .modal .modal-footer{
+//     padding: 0;
+// }
+// .dlvr-hving-trouble-popup-list{
+//     text-align: center;
+//     margin: 0;
+// }
+// .dlvr-hving-trouble-popup-list li{
+//     margin: 0;
+//     border-bottom: 1px solid #d2d2d2;
+//     padding: 15px 0;
+// }
+// .dlvr-hving-trouble-popup-list li.first{
+//     margin: 0;
+//     padding: 8px 0;
+//     font-weight: 700;
+//     font-size: 17px;
+//     background-color: #e5f3f1;
+// }
+// .dlvr-hving-trouble-popup-list li:last-child{
+//     border: none;
+// }
+// .dlvr-hving-trouble-popup-list li a{
+//     padding: 6px 12px;
+//     font-size: 16px;
+//     color: #414141;
+// }
+// .dlvr-hving-trouble-popup-list li .endLine{
+//     width: 100px;
+//     height: 5px;
+//     border-radius: 60px;
+//     background-color: #bdbdbd;
+//     margin: 0 auto;
+// }
+// @media (max-width: 600px){
+//     .dlvr-uikit-btn.verify{
+//         position: fixed;
+//         left: 50%;
+//         bottom: 20px;
+//         width: 90% !important;
+//         transform: translate(-50%, 0);
+//     }
+// }
+
+.img {
+    margin: 10% auto;
+    width: 100px;
+    height: 100px;
+}
+.heading {
+    font-size: 24px;
+    color: black;
+    font-weight: 600;
+}
+.add-btn {
+    width: 70%;
+    --background: #40ac47;
+    --border-radius: 20px;
+    text-transform: none;
+    margin: 10px auto;
+
+    font-size: 16px;
+    font-weight: 700;
+}
+.description {
+    font-size: 12px;
+    font-weight: 500;
+}

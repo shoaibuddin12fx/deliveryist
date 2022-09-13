@@ -13,7 +13,7 @@ import { MarketPlaceComponent } from './market-place/market-place.component';
 import { ChatListComponent } from './chat-list/chat-list.component';
 // import { ChatPageRoutingModule } from './chat-list/chat-list-routing.module';
 import { ChatListComponentModule } from './chat-list/chat-list.component.module';
-import { ProfileComponent } from './profile/profile.component';
+import { ProfileComponent } from './profile-old/profile.component';
 import { AboutComponent } from './about/about.component';
 import { PolicyComponent } from './payment-old/policy.component';
 import { HelpComponent } from './help-old/help.component';
@@ -25,13 +25,13 @@ import { ApplyToJobComponent } from './driver/apply-to-job-old/apply-to-job.comp
 import { DriverRatingsReviewsComponent } from './driver/driver-ratings-reviews/driver-ratings-reviews.component';
 import { TrackPackageComponent } from './driver/track-package-old/track-package.component';
 import { DriverSettingsComponent } from './driver/driver-settings/driver-settings.component';
-import { VehicleDetailComponent } from './driver/vehicle-detail/vehicle-detail.component';
+import { VehicleDetailComponent } from './driver/vehicle-detail-old/vehicle-detail.component';
 import { ReportIssueComponent } from './report-issue-old/report-issue.component';
 import { DeliveryHistoryComponent } from './driver/delivery-history/delivery-history.component';
 import { OrderHistoryComponent } from './consumer/order-history-old/order-history.component';
 import { CardDetailComponent } from './consumer/card-detail/card-detail.component';
 import { OrderSummaryComponent } from './consumer/order-summary/order-summary.component';
-import { AddPhotoComponent } from './driver/add-photo/add-photo.component';
+import { AddPhotoComponent } from './driver/add-photo-old/add-photo.component';
 import { WalletComponent } from './driver/wallet-old/wallet.component';
 import { EarningComponent } from './driver/earning-old/earning.component';
 import { DeliveryCompletedComponent } from './driver/delivery-completed-old/delivery-completed.component';
@@ -155,6 +155,22 @@ const routes: Routes = [
       ),
   },
 
+  {
+    path: 'add-photo',
+    loadChildren: () =>
+      import('./driver/add-photo/add-photo.module').then(
+        (m) => m.AddPhotoPageModule
+      ),
+  },
+
+  {
+    path: 'vehicle-detail',
+    loadChildren: () =>
+      import('./driver/vehicle-detail/vehicle-detail.module').then(
+        (m) => m.VehicleDetailPageModule
+      ),
+  },
+
   { path: 'forgetPassword', component: ForgetPasswordComponent },
   // { path: 'driverDashboard', component: DriverDashboardComponent },
   // { path: 'deliveryCompleted', component: DeliveryCompletedComponent },
@@ -162,7 +178,7 @@ const routes: Routes = [
   { path: 'paymentMode', component: PaymentModeComponent },
   { path: 'reviews', component: RatingsAndReviewsComponent },
   { path: 'settings', component: SettingsComponent },
-  { path: 'profile', component: ProfileComponent },
+  // { path: 'profile', component: ProfileComponent },
   { path: 'viewProfile', component: ViewProfileComponent },
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactComponent },
@@ -206,6 +222,11 @@ const routes: Routes = [
     path: 'setting',
     loadChildren: () =>
       import('./setting/setting.module').then((m) => m.SettingPageModule),
+  },
+  {
+    path: 'profile',
+    loadChildren: () =>
+      import('./profile/profile.module').then((m) => m.ProfilePageModule),
   },
 
   // {

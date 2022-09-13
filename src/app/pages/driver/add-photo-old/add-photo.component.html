@@ -1,0 +1,72 @@
+<app-header [headerTitle]="'Delivery Details'" [showBackButton]="true"></app-header>
+
+<ion-content>
+  <ion-avatar class="img">
+    <img [src]="imageURL ? imageURL : '../../../../assets/images/delivery_profile_icon_green.png'"
+      alt="delivery_profile_icon_green">
+  </ion-avatar>
+  <ion-item lines="none">
+    <label>
+      <p style="margin-left: 10%;" class="heading">Add your profile photo</p>
+      <p style="margin-left: 10%;" class="description">Detailed profiles help people choose the right delivery for them
+      </p>
+    </label>
+  </ion-item>
+</ion-content>
+<ion-toolbar>
+  <!-- <ion-buttons> -->
+  <ion-button class="ion-margin add-btn" expand="block" (click)="addPhoto()">
+    <ion-spinner [hidden]="!loading"></ion-spinner>
+    <p [hidden]="loading" style="text-align:center; margin: 0px !important;"> Add Photo</p>
+  </ion-button>
+  <!-- </ion-buttons> -->
+</ion-toolbar>
+
+<!-- <div class="dlvr-add-photo-wrapper">
+  <div class="img-wrapper">
+    <img [src]="imageURL ? imageURL : '../../../../assets/images/delivery_profile_icon_green.png'" alt="delivery_profile_icon_green"
+      class="icon-img">
+  </div>
+  <div class="dlvr-postJob-step1">
+    <h2 class="title">Add your profile photo</h2>
+    <div class="dlvr-title-subtext">
+      Detailed profiles help people choose the right delivery for them
+    </div>
+  </div>
+  <input type="file" id="image" style="display: none;" #fileupload accept="image/x-png,image/gif,image/jpeg"
+    multiple="true" class="fileupload" name="fileupload" (change)="onSelectFile($event)" />
+  <button class="btn-full-width dlvr-uikit-btn dlvr-uikit-btn-green m-t-20 verify" type="button" 
+    (click)="openFile()">{{ !isPhotoUploaded ? 'Add Photo' : 'Next' }}</button>
+</div> -->
+
+<!-- <div class="dlvr-modal dlvr-having-trouble-popup" materialize> -->
+<!-- Modal -->
+<!-- <div id="modalTroubleList" class="modal bottom-sheet" materialize="modal" [materializeParams]="[{dismissible: true}]" [materializeActions]="modalActions">
+        <div class="modal-footer">
+            <ul class="dlvr-hving-trouble-popup-list">
+              <li class="first">
+                  Options
+              </li>
+              <li (click)="onTakePhotoClick()">
+                <a>
+                  Take Photo
+                </a>
+              </li>
+              <li (click)="onChoosePhotoClick()">
+                <a>
+                  Choose from library
+                </a>
+              </li> 
+              <li (click)="closeModel('modalTroubleList')">
+                <a>
+                  Cancel
+                </a>
+              </li>
+              <li>
+                <div class="endLine"></div>
+              </li>
+            </ul>
+        </div>
+    </div> -->
+<!-- Modal End-->
+<!-- </div> -->

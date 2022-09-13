@@ -1,0 +1,55 @@
+<!-- <app-header [headerTitle]="'Profile'" [showBackButton]="true" style="height: 60px;"></app-header> -->
+
+<app-setting-header [title]="'Khan'"></app-setting-header>
+
+<ion-content class="ion-no-padding ion-no-margin">
+  <div class="dlvr-profile-wrapper">
+    <div class="p-0">
+      <div class="dlvr-profile-img-wrapper">
+        <!-- <div class="card dlvr-card">
+                <img src="../../../assets/images/step5Hero.svg" alt="profile pic" />
+            </div> -->
+        <img src="{{profileData?.profile_pic}}" alt="profile pic" *ngIf="profileData?.profile_pic"
+          class="image-container" height="auto" width="100%" />
+        <img
+          src="https://www.pngitem.com/pimgs/m/35-350426_profile-icon-png-default-profile-picture-png-transparent.png"
+          alt="profile pic" *ngIf="profileData?.profile_pic == null" class="image-container" />
+        <i class="material-icons image-container" (click)="openModel()">create</i>
+      </div>
+      <div class="dlvr-uikit-list dlvr-uikit-list-media info-container">
+        <ul>
+          <li>
+            <p class="p-l-20 p-t-20 p-b-20"
+              style="position: relative; height: 40px; background-color: rgb(236 242 244);"
+              [ngClass]="userRole == 'Consumer' ? 'consumer-bg' : 'bg-success'">
+              <b>{{editProfileForm?.get('first_name')?.value}}{{editProfileForm?.get('last_name')?.value}}</b>
+              <span class="f-s-14 m-0" class="rating"><i class="material-icons f-s-14"
+                  style="color: #51be79; font-size: 18px;">star</i>{{profileData?.rating}}</span>
+              <i class="material-icons-outlined dlvr-uikit-list-right-arrow arrow">chevron_right</i>
+            </p>
+          </li>
+          <li>
+            <p>
+              <img class="m-l-10" src="../../../../assets/images/setting/email22.png">
+              <b class="info-sec-details p-l-10"> {{editProfileForm?.get('email')?.value}}</b>
+              <i class="material-icons-outlined dlvr-uikit-list-right-arrow arrow">chevron_right</i>
+              <img src="../../../assets/images/green_tick_icon.png"
+                style="max-width: 20px; float: right; margin-top: 4px;">
+            </p>
+          </li>
+          <li>
+            <p>
+              <img class="m-l-10" src="../../../../assets/images/setting/smartphone22.png">
+              <b class="info-sec-details p-l-10"> {{editProfileForm?.get('contact')?.value}}</b>
+              <i class="material-icons-outlined dlvr-uikit-list-right-arrow arrow">chevron_right</i>
+              <img src="../../../assets/images/green_tick_icon.png"
+                style="max-width: 20px; float: right; margin-top: 4px;">
+            </p>
+          </li>
+
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</ion-content>

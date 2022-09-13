@@ -26,16 +26,16 @@
 }
 .dlvr-nav nav i {
   display: inline-block;
-  color: $primary-color-dark;
+  color: #3f3c8f;
   font-weight: bold;
   font-size: 18px;
-  margin: 18px 18px 0 18px;
-  height: 64px;
+  height: 64px !important;
   line-height: 64px;
 }
 .dlvr-nav nav .brand-logo,
 .dlvr-nav nav .sidenav-trigger i {
   color: #58909e;
+  font-size: 22px;
 }
 .dlvr-nav nav ul a {
   color: $light-color2;
@@ -60,7 +60,7 @@
 }
 .dlvr-header-logo.dlvr-header-logo-small {
   width: 43px;
-  margin-top: 15px;
+  margin-top: 12px;
   margin-left: 32px;
 }
 .dlvr-hamburger img {
@@ -104,7 +104,7 @@
     margin: 0;
   }
   .dlvr-nav nav .sidenav-trigger {
-    margin: 0 10px;
+    margin: 0 14px;
   }
 }
 @media (max-width: 1025px) {

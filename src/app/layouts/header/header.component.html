@@ -17,24 +17,27 @@
                 </a>
                 <span *ngIf="headerTitle" [ngClass]="showBackButton ? 'hasBackBtn' : 'noBackBtn' ">
                     <!-- <i class="icon-arrow-left" (click)="goBack()" *ngIf="showBackButton"></i> -->
-                    <span *ngIf="showHeaderTitle" style="margin-left: 45px;">
+                    <span *ngIf="showHeaderTitle" style="margin-left: 45px; font-weight: 800; font-size: 14px;">
                         {{ username ? username : '' }}
                     </span>
                     <span *ngIf="!showHeaderTitle" style="margin-left: -33px;">
                         {{ headerTitle ? headerTitle : '' }}
                     </span>
-                    <span style="color: #ccc; position: absolute; left: 25px; bottom: 18px; line-height: 0;"
+                    <span
+                        style="color: #ccc; position: absolute; left: 25px; bottom: 18px; line-height: 0; font-weight: 500 !important;"
                         *ngIf="userRole == 'Consumer'">To delivery</span>
-                    <span style="color: #ccc; position: absolute; left: 25px; bottom: 18px; line-height: 0;"
+                    <span
+                        style="color: #ccc; position: absolute; left: 25px; bottom: 18px; line-height: 0;font-weight: 500 !important;"
                         *ngIf="userRole == 'Driver'">To Drive</span>
-                    <span style="color: #ccc; position: absolute; left: 4px; bottom: 18px; line-height: 0;"
+                    <span
+                        style="color: #ccc; position: absolute; left: 25px; bottom: 18px; line-height: 0;font-weight: 500 !important;"
                         *ngIf="userRole == 'marketPlace'">To Buy/Sell</span>
                     <ion-icon size="small" style=" position: absolute;
                     left: 5px;
                     top: 20px;
                     line-height: 0;
                     height: 28px !important;
-                    color: green;
+                    color: #58909e;
                     width: 25px !important;" name="chevron-back-outline" (click)="goBack()" *ngIf="showBackButton">
                     </ion-icon>
                 </span>
@@ -44,14 +47,14 @@
                     <i class="material-icons-outlined">settings</i></a>
                 <a data-target="mobile-demo" class="dlvr-hamburger sidenav-trigger right" (click)="goToMarketPalace()">
                     <i class="material-icons-outlined">local_mall</i></a>
-                <ul class="right hide-on-med-and-down">
+                <!-- <ul class="right hide-on-med-and-down">
                     <li><a (click)="goTosettings()" [class.active-blue]=" path == 'settings' "
                             [class.active-green]="path == 'driverSetting'"><i
                                 class="material-icons-outlined">settings</i></a></li>
                     <li><a [class.active-blue]=" path == 'market' " [class.active-green]="path == 'market'"
                             *ngIf="currentRole != 'Consumer'"><i class="material-icons-outlined">local_mall</i></a></li>
                     <li><a><i class="material-icons-outlined">favorite_border</i></a></li>
-                </ul>
+                </ul> -->
             </div>
         </nav>
     </div>

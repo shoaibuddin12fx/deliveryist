@@ -23,7 +23,7 @@ export class TrackMapComponent implements OnInit, AfterViewInit {
   @ViewChild('map', { static: false }) mapElement: ElementRef;
   map: any;
 
-  _data: any;
+  data: any;
   placeMarker: any;
   driverMarker: any;
   timer: any;
@@ -34,22 +34,22 @@ export class TrackMapComponent implements OnInit, AfterViewInit {
     suppressMarkers: true,
   });
 
-  @Input()
-  public get data() {
-    return this._data;
-  }
+  // @Input()
+  // public get data() {
+  //   return this._data;
+  // }
 
-  public set data(value: any) {
-    this._data = value;
+  // public set data(value: any) {
+  //   this._data = value;
 
-    clearInterval(this.timer);
+  //   clearInterval(this.timer);
 
-    if (value) {
-      this.updateMapTargets(value);
-    }
+  //   if (value) {
+  //     this.updateMapTargets(value);
+  //   }
 
-    //
-  }
+  //   //
+  // }
 
   @Output('output') output: EventEmitter<any> = new EventEmitter<any>();
 
@@ -67,21 +67,28 @@ export class TrackMapComponent implements OnInit, AfterViewInit {
 
   async initialize() {
     await this.platform.ready();
+
+    var self = this;
     this.initializeMapBeforeSetCoordinates();
 
+    this.events.subscribe('update_data', (obj) => {
+      self.data = obj;
+      this.updateMapTargets(obj);
+    });
+
     this.events.subscribe('update_map_behaviour', (obj) => {
-      console.log(obj);
+      console.log(obj, self.data);
 
       const key = obj.key;
       switch (key) {
         case 'start_journey_to_origin':
-          this.data.status = key;
-          this.playDrivingsGame();
+          self.data.status = key;
+          self.playDrivingsGame();
+          break;
+        case 'arrived_at_pickup':
           break;
         case 'start_journey_to_destination':
           break;
-        // case 'start_journey_to_origin':
-        // break;
       }
     });
   }
@@ -102,6 +109,7 @@ export class TrackMapComponent implements OnInit, AfterViewInit {
 
   updateMapTargets(value) {
     console.log('set again', value);
+    this.data = value;
 
     // var centerLat = parseFloat(value.coords.lat).toFixed(0);
     // var centerLng = parseFloat(value.coords.lng).toFixed(0);
@@ -237,10 +245,10 @@ export class TrackMapComponent implements OnInit, AfterViewInit {
             lng: this.pathCoordinates[counter]['lng'],
             status: this.data.status,
           };
-          this.output.emit({ key: 'driverReachedToPickup' });
+          this.output.emit({ key: 'driverReachedToPickup', value: obj });
         }
 
-        if (this.data.status == 'start_journey_to_origin') {
+        if (this.data.status == 'arrived_at_pickup') {
         }
       } else {
         counter = counter + 1;
