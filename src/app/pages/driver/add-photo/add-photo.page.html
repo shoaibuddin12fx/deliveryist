@@ -14,12 +14,15 @@
   </ion-item>
 </ion-content>
 <ion-toolbar style="--background:rgb(255 255 255) !important;">
-  <!-- <ion-buttons> -->
-  <ion-button class="ion-margin add-btn" expand="block" (click)="addPhoto()">
+  <!-- <ion-button class="ion-margin add-btn" expand="block" (click)="addPhoto()">
     <ion-spinner [hidden]="!loading"></ion-spinner>
     <p [hidden]="loading" style="text-align:center; margin: 0px !important;"> Add Photo</p>
-  </ion-button>
-  <!-- </ion-buttons> -->
+  </ion-button> -->
+  <input type="file" id="image" style="display: none;" #fileupload accept="image/x-png,image/gif,image/jpeg"
+    multiple="true" class="fileupload" name="fileupload" (change)="onSelectFile($event)" />
+  <button class="btn-full-width dlvr-uikit-btn dlvr-uikit-btn-green m-t-20 verify add-btn" type="button"
+    (click)="addPhoto()">{{
+    !isPhotoUploaded ? 'Add Photo' : 'Next' }}</button>
 </ion-toolbar>
 
 <!-- <div class="dlvr-add-photo-wrapper">

@@ -62,7 +62,8 @@ export class AddPhotoPage extends BasePage implements OnInit {
       this.commonService
         .updateUserProfile(pictureLink)
         .then((res) => {
-          this.route.navigate(['driver/myVehicle']);
+          // this.route.navigate(['driver/myVehicle']);
+          this.navigateTo('pages/vehicle-detail/');
         })
         .catch((err) => {
           errorMessages.ERROR_EDIT_PROFILE;
@@ -125,12 +126,9 @@ export class AddPhotoPage extends BasePage implements OnInit {
         {
           text: 'Choose from library ',
           role: 'destructive',
-          // id: 'delete-button',
-          // data: {
-          //   type: 'delete',
-          // },
+
           handler: () => {
-            console.log('Delete clicked');
+            this.openFile();
           },
         },
 
@@ -150,7 +148,7 @@ export class AddPhotoPage extends BasePage implements OnInit {
 
     console.log('go For Licence ');
     this.loading = true;
-    this.goAsDriver();
+    // this.goAsDriver();
     // this.navigateTo('pages/driver/vehicle-detail');
   }
 
