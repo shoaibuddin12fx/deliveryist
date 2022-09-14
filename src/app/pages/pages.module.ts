@@ -26,7 +26,7 @@ import { ReportIssueComponent } from './report-issue-old/report-issue.component'
 import { DeliveryHistoryComponent } from './driver/delivery-history/delivery-history.component';
 import { OrderHistoryComponent } from './consumer/order-history-old/order-history.component';
 import { CardDetailComponent } from './consumer/card-detail/card-detail.component';
-import { OrderSummaryComponent } from './consumer/order-summary/order-summary.component';
+import { OrderSummaryComponent } from './consumer/order-summary-old/order-summary.component';
 import { AddPhotoComponent } from './driver/add-photo-old/add-photo.component';
 import { PhoneMaskDirective } from '../shared/pipe/phone-mask.directive';
 import { WalletComponent } from './driver/wallet-old/wallet.component';
@@ -45,6 +45,7 @@ import { OrderHistoryPageModule } from './consumer/order-history/order-history.m
 import { ReportIssuePageModule } from './report-issue/report-issue.module';
 import { PaymentPageModule } from './payment/payment.module';
 import { HelpPagePageModule } from './help-page/help-page.module';
+import { SignUpPageModule } from './authentication/sign-up/sign-up.module';
 
 @NgModule({
   declarations: [
@@ -85,6 +86,7 @@ import { HelpPagePageModule } from './help-page/help-page.module';
     CommonModule,
     PagesRoutingModule,
     OrderHistoryPageModule,
+    SignUpPageModule,
     // ReportIssuePageModule,
     // PaymentPageModule,
     // HelpPagePageModule,

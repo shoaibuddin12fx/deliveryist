@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit } from '@angular/core';
+import { Component, EventEmitter, Injector, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ModalController, ActionSheetController } from '@ionic/angular';
@@ -7,6 +7,7 @@ import { CommonServicesService } from 'src/app/services/common-services.service'
 import { ModalService } from 'src/app/services/_helpers/modal.service';
 import { UtilityService } from 'src/app/services/_helpers/utility.service';
 import { AutocompletePage } from '../../../components/autocomplete/autocomplete.page';
+import { BasePage } from '../../base-page/base-page';
 
 const countries = require('./../../../data/countries.json');
 
@@ -22,7 +23,7 @@ interface Countries {
   templateUrl: './sign-up.page.html',
   styleUrls: ['./sign-up.page.scss'],
 })
-export class SignUpPage implements OnInit {
+export class SignUpPage extends BasePage implements OnInit {
   modalActions = new EventEmitter<string>(); // | MaterializeAction
   signupForm: FormGroup;
   aForm: FormGroup;
@@ -30,7 +31,7 @@ export class SignUpPage implements OnInit {
   showDetail: boolean = false;
   picturefile;
   regionCode = '+1';
-  step = 'step1';
+  step = 'step3';
   loading = false;
   country_codes: Countries[] = countries;
   userOTP;
@@ -55,17 +56,18 @@ export class SignUpPage implements OnInit {
   pick: any;
   drop: any;
   events: any;
-
   constructor(
-    private authService: AuthService,
+    injector: Injector,
+    public authService: AuthService,
     private route: Router,
-    private commonService: CommonServicesService,
+    public commonService: CommonServicesService,
     private utilityService: UtilityService,
     public activatedRoute: ActivatedRoute,
     public modals: ModalService,
     public modalController: ModalController,
     public actionSheetController: ActionSheetController
   ) {
+    super(injector);
     this.isSocialLoginInitiated =
       this.activatedRoute.snapshot.queryParams.isSocialLoginInitiated;
     console.log(this.isSocialLoginInitiated);
@@ -134,7 +136,8 @@ export class SignUpPage implements OnInit {
   }
 
   goForLogin() {
-    this.route.navigate(['pages/user-role-selection']);
+    // this.route.navigate(['pages/user-role-selection']);
+    this.navigateTo('pages/user-role-selection');
   }
 
   onVerify() {

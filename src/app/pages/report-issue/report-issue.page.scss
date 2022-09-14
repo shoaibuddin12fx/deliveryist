@@ -25,9 +25,10 @@ ion-select::part(text) {
     border-radius: 5px;
     height: 120px;
     padding-left: 10px;
-    border: none;
+    border: none !important;
     padding-top: 5px;
     margin-top: 3%;
+    outline: none !important;
 }
 // .ss-box {
 //     width: 90%;
@@ -52,7 +53,7 @@ input[type="file"] {
 }
 .main {
     width: 96%;
-    margin: 10px auto;
+    margin: 20px 0px 0px 4px;
 }
 .text-item {
     width: 98%;
@@ -67,12 +68,12 @@ input[type="file"] {
     border-radius: 5px;
 }
 .submit-btn {
-    margin: 20px 0 0 34px;
     width: 85% !important;
-    background: rgb(38 186 232);
+    background: rgb(38, 186, 232);
     height: 45px;
     border-radius: 50px;
     color: #fff;
     font-weight: 400;
     font-size: 18px;
+    margin: 20px auto;
 }

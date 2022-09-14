@@ -30,7 +30,7 @@ import { ReportIssueComponent } from './report-issue-old/report-issue.component'
 import { DeliveryHistoryComponent } from './driver/delivery-history/delivery-history.component';
 import { OrderHistoryComponent } from './consumer/order-history-old/order-history.component';
 import { CardDetailComponent } from './consumer/card-detail/card-detail.component';
-import { OrderSummaryComponent } from './consumer/order-summary/order-summary.component';
+import { OrderSummaryComponent } from './consumer/order-summary-old/order-summary.component';
 import { AddPhotoComponent } from './driver/add-photo-old/add-photo.component';
 import { WalletComponent } from './driver/wallet-old/wallet.component';
 import { EarningComponent } from './driver/earning-old/earning.component';

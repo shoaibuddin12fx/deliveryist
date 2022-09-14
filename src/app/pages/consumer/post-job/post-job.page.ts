@@ -18,7 +18,7 @@ import { ImageCompressService } from 'src/app/services/image-compress.service';
 import { StorageService } from 'src/app/services/_helpers/storage.service';
 import { BasePage } from '../../base-page/base-page';
 import { CartService } from '../../market-place/services/cart.service';
-import { OrderSummaryComponent } from '../order-summary/order-summary.component';
+import { OrderSummaryComponent } from '../order-summary-old/order-summary.component';
 // import { DriverinstructionComponent } from '../components/driverinstruction.component';
 
 declare var google;

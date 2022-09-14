@@ -41,9 +41,8 @@ export class OrderSummaryComponent extends BasePage implements OnInit {
   }
 
   goToHome() {
-    this.modals.dismiss();
 
-    this.navigateTo('/pages/user-role-selection/');
+    this.navigateTo('pages/user-role-selection/');
 
     this.modals.dismiss();
   }
