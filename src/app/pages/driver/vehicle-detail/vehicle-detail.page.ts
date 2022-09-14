@@ -80,7 +80,7 @@ export class VehicleDetailPage extends BasePage implements OnInit {
       .then((response: any) => {
         console.log('success', response);
         // this.router.navigate(['driver/driverDashboard']);
-        this.navigateTo('pages/driver/');
+        this.navigateTo('pages/driver-dashboard/');
       })
       .catch((err) => {
         this.loading = false;

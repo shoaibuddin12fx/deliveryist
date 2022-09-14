@@ -19,7 +19,6 @@
   background: rgb(34 34 34 / 40%);
   border-radius: 5px;
   margin: 6px auto;
-  position: relative;
 }
 .dlvr-input-container input {
   color: #a0b1b2;
@@ -116,16 +115,16 @@
   background: #32a7e9;
   width: 10px;
   height: 10px;
-  top: 12%;
-  left: 8.1%;
+  top: 5%;
+  left: 4%;
   border-radius: 50%;
 }
 
 .bottom-ball {
   position: absolute;
-  top: 19.5%;
-  left: 8.1%;
-  z-index: 5;
+  top: 30%;
+  left: 4%;
+  z-index: unset;
   width: 10px;
   height: 10px;
   border-radius: 50%;
@@ -134,11 +133,11 @@
 
 .vertical-line {
   width: 0px;
-  height: 56px;
-  z-index: 5;
+  height: 52px;
+  z-index: unset;
   position: absolute;
-  top: 13%;
-  left: 9.2%;
+  top: 9%;
+  left: 5%;
   border: 0.4px dashed #32a7e9;
 }
 .text-wrap-dot {
@@ -153,6 +152,7 @@
 .dlvr-postJob-step1 {
   width: 90%;
   margin: 34px auto;
+  position: relative;
 }
 .order-header {
   width: 90%;

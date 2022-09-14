@@ -121,12 +121,16 @@ export class AddPhotoPage extends BasePage implements OnInit {
       this.commonApiService.getUserProfileData().then((res: any) => {
         if (res.profile.is_vehicle_verified) {
           console.log('photo page');
-          this.route.navigateByUrl('driver/driverDashboard');
-          this.route.navigateByUrl('addPhoto');
+          // this.route.navigateByUrl('driver/driverDashboard');
+          this.navigateTo('pages/driver-dashboard/');
+          // this.route.navigateByUrl('addPhoto');
+          this.navigateTo('pages/add-photo');
         } else {
-          this.route.navigateByUrl('driver/myVehicle');
+          // this.route.navigateByUrl('driver/myVehicle');
+          this.navigateTo('pages/driver/vehicle-detail');
           console.log('photo page');
-          this.route.navigateByUrl('driver/addPhoto');
+          // this.route.navigateByUrl('driver/addPhoto');
+          this.navigateTo('pages/add-photo');
         }
         console.log(res);
       });

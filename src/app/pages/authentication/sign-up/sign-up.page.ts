@@ -31,7 +31,7 @@ export class SignUpPage extends BasePage implements OnInit {
   showDetail: boolean = false;
   picturefile;
   regionCode = '+1';
-  step = 'step3';
+  step = 'step1';
   loading = false;
   country_codes: Countries[] = countries;
   userOTP;

@@ -144,8 +144,8 @@ noactualbutton[disabled] {
 }
 .item-div {
   width: 390px;
-  margin: -23px 8px 0 15px;
-  padding: 8px 10px;
+  margin: -23px -1px 0 15px;
+  padding: 0px 16px 0px 16px;
 }
 
 .dlvr-postJob-step1 .dlvr-map {
@@ -409,8 +409,8 @@ noactualbutton[disabled] {
 
 .dlvr-category-card-padding {
   width: 30.333333% !important;
-  margin: 1.2% !important;
-  padding: 0 5px 0 5px !important;
+  margin: 1.2% 0px 7px 8px !important;
+  padding: 0 0px 0 0px !important;
 }
 
 .dlvr-uikit-card.dlvr-uikit-icon-card {

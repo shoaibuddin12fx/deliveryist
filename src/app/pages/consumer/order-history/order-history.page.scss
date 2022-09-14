@@ -259,10 +259,6 @@
         display: flex;
         justify-content: space-between;
         width: 50%;
-
-        div {
-            width: 50%;
-        }
     }
     .amount {
         color: black;
@@ -271,10 +267,13 @@
 }
 .time-box {
     border-right: 2px solid rgb(210 216 219);
-    padding-right: 3px;
+    width: 50%;
+    float: left;
 }
 .time-box-2 {
     padding-left: 3px;
+    width: 50%;
+    float: right;
 }
 .location-img {
     width: 9px;

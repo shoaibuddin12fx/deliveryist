@@ -84,6 +84,15 @@ const routes: Routes = [
     loadChildren: () =>
       import('./consumer/consumer.module').then((m) => m.ConsumerModule),
   },
+
+  {
+    path: 'driver-dashboard',
+    loadChildren: () =>
+      import('./driver/driver-dashbaord/driver-dashbaord.module').then(
+        (m) => m.DriverDashbaordPageModule
+      ),
+  },
+
   {
     path: 'driver',
     loadChildren: () =>
