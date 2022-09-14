@@ -6,6 +6,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { Router } from '@angular/router';
+import { ActionSheetController } from '@ionic/angular';
 import { errorMessages } from 'src/app/helpers/error_messages';
 import { CommonServicesService } from 'src/app/services/common-services.service';
 import { ImageCompressService } from 'src/app/services/image-compress.service';
@@ -28,7 +29,8 @@ export class AddPhotoPage extends BasePage implements OnInit {
     private imageCompressService: ImageCompressService,
     public commonService: CommonServicesService,
     private route: Router,
-    private commonApiService: CommonServicesService
+    private commonApiService: CommonServicesService,
+    public actionSheetController: ActionSheetController
   ) {
     super(injector);
   }
@@ -109,28 +111,64 @@ export class AddPhotoPage extends BasePage implements OnInit {
       .catch((err) => {});
   }
 
-  addPhoto() {
-    console.log('click photo');
+  async addPhoto() {
+    const actionSheet = await this.actionSheetController.create({
+      header: 'Profile Photo',
+      cssClass: 'my-custom-class',
+      buttons: [
+        {
+          text: 'Take Photo',
+          handler: () => {
+            console.log('Favorite clicked');
+          },
+        },
+        {
+          text: 'Choose from library ',
+          role: 'destructive',
+          // id: 'delete-button',
+          // data: {
+          //   type: 'delete',
+          // },
+          handler: () => {
+            console.log('Delete clicked');
+          },
+        },
+
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          },
+        },
+      ],
+    });
+    await actionSheet.present();
+
+    const { role, data } = await actionSheet.onDidDismiss();
+    console.log('onDidDismiss resolved with role and data', role, data);
+
+    console.log('go For Licence ');
     this.loading = true;
-    // this.goAsDriver();
-    this.navigateTo('pages/driver/vehicle-detail');
+    this.goAsDriver();
+    // this.navigateTo('pages/driver/vehicle-detail');
   }
 
   goAsDriver() {
     this.changeRole('Driver').then(() => {
       this.commonApiService.getUserProfileData().then((res: any) => {
         if (res.profile.is_vehicle_verified) {
-          console.log('photo page');
+          console.log(' RUn WHEN LICENSE HAVE PAGE ADD PHOTO');
           // this.route.navigateByUrl('driver/driverDashboard');
           this.navigateTo('pages/driver-dashboard/');
           // this.route.navigateByUrl('addPhoto');
-          this.navigateTo('pages/add-photo');
+          // this.navigateTo('pages/add-photo');
         } else {
           // this.route.navigateByUrl('driver/myVehicle');
           this.navigateTo('pages/driver/vehicle-detail');
-          console.log('photo page');
+          console.log('Run WHen License Require');
           // this.route.navigateByUrl('driver/addPhoto');
-          this.navigateTo('pages/add-photo');
+          // this.navigateTo('pages/add-photo');
         }
         console.log(res);
       });

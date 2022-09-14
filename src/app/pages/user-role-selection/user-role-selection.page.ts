@@ -1,4 +1,5 @@
 import { Component, Injector, OnInit } from '@angular/core';
+import { CommonServicesService } from 'src/app/services/common-services.service';
 import { BasePage } from '../base-page/base-page';
 import { JobListPageModule } from '../driver/job-list/job-list.module';
 
@@ -15,7 +16,10 @@ export class UserRoleSelectionPage extends BasePage implements OnInit {
   isGeolocationEnabledAndSet = false;
   coords = null;
 
-  constructor(injector: Injector) {
+  constructor(
+    injector: Injector,
+    private commonApiService: CommonServicesService
+  ) {
     super(injector);
   }
   ngOnInit(): void {}
@@ -47,22 +51,24 @@ export class UserRoleSelectionPage extends BasePage implements OnInit {
   async goAsDriver() {
     const res = await this.changeRole('Driver');
     // this.navigateTo('pages/driver/driver-dashbaord');
-    this.navigateTo('pages/driver/add-photo');
 
-    // .then(() => {
-    //   this.commonApiService.getUserProfileData().then((res: any) => {
-    //     if (res.profile.is_vehicle_verified) {
-    //       console.log('photo page');
-    //       this.route.navigateByUrl('driver/driverDashboard');
-    //       // this.route.navigateByUrl('driver/addPhoto');
-    //     } else {
-    //       // this.route.navigateByUrl('driver/myVehicle');
-    //       console.log('photo page');
-    //       this.route.navigateByUrl('driver/addPhoto');
-    //     }
-    //     console.log(res);
-    //   });
-    // });
+    // this.navigateTo('pages/driver/add-photo');
+
+    console.log('Checking');
+    this.commonApiService.getUserProfileData().then((res: any) => {
+      if (res.profile.is_vehicle_verified) {
+        console.log('Run When Licence verify go Dash');
+        this.navigateTo('pages/driver-dashboard/');
+        // this.route.navigateByUrl('driver/driverDashboard');
+        // this.route.navigateByUrl('driver/addPhoto');
+      } else {
+        // this.route.navigateByUrl('driver/myVehicle');
+        this.navigateTo('pages/add-photo');
+        console.log('Go Add photo page when dont have licence');
+        // this.route.navigateByUrl('driver/addPhoto');
+      }
+      console.log(res);
+    });
   }
 
   async goToMarket() {
