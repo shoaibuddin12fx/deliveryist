@@ -36,28 +36,32 @@
             Let's create your <br />
             delivery route
           </h2>
-          <div class="dlvr-input-container pickup">
-            <div class="heading-point1"></div>
-            <div class="heading-vertical1"></div>
-            <div style="position: relative !important" (click)="openAutoComplete('pick')">
-              <p class="pickup-address">Pickup Address</p>
-              <input type="text" readonly="true" placeholder="Street Address" formControlName="sourceAddress" />
-            </div>
-            <small>ex. 1010 Riverfront, TX 75038</small>
-            <input type="text" placeholder="Appartment/Suit#" formControlName="sourceAddressAppartment" />
-          </div>
-          <div class="dlvr-input-container delivery">
-            <div class="heading-point2"></div>
-            <div class="heading-vertical2"></div>
-            <div style="position: relative !important" (click)="openAutoComplete('drop')">
-              <p class="delivery-address">Delivery Address</p>
-              <input type="text" readonly="true" placeholder="Street Address" class="mb-0"
-                formControlName="deliveryAddress" />
-            </div>
 
-            <small>ex. 1010 Riverfront, TX 75038</small>
-            <input type="text" placeholder="Appartment/Suit#" formControlName="deliveryAddressAppartment" />
+          <div class="scroll-form">
+            <div class="dlvr-input-container pickup">
+              <div class="heading-point1"></div>
+              <div class="heading-vertical1"></div>
+              <div style="position: relative !important" (click)="openAutoComplete('pick')">
+                <p class="pickup-address">Pickup Address</p>
+                <input type="text" readonly="true" placeholder="Street Address" formControlName="sourceAddress" />
+              </div>
+              <small>ex. 1010 Riverfront, TX 75038</small>
+              <input type="text" placeholder="Appartment/Suit#" formControlName="sourceAddressAppartment" />
+            </div>
+            <div class="dlvr-input-container delivery">
+              <div class="heading-point2"></div>
+              <div class="heading-vertical2"></div>
+              <div style="position: relative !important" (click)="openAutoComplete('drop')">
+                <p class="delivery-address">Delivery Address</p>
+                <input type="text" readonly="true" placeholder="Street Address" class="mb-0"
+                  formControlName="deliveryAddress" />
+              </div>
+
+              <small>ex. 1010 Riverfront, TX 75038</small>
+              <input type="text" placeholder="Appartment/Suit#" formControlName="deliveryAddressAppartment" />
+            </div>
           </div>
+
           <!-- <button class="btn-full-width dlvr-uikit-btn dlvr-uikit-btn-blue m-t-30 verify noactualbutton" type="button" [disabled]="postJobForm.get('sourceAddress').invalid || postJobForm.get('deliveryAddress').invalid || postJobForm.get('sourceAddressAppartment').invalid || postJobForm.get('deliveryAddressAppartment').invalid" (click)="next()">Next1</button> -->
 
           <div class="fix-position">
@@ -100,7 +104,7 @@
         <div>
           <div>
             <div class="row" data-aos="fade-left">
-              <div class="col s11 p-r-30 p-l-30">
+              <div class="col s11 p-r-30 p-l-30" style="width:100%;">
                 <h2 class="category-title">
                   Select a category of<br />
                   your package
@@ -278,7 +282,7 @@
                       <div class="col s6">
                         <div class="dlvr-uikit-card dlvr-uikit-icon-card dlvr-uikit-icon-card-green asap-green "
                           [ngClass]="{'active': postJobForm.controls['deliveryType'].value == 'Immediate' }  "
-                          (click)="activeType('Immediate')">
+                          (click)="activeType()">
                           <div class="col s6">
                             <p class="dlvr-car-category-title asap-title">ASAP</p>
                           </div>
@@ -292,36 +296,6 @@
                           </label>
 
                         </div>
-                        <!-- <ion-item>
-                          <ion-label>
-                            ASAP
-                          </ion-label>
-                          <ion-radio formControlName="deliveryType"></ion-radio>
-                          <ion-icon
-                          [ngClass]="postJobForm.controls['deliveryType'].value == 'Immediate' ? 'tick-icon' : 'tick-icon-off'"
-                          name="checkmark"
-                        ></ion-icon>
-                        </ion-item> -->
-                        <!-- <div
-                          class="dlvr-radio dlvr-radio-green p-0"
-                          [ngClass]="{'active': postJobForm.controls['deliveryType'].value == 'Immediate' }"
-                        >
-                          <label
-                            class="dlvr-uikit-radio dlvr-uikit-radio-green delivery-label"
-                          >
-                            <input
-                              value="Immediate"
-                              type="radio"
-                              formControlName="deliveryType"
-                            />
-                            <ion-icon
-                              [ngClass]="postJobForm.controls['deliveryType'].value == 'Immediate' ? 'tick-icon' : 'tick-icon-off'"
-                              name="checkmark"
-                            ></ion-icon>
-
-                            <p>ASAP</p>
-                          </label>
-                        </div> -->
                       </div>
 
                       <div class="col s6">
@@ -366,7 +340,7 @@
 
                       <button class="dlvr-add-photos-btn" (click)="openFile()">
                         <i class="material-icons">library_add</i>
-                        {{ postJobForm.controls['deliveryDate'].value | date: 'Y-m-d hh:mm a'  }}
+                        {{ postJobForm.controls['deliveryDate'].value | date: 'Y-m-d hh:mm a' }}
                       </button>
                     </div>
                   </div>

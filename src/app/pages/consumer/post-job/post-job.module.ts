@@ -10,7 +10,7 @@ import { PostJobPage } from './post-job.page';
 import { LayoutsModule } from 'src/app/layouts/layouts.module';
 import { DatePickerModule } from 'src/app/components/date-picker/date-picker.module';
 import { HeaderComponent } from 'src/app/layouts/header/header.component';
-import { OrderSummaryComponent } from '../order-summary/order-summary.component';
+import { OrderSummaryComponent } from '../order-summary-old/order-summary.component';
 
 @NgModule({
   imports: [

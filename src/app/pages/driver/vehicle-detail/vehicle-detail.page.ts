@@ -79,7 +79,8 @@ export class VehicleDetailPage extends BasePage implements OnInit {
       .approveDriverLicense(reqData)
       .then((response: any) => {
         console.log('success', response);
-        this.router.navigate(['driver/driverDashboard']);
+        // this.router.navigate(['driver/driverDashboard']);
+        this.navigateTo('pages/driver/');
       })
       .catch((err) => {
         this.loading = false;

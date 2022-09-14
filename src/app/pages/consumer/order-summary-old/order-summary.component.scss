@@ -13,12 +13,12 @@
   height: 130vh;
 }
 .dlvr-input-container {
-  padding: 10px 14px 10px 36px;
+  padding: 10px 14px 8px 34px;
   width: 100%;
   background-color: black;
   background: rgb(34 34 34 / 40%);
   border-radius: 5px;
-  margin: 0px auto;
+  margin: 6px auto;
   position: relative;
 }
 .dlvr-input-container input {
@@ -112,19 +112,19 @@
   color: #313131;
 }
 .top-ball {
-  position: relative;
+  position: absolute;
   background: #32a7e9;
   width: 10px;
   height: 10px;
-  top: -46px;
-  left: 15px;
+  top: 12%;
+  left: 8.1%;
   border-radius: 50%;
 }
 
 .bottom-ball {
-  position: relative;
-  top: -41px;
-  left: 15px;
+  position: absolute;
+  top: 19.5%;
+  left: 8.1%;
   z-index: 5;
   width: 10px;
   height: 10px;
@@ -134,20 +134,21 @@
 
 .vertical-line {
   width: 0px;
-  height: 65px;
+  height: 56px;
   z-index: 5;
   position: absolute;
-  top: 115px;
-  left: 39px;
+  top: 13%;
+  left: 9.2%;
   border: 0.4px dashed #32a7e9;
 }
 .text-wrap-dot {
   font-size: 13px;
-  width: 290px;
+  width: 285px;
   overflow: hidden;
   display: inline-block;
   text-overflow: ellipsis;
   white-space: nowrap;
+  padding-top: 4px;
 }
 .dlvr-postJob-step1 {
   width: 90%;
