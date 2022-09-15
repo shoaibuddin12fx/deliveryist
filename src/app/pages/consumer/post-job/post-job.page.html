@@ -1,9 +1,8 @@
-<!-- <app-header
-  style="height: 60px"
-  [headerTitle]="'Order a Delivery'"
-  [showBackButton]="true"
-></app-header> -->
+<app-header style="height: 60px;" [headerTitle]="'Orders'" [showBackButton]="true" (navigateTo)="navigateTo">
+</app-header>
+
 <!-- <div class="dlvr-post-job-wrapper"></div> -->
+
 
 <ion-content>
   <form [formGroup]="postJobForm">

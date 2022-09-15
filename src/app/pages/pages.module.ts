@@ -73,7 +73,7 @@ import { SignUpPageModule } from './authentication/sign-up/sign-up.module';
     // DeliveryHistoryComponent,
     // OrderHistoryComponent,
     CardDetailComponent,
-    OrderSummaryComponent,
+    // OrderSummaryComponent,
     AddPhotoComponent,
     PhoneMaskDirective,
     // WalletComponent,

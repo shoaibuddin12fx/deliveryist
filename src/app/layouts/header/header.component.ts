@@ -5,25 +5,27 @@ import {
   Input,
   Output,
   EventEmitter,
+  Injector,
 } from '@angular/core';
 // import M from 'materialize-css/dist/js/materialize.min.js';
 // import { MaterializeAction } from 'angular2-materialize';
 import { AuthService } from 'src/app/services/authguards/auth.service';
 import { Location } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
+import { BasePage } from 'src/app/pages/base-page/base-page';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit, AfterViewInit {
+export class HeaderComponent extends BasePage implements OnInit, AfterViewInit {
   @Input('showBackButton') showBackButton: boolean = false;
   @Input('showHeaderTitle') showHeaderTitle: boolean = true;
   @Input('showMarketIcon') showMarketIcon: boolean = true;
   @Input('showSettingIcon') showSettingIcon: boolean = true;
   @Input('headerTitle') headerTitle: String;
-  @Output('navigateTo') navigateTo: EventEmitter<any> = new EventEmitter<any>();
+  // @Output('navigateTo') navigateTo: EventEmitter<any> = new EventEmitter<any>();
   elem;
   path;
   userRole = localStorage.getItem('userRole');
@@ -33,9 +35,11 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   isIos = false;
 
   constructor(
-    private location: Location,
+    injector: Injector,
+    public location: Location,
     private route: Router // private activatedRoute: ActivatedRoute, // private authService: AuthService, // private platform: Platform
   ) {
+    super(injector);
     // this.activatedRoute.url.subscribe((data) => {
     //   this.path = data[0].path;
     //   console.log(this.path);
@@ -66,7 +70,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   dologout() {
     // this.closeSidenav();
     // this.authService.logout();
-    this.navigateTo.emit('logout');
+    // this.navigateTo.emit('logout');
   }
 
   // routeTo(link) {
@@ -83,25 +87,25 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     // Go to dashboard after posting a new job
     // this.route.navigate(['consumer/postJob']);
     // this.closeSidenav();
-    this.navigateTo.emit('pages/consumer/post-job');
+    // this.navigateTo.emit('pages/consumer/post-job');
   }
 
   goToDashboard() {
     if (this.userRole == 'Consumer') {
-      this.navigateTo.emit('pages/consumer/consumer-dashboard');
+      // this.navigateTo.emit('pages/consumer/consumer-dashboard');
       // this.route.navigate(['consumer/consumerDashboard']);
     } else if (this.userRole == 'Driver') {
-      this.navigateTo.emit('pages/driver/driver-dashboard');
+      // this.navigateTo.emit('pages/driver/driver-dashboard');
       // this.route.navigate(['driver/driverDashboard']);
     }
     // this.closeSidenav();
   }
   goToNotification() {
     if (this.userRole == 'Consumer') {
-      this.navigateTo.emit('pages/consumer/consumer-notification');
+      // this.navigateTo.emit('pages/consumer/consumer-notification');
       // this.route.navigate(['consumer/consumerNotification']);
     } else if (this.userRole == 'Driver') {
-      this.navigateTo.emit('pages/driver/driver-notification');
+      // this.navigateTo.emit('pages/driver/driver-notification');
       // this.route.navigate(['driver/driverNotification']);
     }
     // this.closeSidenav();
@@ -128,12 +132,14 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   // }
 
   goTosettings() {
-    this.route.navigate(['/pages/setting']);
+    // this.route.navigate(['/pages/setting']);
+    this.navigateTo('pages/setting');
   }
 
   goToUserSelection() {
     console.log('Home');
-    this.route.navigate(['pages/user-role-selection']);
+    // this.route.navigate(['pages/user-role-selection']);
+    this.navigateTo('pages/user-role-selection');
   }
   goToAboutUs() {
     // this.route.navigate(['auth/about']);

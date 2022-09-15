@@ -10,40 +10,45 @@ import { PostJobPage } from '../post-job/post-job.page';
   styleUrls: ['./consumer-dashboard.page.scss'],
 })
 export class ConsumerDashboardPage extends BasePage implements OnInit {
-
   tab = 'active';
   jobsId;
   successModalEle;
   jobsList = [];
   jobs = [];
 
-  constructor(injector: Injector, private consumerApiService: ConsumerApiService, private driverApiService: DriverApiService) {
-
-    super(injector)
+  constructor(
+    injector: Injector,
+    private consumerApiService: ConsumerApiService,
+    private driverApiService: DriverApiService
+  ) {
+    super(injector);
     // Get user posted job list
     this.getJobData();
   }
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 
   // Post a new job
   getJobData() {
-    this.consumerApiService.getJobList(this.tab).then((res: any) => {
-      res.jobs.forEach(element => {
-        this.jobsList.push({
-          id: element.id,
-          title: element.description || '',
-          jobLabel: element.priority,
-          driverHired: element.status === 'Pending' ? false : true,
-          amount: element.job_price,
-          sourceAddress: element.job_address,
-          destinationAddress: element.delivery_address,
-          status: element.status
+    this.consumerApiService
+      .getJobList(this.tab)
+      .then((res: any) => {
+        res.jobs.forEach((element) => {
+          this.jobsList.push({
+            id: element.id,
+            title: element.description || '',
+            jobLabel: element.priority,
+            driverHired: element.status === 'Pending' ? false : true,
+            amount: element.job_price,
+            sourceAddress: element.job_address,
+            destinationAddress: element.delivery_address,
+            status: element.status,
+          });
         });
+      })
+      .catch((err) => {
+        console.log(err);
       });
-    }).catch(err => { console.log(err); });
   }
 
   // Post a new job
@@ -51,11 +56,12 @@ export class ConsumerDashboardPage extends BasePage implements OnInit {
     // Go to dashboard after posting a new job
     // this.route.navigate(['consumer/postJob']);
 
-    const res = await this.modals.present(PostJobPage);
+    // const res = await this.modals.present(PostJobPage);
+    const res = await this.navigateTo('pages/post-job/');
   }
 
   // Hire a driver for the job
-  goToHireDriver(){
+  goToHireDriver() {
     // this.route.navigate(['consumer/hireDriver']);
   }
 
@@ -69,27 +75,33 @@ export class ConsumerDashboardPage extends BasePage implements OnInit {
   packageStatusUpdate(status, modal) {
     const jobData: any = {
       job_id: this.jobsId,
-      status
+      status,
     };
-    this.driverApiService.packageStatusChange(jobData).then(res => {
-      console.log(res);
-      // if(status == 'Delivered'){
-      //   this.route.navigate(['driver/driverReviews', {jobId: this.jobsId}]);
-      // }
-      this.goToTrackDriver({id: this.jobsId});
-    }).catch(err => {
-      console.log(err);
-    });
+    this.driverApiService
+      .packageStatusChange(jobData)
+      .then((res) => {
+        console.log(res);
+        // if(status == 'Delivered'){
+        //   this.route.navigate(['driver/driverReviews', {jobId: this.jobsId}]);
+        // }
+        this.goToTrackDriver({ id: this.jobsId });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     // this.closeModal(modal);
   }
 
   // Delete job
   cancelJob(jobs, index) {
-    this.consumerApiService.deleteJob({ job_id: jobs.id}).then(res => {
-      this.jobsList.splice(index, 1);
-    }).catch(err => {
-      console.log(err);
-    });
+    this.consumerApiService
+      .deleteJob({ job_id: jobs.id })
+      .then((res) => {
+        this.jobsList.splice(index, 1);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   openModal(modalId, jobId) {
@@ -105,12 +117,15 @@ export class ConsumerDashboardPage extends BasePage implements OnInit {
     // instance.close();
   }
 
-  cancelDriver(jobs){
-    this.consumerApiService.deleteJob({ job_id: jobs.id}).then(res => {
-      //this.jobsList.splice(index, 1);
-    }).catch(err => {
-      console.log(err);
-    })
+  cancelDriver(jobs) {
+    this.consumerApiService
+      .deleteJob({ job_id: jobs.id })
+      .then((res) => {
+        //this.jobsList.splice(index, 1);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   changeTab(tabName) {
@@ -118,16 +133,14 @@ export class ConsumerDashboardPage extends BasePage implements OnInit {
     this.getJobData();
   }
 
-  loadData($event){
-    setTimeout(()=>{
-      if(this.jobsList.length < 20){
+  loadData($event) {
+    setTimeout(() => {
+      if (this.jobsList.length < 20) {
         $event.target.disabled = true;
-      }
-      else{
+      } else {
         this.getJobData();
         $event.target.complete();
       }
-    },500);
+    }, 500);
   }
-
 }

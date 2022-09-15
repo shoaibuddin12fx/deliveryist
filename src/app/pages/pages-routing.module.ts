@@ -86,6 +86,14 @@ const routes: Routes = [
   },
 
   {
+    path: 'post-job',
+    loadChildren: () =>
+      import('./consumer/post-job/post-job.module').then(
+        (m) => m.PostJobPageModule
+      ),
+  },
+
+  {
     path: 'driver-dashboard',
     loadChildren: () =>
       import('./driver/driver-dashbaord/driver-dashbaord.module').then(
