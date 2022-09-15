@@ -11,12 +11,58 @@
 //     margin-top: 100px;
 // }
 
-ion-textarea {
-    --background: rgb(201, 199, 199);
-    height: 164px;
-    padding: 15px;
+// ion-textarea {
+//     --background: rgb(201, 199, 199);
+//     height: 164px;
+//     padding: 15px;
+// }
+// .submit-btn {
+//     width: 100%;
+//     display: flex;
+// }
+
+.modal-inner {
+    width: 85%;
+    border-radius: 10px;
+    background-color: #fff;
+    padding: 10px 20px 10px 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
-.submit-btn {
-    width: 100%;
+.instruction {
     display: flex;
+    padding-bottom: 10px;
+    align-items: baseline;
+}
+.instruction img {
+    width: 20px;
+}
+.instruction h6 {
+    padding-left: 10px;
+    font-weight: 600;
+    color: rgb(45 55 92);
+}
+.modal-inner textarea {
+    background-color: rgb(239, 243, 247);
+    width: 100% !important;
+    min-height: 221px;
+    border-radius: 5px;
+    color: #322f2f;
+    border: none;
+    padding: 10px;
+    outline: none;
+}
+.inst-btn {
+    width: 100%;
+    background-color: #26bae8;
+    color: #fff;
+    margin: 21px;
+    border-radius: 35px;
+    height: 43px;
+    margin: 15px auto;
+}
+textarea::placeholder {
+    color: rgb(70 70 70);
 }

@@ -14,7 +14,10 @@
         <img
           src="https://www.pngitem.com/pimgs/m/35-350426_profile-icon-png-default-profile-picture-png-transparent.png"
           alt="profile pic" *ngIf="profileData?.profile_pic == null" class="image-container" />
+        <input type="file" id="image" style="display: none;" #fileupload accept="image/x-png,image/gif,image/jpeg"
+          multiple="true" class="fileupload" name="fileupload" (change)="onSelectFile($event)" />
         <i class="material-icons image-container" (click)="openModel()">create</i>
+
       </div>
       <div class="dlvr-uikit-list dlvr-uikit-list-media info-container">
         <ul>

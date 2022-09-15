@@ -46,6 +46,7 @@ import { ReportIssuePageModule } from './report-issue/report-issue.module';
 import { PaymentPageModule } from './payment/payment.module';
 import { HelpPagePageModule } from './help-page/help-page.module';
 import { SignUpPageModule } from './authentication/sign-up/sign-up.module';
+import { DriverInstructionsModule } from './consumer/components/driver-instructions/driver-instructions.module';
 
 @NgModule({
   declarations: [
@@ -83,6 +84,7 @@ import { SignUpPageModule } from './authentication/sign-up/sign-up.module';
     // ReportIssueComponent,
   ],
   imports: [
+    DriverInstructionsModule,
     CommonModule,
     PagesRoutingModule,
     OrderHistoryPageModule,

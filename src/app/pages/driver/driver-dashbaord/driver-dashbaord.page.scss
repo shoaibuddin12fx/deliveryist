@@ -73,10 +73,12 @@
 }
 .dlvr-jobPost-noPost {
     text-align: center;
-    color: $light-color2;
-    margin-bottom: 40%;
+    color: #a3b9c0;
     position: absolute;
-    bottom: 10%;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -40%);
+    width: 100%;
 }
 .dlvr-addNewJob-toolTip {
     margin-bottom: 10px;

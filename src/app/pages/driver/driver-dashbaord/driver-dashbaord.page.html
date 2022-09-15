@@ -1,6 +1,6 @@
 <app-header style="height: 55px;" [headerTitle]="'Orders'" [showBackButton]="true">
 </app-header>
-<ion-content>
+<ion-content style="position: relative;">
   <div class="dlvr-consumer-wrapper">
     <div class="dlvr-job-list">
       <div class="container">
@@ -46,12 +46,10 @@
             </div>
           </div>
         </div>
-        <div class="row" *ngIf="jobsList?.length == 0">
-          <div class="col s11">
-            <div class="dlvr-jobPost-noPost">
-              <i class="fa fa-archive fa-5x"></i>
-              <h3>You haven't any delivery order.</h3>
-            </div>
+        <div *ngIf="jobsList?.length == 0">
+          <div class="dlvr-jobPost-noPost">
+            <i class="fa fa-archive fa-5x"></i>
+            <h3>You haven't any delivery order.</h3>
           </div>
         </div>
       </div>

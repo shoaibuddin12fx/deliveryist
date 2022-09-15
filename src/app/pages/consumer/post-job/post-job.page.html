@@ -245,17 +245,7 @@
       </div>
       <!--STEP 3 of 5 END-->
       <!--STEP 4 of 5-->
-      <div *ngIf="openInstruction" class="modaals">
-        <div class="modal-inner">
-          <div class="instruction">
-            <span><img src="assets\images\detail-instruction.png" /></span>
-            <h6>Add Instruction</h6>
-          </div>
-          <textarea class="instruction-textarea"
-            placeholder="Please Contact James number (+1 23 43134) once your reach the pickup address"></textarea>
-          <button class="inst-btn" (click)="closeInstruction()">Save</button>
-        </div>
-      </div>
+
       <div class="dlvr-postJob-screen-wrapper step4" style="height: 115vh !important" *ngIf="step == 'step4'">
         <div class="img-time">
           <!-- <div class="img-wrapper"> -->
@@ -367,7 +357,7 @@
                   <div class="row">
                     <div class="col s12">
                       <ul class="collection dlvr-instruction">
-                        <li class="collection-item avatar" (click)="openModel()">
+                        <li class="collection-item avatar" (click)="openInstruction()">
                           <i class="material-icons-outlined circle">speaker_notes</i>
                           <span class="title">Any instruction to the driver?</span>
                           <p>e.g. please wait in the parking bay</p>
@@ -381,7 +371,7 @@
                       <p class="title-delivery-amount">Delivery Amount</p>
                       <div class="dlvr-uikit-icon-input">
                         <i class="material-icons-outlined">attach_money</i>
-                        <input type="number" min="{{postJobForm.controls['jobAmount'].value}}" placeholder="23"
+                        <input type="number" min="{{postJobForm.controls['jobAmount'].value}}" placeholder="10"
                           class="dlvr-uikit-input dlvr-uikit-input-grey" formControlName="jobAmount" />
                         <i class="material-icons-outlined edit-ammount">edit</i>
                       </div>

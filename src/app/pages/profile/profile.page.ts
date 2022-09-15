@@ -188,9 +188,9 @@ export class ProfilePage extends BasePage implements OnInit {
       cssClass: 'my-custom-class',
       buttons: [
         {
-          text: 'Change Photo',
+          text: 'Update Photo',
           handler: () => {
-            console.log('Favorite clicked');
+            this.openFile();
           },
         },
         {
@@ -201,7 +201,7 @@ export class ProfilePage extends BasePage implements OnInit {
           //   type: 'delete',
           // },
           handler: () => {
-            console.log('Delete clicked');
+            this.onRemovePhotoClick();
           },
         },
 
@@ -227,8 +227,26 @@ export class ProfilePage extends BasePage implements OnInit {
   }
 
   openFile() {
-    const el: HTMLElement = this.fileupload.nativeElement;
-    el.click();
+    if (!this.isPhotoUploaded) {
+      const el: HTMLElement = this.fileupload.nativeElement;
+      el.click();
+    }
+  }
+
+  uploadPhoto() {
+    console.log('Url', this.imageAPILink);
+    const pictureLink = {
+      profile_pic: this.imageAPILink,
+    };
+    this.commonService
+      .updateUserProfile(pictureLink)
+      .then((res) => {
+        // this.route.navigate(['driver/myVehicle']);
+        // this.navigateTo('pages/vehicle-detail/');
+      })
+      .catch((err) => {
+        errorMessages.ERROR_EDIT_PROFILE;
+      });
   }
 
   onSelectFile(event) {
@@ -237,30 +255,62 @@ export class ProfilePage extends BasePage implements OnInit {
     const reader = new FileReader();
     reader.readAsDataURL(files[0]);
     reader.onload = async (e: any) => {
-      // this.imageURL = e.target.result;
-      // const link = await this.imageCompressService.compressImage(this.imageURL);
-      // this.imageAPILink = await this.fb.uploadProductImageAndGetRef(this.imageURL);
-      // const obj = {
-      //   link,
-      //   selected: true,
-      //   file: files[0],
-      //   name: files[0].name,
-      //   uploaded: false,
-      // };
-      const pictureLink = {
-        profile_pic: this.imageAPILink.url,
+      this.imageURL = e.target.result;
+      const link = await this.imageCompressService.compressImage(this.imageURL);
+      this.imageAPILink = link;
+      this.profileData.profile_pic = link;
+      console.log('lINK', link);
+      this.isPhotoUploaded = true;
+      this.uploadPhoto();
+
+      const obj = {
+        link,
+        selected: true,
+        file: files[0],
+        name: files[0].name,
+        uploaded: false,
       };
-      this.commonService
-        .updateUserProfile(pictureLink)
-        .then((res: any) => {
-          this.profileData = res.profile;
-          this.closeModal();
-        })
-        .catch((err) => {
-          errorMessages.ERROR_EDIT_PROFILE;
-        });
     };
+    // this.navigateTo('pages/vehicle-detail/');
+
+    this.isPhotoUploaded = true;
   }
+
+  // openFile() {
+  //   const el: HTMLElement = this.fileupload.nativeElement;
+  //   el.click();
+  // }
+
+  // onSelectFile(event) {
+  //   const self = this;
+  //   const files = event.target.files;
+  //   const reader = new FileReader();
+  //   reader.readAsDataURL(files[0]);
+  //   reader.onload = async (e: any) => {
+  //     // this.imageURL = e.target.result;
+  //     // const link = await this.imageCompressService.compressImage(this.imageURL);
+  //     // this.imageAPILink = await this.fb.uploadProductImageAndGetRef(this.imageURL);
+  //     // const obj = {
+  //     //   link,
+  //     //   selected: true,
+  //     //   file: files[0],
+  //     //   name: files[0].name,
+  //     //   uploaded: false,
+  //     // };
+  //     const pictureLink = {
+  //       profile_pic: this.imageAPILink.url,
+  //     };
+  //     this.commonService
+  //       .updateUserProfile(pictureLink)
+  //       .then((res: any) => {
+  //         this.profileData = res.profile;
+  //         this.closeModal();
+  //       })
+  //       .catch((err) => {
+  //         errorMessages.ERROR_EDIT_PROFILE;
+  //       });
+  //   };
+  // }
 
   onRemovePhotoClick() {
     const pictureLink = {

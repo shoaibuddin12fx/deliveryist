@@ -11,6 +11,7 @@ import { LayoutsModule } from 'src/app/layouts/layouts.module';
 import { DatePickerModule } from 'src/app/components/date-picker/date-picker.module';
 import { HeaderComponent } from 'src/app/layouts/header/header.component';
 import { OrderSummaryComponent } from '../order-summary-old/order-summary.component';
+import { DriverInstructionsModule } from '../components/driver-instructions/driver-instructions.module';
 
 @NgModule({
   imports: [
@@ -22,6 +23,7 @@ import { OrderSummaryComponent } from '../order-summary-old/order-summary.compon
     LayoutsModule,
     DatePickerModule,
     LayoutsModule,
+    DriverInstructionsModule,
     // HeaderComponent,
   ],
   declarations: [PostJobPage, OrderSummaryComponent],

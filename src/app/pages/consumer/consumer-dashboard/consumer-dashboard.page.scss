@@ -1,7 +1,7 @@
-@import '../../../../theme/variables.scss' ;
-@import '../../../../assets/scss/custom-variables.scss';
-@import '../../../../assets/scss/dlvr-ui-kit.scss';
-@import '../../../../../node_modules/materialize-css/dist/css/materialize.css';
+@import "../../../../theme/variables.scss";
+@import "../../../../assets/scss/custom-variables.scss";
+@import "../../../../assets/scss/dlvr-ui-kit.scss";
+@import "../../../../../node_modules/materialize-css/dist/css/materialize.css";
 
 .dlvr-add-job-btn {
     position: fixed;
@@ -9,17 +9,21 @@
     right: 20px;
     z-index: 12;
 }
-.dlvr-add-job-btn button{
+.dlvr-add-job-btn button {
     background: $primary-gradient-color;
 }
 
-.overflow-y{
+.overflow-y {
     overflow-y: auto;
     overflow-x: hidden;
 }
 
 .dlvr-jobPost-noPost {
     text-align: center;
-    color: $light-color2;
-    margin-top: 60px;
+    color: #a3b9c0;
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -40%);
+    width: 100%;
 }

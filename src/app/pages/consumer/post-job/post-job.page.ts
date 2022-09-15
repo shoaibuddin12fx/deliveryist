@@ -18,6 +18,8 @@ import { ImageCompressService } from 'src/app/services/image-compress.service';
 import { StorageService } from 'src/app/services/_helpers/storage.service';
 import { BasePage } from '../../base-page/base-page';
 import { CartService } from '../../market-place/services/cart.service';
+import { DriverInstructionsComponent } from '../components/driver-instructions/driver-instructions.component';
+import { DriverInstructionsModule } from '../components/driver-instructions/driver-instructions.module';
 import { OrderSummaryComponent } from '../order-summary-old/order-summary.component';
 // import { DriverinstructionComponent } from '../components/driverinstruction.component';
 
@@ -48,7 +50,7 @@ export class PostJobPage extends BasePage implements OnInit, AfterViewInit {
   btnEnabled = false;
   btnEnabledForVehical = false;
   categoryBtnEnabled = false;
-  step = 'step1';
+  step = 'step4';
   loader = false;
   step1;
   step2;
@@ -70,7 +72,7 @@ export class PostJobPage extends BasePage implements OnInit, AfterViewInit {
   showBackButton = false;
   hidden = true;
   loading;
-  openInstruction = false;
+  // openInstruction = false;
   categoryList = [
     {
       iconName: 'devices_other',
@@ -120,6 +122,7 @@ export class PostJobPage extends BasePage implements OnInit, AfterViewInit {
       draggable: true,
     },
   };
+  deliveryType: any;
 
   constructor(
     injector: Injector,
@@ -149,7 +152,7 @@ export class PostJobPage extends BasePage implements OnInit, AfterViewInit {
       sourceAddressAppartment: new FormControl(null, [Validators.required]),
       deliveryAddress: new FormControl(null, [Validators.required]),
       deliveryAddressAppartment: new FormControl(null, [Validators.required]),
-      jobAmount: new FormControl(23, [Validators.required]),
+      jobAmount: new FormControl(10, [Validators.required]),
       itemCategory: new FormControl('Accessories', [Validators.required]),
       deliveryVehicle: new FormControl('Sedan', [Validators.required]),
       deliveryType: new FormControl('Immediate', Validators.required),
@@ -468,6 +471,11 @@ export class PostJobPage extends BasePage implements OnInit, AfterViewInit {
     }
   }
 
+  openInstruction() {
+    // this.navigateTo('pages/openInstruction');
+    this.modals.present(DriverInstructionsComponent);
+  }
+
   searchLoad(types) {
     // this.mapsAPILoader.load().then(() => {
     //   let autocomplete;
@@ -580,19 +588,19 @@ export class PostJobPage extends BasePage implements OnInit, AfterViewInit {
   }
 
   //Open  Modal
-  async openModel() {
-    this.openInstruction = true;
-    // const modal = await this.modalController.create({
-    //   component: DriverinstructionComponent,
-    // });
-    // console.log('modal opening');
-    // return await modal.present().then(() => {
-    //   console.log('model opened');
-    // });
-  }
-  closeInstruction() {
-    this.openInstruction = false;
-  }
+  // async openModel() {
+  //   this.openInstruction = true;
+  //   // const modal = await this.modalController.create({
+  //   //   component: DriverinstructionComponent,
+  //   // });
+  //   // console.log('modal opening');
+  //   // return await modal.present().then(() => {
+  //   //   console.log('model opened');
+  //   // });
+  // }
+  // closeInstruction() {
+  //   this.openInstruction = false;
+  // }
   //close modal
   closeModel() {
     // var elems = document.getElementById(modal);

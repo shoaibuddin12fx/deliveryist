@@ -35,6 +35,7 @@ import { AddPhotoComponent } from './driver/add-photo-old/add-photo.component';
 import { WalletComponent } from './driver/wallet-old/wallet.component';
 import { EarningComponent } from './driver/earning-old/earning.component';
 import { DeliveryCompletedComponent } from './driver/delivery-completed-old/delivery-completed.component';
+import { DriverInstructionsComponent } from './consumer/components/driver-instructions/driver-instructions.component';
 
 const routes: Routes = [
   {
@@ -179,7 +180,13 @@ const routes: Routes = [
         (m) => m.AddPhotoPageModule
       ),
   },
-
+  // {
+  //   path: 'openInstruction',
+  //   loadChildren: () =>
+  //     import(
+  //       './consumer/components/driver-instructions/driver-instructions.module'
+  //     ).then((m) => m.DriverInstructionsModule),
+  // },
   {
     path: 'vehicle-detail',
     loadChildren: () =>
