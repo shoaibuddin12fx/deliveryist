@@ -55,21 +55,23 @@ export class AddPhotoPage extends BasePage implements OnInit {
     if (!this.isPhotoUploaded) {
       const el: HTMLElement = this.fileupload.nativeElement;
       el.click();
-    } else {
-      console.log('Url', this.imageAPILink);
-      const pictureLink = {
-        profile_pic: this.imageAPILink,
-      };
-      this.commonService
-        .updateUserProfile(pictureLink)
-        .then((res) => {
-          // this.route.navigate(['driver/myVehicle']);
-          // this.navigateTo('pages/vehicle-detail/');
-        })
-        .catch((err) => {
-          errorMessages.ERROR_EDIT_PROFILE;
-        });
     }
+  }
+
+  uploadPhoto() {
+    console.log('Url', this.imageAPILink);
+    const pictureLink = {
+      profile_pic: this.imageAPILink,
+    };
+    this.commonService
+      .updateUserProfile(pictureLink)
+      .then((res) => {
+        // this.route.navigate(['driver/myVehicle']);
+        this.navigateTo('pages/vehicle-detail/');
+      })
+      .catch((err) => {
+        errorMessages.ERROR_EDIT_PROFILE;
+      });
   }
 
   onSelectFile(event) {
@@ -82,6 +84,9 @@ export class AddPhotoPage extends BasePage implements OnInit {
       const link = await this.imageCompressService.compressImage(this.imageURL);
       this.imageAPILink = link;
       console.log('lINK', link);
+      this.isPhotoUploaded = true;
+      this.uploadPhoto();
+
       const obj = {
         link,
         selected: true,
@@ -90,7 +95,7 @@ export class AddPhotoPage extends BasePage implements OnInit {
         uploaded: false,
       };
     };
-    this.navigateTo('pages/vehicle-detail/');
+    // this.navigateTo('pages/vehicle-detail/');
 
     this.isPhotoUploaded = true;
   }

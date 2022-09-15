@@ -21,7 +21,7 @@
   <input type="file" id="image" style="display: none;" #fileupload accept="image/x-png,image/gif,image/jpeg"
     multiple="true" class="fileupload" name="fileupload" (change)="onSelectFile($event)" />
   <button class="btn-full-width dlvr-uikit-btn dlvr-uikit-btn-green m-t-20 verify add-btn" type="button"
-    (click)="addPhoto()">{{
+    (click)="addPhoto() ? ">{{
     !isPhotoUploaded ? 'Add Photo' : 'Next' }}</button>
 </ion-toolbar>
 
