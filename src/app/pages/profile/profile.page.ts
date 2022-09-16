@@ -186,6 +186,7 @@ export class ProfilePage extends BasePage implements OnInit {
     const actionSheet = await this.actionSheetController.create({
       header: 'Profile Photo',
       cssClass: 'my-custom-class',
+      
       buttons: [
         {
           text: 'Update Photo',
@@ -274,6 +275,11 @@ export class ProfilePage extends BasePage implements OnInit {
     // this.navigateTo('pages/vehicle-detail/');
 
     this.isPhotoUploaded = true;
+  }
+
+  changeUsername()
+  {
+
   }
 
   // openFile() {
