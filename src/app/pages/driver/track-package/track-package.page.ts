@@ -127,19 +127,13 @@ export class TrackPackagePage extends BasePage implements OnInit {
       case 'start_journey_to_origin':
         return 'On the way';
         break;
+      case 'start_journey_to_destination':
+        return 'Loaded & delivery started';
+        break;
       case 'arrived_at_pickup':
         return 'Arrived at pickup';
         break;
     }
-  }
-
-  async mockLocations() {
-    console.log('location');
-    // this.progressLocations = await this.utility.getCurrentLocationCoordinates();
-
-    // console.log(this.progressLocations);
-
-    this.gettrackJobLocations();
   }
 
   async gettrackJobLocations() {
@@ -205,6 +199,18 @@ export class TrackPackagePage extends BasePage implements OnInit {
 
         break;
       case 'driverReachedToPickup':
+        this.track.status = 'arrived_at_pickup';
+
+        // call api update driver location and now change its course and destination
+        this.progressLocations.coords.lat = value.lat;
+        this.progressLocations.coords.lng = value.lng;
+        this.track.status = value.status;
+
+        await this.updatetrackJobLocations();
+        await this.gettrackJobLocations();
+        this.updatetrackJobLocations();
+        break;
+      case 'driverReachedToDestination':
         this.track.status = 'arrived_at_pickup';
 
         // call api update driver location and now change its course and destination

@@ -111,6 +111,13 @@ export class TrackMapComponent implements OnInit, AfterViewInit {
     console.log('set again', value);
     this.data = value;
 
+    if (this.placeMarker) {
+      this.placeMarker.setMap(null);
+    }
+
+    if (this.driverMarker) {
+      this.driverMarker.setMap(null);
+    }
     // var centerLat = parseFloat(value.coords.lat).toFixed(0);
     // var centerLng = parseFloat(value.coords.lng).toFixed(0);
     // this.map.setCenter({
@@ -249,6 +256,15 @@ export class TrackMapComponent implements OnInit, AfterViewInit {
         }
 
         if (this.data.status == 'arrived_at_pickup') {
+          this.data.status = 'start_journey_to_destination';
+          console.log('fall here ? ', this.data.status);
+
+          const obj = {
+            lat: this.pathCoordinates[counter]['lat'],
+            lng: this.pathCoordinates[counter]['lng'],
+            status: this.data.status,
+          };
+          this.output.emit({ key: 'driverReachedToDestination', value: obj });
         }
       } else {
         counter = counter + 1;
