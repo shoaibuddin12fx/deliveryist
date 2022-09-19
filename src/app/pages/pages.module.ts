@@ -5,7 +5,7 @@ import { ForgetPasswordComponent } from './authentication/forget-password/forget
 import { IntroductionScreensComponent } from './introduction-screens/introduction-screens.component';
 import 'materialize-css';
 // import { MaterializeModule } from 'angular2-materialize';
-import { TrackDriverComponent } from './consumer/track-driver/track-driver.component';
+import { TrackDriverComponent } from './consumer/track-driver-old/track-driver.component';
 import { PaymentModeComponent } from './consumer/payment-mode/payment-mode.component';
 import { RatingsAndReviewsComponent } from './consumer/ratings-and-reviews/ratings-and-reviews.component';
 import { SettingsComponent } from './consumer/settings/settings.component';

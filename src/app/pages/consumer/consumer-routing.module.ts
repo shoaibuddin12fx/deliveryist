@@ -33,6 +33,10 @@ const routes: Routes = [
         (m) => m.OrderHistoryPageModule
       ),
   },
+  {
+    path: 'track-driver',
+    loadChildren: () => import('./track-driver/track-driver.module').then( m => m.TrackDriverPageModule)
+  },
   // {
   //   path: 'order-summary',
   //   loadChildren: () => import('./order-summary/order-summary.module').then( m => m.OrderSummaryPageModule)

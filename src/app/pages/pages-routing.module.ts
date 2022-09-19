@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ForgetPasswordComponent } from './authentication/forget-password/forget-password.component';
 // import { DriverDashboardComponent } from './driver/driver-dashboard/driver-dashboard.component';
 import { IntroductionScreensComponent } from './introduction-screens/introduction-screens.component';
-import { TrackDriverComponent } from './consumer/track-driver/track-driver.component';
+import { TrackDriverComponent } from './consumer/track-driver-old/track-driver.component';
 import { PaymentModeComponent } from './consumer/payment-mode/payment-mode.component';
 import { RatingsAndReviewsComponent } from './consumer/ratings-and-reviews/ratings-and-reviews.component';
 import { SettingsComponent } from './consumer/settings/settings.component';
@@ -195,10 +195,18 @@ const routes: Routes = [
       ),
   },
 
+  {
+    path: 'track-driver',
+    loadChildren: () =>
+      import('./consumer/track-driver/track-driver.module').then(
+        (m) => m.TrackDriverPageModule
+      ),
+  },
+
   { path: 'forgetPassword', component: ForgetPasswordComponent },
   // { path: 'driverDashboard', component: DriverDashboardComponent },
   // { path: 'deliveryCompleted', component: DeliveryCompletedComponent },
-  { path: 'trackDriver', component: TrackDriverComponent },
+  // { path: 'trackDriver', component: TrackDriverComponent },
   { path: 'paymentMode', component: PaymentModeComponent },
   { path: 'reviews', component: RatingsAndReviewsComponent },
   { path: 'settings', component: SettingsComponent },

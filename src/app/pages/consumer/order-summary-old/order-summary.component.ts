@@ -89,4 +89,8 @@ export class OrderSummaryComponent extends BasePage implements OnInit {
       });
     }
   }
+
+  trackOrder() {
+    this.navigateTo('pages/track-driver/');
+  }
 }
