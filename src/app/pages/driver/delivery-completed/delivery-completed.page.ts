@@ -18,8 +18,14 @@ export class DeliveryCompletedPage extends BasePage implements OnInit {
 
   constructor(injector: Injector, private driverApiService: DriverApiService) {
     super(injector);
-    this.activatedRoute.params.subscribe((data) => {
-      this.jobId = data.id;
+    // this.activatedRoute.queryParams.subscribe((data: any) => {
+    //   console.log('====================================');
+    //   console.log(data);
+    //   console.log('====================================');
+    //   this.jobId = data.id;
+    // });
+    this.activatedRoute.queryParams.subscribe((data) => {
+      this.jobId = data.job_id;
       console.log('Data Value in Apply to job', data);
 
       if (this.jobId) {
@@ -28,7 +34,9 @@ export class DeliveryCompletedPage extends BasePage implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log('HELLOW SHAYAn');
+  }
 
   async getJobDetails() {
     console.log('APPLY TO JOB TS');

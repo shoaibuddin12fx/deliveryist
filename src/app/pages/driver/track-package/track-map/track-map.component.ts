@@ -76,21 +76,26 @@ export class TrackMapComponent implements OnInit, AfterViewInit {
       this.updateMapTargets(obj);
     });
 
-    this.events.subscribe('update_map_behaviour', (obj) => {
-      console.log(obj, self.data);
-
-      const key = obj.key;
-      switch (key) {
-        case 'start_journey_to_origin':
-          self.data.status = key;
-          self.playDrivingsGame();
-          break;
-        case 'arrived_at_pickup':
-          break;
-        case 'start_journey_to_destination':
-          break;
-      }
+    this.events.subscribe('play_data', (obj) => {
+      this.data.status = obj.status;
+      this.playDrivingsGame();
     });
+
+    // this.events.subscribe('update_map_behaviour', (obj) => {
+    //   console.log(obj, self.data);
+
+    //   const key = obj.key;
+    //   switch (key) {
+    //     case 'start_journey_to_origin':
+    //       self.data.status = key;
+    //       self.playDrivingsGame();
+    //       break;
+    //     case 'arrived_at_pickup':
+    //       break;
+    //     case 'start_journey_to_destination':
+    //       break;
+    //   }
+    // });
   }
 
   initializeMapBeforeSetCoordinates() {
@@ -243,29 +248,36 @@ export class TrackMapComponent implements OnInit, AfterViewInit {
 
       if (counter == this.pathCoordinates.length - 1) {
         clearInterval(this.timer);
+
+        const obj = {
+          lat: this.pathCoordinates[counter]['lat'],
+          lng: this.pathCoordinates[counter]['lng'],
+          status: this.data.status,
+        };
+        this.output.emit({ key: 'loop_completed', value: obj });
         counter = 0;
 
-        if (this.data.status == 'start_journey_to_origin') {
-          this.data.status = 'arrived_at_pickup';
-          const obj = {
-            lat: this.pathCoordinates[counter]['lat'],
-            lng: this.pathCoordinates[counter]['lng'],
-            status: this.data.status,
-          };
-          this.output.emit({ key: 'driverReachedToPickup', value: obj });
-        }
+        // if (this.data.status == 'start_journey_to_origin') {
+        //   this.data.status = 'arrived_at_pickup';
+        //   const obj = {
+        //     lat: this.pathCoordinates[counter]['lat'],
+        //     lng: this.pathCoordinates[counter]['lng'],
+        //     status: this.data.status,
+        //   };
+        //   this.output.emit({ key: 'driverReachedToPickup', value: obj });
+        // }
 
-        if (this.data.status == 'arrived_at_pickup') {
-          this.data.status = 'start_journey_to_destination';
-          console.log('fall here ? ', this.data.status);
+        // if (this.data.status == 'arrived_at_pickup') {
+        //   this.data.status = 'start_journey_to_destination';
+        //   console.log('fall here ? ', this.data.status);
 
-          const obj = {
-            lat: this.pathCoordinates[counter]['lat'],
-            lng: this.pathCoordinates[counter]['lng'],
-            status: this.data.status,
-          };
-          this.output.emit({ key: 'driverReachedToDestination', value: obj });
-        }
+        //   const obj = {
+        //     lat: this.pathCoordinates[counter]['lat'],
+        //     lng: this.pathCoordinates[counter]['lng'],
+        //     status: this.data.status,
+        //   };
+        //   this.output.emit({ key: 'driverReachedToDestination', value: obj });
+        // }
       } else {
         counter = counter + 1;
         const obj = {
@@ -273,6 +285,8 @@ export class TrackMapComponent implements OnInit, AfterViewInit {
           lng: this.pathCoordinates[counter]['lng'],
           status: this.data.status,
         };
+
+        console.log('track-map-obj', obj);
         this.output.emit({ key: 'driverLocationUpdate', value: obj });
       }
     }, 1000);

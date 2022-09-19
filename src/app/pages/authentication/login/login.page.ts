@@ -29,7 +29,7 @@ export class LoginPage extends BasePage implements OnInit {
   setupForm() {
     // create form
     this.loginForm = new FormGroup({
-      email: new FormControl('user8@test.com', [
+      email: new FormControl('shoaibuddin12fx@mailinator.com', [
         Validators.email,
         Validators.required,
       ]),

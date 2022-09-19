@@ -7,10 +7,10 @@
     Please enter the <b>OTP</b> which has been given to {{track?.poster_name}} {{track?.poster_contact}}
   </p>
 
-  <ion-input placeholder="8 9 5 4 1" class="otp-input"></ion-input>
+  <ion-input placeholder="8 9 5 4 1" class="otp-input" [(ngModel)]="security_code"></ion-input>
 
   <div class="uper-box">
-    <button class="btn-otp">Confirm</button>
+    <button class="btn-otp" (click)="verifySecurityToken()">Confirm</button>
 
   </div>
 

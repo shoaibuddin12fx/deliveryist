@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Injector, OnInit } from '@angular/core';
+import { AutocompletePage } from 'src/app/components/autocomplete/autocomplete.page';
 import { DriverApiService } from 'src/app/services/driver-api.service';
 import { BasePage } from '../../base-page/base-page';
 import { HelpModalComponent } from './help-modal/help-modal.component';
@@ -21,6 +22,7 @@ export class TrackPackagePage extends BasePage implements OnInit {
   track: any;
   jobId;
   progressLocations: any;
+  driverInitialLocations: any;
 
   constructor(injector: Injector, private driverApiService: DriverApiService) {
     super(injector);
@@ -48,6 +50,8 @@ export class TrackPackagePage extends BasePage implements OnInit {
       console.log('Get Track', this.job);
 
       this.track = {
+        job_id: res.id,
+        security_code: res.security_code,
         status: res.status,
         sourceAddress: res.job_address,
         deliveryAddress: res.delivery_address,
@@ -71,18 +75,30 @@ export class TrackPackagePage extends BasePage implements OnInit {
         },
       };
 
-      this.origin = this.track.origin;
-      this.destination = this.track.destination;
+      // this.origin = this.track.origin;
+      // this.destination = this.track.destination;
       const dis = (await this.utility.getDistanceOfCoordinates(
-        this.origin,
-        this.destination
+        this.track.origin,
+        this.track.destination
       )) as any;
 
       this.totalDistance = dis.distance;
       this.totalDuration = dis.duration;
 
-      await this.gettrackJobLocations();
-      this.updatetrackJobLocations();
+      // this.setMapCoordinatesAndGetReady();
+      // await this.gettrackJobLocations();
+      // this.updatetrackJobLocations();
+    }
+  }
+
+  async setMapCoordinatesAndGetReady() {
+    const res = await this.modals.present(AutocompletePage);
+    console.log(res, this.track.status);
+
+    let data = res.data;
+    if (data.coords) {
+      this.driverInitialLocations = data;
+      this.gettrackJobLocations();
     }
   }
 
@@ -96,92 +112,55 @@ export class TrackPackagePage extends BasePage implements OnInit {
     this.modals.present(HelpModalComponent);
   }
 
-  statusDrivingChange() {
+  async statusDrivingChange() {
     switch (this.track.status) {
       case 'pending':
         this.track.status = 'start_journey_to_origin';
 
-        this.events.publish('update_map_behaviour', {
-          key: 'start_journey_to_origin',
-          value: { k: 'p' },
+        this.events.publish('play_data', {
+          status: this.track.status,
         });
+        // , {
+        //   key: 'start_journey_to_origin',
+        //   value: { k: 'p' },
+        // });
 
+        break;
+      case 'set_arrived_at_pickup':
+        this.track.status = 'arrived_at_pickup';
+        const res3 = await this.updatetrackJobLocations();
+        this.events.publish('update_data', res3);
         break;
       case 'start_journey_to_origin':
         break;
       case 'arrived_at_pickup':
-        this.track.status = 'start_journey_to_origin';
-        break;
-    }
-  }
+        const res = await this.updatetrackJobLocations();
+        this.events.publish('update_data', res);
+        this.track.status = 'loaded_and_ready_to_start';
 
-  deliveryComplete(job) {
-    this.navigateTo('/pages/driver/delivery-completed/' + job.id);
-  }
+        break;
+      case 'loaded_and_ready_to_start':
+        await this.updatetrackJobLocations();
+        this.track.status = 'start_journey_to_destination';
+        this.events.publish('play_data', {
+          status: this.track.status,
+        });
+        break;
 
-  returnButtonText(status) {
-    switch (status) {
-      case 'pending':
-        return "Let's Starts";
-        break;
-      case 'start_journey_to_origin':
-        return 'On the way';
-        break;
       case 'start_journey_to_destination':
-        return 'Loaded & delivery started';
+        console.log('fire start_journey_to_destination');
+        await this.updatetrackJobLocations();
         break;
-      case 'arrived_at_pickup':
-        return 'Arrived at pickup';
+      case 'arrived_at_delivery':
+        this.track.status = 'delivery_complete';
+        await this.updatetrackJobLocations();
+
+        break;
+      case 'delivery_complete':
+        this.openOtpModal();
+
         break;
     }
-  }
-
-  async gettrackJobLocations() {
-    var self = this;
-    const loc = (await this.utility.getCurrentLocationCoordinates()) as any;
-    var params = {
-      id: this.jobId,
-      driver_lat: loc.coords.lat,
-      driver_lng: loc.coords.lng,
-      status: this.track.status,
-    };
-
-    return new Promise(async (resolve) => {
-      let res = (await this.driverApiService.gettrackJobLocations(
-        this.jobId,
-        params
-      )) as any;
-
-      console.log(res);
-
-      res.coords = loc.coords;
-      self.progressLocations = res;
-      self.events.publish('update_data', res);
-
-      resolve(true);
-    });
-  }
-
-  async updatetrackJobLocations() {
-    return new Promise(async (resolve) => {
-      let data = {
-        id: this.jobId,
-        driver_lat: this.progressLocations.coords.lat,
-        driver_lng: this.progressLocations.coords.lng,
-        status: this.track.status,
-      };
-
-      const res = (await this.driverApiService.trackJobLocations(
-        this.jobId,
-        data
-      )) as any;
-
-      console.log(res);
-      resolve(true);
-    });
-
-    // update map pointers with locations
-    //this.progressLocations = res.job_locations;
   }
 
   async mapOutput($event) {
@@ -190,6 +169,46 @@ export class TrackPackagePage extends BasePage implements OnInit {
     const value = $event.value;
 
     switch (key) {
+      case 'loop_completed':
+        // this.progressLocations.coords.lat = value.lat;
+        // this.progressLocations.coords.lng = value.lng;
+        // this.track.status = value.status;
+
+        const current_status = this.track.status;
+        console.log('current_status', this.track.status);
+        switch (current_status) {
+          case 'start_journey_to_origin':
+            this.track.status = 'arrived_at_pickup';
+            await this.updatetrackJobLocations();
+
+            break;
+          case 'arrived_at_pickup':
+            this.track.status = 'arrived_at_pickup';
+
+            this.driverInitialLocations = {
+              coords: value,
+            };
+
+            this.progressLocations = this.driverInitialLocations;
+            const res = await this.updatetrackJobLocations();
+            // this.events.publish('update_data', res);
+
+            break;
+
+          case 'start_journey_to_destination':
+            this.track.status = 'arrived_at_delivery';
+            this.driverInitialLocations = {
+              coords: value,
+            };
+
+            this.progressLocations = this.driverInitialLocations;
+
+            const res2 = await this.updatetrackJobLocations();
+            break;
+        }
+        // this.track.status = value.status;
+
+        break;
       case 'driverLocationUpdate':
         this.progressLocations.coords.lat = value.lat;
         this.progressLocations.coords.lng = value.lng;
@@ -211,7 +230,7 @@ export class TrackPackagePage extends BasePage implements OnInit {
         this.updatetrackJobLocations();
         break;
       case 'driverReachedToDestination':
-        this.track.status = 'arrived_at_pickup';
+        this.track.status = 'start_journey_to_destination';
 
         // call api update driver location and now change its course and destination
         this.progressLocations.coords.lat = value.lat;
@@ -221,7 +240,93 @@ export class TrackPackagePage extends BasePage implements OnInit {
         await this.updatetrackJobLocations();
         await this.gettrackJobLocations();
         this.updatetrackJobLocations();
+
         break;
     }
+  }
+
+  deliveryComplete(job) {
+    this.navigateTo('/pages/driver/delivery-completed/' + job.id);
+  }
+
+  returnButtonText(status) {
+    switch (status) {
+      case 'pending':
+        return "Let's Starts";
+        break;
+      case 'start_journey_to_origin':
+        return 'On the way';
+        break;
+      case 'set_arrived_at_pickup':
+        return 'Set Arrived at pickup';
+        break;
+      case 'arrived_at_pickup':
+        return 'Arrived at pickup';
+        break;
+      case 'loaded_and_ready_to_start':
+        return 'Start delivery';
+        break;
+      case 'start_journey_to_destination':
+        return 'Loaded & delivery started';
+        break;
+      case 'arrived_at_delivery':
+        return 'Arrived at delivery location';
+        break;
+      case 'delivery_complete':
+        return 'Delivery completed';
+        break;
+    }
+  }
+
+  async gettrackJobLocations() {
+    var self = this;
+    let loc = null; //(await this.utility.getCurrentLocationCoordinates()) as any;
+
+    // if (this.track.status == 'pending') {
+    loc = this.driverInitialLocations;
+    // }
+
+    var params = {
+      id: this.jobId,
+      driver_lat: loc.coords.lat,
+      driver_lng: loc.coords.lng,
+      status: this.track.status,
+    };
+
+    return new Promise(async (resolve) => {
+      let res = (await this.driverApiService.gettrackJobLocations(
+        this.jobId,
+        params
+      )) as any;
+      console.log('DATA', res);
+
+      res.coords = loc.coords;
+      self.progressLocations = res;
+
+      self.events.publish('update_data', res);
+      resolve(true);
+    });
+  }
+
+  async updatetrackJobLocations() {
+    return new Promise(async (resolve) => {
+      let data = {
+        id: this.jobId,
+        driver_lat: this.progressLocations.coords.lat,
+        driver_lng: this.progressLocations.coords.lng,
+        status: this.track.status,
+      };
+
+      const res = (await this.driverApiService.trackJobLocations(
+        this.jobId,
+        data
+      )) as any;
+
+      console.log(res);
+      resolve(res);
+    });
+
+    // update map pointers with locations
+    //this.progressLocations = res.job_locations;
   }
 }
