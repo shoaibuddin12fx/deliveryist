@@ -457,7 +457,9 @@ export class PostJobPage extends BasePage implements OnInit, AfterViewInit {
   }
 
   async activeType(type) {
-    this.postJobForm.controls.deliveryType.setValue(type);
+    this.postJobForm.controls.deliveryType.setValue('Immediate');
+  }
+  async openFlexibleDate() {
     const res = await this.modals.present(
       DatePickerComponent,
       {},
@@ -466,8 +468,12 @@ export class PostJobPage extends BasePage implements OnInit, AfterViewInit {
     console.log('Flixilbe Time', res);
 
     let data = res.data;
+    let role = data.role;
     if (data.date) {
       this.postJobForm.controls.deliveryDate.setValue(data.date);
+    }
+    if (data.role) {
+      this.postJobForm.controls.deliveryType.setValue(data.role);
     }
   }
 

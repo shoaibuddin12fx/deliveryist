@@ -270,8 +270,8 @@
                     <ion-radio-group>
                       <div class="col s6">
                         <div class="dlvr-uikit-card dlvr-uikit-icon-card dlvr-uikit-icon-card-green asap-green "
-                          [ngClass]="{'active': postJobForm.controls['deliveryType'].value == 'Immediate' }  "
-                          (click)="activeType()">
+                          [ngClass]="{'active': postJobForm.controls['deliveryType'].value == 'Immediate' } "
+                          (click)="activeType()  ">
                           <div class="col s6">
                             <p class="dlvr-car-category-title asap-title">ASAP</p>
                           </div>
@@ -289,16 +289,16 @@
 
                       <div class="col s6">
                         <div class="dlvr-uikit-card dlvr-uikit-icon-card dlvr-uikit-icon-card-green asap-green"
-                          [ngClass]="{'active': postJobForm.controls['deliveryType'].value == 'flexible' }  "
-                          (click)="activeType()">
+                          [ngClass]="{'active': postJobForm.controls['deliveryType'].value == 'Flexible' }  "
+                          (click)="openFlexibleDate()">
                           <div class="col s6">
                             <p class="dlvr-car-category-title asap-title">Flexible</p>
                           </div>
                           <label class="dlvr-uikit-radio">
                             <input name="radioSize" type="radio"
-                              [checked]="postJobForm.controls['deliveryType'].value == 'flexible'" />
+                              [checked]="postJobForm.controls['deliveryType'].value == 'Flexible'" />
                             <ion-icon
-                              [ngClass]="postJobForm.controls['deliveryType'].value == 'flexible' ? 'tick-icon2' : 'tick-icon-off'"
+                              [ngClass]="postJobForm.controls['deliveryType'].value == 'Flexible' ? 'tick-icon2' : 'tick-icon-off'"
                               name="checkmark"></ion-icon>
                           </label>
 
