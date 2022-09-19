@@ -50,7 +50,7 @@ export class PostJobPage extends BasePage implements OnInit, AfterViewInit {
   btnEnabled = false;
   btnEnabledForVehical = false;
   categoryBtnEnabled = false;
-  step = 'step4';
+  step = 'step1';
   loader = false;
   step1;
   step2;
@@ -157,8 +157,8 @@ export class PostJobPage extends BasePage implements OnInit, AfterViewInit {
       deliveryVehicle: new FormControl('Sedan', [Validators.required]),
       deliveryType: new FormControl('Immediate', Validators.required),
       deliveryDate: new FormControl(),
-      receiverName: new FormControl(''),
-      receiverNumber: new FormControl(''),
+      receiverName: new FormControl('Shayan Khan'),
+      receiverNumber: new FormControl('0-942809580982'),
       instructionForReceiver: new FormControl(null),
     });
 
@@ -342,24 +342,25 @@ export class PostJobPage extends BasePage implements OnInit, AfterViewInit {
         // this.step4.classList.add("is-complete");
         // this.step5.classList.add("is-active");
       }
-      const res = await this.modals.present(OrderSummaryComponent, {
-        orderSummary: this.postJobForm.value,
-      });
-    } else if (this.step === 'step5') {
-      this.loader = true;
-      this.showBackButton = true;
-
-      if (
-        postFormValues.receiverName != null &&
-        postFormValues.receiverNumber != null &&
-        postFormValues.jobAmount != null
-      ) {
-        document.getElementById('truckprogress').style.width = '100%';
-        // this.step5.classList.add("is-complete");
-        this.navigateToPaymentScreen();
-        this.loader = false;
-      }
+      // const res = await this.modals.present(OrderSummaryComponent, {
+      //   orderSummary: this.postJobForm.value,
+      // });
     }
+    // else if (this.step === 'step5') {
+    //   this.loader = true;
+    //   this.showBackButton = true;
+
+    //   if (
+    //     postFormValues.receiverName != null &&
+    //     postFormValues.receiverNumber != null &&
+    //     postFormValues.jobAmount != null
+    //   ) {
+    //     document.getElementById('truckprogress').style.width = '100%';
+    //     // this.step5.classList.add("is-complete");
+    //     this.navigateToPaymentScreen();
+    //     this.loader = false;
+    //   }
+    // }
   }
 
   //open modal
@@ -367,10 +368,12 @@ export class PostJobPage extends BasePage implements OnInit, AfterViewInit {
     // // this.modalActions.emit({ action: 'modal', params: ['open'] });
   }
 
-  navigateToPaymentScreen() {
+  async navigateToPaymentScreen() {
     // if (this.selectedDate) {
     //   this.postJobForm.controls.deliveryDate.setValue(this.selectedDate);
     // }
+
+    console.log('JOB FORM ', this.postJobForm);
 
     if (this.postJobForm.valid) {
       const newJobData = this.postJobForm.value;
@@ -392,18 +395,18 @@ export class PostJobPage extends BasePage implements OnInit, AfterViewInit {
         item_category: newJobData.itemCategory,
         package_size: newJobData.deliveryVehicle,
         // package_size: 'truck',
-        receiver_name:
-          newJobData.receiverName != null ? newJobData.receiverName : '',
-        receiver_contact:
-          newJobData.receiverNumber != null ? newJobData.receiverNumber : '',
+        // receiver_name:
+        //   newJobData.receiverName != null ? newJobData.receiverName : '',
+        // receiver_contact:
+        //   newJobData.receiverNumber != null ? newJobData.receiverNumber : '',
         expected_delivery_time:
           newJobData.deliveryDate != null
             ? new Date(newJobData.deliveryDate).toISOString().split('T')[0]
             : '',
-        receiver_instructions:
-          newJobData.instructionForReceiver != null
-            ? newJobData.instructionForReceiver
-            : '',
+        // receiver_instructions:
+        //   newJobData.instructionForReceiver != null
+        //     ? newJobData.instructionForReceiver
+        //     : '',
         source_address_appartment:
           newJobData.sourceAddressAppartment != null
             ? newJobData.sourceAddressAppartment
@@ -416,39 +419,56 @@ export class PostJobPage extends BasePage implements OnInit, AfterViewInit {
         distance: parseFloat(this.totalDistance?.replace('mi', '')),
       };
 
-      // let phNoValid = this.commonService.isPhoneNumberValid(this.postJobForm.controls['receiverNumber'].value);
+      let phNoValid = this.commonService.isPhoneNumberValid(
+        this.postJobForm.controls['receiverNumber'].value
+      );
 
-      // if(phNoValid){
-      this.consumerApiService
-        .postNewJob(postJobData)
-        .then((res: any) => {
-          const obj = {
-            jobId: res.jobId,
-            amount: newJobData.jobAmount.toFixed(2),
-            pickup: newJobData.sourceAddress,
-            delivery: newJobData.deliveryAddress,
-            packageCategory: newJobData.itemCategory,
-            vehicleType: newJobData.deliveryVehicle,
-            deliveryType: newJobData.deliveryType,
-            deliveryAmount: newJobData.jobAmount,
-            delivery_time:
-              newJobData.deliveryDate != null ? newJobData.deliveryDate : 'N/A',
-          };
-          if (this.order_id) {
-            obj['orderId'] = this.order_id;
-            obj.amount = this.getTotalCost();
-            obj['paymentType'] = this.OrderDetail.payment_type;
-          }
+      console.log('====================================');
+      console.log('Phone no valid', phNoValid);
+      console.log('====================================');
 
-          localStorage.setItem('pre_order_details', JSON.stringify(obj));
+      if (phNoValid || !phNoValid) {
+        this.consumerApiService
+          .postNewJob(postJobData)
+          .then(async (res: any) => {
+            const obj = {
+              jobId: res.jobId,
+              amount: newJobData.jobAmount.toFixed(2),
+              pickup: newJobData.sourceAddress,
+              delivery: newJobData.deliveryAddress,
+              packageCategory: newJobData.itemCategory,
+              vehicleType: newJobData.deliveryVehicle,
+              deliveryType: newJobData.deliveryType,
+              deliveryAmount: newJobData.jobAmount,
+              delivery_time:
+                newJobData.deliveryDate != null
+                  ? newJobData.deliveryDate
+                  : 'N/A',
+            };
+            if (this.order_id) {
+              obj['orderId'] = this.order_id;
+              obj.amount = this.getTotalCost();
+              obj['paymentType'] = this.OrderDetail.payment_type;
+            }
 
-          this.navigateTo('pages/consumer/paymentMode/');
-        })
-        .catch((err) => console.log({ err }));
-      // } else {
-      //   this.postJobForm.controls['receiverNumber'].setErrors({ valid: false });
-      //   this.postJobForm.invalid;
-      // }
+            localStorage.setItem('pre_order_details', JSON.stringify(obj));
+
+            // this.navigateTo('pages/consumer/paymentMode/');
+
+            const _res = await this.modals.present(OrderSummaryComponent, {
+              orderSummary: this.postJobForm.value,
+            });
+          })
+          .catch((err) => console.log({ err }));
+      }
+      // else {
+      // //   this.postJobForm.controls['receiverNumber'].setErrors({ valid: false });
+      // //   this.postJobForm.invalid;
+      // // }
+    } else {
+      console.log(JSON.stringify(this.postJobForm.errors));
+
+      alert(this.postJobForm.errors);
     }
   }
 

@@ -31,7 +31,7 @@ export class CommonServicesService implements OnInit {
 
   // Check mobile number is valid or not
   isPhoneNumberValid(phoneNumberInput) {
-    console.log(phoneNumberInput);
+    console.log('phone number static', phoneNumberInput);
     const pn = new PhoneNumber(
       phoneNumberInput,
       localStorage.getItem('countryCode')
