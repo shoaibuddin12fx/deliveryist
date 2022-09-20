@@ -188,6 +188,10 @@
     font-weight: 600 !important;
     position: absolute;
     margin-top: 3px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 225px;
 }
 
 .arrow {
