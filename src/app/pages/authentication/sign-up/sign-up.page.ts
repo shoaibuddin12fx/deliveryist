@@ -217,6 +217,7 @@ export class SignUpPage extends BasePage implements OnInit {
 
   onOtpChange(otp) {
     this.userOTP = otp;
+    console.log('Security COde1', this.userOTP);
   }
 
   verifyOTP() {
@@ -227,7 +228,7 @@ export class SignUpPage extends BasePage implements OnInit {
     // this.userOTP = first.value + second.value + third.value + fourth.value;
     this.loading = true;
 
-    const data = { otp: parseInt(this.userOTP), forgetpassword: false };
+    const data: any = { otp: parseInt(this.userOTP), forgetpassword: false };
     this.commonService
       .verifyOTPforMobileNumberVerification(data)
       .then((res: any) => {
@@ -241,7 +242,11 @@ export class SignUpPage extends BasePage implements OnInit {
             document.getElementById('truckprogress').style.width = '40%';
           }
         }
+        console.log('Security COde', data);
+
+        localStorage.setItem('security-otp', data.otp);
       })
+
       .catch((err) => {
         console.log(err);
         this.loading = false;

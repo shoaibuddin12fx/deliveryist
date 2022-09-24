@@ -1,6 +1,13 @@
-import { Component, Injector, OnInit } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Injector,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { ModalController } from '@ionic/angular/providers/modal-controller';
 import { BasePage } from 'src/app/pages/base-page/base-page';
+import { ModalService } from 'src/app/services/_helpers/modal.service';
 
 @Component({
   selector: 'app-driver-instructions',
@@ -8,17 +15,18 @@ import { BasePage } from 'src/app/pages/base-page/base-page';
   styleUrls: ['./driver-instructions.component.scss'],
 })
 export class DriverInstructionsComponent extends BasePage implements OnInit {
-  constructor(injector: Injector) {
+  postJobForm: any;
+
+  constructor(injector: Injector, public modals: ModalService) {
     super(injector);
   }
 
   ngOnInit() {}
 
-  // dismissModal() {
-  //   this.modalController.dismiss();
-  // }
+  instructions = '';
 
-  // saveInstructions() {
-  //   this.dismissModal();
-  // }
+  saveInstruction() {
+    const v = this.instructions;
+    this.modals.dismiss({ data: v });
+  }
 }

@@ -4,8 +4,8 @@
       <span><img src="assets\images\detail-instruction.png" /></span>
       <h6>Add Instruction</h6>
     </div>
-    <textarea class="instruction-textarea"
+    <textarea class="instruction-textarea" [value]="instructions" (input)="instructions=$event.target.value"
       placeholder="Please Contact James number (+1 23 43134) once your reach the pickup address"></textarea>
-    <button class="inst-btn" (click)="closeInstruction()">Save</button>
+    <button class="inst-btn" (click)="saveInstruction($event)">Save</button>
   </div>
 </div>

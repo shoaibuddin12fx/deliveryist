@@ -295,3 +295,28 @@
     font-size: 16px;
     line-height: 1.4;
 }
+.order-header {
+    width: 100%;
+    height: 56px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    color: rgb(69 71 71);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    padding: 0px 30px;
+}
+.icons {
+    width: 18%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    color: rgb(88 144 158);
+}
+.ion-tabs {
+    width: 85%;
+    margin: 10px auto;
+}
+ion-segment {
+    --background: #f3f8f9;
+}

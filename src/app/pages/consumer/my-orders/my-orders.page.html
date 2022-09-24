@@ -1,0 +1,96 @@
+<div class="order-header">
+  <h5 style="font-size: 18px; 
+  font-weight: 700;">My Orders</h5>
+  <div class="icons">
+    <ion-icon name="settings" (click)="goToSetting()"></ion-icon>
+    <ion-icon name="home" (click)="goToHome()"></ion-icon>
+  </div>
+</div>
+
+
+<ion-content style="position: relative;">
+
+  <ion-segment class="ion-tabs" [(ngModel)]="activeSection">
+    <ion-segment-button value="pending">
+      <ion-label>Pending</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="inprogress">
+      <ion-label>In progress</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="completed">
+      <ion-label>Completed</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <div [hidden]="activeSection !== 'pending'">
+    <h4 class="text-center">Your Pending Orders</h4>
+  </div>
+
+
+  <div class="dlvr-consumer-wrapper" [hidden]="activeSection !== 'inprogress'">
+    <div class="dlvr-job-list">
+      <div class="container">
+        <div class="row">
+          <div class="col s12 margin-bottom" *ngFor="let jobs of jobsList; let i=index">
+            <div class="dlvr-job-card-new" data-aos="fade-up">
+              <div class="dlvr-order-confirmed-block">
+
+                <ul class="collection left-align">
+                  <li class="collection-item avatar">
+                    <div class="circle">
+                      <img
+                        [src]="jobs?.reciver_profile_pic ?  jobs?.reciver_profile_pic : '../../../../assets/images/user_icon.png' "
+                        alt="user">
+
+
+                    </div>
+                    <p class="title poster_name">
+                      {{ jobs?.reciver_full_name }}
+                      <span class="amount">${{ jobs?.amount }}</span>
+                    </p>
+                    <p style="display: flex;"><i class="material-icons-outlined f-s-17 m-r-5">star</i>
+                      <b>&nbsp;{{profileData?.rating ? profileData?.rating : 'N/A'}}</b>
+                    </p>
+                  </li>
+                </ul>
+
+                <div class="location">
+
+                  <ion-card fullscreen>
+                    <ion-card-content>
+                      <ul class="collection">
+                        <li class="collection-item dlvr-job-address line-break">{{
+                          jobs?.sourceAddress
+                          }}</li>
+                        <li class="collection-item dlvr-job-address ">{{
+                          jobs?.destinationAddress }}</li>
+                      </ul>
+                      <img src="assets/images/inner-location.png" alt="location pin" class="location-img">
+                    </ion-card-content>
+                  </ion-card>
+                </div>
+              </div>
+              <div class="accept-btn" (click)="goToTrackOrder(jobs)">
+                In Progress
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="jobs?.length == 0">
+          <div class="dlvr-jobPost-noPost">
+            <i class="fa fa-archive fa-5x"></i>
+            <h3>You haven't any delivery order.</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div [hidden]="activeSection !== 'completed'">
+
+    <h4>You'r Any Delivery Is Not Completed yet.</h4>
+
+  </div>
+
+
+</ion-content>

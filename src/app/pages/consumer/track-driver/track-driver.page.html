@@ -2,8 +2,10 @@
 
   <div>
     <div class="order-header">
-      <h5 style="font-size: 18px; 
-      font-weight: 500;">Order Track</h5>
+      <h5 class="heading">
+        <ion-icon name="chevron-back-outline" class="back-icon" (click)="goBack()"></ion-icon>
+        Order Tracking
+      </h5>
       <div class="icons">
         <ion-icon name="settings" (click)="goToSetting()"></ion-icon>
         <ion-icon name="home" (click)="goToHome()"></ion-icon>
@@ -11,7 +13,13 @@
     </div>
   </div>
 
-  <img src="../../../../assets/images/map.jpg" class="map-wrapper">
+  <!-- <img src="../../../../assets/images/map.jpg" class="map-wrapper"> -->
+
+  <app-track-map class="app-track-map-component" [data]="progressLocations" (output)="mapOutput($event)">
+  </app-track-map>
+
+
+
 
   <div class="row">
     <div class="col s12 no-padding">
@@ -20,12 +28,12 @@
           <li *ngIf="driverInfo" class="collection-item avatar">
             <div (click)="viewDriverDetail()" class="circle">
               <img
-                src="https://hips.hearstapps.com/ame-prod-goodhousekeeping-assets.s3.amazonaws.com/main/embedded/32567/amber-heard.jpg"
-                alt="user">
+                [src]="jobs?.reciver_profile_pic ? jobs?.reciver_profile_pic : '../../../../assets/images/user_icon.png'" />
+
             </div>
-            <p (click)="viewDriverDetail()" class="title">Shayan Khan</p>
+            <p (click)="viewDriverDetail()" class="title"> {{ jobs?.reciver_full_name }}</p>
             <p (click)="goToRatings()" class="rating"><i class="material-icons-outlined  f-s-17 m-r-5">star</i>
-              <b>6.4</b>
+              <b>{{profileData?.rating}}</b>
             </p>
           </li>
         </ul>
@@ -73,7 +81,7 @@
 
 
         <div class="btn-section">
-          <div> <a class="dlvr-btn green-btn" href="tel:1o834776565">
+          <div> <a class="dlvr-btn green-btn" href="tel:{{jobs?.reciver_contact_number}}">
               <i class="material-icons">phone</i>
               Call
             </a></div>
@@ -91,7 +99,7 @@
             <div class="dlvr-otp">
               <p>Share this OTP with your delivery agent<br> only after the delivery.</p>
               <span class="otp">
-                84654651
+                {{security}}
               </span>
             </div>
           </div>
@@ -147,10 +155,24 @@
               <div class="stright-line"></div>
             </div>
           </div>
-          <img src="../../../../assets/images//truck_progress.png" class="truck-img">
+          <!-- <img src="../../../../assets/images//truck_progress.png" class="truck-img">
 
           <div class="truck-footer">
+          </div> -->
+          <!--PROGRESS BAR-->
+          <div class=" dlvr-new-progress">
+            <div class="row" data-aos="fade-down">
+              <div class="progress grey-line">
+                <div class="progress-bar  blue-line" id="truckprogress" style="
+                  width: 15%;
+                  background: #26bae8;
+                  height: 4px;
+                  transition: 0.9s;
+                "></div>
+              </div>
+            </div>
           </div>
+          <!--PROGRESS BAR END-->
         </div>
 
       </div>

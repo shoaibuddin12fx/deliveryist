@@ -12,7 +12,11 @@
                 <ul class="collection left-align">
                   <li class="collection-item avatar">
                     <div class="circle">
-                      <img src="{{jobs?.poster_profile_pic}}" alt="user">
+                      <img
+                        [src]="jobs?.poster_profile_pic ?  jobs?.poster_profile_pic : '../../../../assets/images/user_icon.png' "
+                        alt="user">
+
+
                     </div>
                     <p class="title poster_name">
                       {{ jobs.poster_name }}

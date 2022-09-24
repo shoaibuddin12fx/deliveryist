@@ -37,6 +37,10 @@ const routes: Routes = [
     path: 'track-driver',
     loadChildren: () => import('./track-driver/track-driver.module').then( m => m.TrackDriverPageModule)
   },
+  {
+    path: 'my-orders',
+    loadChildren: () => import('./my-orders/my-orders.module').then( m => m.MyOrdersPageModule)
+  },
   // {
   //   path: 'order-summary',
   //   loadChildren: () => import('./order-summary/order-summary.module').then( m => m.OrderSummaryPageModule)

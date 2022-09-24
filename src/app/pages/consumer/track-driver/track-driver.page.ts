@@ -1,5 +1,6 @@
 import { Component, Injector, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { errorMessages } from 'src/app/helpers/error_messages';
 import { ConsumerApiService } from 'src/app/services/consumer-api.service';
 import { BasePage } from '../../base-page/base-page';
 
@@ -14,12 +15,14 @@ export class TrackDriverPage extends BasePage implements OnInit {
   step3;
   lat: any;
   lng: any;
+  profileData;
   totalDuration;
   totalDistance;
   origin: any;
   destination: any;
   securityCode: any;
   track = [];
+  security: any = 0;
   driverInfo = [];
   renderOptions = {
     suppressMarkers: true,
@@ -36,70 +39,77 @@ export class TrackDriverPage extends BasePage implements OnInit {
     },
   };
   jobId;
-
+  jobsList: any;
+  jobs: any;
   constructor(
     injector: Injector,
-    private consumerAPIService: ConsumerApiService,
-    public activatedRoute: ActivatedRoute
+    public activatedRoute: ActivatedRoute,
+    private consumerApiService: ConsumerApiService
   ) {
     super(injector);
-    this.activatedRoute.params.subscribe((data) => {
-      this.jobId = data.jobId;
-      console.log(this.jobId);
-      console.log(data);
-      this.getTrackingRecord(this.jobId).then((trackData: any) => {
-        this.track = [
-          {
-            status: trackData.status,
-            origin: {
-              lat: trackData.job_latitude,
-              lng: trackData.job_longitude,
-            },
-            destination: {
-              lat: trackData.delivery_latitude,
-              lng: trackData.delivery_longitude,
-            },
-            driverId: trackData.receiver_id,
-            rating: trackData.rating || 0,
-            driverName: trackData.receiver_name,
-            driverNumber: trackData.receiver_contact,
-          },
-        ];
-        this.origin = this.track[0].origin;
-        this.destination = this.track[0].destination;
-        this.securityCode = trackData.security_code;
-        this.lat = trackData.job_latitude;
-        this.lng = trackData.job_longitude;
-        // if (this.track[0].driverId) {
-        //   this.consumerAPIService.getConsumerProfileByDriver({ consumer_id: this.track[0].driverId }).then((res: any) => {
-        //   this.track[0].driverNumber = '+' + res.profile.contact.number;
-        //   console.log('getConsumerProfileByDriver res', res);
-        //   this.driverInfo = res;
-        //   }).catch(err => console.log(err));
-        // }
-        this.showStep();
-        console.log('this.track', this.track);
+
+    // this.activatedRoute.params.subscribe((data) => {
+    //   this.jobId = data.id;
+    //   console.log('Data Value in job', data);
+
+    //   if (this.jobId) {
+    //     this.getJobDetail();
+    //   }
+    // });
+  }
+
+  ngOnInit() {
+    console.log('Job Details Current ', this.data.job_data);
+
+    this.jobs = this.data.job_data;
+
+    this.security = localStorage.getItem('security-otp');
+    console.log('security', this.security);
+  }
+
+  async getJobDetail() {
+    const res = (await this.consumerApiService.getCurrentJobDetails(
+      this.jobId
+    )) as any;
+    console.log('CourrentJOb', res);
+
+    if (res['jobs'].length > 0) {
+      this.jobsList = res['jobs'].map((element) => {
+        let obj = {
+          id: element.id,
+          poster_name: element.poster_name,
+          amount: element.job_price,
+          sourceAddress: element.job_address,
+          destinationAddress: element.delivery_address,
+          rating: element.rating,
+          poster_profile_pic: element.poster_profile_pic,
+          reciver_profile_pic: element.receiver.profile_pic,
+          reciver_first_name: element.receiver.first_name,
+          reciver_last_name: element.receiver.last_name,
+          reciver_full_name:
+            element.receiver.first_name + ' ' + element.receiver.last_name,
+        };
+
+        return obj;
       });
-    });
+    }
   }
 
-  ngOnInit() {}
-
-  getTrackingRecord(jobId) {
-    // Get track record of the job
-    return new Promise((resolve, reject) => {
-      console.log(jobId);
-      this.consumerAPIService
-        .getTrackRecordOfJob(jobId)
-        .then((trackData: any) => {
-          console.log('trackData', trackData);
-          resolve(trackData);
-        })
-        .catch((err) => {
-          this.router.navigate(['consumer/consumerDashboard']);
-        });
-    });
-  }
+  // getTrackingRecord(jobId) {
+  //   // Get track record of the job
+  //   return new Promise((resolve, reject) => {
+  //     console.log(jobId);
+  //     this.consumerApiService
+  //       .getTrackRecordOfJob(jobId)
+  //       .then((trackData: any) => {
+  //         console.log('trackData', trackData);
+  //         resolve(trackData);
+  //       })
+  //       .catch((err) => {
+  //         this.router.navigate(['consumer/consumerDashboard']);
+  //       });
+  //   });
+  // }
 
   // onResponse(event: any) {
   //   const service = new google.maps.DistanceMatrixService();
@@ -162,5 +172,17 @@ export class TrackDriverPage extends BasePage implements OnInit {
       this.step3.classList.add('is-active');
       this.step3.classList.add('is-complete');
     }
+  }
+
+  goToHome() {
+    this.navigateTo('pages/user-role-selection/');
+  }
+
+  goToSetting() {
+    this.navigateTo('pages/setting');
+  }
+
+  goBack() {
+    this.location.back();
   }
 }

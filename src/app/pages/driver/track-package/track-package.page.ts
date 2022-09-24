@@ -48,6 +48,7 @@ export class TrackPackagePage extends BasePage implements OnInit {
 
       this.job = res;
       console.log('Get Track', this.job);
+      localStorage.setItem('security-code', res.security_code);
 
       this.track = {
         job_id: res.id,
@@ -75,6 +76,8 @@ export class TrackPackagePage extends BasePage implements OnInit {
         },
       };
 
+      console.log('LOol', this.track.status);
+
       // this.origin = this.track.origin;
       // this.destination = this.track.destination;
       const dis = (await this.utility.getDistanceOfCoordinates(
@@ -93,7 +96,7 @@ export class TrackPackagePage extends BasePage implements OnInit {
 
   async setMapCoordinatesAndGetReady() {
     const res = await this.modals.present(AutocompletePage);
-    console.log(res, this.track.status);
+    console.log('status', res, this.track.status);
 
     let data = res.data;
     if (data.coords) {
@@ -114,17 +117,12 @@ export class TrackPackagePage extends BasePage implements OnInit {
 
   async statusDrivingChange() {
     switch (this.track.status) {
-      case 'pending':
+      case 'Pending':
         this.track.status = 'start_journey_to_origin';
 
         this.events.publish('play_data', {
           status: this.track.status,
         });
-        // , {
-        //   key: 'start_journey_to_origin',
-        //   value: { k: 'p' },
-        // });
-
         break;
       case 'set_arrived_at_pickup':
         this.track.status = 'arrived_at_pickup';
@@ -145,11 +143,12 @@ export class TrackPackagePage extends BasePage implements OnInit {
         this.events.publish('play_data', {
           status: this.track.status,
         });
-        break;
 
+        break;
       case 'start_journey_to_destination':
         console.log('fire start_journey_to_destination');
         await this.updatetrackJobLocations();
+
         break;
       case 'arrived_at_delivery':
         this.track.status = 'delivery_complete';
@@ -206,6 +205,7 @@ export class TrackPackagePage extends BasePage implements OnInit {
             const res2 = await this.updatetrackJobLocations();
             break;
         }
+
         // this.track.status = value.status;
 
         break;
@@ -251,7 +251,7 @@ export class TrackPackagePage extends BasePage implements OnInit {
 
   returnButtonText(status) {
     switch (status) {
-      case 'pending':
+      case 'Pending':
         return "Let's Starts";
         break;
       case 'start_journey_to_origin':
@@ -274,6 +274,67 @@ export class TrackPackagePage extends BasePage implements OnInit {
         break;
       case 'delivery_complete':
         return 'Delivery completed';
+        break;
+    }
+  }
+
+  // Pickup Address
+  // Delivery Address
+
+  returnDeliveryAddressType(status) {
+    switch (status) {
+      case 'Pending':
+        return 'Pickup Address';
+        break;
+      case 'start_journey_to_origin':
+        return 'Pickup Address';
+        break;
+      case 'set_arrived_at_pickup':
+        return 'Pickup Address';
+        break;
+      case 'arrived_at_pickup':
+        return 'Pickup Address';
+        break;
+      case 'loaded_and_ready_to_start':
+        return 'Delivery Address';
+        break;
+      case 'start_journey_to_destination':
+        return 'Delivery Address';
+        break;
+      case 'arrived_at_delivery':
+        return 'Delivery Address';
+        break;
+      case 'delivery_complete':
+        return 'Delivery Address';
+        break;
+    }
+  }
+
+  returnDeliveryAddress(status) {
+    switch (status) {
+      case 'Pending':
+        return this.track.sourceAddress;
+        break;
+      case 'start_journey_to_origin':
+        return this.track.sourceAddress;
+        break;
+      case 'set_arrived_at_pickup':
+        return this.track.sourceAddress;
+        break;
+      case 'arrived_at_pickup':
+        return this.track.sourceAddress;
+        break;
+      case 'loaded_and_ready_to_start':
+        return this.track.deliveryAddress;
+        break;
+      case 'start_journey_to_destination':
+        return this.track.deliveryAddress;
+        break;
+      case 'arrived_at_delivery':
+        return this.track.deliveryAddress;
+        break;
+      case 'delivery_complete':
+        return this.track.deliveryAddress;
         break;
     }
   }

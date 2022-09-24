@@ -66,6 +66,7 @@ export class ApplyToJobPage extends BasePage implements OnInit {
       console.log('Get Job', this.job);
 
       this.track = {
+        status: res.status,
         sourceAddress: res.job_address,
         deliveryAddress: res.delivery_address,
         jobAmount: res.job_price,
@@ -102,22 +103,21 @@ export class ApplyToJobPage extends BasePage implements OnInit {
 
   goToApplyJob(job) {
     console.log('gotojob', job),
-      // this.driverApiService
-      //   .applyToJob({
-      //     job_id: this.jobId,
-      //     bid_details: 'Hello, I can get this delivered. Contact me in chat',
-      //   })
-      //   .then((res) => {
-      //     console.log('umar', res);
-
-      // this.route.navigate(['driver/trackPackage', { jobId: this.jobId }]);
-
       this.navigateTo('pages/driver/track-package/' + job.id);
 
-    console.log('jobID', job);
-    // })
-    // .catch((err) => {
-    //   console.log({ err });
-    // });
+    // this.driverApiService
+    //   .applyToJob({
+    //     job_id: this.jobId,
+    //     bid_details: 'Hello, I can get this delivered. Contact me in chat',
+    //   })
+    //   .then((res) => {
+    //     console.log('Job accepted', res);
+    //     this.navigateTo('pages/driver/track-package/' + job.id);
+
+    //     console.log('jobID', job);
+    //   })
+    //   .catch((err) => {
+    //     console.log({ err });
+    //   });
   }
 }

@@ -36,13 +36,13 @@
             <img src="assets/images/detail-pickup-add.png" alt="user">
           </div>
           <div class="pickup-address-line">
-            <p class="title" style="font-size: 11px !important;">Pick Up
-              Address</p>
-            <a class="text">Gulshan-e-iqbal Karcahi</a>
-            <a class="text" *ngIf="track?.status == 'Accepted'">JOhar</a>
-            <p class="title f-s-5" *ngIf="track?.status == 'Received'">Deli very Address</p>
-            <a class="text" *ngIf="track?.status == 'Received'">Sadar</a>
-            <a class="text" *ngIf="track?.status == 'Received'">DHA</a>
+            <p class="title" style="font-size: 11px !important;"> {{ returnDeliveryAddressType(track?.status) }}
+            </p>
+            <a class="text"> {{ returnDeliveryAddress(track?.status) }}
+            </a>
+            <!-- <p class="title f-s-5" *ngIf="track?.status == 'start_journey_to_destination'    "
+              style="font-size: 11px !important;">Delivery Address</p>
+            <a class="text" *ngIf="track?.status == 'start_journey_to_destination'">{{track?.deliveryAddress}}</a> -->
           </div>
         </li>
       </ul>
@@ -50,6 +50,8 @@
 
     <app-track-map class="app-track-map-component" [data]="progressLocations" (output)="mapOutput($event)">
     </app-track-map>
+
+
   </div>
 
   <div class="dlvr-get-started-btn" (click)=statusDrivingChange()>

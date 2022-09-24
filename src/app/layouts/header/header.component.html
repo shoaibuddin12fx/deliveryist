@@ -45,8 +45,14 @@
                     <i class="material-icons">home</i></a>
                 <a data-target="mobile-demo" class="dlvr-hamburger sidenav-trigger right" (click)="goTosettings()">
                     <i class="material-icons-outlined">settings</i></a>
-                <a data-target="mobile-demo" class="dlvr-hamburger sidenav-trigger right" (click)="goToMarketPalace()">
-                    <i class="material-icons-outlined">local_mall</i></a>
+                <!-- <a data-target="mobile-demo" class="dlvr-hamburger sidenav-trigger right" (click)="goToMarketPalace()">
+                    <i class="material-icons-outlined">local_mall</i></a> -->
+                <a data-target="mobile-demo" class="dlvr-hamburger sidenav-trigger right" (click)="goToOrders()">
+                    <ion-icon name="navigate" class="location-icon"></ion-icon>
+                </a>
+
+
+
                 <!-- <ul class="right hide-on-med-and-down">
                     <li><a (click)="goTosettings()" [class.active-blue]=" path == 'settings' "
                             [class.active-green]="path == 'driverSetting'"><i

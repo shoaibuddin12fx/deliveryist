@@ -72,6 +72,7 @@ export class PostJobPage extends BasePage implements OnInit, AfterViewInit {
   showBackButton = false;
   hidden = true;
   loading;
+  instructionForReceiver;
   // openInstruction = false;
   categoryList = [
     {
@@ -403,10 +404,10 @@ export class PostJobPage extends BasePage implements OnInit, AfterViewInit {
           newJobData.deliveryDate != null
             ? new Date(newJobData.deliveryDate).toISOString().split('T')[0]
             : '',
-        // receiver_instructions:
-        //   newJobData.instructionForReceiver != null
-        //     ? newJobData.instructionForReceiver
-        //     : '',
+        receiver_instructions:
+          newJobData.instructionForReceiver != null
+            ? newJobData.instructionForReceiver
+            : '',
         source_address_appartment:
           newJobData.sourceAddressAppartment != null
             ? newJobData.sourceAddressAppartment
@@ -419,57 +420,54 @@ export class PostJobPage extends BasePage implements OnInit, AfterViewInit {
         distance: parseFloat(this.totalDistance?.replace('mi', '')),
       };
 
-      let phNoValid = this.commonService.isPhoneNumberValid(
-        this.postJobForm.controls['receiverNumber'].value
-      );
+      // let phNoValid = this.commonService.isPhoneNumberValid(
+      //   this.postJobForm.controls['receiverNumber'].value
+      // );
 
-      console.log('====================================');
-      console.log('Phone no valid', phNoValid);
-      console.log('====================================');
+      // console.log('====================================');
+      // console.log('Phone no valid', phNoValid);
+      // console.log('====================================');
 
-      if (phNoValid || !phNoValid) {
-        this.consumerApiService
-          .postNewJob(postJobData)
-          .then(async (res: any) => {
-            const obj = {
-              jobId: res.jobId,
-              amount: newJobData.jobAmount.toFixed(2),
-              pickup: newJobData.sourceAddress,
-              delivery: newJobData.deliveryAddress,
-              packageCategory: newJobData.itemCategory,
-              vehicleType: newJobData.deliveryVehicle,
-              deliveryType: newJobData.deliveryType,
-              deliveryAmount: newJobData.jobAmount,
-              delivery_time:
-                newJobData.deliveryDate != null
-                  ? newJobData.deliveryDate
-                  : 'N/A',
-            };
-            if (this.order_id) {
-              obj['orderId'] = this.order_id;
-              obj.amount = this.getTotalCost();
-              obj['paymentType'] = this.OrderDetail.payment_type;
-            }
+      // if (phNoValid || !phNoValid) {
+      this.consumerApiService
+        .postNewJob(postJobData)
+        .then(async (res: any) => {
+          const obj = {
+            jobId: res.jobId,
+            amount: newJobData.jobAmount.toFixed(2),
+            pickup: newJobData.sourceAddress,
+            delivery: newJobData.deliveryAddress,
+            packageCategory: newJobData.itemCategory,
+            vehicleType: newJobData.deliveryVehicle,
+            deliveryType: newJobData.deliveryType,
+            deliveryAmount: newJobData.jobAmount,
+            delivery_time:
+              newJobData.deliveryDate != null ? newJobData.deliveryDate : 'N/A',
+          };
+          if (this.order_id) {
+            obj['orderId'] = this.order_id;
+            obj.amount = this.getTotalCost();
+            obj['paymentType'] = this.OrderDetail.payment_type;
+          }
 
-            localStorage.setItem('pre_order_details', JSON.stringify(obj));
+          localStorage.setItem('pre_order_details', JSON.stringify(obj));
 
-            // this.navigateTo('pages/consumer/paymentMode/');
+          // this.navigateTo('pages/consumer/paymentMode/');
 
-            const _res = await this.modals.present(OrderSummaryComponent, {
-              orderSummary: this.postJobForm.value,
-            });
-          })
-          .catch((err) => console.log({ err }));
-      }
-      // else {
-      // //   this.postJobForm.controls['receiverNumber'].setErrors({ valid: false });
-      // //   this.postJobForm.invalid;
-      // // }
+          const _res = await this.modals.present(OrderSummaryComponent, {
+            orderSummary: this.postJobForm.value,
+          });
+        })
+        .catch((err) => console.log({ err }));
     } else {
-      console.log(JSON.stringify(this.postJobForm.errors));
-
-      alert(this.postJobForm.errors);
+      this.postJobForm.controls['receiverNumber'].setErrors({ valid: false });
+      this.postJobForm.invalid;
     }
+    //  else {
+    //   console.log(JSON.stringify(this.postJobForm.errors));
+
+    //   alert(this.postJobForm.errors);
+    // }
   }
 
   setdeliveryVehicle(size) {
@@ -497,9 +495,17 @@ export class PostJobPage extends BasePage implements OnInit, AfterViewInit {
     }
   }
 
-  openInstruction() {
+  async openInstruction() {
     // this.navigateTo('pages/openInstruction');
-    this.modals.present(DriverInstructionsComponent);
+    const res = await this.modals.present(DriverInstructionsComponent);
+
+    this.instructionForReceiver = res.data.data;
+
+    console.log('instructions', this.instructionForReceiver);
+
+    this.postJobForm.controls.instructionForReceiver.setValue(
+      this.instructionForReceiver
+    );
   }
 
   searchLoad(types) {

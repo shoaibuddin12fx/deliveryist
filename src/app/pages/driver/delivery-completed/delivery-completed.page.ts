@@ -18,14 +18,8 @@ export class DeliveryCompletedPage extends BasePage implements OnInit {
 
   constructor(injector: Injector, private driverApiService: DriverApiService) {
     super(injector);
-    // this.activatedRoute.queryParams.subscribe((data: any) => {
-    //   console.log('====================================');
-    //   console.log(data);
-    //   console.log('====================================');
-    //   this.jobId = data.id;
-    // });
-    this.activatedRoute.queryParams.subscribe((data) => {
-      this.jobId = data.job_id;
+    this.activatedRoute.params.subscribe((data) => {
+      this.jobId = data.id;
       console.log('Data Value in Apply to job', data);
 
       if (this.jobId) {
@@ -34,9 +28,7 @@ export class DeliveryCompletedPage extends BasePage implements OnInit {
     });
   }
 
-  ngOnInit() {
-    console.log('HELLOW SHAYAn');
-  }
+  ngOnInit() {}
 
   async getJobDetails() {
     console.log('APPLY TO JOB TS');
@@ -45,11 +37,13 @@ export class DeliveryCompletedPage extends BasePage implements OnInit {
 
     if (res) {
       console.log('JobID data', this.jobId);
-      console.log('Delviery Compelete Detail', res);
+      console.log('Get Job Detail', res);
 
       this.job = res;
+      console.log('Get Job', this.job);
 
       this.track = {
+        status: res.status,
         sourceAddress: res.job_address,
         deliveryAddress: res.delivery_address,
         jobAmount: res.job_price,

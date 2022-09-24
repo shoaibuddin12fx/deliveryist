@@ -9,6 +9,7 @@ import { StorageService } from 'src/app/services/_helpers/storage.service';
 import { EventsService } from 'src/app/services/_helpers/events.service';
 import { CommonServicesService } from 'src/app/services/common-services.service';
 import { ModalService } from 'src/app/services/_helpers/modal.service';
+import { DataService } from 'src/app/services/data.service';
 
 export abstract class BasePage {
   public activatedRoute: ActivatedRoute;
@@ -21,6 +22,7 @@ export abstract class BasePage {
   public storage: StorageService;
   public zone: NgZone;
   public modals: ModalService;
+  public data: DataService;
 
   public commonService: CommonServicesService;
 
@@ -36,6 +38,7 @@ export abstract class BasePage {
     this.storage = injector.get(StorageService);
     this.commonService = injector.get(CommonServicesService);
     this.modals = injector.get(ModalService);
+    this.data = injector.get(DataService);
   }
 
   navigateTo(link, data?: NavigationExtras) {

@@ -75,7 +75,7 @@ export class ProfilePage extends BasePage implements OnInit {
       .getUserProfileData()
       .then((data: any) => {
         this.profileData = data.profile;
-        console.log(this.profileData);
+        console.log('USer Data', this.profileData);
         this.updateEditProfileForm(data.profile);
       })
       .catch((err) => {
@@ -186,7 +186,7 @@ export class ProfilePage extends BasePage implements OnInit {
     const actionSheet = await this.actionSheetController.create({
       header: 'Profile Photo',
       cssClass: 'my-custom-class',
-      
+
       buttons: [
         {
           text: 'Update Photo',
@@ -277,10 +277,7 @@ export class ProfilePage extends BasePage implements OnInit {
     this.isPhotoUploaded = true;
   }
 
-  changeUsername()
-  {
-
-  }
+  changeUsername() {}
 
   // openFile() {
   //   const el: HTMLElement = this.fileupload.nativeElement;

@@ -10,7 +10,6 @@ export class DatePickerComponent implements OnInit {
   @Output('date') date: EventEmitter<any> = new EventEmitter<any>();
   dateTime = null; // constant value
   deliveryType;
-  khan;
   postJobForm: any;
   constructor(public modals: ModalService) {}
 

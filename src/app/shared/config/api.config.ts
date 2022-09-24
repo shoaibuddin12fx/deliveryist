@@ -72,6 +72,8 @@ export let config = {
       calculateAmount: 'payment/getPayableAmount',
       // customerRatingAndReview: 'reviewFromClient',
 
+      currentTrackJobProgress: 'job/currentTrackJobProgress',
+
       // Driver
       jobList: 'job/nearbyJobs',
       applyJob: 'job/accept',

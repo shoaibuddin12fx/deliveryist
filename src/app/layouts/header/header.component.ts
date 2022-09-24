@@ -141,6 +141,9 @@ export class HeaderComponent extends BasePage implements OnInit, AfterViewInit {
     // this.route.navigate(['pages/user-role-selection']);
     this.navigateTo('pages/user-role-selection');
   }
+  goToOrders() {
+    this.navigateTo('pages/my-orders');
+  }
   goToAboutUs() {
     // this.route.navigate(['auth/about']);
     // this.closeSidenav();

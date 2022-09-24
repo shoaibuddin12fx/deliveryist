@@ -7,14 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { TrackDriverPageRoutingModule } from './track-driver-routing.module';
 
 import { TrackDriverPage } from './track-driver.page';
+import { TrackMapComponent } from '../../driver/track-package/track-map/track-map.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    TrackDriverPageRoutingModule
+    TrackDriverPageRoutingModule,
   ],
-  declarations: [TrackDriverPage]
+  declarations: [TrackDriverPage, TrackMapComponent],
 })
 export class TrackDriverPageModule {}
