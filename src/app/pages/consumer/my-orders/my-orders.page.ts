@@ -16,6 +16,8 @@ export class MyOrdersPage extends BasePage implements OnInit {
   profileData;
   activeSection = 'pending';
   jobs: any;
+  pendingjob;
+  progressStatus = [];
   constructor(
     injector: Injector,
     private driverApiService: DriverApiService,
@@ -25,19 +27,16 @@ export class MyOrdersPage extends BasePage implements OnInit {
   }
 
   ngOnInit() {
-    this.getCurrentJobs();
-
     this.pendingJobs();
+
+    // this.getCurrentJobs();
   }
 
-  pendingJobs() {}
-
-  async getCurrentJobs() {
-    const res = await this.consumerApiService.currentTrackJobProgress();
-    console.log('CourrentJOb', res);
-
-    if (res['jobs'].length > 0) {
-      this.jobsList = res['jobs'].map((element) => {
+  async pendingJobs() {
+    const response = await this.consumerApiService.userPendingJobs();
+    console.log('Pendings JObs Here', response);
+    if (response['jobs'].length > 0) {
+      this.jobsList = response['jobs'].map((element) => {
         let obj = {
           id: element.id,
           poster_name: element.poster_name,
@@ -46,18 +45,52 @@ export class MyOrdersPage extends BasePage implements OnInit {
           destinationAddress: element.delivery_address,
           rating: element.rating,
           poster_profile_pic: element.poster_profile_pic,
-          reciver_profile_pic: element.receiver.profile_pic,
-          reciver_first_name: element.receiver.first_name,
-          reciver_last_name: element.receiver.last_name,
-          reciver_full_name:
-            element.receiver.first_name + ' ' + element.receiver.last_name,
+          delivery_time: element.expected_delivery_time,
+          delivery_item: element.item_category, // reciver_profile_pic: element.receiver.profile_pic,
+          // reciver_first_name: element.receiver.first_name,
+          // reciver_last_name: element.receiver.last_name,
+          // reciver_full_name:
+          //   element.receiver.first_name + ' ' + element.receiver.last_name,
+          // job_progress_status: element.jobprogress[0]?.status,
         };
+
         console.log('obj', obj);
 
         return obj;
       });
+      // let filterJobs2 = this.jobsList.filter((x) => x.status == 'Accepted');
+
+      // console.log('filterJobs2', filterJobs2);
     }
   }
+
+  // async getCurrentJobs() {
+  //   const res = await this.consumerApiService.currentTrackJobProgress();
+  //   console.log('CourrentJOb', res);
+
+  //   if (res['jobs'].length > 0) {
+  //     this.jobsList = res['jobs'].map((element) => {
+  //       let obj = {
+  //         id: element.id,
+  //         poster_name: element.poster_name,
+  //         amount: element.job_price,
+  //         sourceAddress: element.job_address,
+  //         destinationAddress: element.delivery_address,
+  //         rating: element.rating,
+  //         poster_profile_pic: element.poster_profile_pic,
+  //         reciver_profile_pic: element.receiver.profile_pic,
+  //         reciver_first_name: element.receiver.first_name,
+  //         reciver_last_name: element.receiver.last_name,
+  //         reciver_full_name:
+  //           element.receiver.first_name + ' ' + element.receiver.last_name,
+  //         job_progress_status: element.jobprogress[0]?.status,
+  //       };
+  //       console.log('obj', obj);
+
+  //       return obj;
+  //     });
+  //   }
+  // }
 
   goToSetting() {
     this.navigateTo('pages/settings');

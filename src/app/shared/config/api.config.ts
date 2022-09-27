@@ -74,6 +74,8 @@ export let config = {
 
       currentTrackJobProgress: 'job/currentTrackJobProgress',
 
+      userPendingJobs: 'job/getPendingJobs',
+
       // Driver
       jobList: 'job/nearbyJobs',
       applyJob: 'job/accept',

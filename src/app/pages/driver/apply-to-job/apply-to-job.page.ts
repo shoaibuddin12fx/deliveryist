@@ -103,21 +103,20 @@ export class ApplyToJobPage extends BasePage implements OnInit {
 
   goToApplyJob(job) {
     console.log('gotojob', job),
-      this.navigateTo('pages/driver/track-package/' + job.id);
+      this.driverApiService
+        .applyToJob({
+          job_id: this.jobId,
+          bid_details: 'Hello, I can get this delivered. Contact me in chat',
+        })
+        .then((res) => {
+          console.log('Job accepted', res);
+          this.navigateTo('pages/driver/track-package/' + job.id);
 
-    // this.driverApiService
-    //   .applyToJob({
-    //     job_id: this.jobId,
-    //     bid_details: 'Hello, I can get this delivered. Contact me in chat',
-    //   })
-    //   .then((res) => {
-    //     console.log('Job accepted', res);
-    //     this.navigateTo('pages/driver/track-package/' + job.id);
-
-    //     console.log('jobID', job);
-    //   })
-    //   .catch((err) => {
-    //     console.log({ err });
-    //   });
+          console.log('jobID', job);
+        })
+        .catch((err) => {
+          console.log({ err });
+        });
+    this.navigateTo('pages/driver/track-package/' + job.id);
   }
 }

@@ -80,6 +80,26 @@ export class ConsumerApiService {
     });
   }
 
+  userPendingJobs() {
+    return new Promise((resolve, reject) => {
+      this.apiService.get(config.api.job.userPendingJobs).subscribe(
+        (data: any) => {
+          if (data.status == 200) {
+            // this.utilityService.showToast(data.message, 'success');
+            resolve(data);
+            // } else {
+            //   this.utilityService.showToast(data.message, 'error');
+            //   reject(data.message);
+          }
+        },
+        (err) => {
+          this.utilityService.showToast(err.error.message, 'error');
+          reject(err.error.message);
+        }
+      );
+    });
+  }
+
   getCurrentJobDetails(jobID) {
     return new Promise((resolve, reject) => {
       this.apiService

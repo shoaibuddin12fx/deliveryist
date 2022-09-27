@@ -198,7 +198,7 @@
     background: none;
 }
 .dlvr-order-confirmed-block .collection .collection-item.avatar {
-    padding-left: 92px !important;
+    // padding-left: 92px !important;
 }
 .dlvr-order-confirmed-block .collection .collection-item p i {
     font-size: 16px;
@@ -319,4 +319,22 @@
 }
 ion-segment {
     --background: #f3f8f9;
+}
+.dlvr-jobPost-noPost {
+    text-align: center;
+    color: #a3b9c0;
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -40%);
+    width: 100%;
+}
+.status-txt {
+    padding: 0px 20px 0px 0px;
+    display: flex;
+    justify-content: flex-end;
+    font-weight: 600;
+    font-size: 14px;
+    color: #666767;
+    align-items: center;
 }

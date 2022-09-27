@@ -23,7 +23,60 @@
   </ion-segment>
 
   <div [hidden]="activeSection !== 'pending'">
-    <h4 class="text-center">Your Pending Orders</h4>
+    <div class="dlvr-job-list">
+      <div class="container">
+        <div class="row">
+          <div class="col s12 margin-bottom" *ngFor="let jobs of jobsList; let i=index">
+            <div class="dlvr-job-card-new" data-aos="fade-up">
+              <div class="dlvr-order-confirmed-block">
+
+                <!-- <div class="status-txt">
+                  <ion-icon style="color: #3a9e54;padding-right: 5px;" name="radio-button-on-outline"></ion-icon>
+                  {{jobs?.job_progress_status ? jobs?.job_progress_status : "Not Accepted Yet"}}
+                </div> -->
+
+                <ul class="collection left-align">
+                  <li class="collection-item avatar">
+
+                    <p class="title poster_name">
+                      <span>
+                        {{jobs?.delivery_item}}
+                      </span> <span class="amount">${{ jobs?.amount }}</span>
+                    </p>
+
+                  </li>
+                </ul>
+
+                <div class="location">
+
+                  <ion-card fullscreen>
+                    <ion-card-content>
+                      <ul class="collection">
+                        <li class="collection-item dlvr-job-address line-break">{{
+                          jobs?.sourceAddress
+                          }}</li>
+                        <li class="collection-item dlvr-job-address ">{{
+                          jobs?.destinationAddress }}</li>
+                      </ul>
+                      <img src="assets/images/inner-location.png" alt="location pin" class="location-img">
+                    </ion-card-content>
+                  </ion-card>
+                </div>
+              </div>
+              <div class="accept-btn">
+                Pending
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="jobs?.length == 0">
+          <div class="dlvr-jobPost-noPost">
+            <i class="fa fa-archive fa-5x"></i>
+            <h3>You'r Pending Orders</h3>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
 
@@ -35,11 +88,16 @@
             <div class="dlvr-job-card-new" data-aos="fade-up">
               <div class="dlvr-order-confirmed-block">
 
+                <div class="status-txt">
+                  <ion-icon style="color: #3a9e54;padding-right: 5px;" name="radio-button-on-outline"></ion-icon>
+                  {{jobs?.job_progress_status ? jobs?.job_progress_status : "Not Accepted Yet"}}
+                </div>
+
                 <ul class="collection left-align">
                   <li class="collection-item avatar">
                     <div class="circle">
                       <img
-                        [src]="jobs?.reciver_profile_pic ?  jobs?.reciver_profile_pic : '../../../../assets/images/user_icon.png' "
+                        [src]="jobs?.reciver_profile_pic ?  jobs?.reciver_profile_pic : 'assets/images/user_icon.png' "
                         alt="user">
 
 
