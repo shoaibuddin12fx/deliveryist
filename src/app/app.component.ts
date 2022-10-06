@@ -11,6 +11,7 @@ import { EventsService } from './services/_helpers/events.service';
 import { GeolocationsService } from './services/_helpers/geolocation.service';
 // import { SplashScreen } from '@capacitor/splash-screen';
 import { FirebaseService } from './services/_helpers/firebase.service';
+import { FcmService } from './services/fcm.service';
 
 // declare var google;
 
@@ -36,7 +37,8 @@ export class AppComponent implements OnInit, AfterViewInit {
     public utility: UtilityService,
     private driverApiService: DriverApiService,
     public events: EventsService,
-    public firebaseService: FirebaseService
+    public firebaseService: FirebaseService,
+    public fcm: FcmService
   ) {
     // this.isLoggedIn();
     // this.getCurrentPosition()
@@ -97,6 +99,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   // }
 
   ngOnInit() {
+    this.fcm.init();
     // FCM implementation
     // this.messagingService.requestPermission()
     // this.messagingService.receiveMessage().then((res:any) => {
