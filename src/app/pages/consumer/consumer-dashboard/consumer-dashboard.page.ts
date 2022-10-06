@@ -43,6 +43,8 @@ export class ConsumerDashboardPage extends BasePage implements OnInit {
             sourceAddress: element.job_address,
             destinationAddress: element.delivery_address,
             status: element.status,
+            delivery_latitude: element.delivery_latitude,
+            delivery_longitude: element.delivery_longitude,
           });
         });
       })

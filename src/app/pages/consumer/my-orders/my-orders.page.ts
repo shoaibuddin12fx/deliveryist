@@ -47,6 +47,8 @@ export class MyOrdersPage extends BasePage implements OnInit {
           poster_profile_pic: element.poster_profile_pic,
           delivery_time: element.expected_delivery_time,
           delivery_item: element.item_category, // reciver_profile_pic: element.receiver.profile_pic,
+          delivery_latitude: element.delivery_latitude,
+          delivery_longitude: element.delivery_longitude,
           // reciver_first_name: element.receiver.first_name,
           // reciver_last_name: element.receiver.last_name,
           // reciver_full_name:

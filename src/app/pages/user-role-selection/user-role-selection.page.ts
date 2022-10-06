@@ -1,5 +1,6 @@
 import { Component, Injector, OnInit } from '@angular/core';
 import { CommonServicesService } from 'src/app/services/common-services.service';
+import { FirebaseService } from 'src/app/services/firebase.service';
 import { BasePage } from '../base-page/base-page';
 import { JobListPageModule } from '../driver/job-list/job-list.module';
 

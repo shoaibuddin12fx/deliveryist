@@ -106,8 +106,10 @@ export class ConsumerApiService {
         .get(config.api.job.currentTrackJobProgress + jobID, {})
         .subscribe(
           (data: any) => {
+            console.log('getCurrentJobDetails data', data);
+
             if (data.status == 200) {
-              resolve(data.job);
+              resolve(data);
               // } else {
               //   this.utilityService.showToast(data.message, 'error');
               //   reject(data.message);

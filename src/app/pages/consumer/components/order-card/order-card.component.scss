@@ -97,9 +97,9 @@
 }
 .dlvr-job-card-new .dlvr-order-confirmed-block .location {
   text-align: left;
-  margin: 0 12px 16px 12px;
+  margin: 0 12px 0px 12px;
   background-color: #fff;
-  border-radius: 6px;
+  border-radius: 6px 6px 0px 0px;
   padding-left: 18px;
   position: relative;
 }
@@ -110,6 +110,8 @@
   width: 13px;
 }
 .dlvr-job-card-new .accept-btn {
+  margin: 0px auto;
+  width: 86.5%;
   background-color: #3a9e54;
   color: #fff;
   font-weight: 600;

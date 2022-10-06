@@ -23,7 +23,7 @@ export class TrackMapComponent implements OnInit, AfterViewInit {
   @ViewChild('map', { static: false }) mapElement: ElementRef;
   map: any;
 
-  data: any;
+  @Input() data: any;
   placeMarker: any;
   driverMarker: any;
   timer: any;

@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Injector, OnInit } from '@angular/core';
 import { AutocompletePage } from 'src/app/components/autocomplete/autocomplete.page';
 import { DriverApiService } from 'src/app/services/driver-api.service';
+import { FirebaseService } from 'src/app/services/firebase.service';
 import { BasePage } from '../../base-page/base-page';
 import { HelpModalComponent } from './help-modal/help-modal.component';
 import { OrderDetailComponent } from './order-detail/order-detail.component';
@@ -24,10 +25,15 @@ export class TrackPackagePage extends BasePage implements OnInit {
   progressLocations: any;
   driverInitialLocations: any;
 
-  constructor(injector: Injector, private driverApiService: DriverApiService) {
+  constructor(
+    injector: Injector,
+    private driverApiService: DriverApiService,
+    private firebase: FirebaseService
+  ) {
     super(injector);
     this.activatedRoute.params.subscribe((data) => {
       this.jobId = data.id;
+      this.firebase.getJobData(this.jobId);
       console.log('Data Value in Apply to job', data);
 
       if (this.jobId) {
@@ -53,7 +59,7 @@ export class TrackPackagePage extends BasePage implements OnInit {
       this.track = {
         job_id: res.id,
         security_code: res.security_code,
-        status: res.status,
+        status: res.job_progresss_status, //res.status,
         sourceAddress: res.job_address,
         deliveryAddress: res.delivery_address,
         jobAmount: res.job_price,
@@ -74,6 +80,7 @@ export class TrackPackagePage extends BasePage implements OnInit {
           lat: res.delivery_latitude,
           lng: res.delivery_longitude,
         },
+        // job_progresss_status: res.job_progresss_status,
       };
 
       console.log('LOol', this.track.status);
@@ -116,8 +123,10 @@ export class TrackPackagePage extends BasePage implements OnInit {
   }
 
   async statusDrivingChange() {
+    console.log('H', this.track.status);
+
     switch (this.track.status) {
-      case 'Pending':
+      case 'pending':
         this.track.status = 'start_journey_to_origin';
 
         this.events.publish('play_data', {
@@ -251,6 +260,7 @@ export class TrackPackagePage extends BasePage implements OnInit {
 
   returnButtonText(status) {
     switch (status) {
+      case 'pending':
       case 'Pending':
         return "Let's Starts";
         break;
@@ -283,6 +293,7 @@ export class TrackPackagePage extends BasePage implements OnInit {
 
   returnDeliveryAddressType(status) {
     switch (status) {
+      case 'pending':
       case 'Pending':
         return 'Pickup Address';
         break;
@@ -312,6 +323,7 @@ export class TrackPackagePage extends BasePage implements OnInit {
 
   returnDeliveryAddress(status) {
     switch (status) {
+      case 'pending':
       case 'Pending':
         return this.track.sourceAddress;
         break;
@@ -371,12 +383,21 @@ export class TrackPackagePage extends BasePage implements OnInit {
 
   async updatetrackJobLocations() {
     return new Promise(async (resolve) => {
+      console.log('progressLocations', this.progressLocations);
+
       let data = {
         id: this.jobId,
         driver_lat: this.progressLocations.coords.lat,
         driver_lng: this.progressLocations.coords.lng,
         status: this.track.status,
+        target_lat: this.track.origin.lat,
+        target_lng: this.track.origin.lng,
+        delivery_latitude: this.track.destination.lat,
+        delivery_longitude: this.track.destination.lng,
       };
+      console.log('data', this.data);
+
+      this.firebase.setJobData(this.jobId, data);
 
       const res = (await this.driverApiService.trackJobLocations(
         this.jobId,

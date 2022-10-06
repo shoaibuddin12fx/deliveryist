@@ -2,6 +2,8 @@ import { Component, Injector, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { errorMessages } from 'src/app/helpers/error_messages';
 import { ConsumerApiService } from 'src/app/services/consumer-api.service';
+import { DriverApiService } from 'src/app/services/driver-api.service';
+import { FirebaseService } from 'src/app/services/firebase.service';
 import { BasePage } from '../../base-page/base-page';
 
 @Component({
@@ -23,6 +25,7 @@ export class TrackDriverPage extends BasePage implements OnInit {
   securityCode: any;
   track = [];
   security: any = 0;
+  progressLocations;
   driverInfo = [];
   renderOptions = {
     suppressMarkers: true,
@@ -39,38 +42,57 @@ export class TrackDriverPage extends BasePage implements OnInit {
     },
   };
   jobId;
+  driverInitialLocations: any;
   jobsList: any;
   jobs: any;
+  jobStatus;
   constructor(
     injector: Injector,
     public activatedRoute: ActivatedRoute,
-    private consumerApiService: ConsumerApiService
+    private consumerApiService: ConsumerApiService,
+    private firebase: FirebaseService,
+    private driverApiService: DriverApiService
   ) {
     super(injector);
 
     // this.activatedRoute.params.subscribe((data) => {
     //   this.jobId = data.id;
     //   console.log('Data Value in job', data);
+    this.jobs = this.data.job_data;
 
-    //   if (this.jobId) {
-    //     this.getJobDetail();
-    //   }
+    if (this.jobs) {
+      this.getJobDetail();
+    }
     // });
   }
 
   ngOnInit() {
     console.log('Job Details Current ', this.data.job_data);
-
+    let self = this;
     this.jobs = this.data.job_data;
+    console.log('JobId', this.jobs.id);
+
+    this.firebase.getJobData(this.jobs.id).subscribe((data) => {
+      let job = this.jobs;
+      console.log(data.type);
+      //if (data.type == 'modified') {
+      let obj = data.payload.data();
+      if (self.progressLocations?.status != obj?.status) {
+        self.progressLocations = obj;
+        this.jobStatus = obj.status;
+        this.showStep();
+      } else self.progressLocations = obj;
+      //}
+    });
 
     this.security = localStorage.getItem('security-otp');
     console.log('security', this.security);
   }
 
   async getJobDetail() {
-    const res = (await this.consumerApiService.getCurrentJobDetails(
-      this.jobId
-    )) as any;
+    const res = await this.consumerApiService.getCurrentJobDetails(
+      this.jobs.id
+    );
     console.log('CourrentJOb', res);
 
     if (res['jobs'].length > 0) {
@@ -88,10 +110,20 @@ export class TrackDriverPage extends BasePage implements OnInit {
           reciver_last_name: element.receiver.last_name,
           reciver_full_name:
             element.receiver.first_name + ' ' + element.receiver.last_name,
+          status: element.status,
         };
+        this.jobStatus = element.status;
 
         return obj;
       });
+      if (res && res['jobLocation'].length) {
+        let jobLocation = res['jobLocation'][0];
+        this.progressLocations = { ...jobLocation, id: jobLocation.job_id };
+        this.jobStatus = jobLocation.status;
+      }
+
+      this.jobsList = this.jobsList[0];
+      this.showStep();
     }
   }
 
@@ -149,28 +181,40 @@ export class TrackDriverPage extends BasePage implements OnInit {
     this.step1 = document.getElementById('step1');
     this.step2 = document.getElementById('step2');
     this.step3 = document.getElementById('step3');
-    if (this.track[0].status === 'Accepted') {
-      document.getElementById('truckprogress').style.width = '25.5%';
-      this.step1.classList.remove('is-active');
-      this.step1.classList.add('is-complete');
-      this.step2.classList.add('is-active');
-    } else if (this.track[0].status === 'Received') {
-      document.getElementById('truckprogress').style.width = '60%';
-      this.step1.classList.remove('is-active');
-      this.step1.classList.add('is-complete');
-      this.step2.classList.add('is-active');
-      this.step2.classList.remove('is-active');
-      this.step2.classList.add('is-complete');
-      this.step3.classList.add('is-active');
-    } else if (this.track[0].status === 'Delivered') {
-      document.getElementById('truckprogress').style.width = '100%';
-      this.step1.classList.remove('is-active');
-      this.step1.classList.add('is-complete');
-      this.step2.classList.add('is-active');
-      this.step2.classList.remove('is-active');
-      this.step2.classList.add('is-complete');
-      this.step3.classList.add('is-active');
-      this.step3.classList.add('is-complete');
+    var status = this.jobStatus;
+    console.log('Status is', status);
+
+    if (status === 'Accepted') {
+      document.getElementById('truckprogress').style.width = '31%';
+      this.step1?.classList.remove('is-active');
+      this.step1?.classList.add('is-complete');
+      this.step2?.classList.add('is-active');
+    } else if (status === 'arrived_at_pickup') {
+      document.getElementById('truckprogress').style.width = '51%';
+      this.step1?.classList.remove('is-active');
+      this.step1?.classList.add('is-complete');
+      this.step2?.classList.add('is-active');
+      this.step2?.classList.remove('is-active');
+      this.step2?.classList.add('is-complete');
+      this.step3?.classList.add('is-active');
+    } else if (status === 'arrived_at_delivery') {
+      document.getElementById('truckprogress').style.width = '70%';
+      this.step1?.classList.remove('is-active');
+      this.step1?.classList.add('is-complete');
+      this.step2?.classList.add('is-active');
+      this.step2?.classList.remove('is-active');
+      this.step2?.classList.add('is-complete');
+      this.step3?.classList.add('is-active');
+      this.step3?.classList.add('is-complete');
+    } else if (status === 'delivery_complete') {
+      document.getElementById('truckprogress').style.width = '95%';
+      this.step1?.classList.remove('is-active');
+      this.step1?.classList.add('is-complete');
+      this.step2?.classList.add('is-active');
+      this.step2?.classList.remove('is-active');
+      this.step2?.classList.add('is-complete');
+      this.step3?.classList.add('is-active');
+      this.step3?.classList.add('is-complete');
     }
   }
 

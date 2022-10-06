@@ -19,6 +19,18 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { NgOtpInputModule } from 'ng-otp-input';
 // import { TagInputModule } from 'ngx-chips';
 import { Camera } from '@ionic-native/camera/ngx';
+import { environment } from 'src/environments/environment';
+import {
+  provideAuth,
+  initializeAuth,
+  indexedDBLocalPersistence,
+  getAuth,
+} from '@angular/fire/auth';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { getApp } from 'firebase/app';
+import { Capacitor } from '@capacitor/core';
 // import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
 // import { AgmDirectionModule } from 'agm-direction';
 @NgModule({
@@ -39,6 +51,17 @@ import { Camera } from '@ionic-native/camera/ngx';
     ChatListComponentModule,
     BrowserAnimationsModule,
     NgOtpInputModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    provideAuth(() => {
+      if (Capacitor.isNativePlatform()) {
+        return initializeAuth(getApp(), {
+          persistence: indexedDBLocalPersistence,
+        });
+      } else {
+        return getAuth();
+      }
+    }),
     // MaterializeModule,
     // TagInputModule,
     // AgmCoreModule.forRoot({
