@@ -36,10 +36,13 @@ export class InterceptorService implements HttpInterceptor {
   // will be used later for google login
   private addSecret(request: HttpRequest<any>, value: any) {
     let v = value ? value : localStorage.getItem('token');
+    let obj = {};
 
-    let obj = {
-      Authorization: 'Bearer ' + v,
-    };
+    if (!request.url.includes('fcm/send')) {
+      obj = {
+        Authorization: 'Bearer ' + v,
+      };
+    }
 
     obj['Accept'] = 'application/json';
     let cnt = request.headers.get('Content-Type');

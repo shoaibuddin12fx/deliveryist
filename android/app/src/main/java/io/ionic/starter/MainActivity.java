@@ -1,4 +1,4 @@
-package io.ionic.starter;
+package com.waaps.deliveryist;
 
 import com.getcapacitor.BridgeActivity;
 

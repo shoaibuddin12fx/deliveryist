@@ -100,6 +100,14 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.fcm.init();
+    setTimeout(() => {
+      this.fcm.sendPushNotification(
+        'fB14IkKfQFuaBQCBv8XKGU:APA91bGIOfbtyVnhNctYRQEjwwajGaS5sADHJNW7FpogWauU0KobQ3wFNtXsx-AeqsaHZ_o1ZU1gwqBMOU8aeUhFgynPlDt7H292LDBrfFtpTLoP9Lmacs9HkOOd6Ta-WbB3Q07RY0rJ',
+        'Demo Title',
+        'Demo Body'
+      );
+    }, 5000);
+
     // FCM implementation
     // this.messagingService.requestPermission()
     // this.messagingService.receiveMessage().then((res:any) => {

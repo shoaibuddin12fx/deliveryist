@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "506293138705",
+    "firebase_url": "https://deliveriest-8ec93-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "deliveriest-8ec93",
+    "storage_bucket": "deliveriest-8ec93.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:506293138705:android:ca0c19d75f6dbcdac708b0",
+        "android_client_info": {
+          "package_name": "com.waaps.deliveryist"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "506293138705-b3h26steft8rvigfkgmgt6q1i7ro20qq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIW6t_q07cODJxT2JCDIEPPODO0KBMs-o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "506293138705-b3h26steft8rvigfkgmgt6q1i7ro20qq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

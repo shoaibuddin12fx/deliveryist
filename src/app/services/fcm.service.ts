@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {
   ActionPerformed,
@@ -10,9 +11,28 @@ import {
   providedIn: 'root',
 })
 export class FcmService {
-  constructor() {}
+  constructor(public http: HttpClient) {}
+  pushData = {
+    collapse_key: 'type_a',
+    contentAvailable: true,
+    priority: 'high',
+    data: {
+      body: 'Test Notification Killed ',
+      title: 'Hello World',
+      referenceId: '4',
+      NotificationId: '5',
+    },
+    notification: {
+      body: 'Test Notification Killed ',
+      title: 'Hello World',
+      referenceId: '4',
+      NotificationId: '5',
+    },
+  };
 
   init() {
+    console.log('Performing FcmService init()');
+
     // Request permission to use push notifications
     // iOS will prompt user and return if they granted permission or not
     // Android will just grant without prompting
@@ -21,13 +41,14 @@ export class FcmService {
         // Register with Apple / Google to receive push via APNS/FCM
         PushNotifications.register();
       } else {
+        alert('FCM Permission not granted');
         // Show some error
       }
     });
 
     // On success, we should be able to receive notifications
     PushNotifications.addListener('registration', (token: Token) => {
-      alert('Push registration success, token: ' + token.value);
+      console.log('Push registration success, token: ' + token.value);
     });
 
     // Some issue with our setup and push will not work
@@ -50,5 +71,28 @@ export class FcmService {
         alert('Push action performed: ' + JSON.stringify(notification));
       }
     );
+  }
+
+  sendPushNotification(to, title, body) {
+    console.log('sendPushNotification data');
+    var res = this.http.post(
+      'https://fcm.googleapis.com/fcm/send',
+      {
+        ...this.pushData,
+        to,
+        data: { ...this.pushData.data, title, body },
+        notification: { ...this.pushData.data, title, body },
+      },
+      {
+        headers: {
+          Authorization:
+            'key=AAAAdeFsNRE:APA91bF1Z3NyFd7AKzayC1R9Je6JV6SW099zgX-r2wUoxev4xQf2llHdf7gYu1DwdtRvzqcMNBPL85v7qLLY2KG0mFXnHDL5MMFb5PDbhgndLz0435esnux5l3ITeIHEU_NWHFCPkPp5',
+          'Content-Type': 'application/json',
+        },
+      }
+    );
+    res.subscribe((response) => {
+      console.log('sendPushNotification response', response);
+    });
   }
 }
