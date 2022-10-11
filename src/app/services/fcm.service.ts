@@ -6,12 +6,13 @@ import {
   PushNotifications,
   Token,
 } from '@capacitor/push-notifications';
+import { AlertsService } from './_helpers/alerts.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FcmService {
-  constructor(public http: HttpClient) {}
+  constructor(public http: HttpClient, private alert: AlertsService) {}
   pushData = {
     collapse_key: 'type_a',
     contentAvailable: true,
@@ -49,6 +50,7 @@ export class FcmService {
     // On success, we should be able to receive notifications
     PushNotifications.addListener('registration', (token: Token) => {
       console.log('Push registration success, token: ' + token.value);
+      localStorage.setItem('fcm_token', token.value);
     });
 
     // Some issue with our setup and push will not work
@@ -60,7 +62,8 @@ export class FcmService {
     PushNotifications.addListener(
       'pushNotificationReceived',
       (notification: PushNotificationSchema) => {
-        alert('Push received: ' + JSON.stringify(notification));
+        this.alert.showAlert(notification.body, notification.title);
+        //alert('Push received: ' + JSON.stringify(notification));
       }
     );
 

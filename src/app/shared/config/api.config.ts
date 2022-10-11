@@ -4,7 +4,7 @@ export let config = {
     // url: 'https://deliveryist.com/admin-laravel-6x/public/api',
     // url: 'https://deliveryist.com/admin-laravel-7x/public/api',
     // url: 'http://localhost/admin_laravel_7x/public/api',
-    // url: 'http://deliverist.waprojects.space/api',
+    //url: 'http://deliverist.waprojects.space/api',
     url: 'http://localhost:8000/api',
     // url: 'http://test.waapsdeveloper.com/api',
     user: {
@@ -27,6 +27,7 @@ export let config = {
       roleChange: 'user/changeRole',
       socialLogin: 'user/social_login',
       driverLicenseVerify: 'user/',
+      addFcmToken: 'user/setFcmToken',
     },
     product: {
       getOne: 'product/products/',

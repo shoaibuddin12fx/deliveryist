@@ -23,7 +23,16 @@ export class UserRoleSelectionPage extends BasePage implements OnInit {
   ) {
     super(injector);
   }
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.updateFCM();
+  }
+
+  async updateFCM() {
+    let token = localStorage.getItem('fcm_token');
+    if (!token) return;
+    let res = await this.network.setFCMToken(token);
+    console.log('updateFCM', res);
+  }
 
   ionViewWillEnter() {
     const fcm_token = localStorage.getItem('fcm_token');

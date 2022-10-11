@@ -4,20 +4,20 @@ import { AlertController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AlertsService {
-
-  constructor(public alertController: AlertController,
+  constructor(
+    public alertController: AlertController,
     public toastCtrl: ToastController,
     public strings: StringsService
-     ) { }
+  ) {}
 
-  showAlert(msg): Promise<any> {
-    return new Promise(async resolve => {
+  showAlert(msg, title = 'Alert'): Promise<any> {
+    return new Promise(async (resolve) => {
       const alert = await this.alertController.create({
         cssClass: 'my-custom-class',
-        header: 'Alert',
+        header: title,
         message: msg,
         buttons: [
           {
@@ -25,23 +25,21 @@ export class AlertsService {
             cssClass: 'secondary',
             handler: (blah) => {
               resolve(blah);
-            }
-          }
-        ]
+            },
+          },
+        ],
       });
 
       await alert.present();
-    })
-
+    });
   }
 
   async presentSuccessToast(msg) {
-
     const toast = await this.toastCtrl.create({
       message: this.strings.capitalizeEachFirst(msg),
       duration: 5000,
       position: 'top',
-      cssClass: 'successToast'
+      cssClass: 'successToast',
     });
 
     toast.present();
@@ -49,10 +47,10 @@ export class AlertsService {
 
   async presentFailureToast(msg) {
     const toast = await this.toastCtrl.create({
-      message: this.strings.capitalizeEachFirst((msg) ? msg : "ERROR"),
+      message: this.strings.capitalizeEachFirst(msg ? msg : 'ERROR'),
       duration: 5000,
       position: 'top',
-      cssClass: 'failureToast'
+      cssClass: 'failureToast',
     });
 
     toast.present();
@@ -62,13 +60,18 @@ export class AlertsService {
     const toast = await this.toastCtrl.create({
       message: msg,
       duration: 5000,
-      position: 'bottom'
+      position: 'bottom',
     });
     toast.present();
   }
 
-  presentConfirm(okText = 'OK', cancelText = 'Cancel', title = 'Are You Sure?', message = '') : Promise<boolean>{
-    return new Promise( async resolve => {
+  presentConfirm(
+    okText = 'OK',
+    cancelText = 'Cancel',
+    title = 'Are You Sure?',
+    message = ''
+  ): Promise<boolean> {
+    return new Promise(async (resolve) => {
       const alert = await this.alertController.create({
         header: title,
         message: message,
@@ -78,22 +81,28 @@ export class AlertsService {
             role: 'cancel',
             handler: () => {
               resolve(false);
-            }
+            },
           },
           {
             text: okText,
             handler: () => {
               resolve(true);
-            }
-          }
-        ]
+            },
+          },
+        ],
       });
       alert.present();
-    })
+    });
   }
 
-  presentRadioSelections(title, message, inputs, okText = 'OK', cancelText = 'Cancel'): Promise<any>{
-    return new Promise( async resolve => {
+  presentRadioSelections(
+    title,
+    message,
+    inputs,
+    okText = 'OK',
+    cancelText = 'Cancel'
+  ): Promise<any> {
+    return new Promise(async (resolve) => {
       const alert = await this.alertController.create({
         header: title,
         message: message,
@@ -104,20 +113,17 @@ export class AlertsService {
             role: 'cancel',
             handler: () => {
               resolve(false);
-            }
+            },
           },
           {
             text: okText,
             handler: (data) => {
               resolve(data);
-            }
-          }
-        ]
+            },
+          },
+        ],
       });
       alert.present();
-    })
-
-
+    });
   }
-
 }
