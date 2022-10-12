@@ -50,6 +50,7 @@ export class OtpModalComponent extends BasePage implements OnInit {
           console.log(err);
         });
     } else {
+      this.alert.showAlert('Security code incorrect');
       // this.security_code = '';
       // M.toast({ html: 'Security code incorrect', classe s: 'dlvr-error-toast' })
     }

@@ -1,18 +1,27 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { NavigationExtras, Router } from '@angular/router';
 import {
   ActionPerformed,
   PushNotificationSchema,
   PushNotifications,
   Token,
 } from '@capacitor/push-notifications';
+import { DataService } from './data.service';
+import { DriverApiService } from './driver-api.service';
 import { AlertsService } from './_helpers/alerts.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FcmService {
-  constructor(public http: HttpClient, private alert: AlertsService) {}
+  constructor(
+    public http: HttpClient,
+    private alert: AlertsService,
+    public router: Router,
+    private driverApiService: DriverApiService,
+    private data: DataService
+  ) {}
   pushData = {
     collapse_key: 'type_a',
     contentAvailable: true,
@@ -70,10 +79,32 @@ export class FcmService {
     // Method called when tapping on a notification
     PushNotifications.addListener(
       'pushNotificationActionPerformed',
-      (notification: ActionPerformed) => {
-        alert('Push action performed: ' + JSON.stringify(notification));
+      (action: ActionPerformed) => {
+        //  alert('Push action performed: ' + JSON.stringify(notification));
+        console.log('pushNotificationActionPerformed', JSON.stringify(action));
+        this.handleNotificationTapped(
+          action.notification.data['notificationType'],
+          action.notification.data['_id']
+        );
       }
     );
+  }
+
+  async handleNotificationTapped(type, id) {
+    console.log('handleNotificationTapped', { type, id });
+
+    switch (type) {
+      case 'job_location':
+        const job = (await this.driverApiService.getJobDetail(id)) as any;
+        this.data.job_data = job;
+        this.navigateTo('pages/track-driver');
+        break;
+    }
+  }
+
+  navigateTo(link, data?: NavigationExtras) {
+    console.log(link);
+    this.router.navigate([link], data);
   }
 
   sendPushNotification(to, title, body) {

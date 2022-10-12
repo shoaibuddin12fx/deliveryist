@@ -35,9 +35,9 @@ export class UserRoleSelectionPage extends BasePage implements OnInit {
   }
 
   ionViewWillEnter() {
-    const fcm_token = localStorage.getItem('fcm_token');
-    console.log(fcm_token);
-    this.commonService.setFcmToken({ fcm_token: fcm_token });
+    // const fcm_token = localStorage.getItem('fcm_token');
+    // console.log(fcm_token);
+    // this.commonService.setFcmToken({ fcm_token: fcm_token });
     this.getUserLocation();
   }
 

@@ -10,6 +10,7 @@ import { EventsService } from 'src/app/services/_helpers/events.service';
 import { CommonServicesService } from 'src/app/services/common-services.service';
 import { ModalService } from 'src/app/services/_helpers/modal.service';
 import { DataService } from 'src/app/services/data.service';
+import { AlertsService } from 'src/app/services/_helpers/alerts.service';
 
 export abstract class BasePage {
   public activatedRoute: ActivatedRoute;
@@ -23,6 +24,7 @@ export abstract class BasePage {
   public zone: NgZone;
   public modals: ModalService;
   public data: DataService;
+  public alert: AlertsService;
 
   public commonService: CommonServicesService;
 
@@ -39,6 +41,7 @@ export abstract class BasePage {
     this.commonService = injector.get(CommonServicesService);
     this.modals = injector.get(ModalService);
     this.data = injector.get(DataService);
+    this.alert = injector.get(AlertsService);
   }
 
   navigateTo(link, data?: NavigationExtras) {
