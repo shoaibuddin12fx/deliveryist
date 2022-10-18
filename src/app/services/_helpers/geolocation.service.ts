@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { Geolocation } from '@capacitor/geolocation';
 import { ProductMapPageComponent } from 'src/app/pages/market-place/product-map-page/product-map-page.component';
 declare let google;
 
@@ -7,7 +7,7 @@ declare let google;
   providedIn: 'root',
 })
 export class GeolocationsService {
-  constructor(private geolocation: Geolocation) {}
+  constructor() {}
 
   getDistanceOfCoordinates(origin, destination) {
     return new Promise((resolve) => {
@@ -195,12 +195,12 @@ export class GeolocationsService {
 
   getCurrentLocationCoordinates() {
     return new Promise(async (resolve) => {
-      const coords = await this.geolocation.getCurrentPosition();
+      const coords = await Geolocation.getCurrentPosition();
 
       const lt = coords.coords.latitude;
       const lg = coords.coords.longitude;
 
-      resolve({ lat: lt, lng: lg });
+      resolve({ coords: { lat: lt, lng: lg } });
     });
   }
 }
