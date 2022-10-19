@@ -11,6 +11,7 @@ import { CommonServicesService } from 'src/app/services/common-services.service'
 import { ModalService } from 'src/app/services/_helpers/modal.service';
 import { DataService } from 'src/app/services/data.service';
 import { AlertsService } from 'src/app/services/_helpers/alerts.service';
+import { GeolocationsService } from 'src/app/services/_helpers/geolocation.service';
 
 export abstract class BasePage {
   public activatedRoute: ActivatedRoute;
@@ -25,6 +26,7 @@ export abstract class BasePage {
   public modals: ModalService;
   public data: DataService;
   public alert: AlertsService;
+  public geoLocation: GeolocationsService;
 
   public commonService: CommonServicesService;
 
@@ -42,6 +44,7 @@ export abstract class BasePage {
     this.modals = injector.get(ModalService);
     this.data = injector.get(DataService);
     this.alert = injector.get(AlertsService);
+    this.geoLocation = injector.get(GeolocationsService);
   }
 
   navigateTo(link, data?: NavigationExtras) {

@@ -173,7 +173,7 @@ export class ConsumerApiService {
       this.apiService.get(config.api.notification.notifyStatus, {}).subscribe(
         (data: any) => {
           if (data.status == 200) {
-            this.utilityService.showToast(data.message, 'success');
+            // this.utilityService.showToast(data.message, 'success');
             resolve(data);
           }
         },

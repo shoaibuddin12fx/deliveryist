@@ -203,4 +203,17 @@ export class GeolocationsService {
       resolve({ coords: { lat: lt, lng: lg } });
     });
   }
+
+  getCurrentLocationCoordinatesWithAddress() {
+    return new Promise(async (resolve) => {
+      const coords = await Geolocation.getCurrentPosition();
+
+      const lt = coords.coords.latitude;
+      const lg = coords.coords.longitude;
+      const _coords = { coords: { lat: lt, lng: lg } };
+      let address = await this.getGeoAddress(_coords.coords);
+
+      resolve({ coords: { lat: lt, lng: lg }, address });
+    });
+  }
 }

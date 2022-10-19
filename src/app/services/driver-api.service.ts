@@ -303,7 +303,7 @@ export class DriverApiService {
         .subscribe(
           (data: any) => {
             if (data.status == 200) {
-              this.utilityService.showToast(data.message, 'success');
+              //this.utilityService.showToast(data.message, 'success');
               resolve(data);
             }
           },
@@ -341,7 +341,7 @@ export class DriverApiService {
         .subscribe(
           (data: any) => {
             if (data.status == 200) {
-              this.utilityService.showToast(data.message, 'success');
+              //this.utilityService.showToast(data.message, 'success');
               resolve(data);
             }
           },

@@ -27,7 +27,7 @@
       </ion-item>
 
       <ion-item class="" lines="none">
-        <textarea class="textarea" placeholder="Let us know what happen"></textarea>
+        <textarea class="textarea" placeholder="Let us know what happen" [(ngModel)]="description"></textarea>
       </ion-item>
 
       <ion-item lines="none" class="text-item">
@@ -51,7 +51,7 @@
   </div>
   <div class="dlvr-modal-btn-wrapper" style="display: flex;">
     <button class="dlvr-uikit-btn dlvr-uikit-btn-blue btn-medium m-t-10 submit-btn" (click)="reportAnIssue()"
-      [disabled]="reportForm.get('description').invalid">Submit</button>
+      [disabled]="!description || !description.length">Submit</button>
     <!-- <button class="dlvr-uikit-btn dlvr-uikit-btn-rounded dlvr-uikit-btn-green" (click)="reportAnIssue()" [disabled]="reportForm.get('description').invalid">Send</button> -->
   </div>
 </ion-content>

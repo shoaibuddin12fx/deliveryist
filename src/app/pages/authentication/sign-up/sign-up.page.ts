@@ -76,6 +76,10 @@ export class SignUpPage extends BasePage implements OnInit {
   ngOnInit() {
     let code = localStorage.getItem('countryCode');
     this.regionCode = code ? code : '+1';
+    this.prepareForm();
+  }
+
+  prepareForm() {
     this.signupForm = new FormGroup({
       first_name: new FormControl(null, Validators.required),
       last_name: new FormControl(null, Validators.required),
@@ -138,6 +142,23 @@ export class SignUpPage extends BasePage implements OnInit {
   goForLogin() {
     // this.route.navigate(['pages/user-role-selection']);
     this.navigateTo('pages/user-role-selection');
+    this.reset();
+  }
+
+  reset() {
+    this.step = 'step1';
+    document.getElementById('truckprogress').style.width = '0%';
+    this.signupForm.reset({
+      first_name: '',
+      last_name: '',
+      password: '',
+      email: '',
+      countryCode: 'US',
+      contact: '',
+      street: '',
+    });
+    this.contactNumber = '';
+    // this.prepareForm();
   }
 
   onVerify() {
@@ -211,8 +232,9 @@ export class SignUpPage extends BasePage implements OnInit {
     if (data.data == 'A') {
       return;
     }
+    console.log('Address', data.address);
 
-    this.signupForm.controls['street'].patchValue(data.address);
+    this.signupForm.controls['street'].setValue(data.address);
   }
 
   onOtpChange(otp) {

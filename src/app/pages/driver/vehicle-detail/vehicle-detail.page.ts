@@ -9,6 +9,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DriverApiService } from 'src/app/services/driver-api.service';
 import { BasePage } from '../../base-page/base-page';
+import { ImageCompressService } from 'src/app/services/image-compress.service';
 
 @Component({
   selector: 'app-vehicle-detail',
@@ -25,10 +26,12 @@ export class VehicleDetailPage extends BasePage implements OnInit {
   licenseVerified = false;
   input;
   loading = false;
+  imageAPILink: unknown;
   constructor(
     injector: Injector,
     public router: Router,
-    private driverApiService: DriverApiService
+    private driverApiService: DriverApiService,
+    private imageCompressService: ImageCompressService
   ) {
     super(injector);
     this.vehicleForm = new FormGroup({
@@ -56,13 +59,21 @@ export class VehicleDetailPage extends BasePage implements OnInit {
     console.log(file);
     const reader = new FileReader();
     if (file) {
-      console.log('coming here');
+      console.log('coming here', file);
       console.log(this.vehicleForm.get('driver_licence'));
       console.log(file);
       // this.vehicleForm.get('driver_licence').setValue({ file, type: file.type, documentURL: '' });
       // reader.onload = e => this.vehicleForm.get('driver_licence').value.documentURL = reader.result;
       reader.readAsDataURL(file);
-      this.licencePhotoFile = file;
+      reader.onload = async (e: any) => {
+        console.log('onload result', e.target.result);
+
+        this.licencePhotoFile = e.target.result;
+        const link = await this.imageCompressService.compressImage(
+          this.licencePhotoFile
+        );
+        this.imageAPILink = link;
+      };
     }
   }
 
@@ -71,7 +82,7 @@ export class VehicleDetailPage extends BasePage implements OnInit {
     let reqData = {
       registration_number: this.vehicleForm.controls['vehicleNumber'].value,
       vehicle_type: this.vehicleForm.controls['vehicleType'].value,
-      driver_licence: this.vehicleForm.controls['driver_licence'].value,
+      driver_licence: this.imageAPILink,
       is_verified: 1,
     };
 

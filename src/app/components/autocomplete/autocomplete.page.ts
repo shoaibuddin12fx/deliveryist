@@ -120,7 +120,8 @@ export class AutocompletePage extends BasePage implements OnInit {
 
   async getCurrentLocation() {
     this.loadingIndex = -2;
-    const res = await this.utility.getCurrentLocationCoordinates();
+    const res =
+      await this.geoLocation.getCurrentLocationCoordinatesWithAddress();
     this.loadingIndex = -5;
     console.log(res);
 

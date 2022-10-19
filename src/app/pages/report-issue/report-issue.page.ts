@@ -13,6 +13,7 @@ export class ReportIssuePage extends BasePage implements OnInit {
   reportForm: FormGroup;
   formData = new FormData();
   userRole = localStorage.getItem('userRole');
+  description;
   constructor(
     public router: Router,
     public commonAPIService: CommonServicesService,
@@ -42,10 +43,8 @@ export class ReportIssuePage extends BasePage implements OnInit {
   }
 
   reportAnIssue() {
-    this.formData.append(
-      'description',
-      this.reportForm.controls['description'].value
-    );
+    // alert('Hello World');
+    this.formData.append('description', this.description);
     this.commonAPIService
       .reportAnIssue(this.formData)
       .then((response: any) => {
