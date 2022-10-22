@@ -16,6 +16,6 @@ export class SettingHeaderComponent extends BasePage implements OnInit {
   ngOnInit() {}
 
   back() {
-    this.location.back();
+    this.nav.pop();
   }
 }

@@ -70,20 +70,22 @@ export class TrackDriverPage extends BasePage implements OnInit {
     console.log('Job Details Current ', this.data.job_data);
     let self = this;
     this.jobs = this.data.job_data;
-    console.log('JobId', this.jobs.id);
+    if (this.jobs) {
+      console.log('JobId', this.jobs.id);
 
-    this.firebase.getJobData(this.jobs.id).subscribe((data) => {
-      let job = this.jobs;
-      console.log(data.type);
-      //if (data.type == 'modified') {
-      let obj = data.payload.data();
-      if (self.progressLocations?.status != obj?.status) {
-        self.progressLocations = obj;
-        this.jobStatus = obj.status;
-        this.showStep();
-      } else self.progressLocations = obj;
-      //}
-    });
+      this.firebase.getJobData(this.jobs.id).subscribe((data) => {
+        let job = this.jobs;
+        console.log(data.type);
+        if (data.type != 'removed') {
+          let obj = data.payload.data();
+          if (self.progressLocations?.status != obj?.status) {
+            self.progressLocations = obj;
+            this.jobStatus = obj.status;
+            this.showStep();
+          } else self.progressLocations = obj;
+        }
+      });
+    }
 
     this.security = localStorage.getItem('security-otp');
     console.log('security', this.security);
@@ -189,7 +191,10 @@ export class TrackDriverPage extends BasePage implements OnInit {
       this.step1?.classList.remove('is-active');
       this.step1?.classList.add('is-complete');
       this.step2?.classList.add('is-active');
-    } else if (status === 'arrived_at_pickup') {
+    } else if (
+      status === 'arrived_at_pickup' ||
+      status === 'start_journey_to_origin'
+    ) {
       document.getElementById('truckprogress').style.width = '51%';
       this.step1?.classList.remove('is-active');
       this.step1?.classList.add('is-complete');
