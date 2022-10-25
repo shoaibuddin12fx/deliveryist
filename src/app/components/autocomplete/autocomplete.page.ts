@@ -21,6 +21,9 @@ declare var google;
   styleUrls: ['./autocomplete.page.scss'],
 })
 export class AutocompletePage extends BasePage implements OnInit {
+onCancel($event: Event) {
+throw new Error('Method not implemented.');
+}
   /**  ----------------------- Variable Declerations --------------------------- */
   signupForm: FormGroup;
 

@@ -39,7 +39,7 @@
       </ion-label>
       <ion-spinner *ngIf="loadingIndex === -2" slot="end"></ion-spinner>
     </ion-item>
-    <ion-item
+    <!-- <ion-item
       *ngIf="lstPlaces.length === 0"
       class="ion-text ion-no-padding ion-no-margin"
     >
@@ -52,7 +52,7 @@
           search a place or set your current location
         </p>
       </ion-label>
-    </ion-item>
+    </ion-item> -->
     <ion-item
       *ngFor="let address of lstPlaces; let i = index;"
       (click)="getCoordsOfItem(address, i)"
